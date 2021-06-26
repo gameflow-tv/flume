@@ -1,0 +1,58 @@
+{
+  "name": "styleflow",
+  "version": "0.0.1",
+  "description": "React implementation of the Styleflow design system",
+  "main": "index.js",
+  "repository": "https://github.com/gameflow-tv/styleflow",
+  "author": "arne@gameflow.tv",
+  "license": "",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx}' --config ./.prettierrc",
+    "build:storybook": "build-storybook -o ./.storybook_dist -s ./public",
+    "storybook": "start-storybook -p 9009 -s ./public",
+    "prepare": "husky install",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format"
+    }
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/pro-light-svg-icons": "^5.15.3",
+    "@fortawesome/pro-regular-svg-icons": "^5.15.3",
+    "@fortawesome/pro-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.4"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^6.3.0",
+    "@storybook/addon-controls": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-knobs": "^6.3.0",
+    "@storybook/react": "^6.3.0",
+    "@storybook/theming": "^6.3.0",
+    "@types/chroma-js": "^2.1.3",
+    "@types/jest": "^26.0.23",
+    "@types/node": "15.12.4",
+    "@types/react": "17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "@types/styled-components": "^5.1.10",
+    "awesome-typescript-loader": "^5.2.1",
+    "chromatic": "^5.9.2",
+    "husky": "^6.0.0",
+    "jest": "^27.0.5",
+    "prettier": "^2.3.1",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "storybook": "^6.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.5.1"
+  }
+}
