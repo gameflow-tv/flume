@@ -20,6 +20,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "src",
+    "typeRoots": [
+      "./typings"
+    ],
     "paths": {
       "@theme": [
         "lib/theme"
@@ -29,16 +32,13 @@
       ],
       "@components/*": [
         "lib/components/*"
+      ],
+      "@components": [
+        "lib/components"
       ]
     }
   },
   "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    },
     {
       "path": "./.storybook/tsconfig.json"
     }

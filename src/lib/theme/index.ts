@@ -4,9 +4,10 @@ export * from './palette'
 export * from './shadows'
 export * from './shapes'
 export * from './spacing'
-export { default as fallbackTheme } from './theme'
+export * from './theme'
 export * from './typography'
-export { default as ThemeProvider, ThemeContext } from './ThemeProvider'
+export * from './transitions'
+export * from './ThemeProvider'
 
 // Types
 export type { Theme } from './theme'

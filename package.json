@@ -1,19 +1,20 @@
 {
-  "name": "styleflow",
+  "name": "flume",
   "version": "0.0.1",
-  "description": "React implementation of the Styleflow design system",
+  "description": "React implementation of the Flume design system",
   "main": "index.js",
-  "repository": "https://github.com/gameflow-tv/styleflow",
+  "repository": "https://github.com/gameflow-tv/flume",
   "author": "arne@gameflow.tv",
   "license": "",
   "private": true,
   "scripts": {
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx}' --config ./.prettierrc",
-    "build:storybook": "build-storybook -o ./.storybook_dist -s ./public",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,mdx}' --config ./.prettierrc",
+    "build": "build-storybook -o ./storybook-static",
     "storybook": "start-storybook -p 9009 -s ./public",
     "prepare": "husky install",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "chromatic": "npx chromatic"
   },
   "husky": {
     "hooks": {
@@ -30,29 +31,38 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.0",
-    "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^1.6.22",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
     "@storybook/addon-a11y": "^6.3.0",
+    "@storybook/addon-backgrounds": "^6.3.0",
+    "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-controls": "^6.3.0",
+    "@storybook/addon-docs": "^6.3.0",
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-knobs": "^6.3.0",
+    "@storybook/addon-storysource": "^6.3.0",
     "@storybook/react": "^6.3.0",
     "@storybook/theming": "^6.3.0",
     "@types/chroma-js": "^2.1.3",
     "@types/jest": "^26.0.23",
-    "@types/node": "15.12.4",
+    "@types/node": "15.12.5",
     "@types/react": "17.0.11",
     "@types/react-dom": "^17.0.8",
     "@types/styled-components": "^5.1.10",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
+    "eslint-plugin-mdx": "^1.13.0",
     "husky": "^6.0.0",
     "jest": "^27.0.5",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "react-docgen-typescript-loader": "^3.7.2",
     "storybook": "^6.3.0",
+    "ts-jest": "^27.0.3",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
   }
 }

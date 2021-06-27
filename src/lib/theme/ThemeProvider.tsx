@@ -8,11 +8,6 @@ export type ThemeContextProps = {
 
 export const ThemeContext: React.Context<Theme> = React.createContext(fallback)
 
-const ThemeProvider = ({
-  theme = fallback,
-  children,
-}: ThemeContextProps): JSX.Element => (
+export const ThemeProvider = ({ theme = fallback, children }: ThemeContextProps): JSX.Element => (
   <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
 )
-
-export default ThemeProvider

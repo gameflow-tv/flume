@@ -1,33 +1,28 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-    stories: [
-        '../src/lib/**/*.stories.mdx',
-        '../src/lib/**/*.stories.@(js|jsx|ts|tsx)'
-    ],
-    addons: [
-        {
-            name: '@storybook/addon-docs',
-            options: {
-                configureJSX: true
-            }
-        },
-        '@storybook/addon-essentials',
-        '@storybook/addon-a11y',
-        '@storybook/addon-controls'
-    ],
-    typescript: {
-        reactDocgen: 'react-docgen-typescript',
-        reactDocgenTypescriptOptions: {
-            compilerOptions: {
-                allowSyntheticDefaultImports: false,
-                esModuleInterop: false
-            }
-        }
+  stories: ['../src/**/*.stories.@(tsx|mdx)'],
+  addons: [
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+        sourceLoaderOptions: null,
+        transcludeMarkdown: true
+      }
     },
-
-    webpackFinal: async (config, { configType }) => {
-        config.resolve.plugins = [new TsconfigPathsPlugin()]
-        return config
-    }
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@storybook/addon-controls',
+    '@storybook/addon-backgrounds',
+    '@storybook/addon-storysource'
+  ],
+  typescript: {
+    reactDocgen: 'react-docgen'
+  },
+  webpackFinal: async (config) => {
+    config.resolve.plugins = [new TsconfigPathsPlugin()]
+    return config
+  }
 }
