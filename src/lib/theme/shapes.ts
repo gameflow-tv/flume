@@ -11,13 +11,13 @@ export type Shapes = {
 }
 
 const fallback: Shapes = {
-  borders: {
-    none: '0px',
-    small: '4px',
-    medium: '6px',
-    pill: '100px',
-    full: '50%',
-  },
+borders: {
+none: '0px',
+small: '4px',
+medium: '6px',
+pill: '100px',
+full: '50%'
+}
 }
 
 export default fallback

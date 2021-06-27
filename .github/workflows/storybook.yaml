@@ -1,0 +1,34 @@
+name: Publish to Storybook/Chromatic
+on:
+  push:
+    branches: [main]
+
+env:
+  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
+  
+jobs:
+  storybook:
+    runs-on: ubuntu-latest
+    container: node
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Build Storybook
+        run: yarn storybook
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: public
+
+  chromatic:
+    runs-on: ubuntu-latest
+    container: node
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Deploy to Chromatic
+        run: yarn chromatic
+
