@@ -8,10 +8,9 @@ backgroundColor?: string
 transition?: Transition
 }
 
-export const Input =
-  styled.input <
-  InputProps >
+export const Input = styled.input<InputProps>
   `
+  color: white;
   width: 300px;
   padding: 12px;
   border-radius: 4px;
@@ -48,11 +47,11 @@ export const ListItem =
 
 type LabelProps = {
 typography?: TypographyStyle
+for?: string
 }
 
 export const Label =
-  styled.label <
-  LabelProps >
+  styled.label<LabelProps>
   `
   ${(props) => typographyToCss(props.typography)};
 `
