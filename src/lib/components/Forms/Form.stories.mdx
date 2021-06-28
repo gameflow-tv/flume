@@ -1,0 +1,32 @@
+import { TextInput, TextInputProps, TextInputCriteria } from '@components/Forms'
+import { Canvas, Meta, ArgsTable, Story } from '@storybook/addon-docs'
+
+<Meta
+  title="Components/Forms/TextInput"
+  component={TextInput}
+/>
+
+# TextInput
+
+Epic TextInput is epic.
+
+## Properties
+
+<ArgsTable of={TextInput} />
+
+## Primary
+
+<Canvas>
+  <TextInput placeholder="Username"type="text" />
+  <TextInput placeholder="Password" type="password"/>
+  <TextInput placeholder="Field with criteria" criteria={[
+    {
+      criteria: 'Longer than 6 characters',
+      fulfilled: false 
+    },
+    { 
+      criteria: 'Is not Tobinator', 
+      fulfilled: true 
+    }
+  ]} />
+</Canvas>

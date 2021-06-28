@@ -21,11 +21,12 @@ export const TextInput = (props: TextInputProps) => {
 return (
 
 <>
-  <Label typography={theme.typography.header5}>
+  <Label typography={theme.typography.header5} for={`${props.type}-${props.placeholder}`}>
     {props.placeholder.slice(0, 1).toUpperCase() + props.placeholder.slice(1).toLowerCase()}
   </Label>
-  <br />
+  <br /><br />
   <Input
+    id={`${props.type}-${props.placeholder}`}
     typography={theme.typography.body1}
     transition={theme.transitions.long}
     backgroundColor={theme.colors.onBackground}
