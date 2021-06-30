@@ -10,13 +10,13 @@ const Template = (args: TextInputProps) => <TextInput {...args} />
 
 export const Text: Story<TextInputProps> = Template.bind({})
 Text.args = {
-  placeholder: 'Username',
+  placeholder: 'Username-0',
   type: 'text'
 }
 
 export const Text1: Story<TextInputProps> = Template.bind({})
 Text1.args = {
-  placeholder: 'Username',
+  placeholder: 'Username-1',
   type: 'text',
   criteria: [
     {

@@ -62,7 +62,7 @@ export const TextInput = (props: TextInputProps) => {
               key={`${crit.criteria}`}
               typography={theme.typography.body3}
               color={
-                criteriaRule(crit.condition.type, crit.condition.rule, inputValue)
+                criteriaRule(crit.condition?.type, crit.condition?.rule, inputValue)
                   ? theme.colors.success
                   : theme.colors.primary
               }>
