@@ -3,13 +3,12 @@ import { Transition, transitionToCss } from '@theme/transitions'
 import styled from 'styled-components'
 
 type InputProps = {
-typography?: TypographyStyle
-backgroundColor?: string
-transition?: Transition
+  typography?: TypographyStyle
+  backgroundColor?: string
+  transition?: Transition
 }
 
-export const Input = styled.input<InputProps>
-  `
+export const Input = styled.input<InputProps>`
   color: white;
   width: 300px;
   padding: 12px;
@@ -33,25 +32,20 @@ export const Input = styled.input<InputProps>
 `
 
 type ListItemProps = {
-typography?: TypographyStyle
-color?: string
+  typography?: TypographyStyle
+  color?: string
 }
 
-export const ListItem =
-  styled.li <
-  ListItemProps >
-  `
+export const ListItem = styled.li<ListItemProps>`
   ${(props) => typographyToCss(props.typography)};
   color: ${(props) => props.color};
 `
 
 type LabelProps = {
-typography?: TypographyStyle
-for?: string
+  typography?: TypographyStyle
+  for?: string
 }
 
-export const Label =
-  styled.label<LabelProps>
-  `
+export const Label = styled.label<LabelProps>`
   ${(props) => typographyToCss(props.typography)};
 `

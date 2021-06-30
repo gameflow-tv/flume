@@ -25,12 +25,12 @@ export const parameters = {
     element: '#root',
     config: {},
     options: {},
-    manual: true,
+    manual: true
   },
   viewMode: 'docs',
   previewTabs: {
     canvas: {
-      hidden: true,
-    },
-  },
+      hidden: true
+    }
+  }
 }

@@ -20,9 +20,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "src",
-    "typeRoots": [
-      "./typings"
-    ],
     "paths": {
       "@theme": [
         "lib/theme"

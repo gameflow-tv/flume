@@ -17,13 +17,13 @@ export type Theme = {
 }
 
 const fallback: Theme = {
-breakpoints: fallbackBreakpoints,
-colors: fallbackColors,
-shadows: fallbackShadows,
-shapes: fallbackShapes,
-spacing: fallbackSpacing,
-typography: fallbackTypography,
-transitions: fallbackTransitions
+  breakpoints: fallbackBreakpoints,
+  colors: fallbackColors,
+  shadows: fallbackShadows,
+  shapes: fallbackShapes,
+  spacing: fallbackSpacing,
+  typography: fallbackTypography,
+  transitions: fallbackTransitions
 }
 
 export default fallback
