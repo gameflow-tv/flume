@@ -4,25 +4,31 @@ import styled from 'styled-components'
 type InputProps = {
   typography?: TypographyStyle
   backgroundColor?: string
+  foregroundColor?: string
   transition?: Transition
+  borderRadius: string
+  shadow: string
+  glow: string
+  padding: string
+  outline: string
 }
 
 export const Input = styled.input<InputProps>`
-  color: white;
+  color: ${(props) => props.foregroundColor};
   width: 300px;
-  padding: 12px;
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: ${(props) => props.padding};
+  border-radius: ${(props) => props.borderRadius};
+  box-shadow: ${(props) => props.shadow};
   ${(props) => typographyToCss(props.typography)};
   background-color: ${(props) => props.backgroundColor};
   transition: ${(props) => transitionToCss(props.transition)};
   &:hover {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: ${(props) => props.glow};
     outline: none;
     border: none;
   }
   &:focus {
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 0px 1px ${(props) => props.outline};
     outline: none;
     border: none;
   }

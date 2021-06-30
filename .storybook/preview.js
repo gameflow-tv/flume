@@ -5,7 +5,6 @@ import '../src/lib/theme/fonts.css'
 import theme from './theme'
 
 importIcons()
-addDecorator(ThemeProvider)
 
 export const decorators = [
   (Story) => (

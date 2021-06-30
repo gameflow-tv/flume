@@ -1,8 +1,8 @@
-import { TextInput, TextInputProps, TextInputCriteria } from './'
+import { TextInput, TextInputProps } from './'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Components/Form/TextInput',
+  title: 'Components/Inputs/TextInput',
   component: TextInput
 }
 
