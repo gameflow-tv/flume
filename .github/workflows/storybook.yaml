@@ -5,13 +5,16 @@ on:
 
 env:
   CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-  
+
 jobs:
   storybook:
     runs-on: ubuntu-latest
     container: node
     steps:
       - uses: actions/checkout@v2
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
       - name: Install dependencies
         run: yarn
       - name: Build Storybook
@@ -32,4 +35,3 @@ jobs:
         run: yarn
       - name: Deploy to Chromatic
         run: yarn chromatic
-
