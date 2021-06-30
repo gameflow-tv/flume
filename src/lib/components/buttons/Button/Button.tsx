@@ -1,7 +1,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Theme, ThemeContext } from '@theme'
+import { Theme, ThemeContext } from '../../../theme'
 import React, { useContext } from 'react'
-import { BaseButtonProps } from '@components/buttons/BaseButton'
+import { BaseButtonProps } from '../BaseButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 

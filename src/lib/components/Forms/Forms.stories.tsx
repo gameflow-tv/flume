@@ -1,4 +1,4 @@
-import { TextInput, TextInputProps, TextInputCriteria } from '@components/forms'
+import { TextInput, TextInputProps, TextInputCriteria } from './'
 import { Story } from '@storybook/react'
 
 export default {

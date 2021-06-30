@@ -1,5 +1,4 @@
-import { TypographyStyle, typographyToCss } from '@theme/typography'
-import { Transition, transitionToCss } from '@theme/transitions'
+import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
 import styled from 'styled-components'
 
 type InputProps = {

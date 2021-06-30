@@ -1,8 +1,7 @@
 import React from 'react'
-import { ThemeProvider } from '@theme'
-import '@theme/fonts.css'
-import { importIcons } from '@theme/icons'
-import { addDecorator } from '@storybook/react'
+import { importIcons } from '../src/lib/theme/icons'
+import { ThemeProvider } from '../src'
+import '../src/lib/theme/fonts.css'
 import theme from './theme'
 
 importIcons()

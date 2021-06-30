@@ -1,5 +1,3 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-
 module.exports = {
   stories: ['../src/**/*.stories.@(tsx|mdx)'],
   addons: [
@@ -20,9 +18,5 @@ module.exports = {
   ],
   typescript: {
     reactDocgen: 'react-docgen'
-  },
-  webpackFinal: async (config) => {
-    config.resolve.plugins = [new TsconfigPathsPlugin()]
-    return config
   }
 }

@@ -1,6 +1,6 @@
-import { transitionToCss } from '@theme'
+import { transitionToCss } from '../../../theme'
 import styled from 'styled-components'
-import { ButtonProps } from '@components/buttons'
+import { ButtonProps } from '../'
 
 export const StyledIconButton = styled.button<ButtonProps>`
   border-radius: ${(props) => props.borderRadius};

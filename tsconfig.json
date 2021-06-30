@@ -19,21 +19,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "src",
-    "paths": {
-      "@theme": [
-        "lib/theme"
-      ],
-      "@theme/*": [
-        "lib/theme/*"
-      ],
-      "@components/*": [
-        "lib/components/*"
-      ],
-      "@components": [
-        "lib/components"
-      ]
-    }
   },
   "references": [
     {

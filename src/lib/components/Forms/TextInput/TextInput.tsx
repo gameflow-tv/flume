@@ -1,4 +1,4 @@
-import { ThemeContext } from '@theme'
+import { ThemeContext } from '../../../theme'
 import React, { useContext, useState } from 'react'
 import { Input, Label, ListItem } from './TextInput.styles'
 
