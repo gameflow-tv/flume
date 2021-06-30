@@ -1,4 +1,4 @@
-import fallback, { Theme } from '@theme/theme'
+import fallback, { Theme } from './theme'
 import React, { ReactNode } from 'react'
 
 export type ThemeContextProps = {

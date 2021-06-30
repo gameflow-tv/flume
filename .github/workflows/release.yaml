@@ -1,0 +1,16 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    container: node
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Release to GHPR
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}

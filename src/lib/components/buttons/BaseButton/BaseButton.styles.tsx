@@ -1,8 +1,7 @@
-import { TypographyStyle, typographyToCss } from '@theme/typography'
+import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
 import styled from 'styled-components'
-import { ButtonSize, IconPosition } from '@components/buttons'
+import { ButtonSize, IconPosition } from '../'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Transition, transitionToCss } from '@theme/transitions'
 
 export type StyledBaseButtonProps = {
   borderRadius?: string

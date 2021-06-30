@@ -1,8 +1,8 @@
-import { TextInput, TextInputProps, TextInputCriteria } from '@components/forms'
+import { TextInput, TextInputProps } from './'
 import { Story } from '@storybook/react'
 
 export default {
-  title: 'Components/Form/TextInput',
+  title: 'Components/Inputs/TextInput',
   component: TextInput
 }
 
@@ -10,13 +10,13 @@ const Template = (args: TextInputProps) => <TextInput {...args} />
 
 export const Text: Story<TextInputProps> = Template.bind({})
 Text.args = {
-  placeholder: 'Username',
+  placeholder: 'Username-0',
   type: 'text'
 }
 
 export const Text1: Story<TextInputProps> = Template.bind({})
 Text1.args = {
-  placeholder: 'Username',
+  placeholder: 'Username-1',
   type: 'text',
   criteria: [
     {

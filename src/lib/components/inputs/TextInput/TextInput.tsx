@@ -1,4 +1,4 @@
-import { ThemeContext } from '@theme'
+import { ThemeContext } from '../../../theme'
 import React, { useContext, useState } from 'react'
 import { Input, Label, ListItem } from './TextInput.styles'
 
@@ -43,11 +43,17 @@ export const TextInput = (props: TextInputProps) => {
       <Input
         id={`${props.type}-${props.placeholder}`}
         typography={theme.typography.body1}
-        transition={theme.transitions.long}
-        backgroundColor={theme.colors.onBackground}
+        transition={theme.transitions.short}
+        backgroundColor={theme.colors.textField}
+        foregroundColor={theme.colors.onTextField}
         type={props.type}
         placeholder={props.placeholder}
         onChange={(e) => setInputValue(e.target.value)}
+        borderRadius={theme.shapes.borders.small}
+        shadow={theme.shadows.xsmall}
+        glow={theme.shadows.glow}
+        padding={theme.spacing.small}
+        outline={theme.colors.primary}
       />
       {props.criteria ? (
         <ul>
@@ -56,7 +62,7 @@ export const TextInput = (props: TextInputProps) => {
               key={`${crit.criteria}`}
               typography={theme.typography.body3}
               color={
-                criteriaRule(crit.condition.type, crit.condition.rule, inputValue)
+                criteriaRule(crit.condition?.type, crit.condition?.rule, inputValue)
                   ? theme.colors.success
                   : theme.colors.primary
               }>

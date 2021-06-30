@@ -1,0 +1,25 @@
+name: Build and test library
+on:
+  push:
+    branches: ['*']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Build project
+        run: yarn build
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    container: node
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+      - name: Run tests
+        run: yarn test
