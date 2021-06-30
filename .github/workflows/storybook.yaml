@@ -15,14 +15,15 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build Storybook
-        run: yarn storybook
+        run: yarn build
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
-          folder: public
+          folder: storybook-static
 
   chromatic:
+    needs: storybook
     runs-on: ubuntu-latest
     container: node
     steps:

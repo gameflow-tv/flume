@@ -21,7 +21,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-
     steps:
       - name: Install dependencies
         run: yarn --frozen-lockfile

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React implementation of the Flume design system",
   "main": "index.js",
-  "repository": "git://github.com/gameflow-tv/flume.git",
+  "repository": "https://github.com/gameflow-tv/flume.git",
   "author": "arne@gameflow.tv",
   "license": "",
   "private": true,
