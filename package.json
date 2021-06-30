@@ -1,5 +1,5 @@
 {
-  "name": "flume",
+  "name": "@gameflow-tv/flume",
   "version": "0.0.1",
   "description": "React implementation of the Flume design system",
   "main": "index.js",
