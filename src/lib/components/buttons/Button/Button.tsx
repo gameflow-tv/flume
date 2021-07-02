@@ -1,7 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Theme, ThemeContext } from '../../../theme'
 import React, { useContext } from 'react'
-import { BaseButtonProps } from '../BaseButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 
@@ -21,7 +20,7 @@ export type ButtonProps = StyledButtonProps &
     icon?: IconProp
     icon_position?: IconPosition
     size: ButtonSize
-    variant: ButtonVariant
+    variant?: ButtonVariant
     backgroundColor?: string
     foregroundColor?: string
     label?: string
@@ -43,9 +42,11 @@ export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins 
   }
 }
 
-export const getButtonStyles = (props: ButtonProps, theme: Theme): BaseButtonProps => {
+export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps => {
   const { horizontalMargin, verticalMargin } = getButtonMargins(props.size, theme)
   const common = {
+    ...props,
+    variant: props.variant ?? 'primary',
     borderRadius: theme.shapes.borders.small,
     glow: theme.shadows.glow,
     borderColor: theme.colors.buttonBorder,
@@ -82,11 +83,13 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): BaseButtonPro
 
 export const Button = (props: ButtonProps): JSX.Element => {
   const theme = useContext(ThemeContext)
-  const buttonStyles = getButtonStyles(props, theme)
+  props = getButtonStyles(props, theme)
+
+  console.log(props.icon && props.icon_position === 'left' && props.gap)
 
   return (
-    <StyledButton {...props} {...buttonStyles}>
-      <ButtonContent {...buttonStyles}>
+    <StyledButton {...props}>
+      <ButtonContent {...props}>
         <p>{props.label}</p>
         {props.icon && <FontAwesomeIcon icon={props.icon} />}
       </ButtonContent>

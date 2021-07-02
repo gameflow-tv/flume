@@ -28,11 +28,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
   transition: ${(props) => transitionToCss(props.transition)};
 
   &:hover {
-    filter: brightness(95%);
+    filter: brightness(85%);
   }
 
   &:active {
-    filter: brightness(85%);
+    filter: brightness(75%);
   }
 
   &:focus {
