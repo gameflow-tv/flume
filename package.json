@@ -6,7 +6,6 @@
   "repository": "git://github.com/gameflow-tv/flume.git",
   "author": "arne@gameflow.tv",
   "license": "",
-  "private": true,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
