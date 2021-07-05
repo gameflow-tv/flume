@@ -1,17 +1,29 @@
-import { TextInput, TextInputProps, TextInputCriteria } from './'
+import { TextInput, TextInputProps, TextInputCriteria, Switch } from '../../src'
 import { Canvas, Meta, ArgsTable, Story } from '@storybook/addon-docs'
 
-<Meta title="Components/Inputs/Inputs" component={TextInput} />
+<Meta title="Docs/Inputs" component={TextInput} />
 
-# TextInput
+# Inputs
 
-Epic TextInput is epic.
+An input is the most basic element for inputting and editing data in an application. Different types of inputs are available for different types of input data to be used separately or combined together in a form. All form inputs has a short label describing the type of the expected data and should be positioned into a fieldset in a grid.
 
-## Properties
+## Switch
 
-<ArgsTable of={TextInput} />
+The Switch component should be used to toggle on or off a limited number of choices.
 
-## Primary
+<Canvas>
+  <Switch />
+  <Switch label="Label:" />
+  <Switch label="Right label" labelPosition="right" />
+</Canvas>
+
+### Properties
+
+<ArgsTable of={Switch} />
+
+## TextInput
+
+The Text Input component is used for inputting text. It has several states depending on what input data is required and if the input fields has any requriements.
 
 <Canvas>
   <TextInput placeholder="Username" type="text" />
@@ -47,3 +59,7 @@ Epic TextInput is epic.
     ]}
   />
 </Canvas>
+
+### Properties
+
+<ArgsTable of={TextInput} />
