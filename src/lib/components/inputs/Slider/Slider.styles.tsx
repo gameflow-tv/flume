@@ -51,7 +51,7 @@ export type RangeLabelProps = {
   labelColor: string
 }
 
-export const RangeLabel = styled.label`
+export const RangeLabel = styled.label<RangeLabelProps>`
   color: ${(props) => props.labelColor};
   padding: 0;
   margin: 0;
