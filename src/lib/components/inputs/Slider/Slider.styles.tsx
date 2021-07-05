@@ -70,10 +70,26 @@ export const Range = styled.input.attrs({
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
     border-radius: 50%;
+    border-color: ${(props) => props.thumbColor};
+  }
+
+  &::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 17px;
+    width: 17px;
+    background: ${(props) => props.thumbColor};
+    border-radius: 50%;
+    border-color: ${(props) => props.thumbColor};
+  }
+
+  &::-moz-range-track {
+    border: none;
   }
 `
 
@@ -84,5 +100,6 @@ export type SliderLabelProps = {
 
 export const SliderLabel = styled.label<SliderLabelProps>`
   color: ${(props) => props.labelColor};
+  margin: 8px;
   ${(props) => typographyToCss(props.labelTypography)}
 `
