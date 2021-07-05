@@ -9,11 +9,13 @@ env:
 jobs:
   chromatic:
     runs-on: ubuntu-latest
-    container: node
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build Chromatic project
