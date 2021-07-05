@@ -1,25 +1,61 @@
 import React from 'react'
 import styled from 'styled-components'
+import { TypographyStyle, typographyToCss } from '../../../theme'
+import { LabelPosition } from './Slider'
+
+export type WrapperProps = {
+  gap: string
+  labelPosition?: LabelPosition
+}
+
+const flexDirFromPosition = (position: LabelPosition): string => {
+  switch (position) {
+    case 'bottom':
+      return 'column-reverse'
+    case 'left':
+      return 'row'
+    case 'right':
+      return 'row-reverse'
+    case 'top':
+    default:
+      return 'column'
+  }
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: ${(props) => flexDirFromPosition(props.labelPosition)};
+  gap: ${(props) => props.gap};
+  &,
+  > * {
+    cursor: pointer;
+  }
+`
 
 export type RangeProps = {
+  orientation: string
   trackColor: string
   thumbColor: string
   transition: string
 }
 
-export type RangeDefinitions = {
-  id: string
-  type: string
+export const RangeWrap = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+`
+
+export type RangeLabelProps = {
+  labelColor: string
 }
 
-export type PDefinitions = {
-  id: string
-  type: string
-}
-
-export const Pats = styled.p<PDefinitions>`
-  color: white;
-  size: 20px;
+export const RangeLabel = styled.label`
+  color: ${(props) => props.labelColor};
+  padding: 0;
+  margin: 0;
+  margin-top: -3px;
 `
 
 export const Range = styled.input.attrs({
@@ -39,4 +75,14 @@ export const Range = styled.input.attrs({
     background: ${(props) => props.thumbColor};
     border-radius: 50%;
   }
+`
+
+export type SliderLabelProps = {
+  labelTypography?: TypographyStyle
+  labelColor?: string
+}
+
+export const SliderLabel = styled.label<SliderLabelProps>`
+  color: ${(props) => props.labelColor};
+  ${(props) => typographyToCss(props.labelTypography)}
 `
