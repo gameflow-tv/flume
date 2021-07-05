@@ -1,16 +1,31 @@
 import styled from 'styled-components'
 import { TypographyStyle, typographyToCss } from '../../../theme'
+import { LabelPosition } from './Switch'
 
 export type WrapperProps = {
   gap: string
-  labelPosition?: 'left' | 'right'
+  labelPosition?: LabelPosition
+}
+
+const flexDirFromPosition = (position: LabelPosition): string => {
+  switch (position) {
+    case 'top':
+      return 'column-reverse'
+    case 'right':
+      return 'row'
+    case 'bottom':
+      return 'column'
+    case 'left':
+    default:
+      return 'row-reverse'
+  }
 }
 
 export const Wrapper = styled.div<WrapperProps>`
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: ${(props) => (props.labelPosition === 'right' ? 'row' : 'row-reverse')};
+  flex-direction: ${(props) => flexDirFromPosition(props.labelPosition)};
   gap: ${(props) => props.gap};
   &,
   > * {
