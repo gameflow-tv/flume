@@ -92,6 +92,8 @@ export const Range = styled.input.attrs({
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
