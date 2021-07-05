@@ -3,9 +3,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
-
 jobs:
   chromatic:
     runs-on: ubuntu-latest
@@ -18,5 +15,8 @@ jobs:
           node-version: "16"
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Build Chromatic project
-        run: yarn chromatic
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
