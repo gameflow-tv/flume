@@ -42,7 +42,7 @@ export const Switch = ({
     trackShadow: theme.shadows.xsmall,
     knobShadow: theme.shadows.xsmall,
     gap: theme.spacing.xsmall,
-    labelTypography: theme.typography.body1,
+    labelTypography: theme.typography.header5,
     labelColor: theme.colors.onTextField,
     labelPosition,
     checked
