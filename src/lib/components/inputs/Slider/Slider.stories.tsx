@@ -11,5 +11,5 @@ const Template = (args: SliderProps) => <Slider {...args} />
 export const Default: Story = Template.bind({})
 
 // export const Default: Story = Template.bind({
-  // orientation: 'horizontal'
+// orientation: 'horizontal'
 // })
