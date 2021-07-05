@@ -27,6 +27,8 @@ export type Colors = {
   onTextField: string
   shimmerHighlight: string
   shimmerBackground: string
+  toggle: string
+  onToggle: string
 }
 
 const fallback: Colors = {
@@ -55,7 +57,9 @@ const fallback: Colors = {
   textField: palette.emperorGray,
   onTextField: palette.white,
   shimmerHighlight: palette.white10,
-  shimmerBackground: palette.black10
+  shimmerBackground: palette.black10,
+  toggle: palette.codGray,
+  onToggle: palette.white
 }
 
 export default fallback

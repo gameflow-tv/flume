@@ -1,13 +1,18 @@
-import { Button, ButtonProps } from '../../src/lib/components/buttons'
+import { Button, ButtonProps } from '../../src'
 import { Canvas, Meta, ArgsTable, Story } from '@storybook/addon-docs'
 
-<Meta title="Components/Buttons" component={Button} />
+<Meta title="Docs/Buttons" component={Button} />
 
 # Buttons
 
-Epic buttons are epic.
+Buttons allow users to take actions and make choices. They are used for actions inside cards, tabs, sections, and pages. Be precise about what an action is going to do. Use an icon to further increase emphasis on your button's action.
 
-## Properties
+## Button
+
+<p>
+  <Button label="Button" size="small" variant="primary" /> is a single component that can take
+  different properties and result in different variants.
+</p>
 
 <ArgsTable of={Button} />
 
@@ -59,7 +64,7 @@ Epic buttons are epic.
   <Button variant="secondary" size="small" icon="trophy" label="Button" disabled />
 </Canvas>
 
-### Signal
+## Signal
 
 <Canvas>
   <Button variant="signal" size="large" label="Button" />

@@ -25,10 +25,5 @@ export const parameters = {
     options: {},
     manual: true
   },
-  viewMode: 'docs',
-  previewTabs: {
-    canvas: {
-      hidden: true
-    }
-  }
+  viewMode: 'canvas'
 }

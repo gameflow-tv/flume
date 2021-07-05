@@ -13,7 +13,7 @@ export type StyledButtonProps = {
   typography?: TypographyStyle
   size: ButtonSize
   icon?: IconProp
-  icon_position: IconPosition
+  iconPosition: IconPosition
   gap?: string
   transition?: Transition
 }
@@ -66,7 +66,7 @@ export const ButtonContent = styled.div<ButtonContentProps>`
   justify-content: center;
   align-items: center;
   gap: ${(props) => props.icon && props.gap};
-  flex-direction: ${(props) => (props.icon_position === 'right' ? 'row' : 'row-reverse')};
+  flex-direction: ${(props) => (props.iconPosition === 'right' ? 'row' : 'row-reverse')};
   p {
     margin-block-start: 0;
     margin-block-end: 0;
