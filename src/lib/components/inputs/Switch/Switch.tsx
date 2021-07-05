@@ -13,14 +13,14 @@ import {
   WrapperProps
 } from './Switch.styles'
 
-export type LabelPosition = 'left' | 'right'
+export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
 
 export type SwitchProps = {
   id?: string
   label?: string
   checked?: boolean
   onChange?: (checked: boolean) => void
-  labelPosition: LabelPosition
+  labelPosition?: LabelPosition
 }
 
 export const Switch = ({
