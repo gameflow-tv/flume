@@ -44,6 +44,7 @@ export type Colors = {
   uncheckedBorder: string
   checkedText: string
   uncheckedText: string
+  sliderBackground: string
 }
 
 const fallback: Colors = {
@@ -89,7 +90,8 @@ const fallback: Colors = {
   checkedBackground: palette.amberOrange,
   uncheckedBorder: palette.offWhite,
   checkedText: palette.abbeyBlue,
-  uncheckedText: palette.offWhite
+  uncheckedText: palette.offWhite,
+  sliderBackground: palette.codGray,
 }
 
 export default fallback
