@@ -12,6 +12,7 @@ import {
   Wrapper,
   WrapperProps
 } from './Slider.styles'
+
 import { ThemeContext, transitionToCss } from '../../../theme'
 
 export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
