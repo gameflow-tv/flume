@@ -61,7 +61,7 @@ const fallback: Colors = {
   shimmerBackground: palette.black10,
   toggle: palette.codGray,
   onToggle: palette.white,
-  sliderBackground: palette.codGray,
+  sliderBackground: palette.codGray
 }
 
 export default fallback
