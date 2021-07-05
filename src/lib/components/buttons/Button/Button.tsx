@@ -18,8 +18,8 @@ export type ButtonMargins = {
 export type ButtonProps = StyledButtonProps &
   ButtonContentProps & {
     icon?: IconProp
-    icon_position?: IconPosition
-    size: ButtonSize
+    iconPosition?: IconPosition
+    size?: ButtonSize
     variant?: ButtonVariant
     backgroundColor?: string
     foregroundColor?: string
@@ -53,10 +53,10 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
     typography: theme.typography.button,
     horizontalMargin: horizontalMargin,
     verticalMargin: verticalMargin,
-    size: props.size,
+    size: props.size ?? 'large',
     shadow: theme.shadows.xsmall,
     transition: theme.transitions.short,
-    icon_position: props.icon_position ?? 'right',
+    iconPosition: props.iconPosition ?? 'right',
     gap: props.size === 'small' ? theme.spacing.xxsmall : theme.spacing.xsmall
   }
   switch (props.variant) {
@@ -84,8 +84,6 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
 export const Button = (props: ButtonProps): JSX.Element => {
   const theme = useContext(ThemeContext)
   props = getButtonStyles(props, theme)
-
-  console.log(props.icon && props.icon_position === 'left' && props.gap)
 
   return (
     <StyledButton {...props}>

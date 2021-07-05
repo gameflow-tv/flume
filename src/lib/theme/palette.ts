@@ -21,6 +21,7 @@ const palette = {
   emperorGray: '#36393b',
   codGray: '#434647',
   abbeyGray: '#525556',
+  black50: 'rgba(0, 0, 0, 0.5)',
   black40: 'rgba(0, 0, 0, 0.4)',
   black30: 'rgba(0, 0, 0, 0.3)',
   black20: 'rgba(0, 0, 0, 0.2)',
