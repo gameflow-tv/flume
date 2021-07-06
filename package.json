@@ -15,7 +15,7 @@
     ]
   },
   "scripts": {
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,mdx}' --config .prettierrc",
+    "format": "prettier --write ./src/**/*.{ts,tsx,js,jsx,mdx,json} --config .prettierrc",
     "build": "build-storybook -o storybook-static",
     "storybook": "start-storybook -p 9009 -s ./public",
     "prepare": "husky install",
