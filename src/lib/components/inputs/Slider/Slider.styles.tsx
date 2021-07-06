@@ -44,7 +44,7 @@ export const Wrapper = styled.div<WrapperProps>`
 `
 
 export type RangeWrapProps = {
-  labelPosition: string
+  labelPosition: LabelPosition
 }
 
 export const RangeWrap = styled.div<RangeWrapProps>`
