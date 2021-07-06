@@ -71,6 +71,7 @@ export const RangeLabel = styled.label<RangeLabelProps>`
   padding: 0;
   margin: 0;
   margin-top: -3px;
+  z-index: -1;
 `
 export type RangeProps = {
   trackColor: string
@@ -90,10 +91,14 @@ export const Range = styled.input.attrs({
   background: ${(props) => props.trackColor};
   transition: ${(props) => props.transition};
 
+  &[orientation='vertical'] {
+    transform: rotate(-90deg);
+    margin: 50% 0;
+    z-index: 2;
+  }
+
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
