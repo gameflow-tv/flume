@@ -36,6 +36,7 @@ export const palette = {
   black20: 'rgba(0, 0, 0, 0.2)',
   black10: 'rgba(0, 0, 0, 0.1)',
   white20: 'rgba(255, 255, 255, 0.2)',
+  white50: 'rgba(255, 255, 255, 0.5)',
   white08: 'rgba(255, 255, 255, 0.08)',
   white10: 'rgba(255, 255, 255, 0.1)'
 }
