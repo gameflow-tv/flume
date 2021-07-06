@@ -30,6 +30,7 @@ export type Colors = {
   toggle: string
   onToggle: string
   sliderBackground: string
+  mediumWhite: string
 }
 
 const fallback: Colors = {
@@ -61,7 +62,8 @@ const fallback: Colors = {
   shimmerBackground: palette.black10,
   toggle: palette.codGray,
   onToggle: palette.white,
-  sliderBackground: palette.codGray
+  sliderBackground: palette.codGray,
+  mediumWhite: palette.white50
 }
 
 export default fallback
