@@ -22,6 +22,15 @@ const flexDirFromPosition = (position: LabelPosition): string => {
   }
 }
 
+const adjustVerticalPosition = (position: LabelPosition): string => {
+  switch (position) {
+    case 'left':
+      return 'margin-left: -43px'
+    case 'right':
+      return 'margin-right: -43px'
+  }
+}
+
 export const Wrapper = styled.div<WrapperProps>`
   display: inline-flex;
   justify-content: flex-start;
@@ -34,17 +43,21 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 `
 
-export type RangeProps = {
-  orientation: string
-  trackColor: string
-  thumbColor: string
-  transition: string
+export type RangeWrapProps = {
+  labelPosition: string
 }
 
-export const RangeWrap = styled.div`
+export const RangeWrap = styled.div<RangeWrapProps>`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+
+  &[orientation='vertical'] {
+    flex-direction: column;
+    ${(props) => {
+      return adjustVerticalPosition(props.labelPosition)
+    }}
+  }
 `
 
 export type RangeLabelProps = {
@@ -56,22 +69,35 @@ export const RangeLabel = styled.label<RangeLabelProps>`
   padding: 0;
   margin: 0;
   margin-top: -3px;
+  z-index: -1;
 `
+export type RangeProps = {
+  orientation: string
+  trackColor: string
+  thumbColor: string
+  transition: string
+}
 
 export const Range = styled.input.attrs({
   type: 'range'
 })<RangeProps>`
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 100%;
   height: 5px;
   border-radius: 15px;
   background: ${(props) => props.trackColor};
   transition: ${(props) => props.transition};
 
+  &[orientation='vertical'] {
+    transform: rotate(-90deg);
+    margin: 50% 0;
+    z-index: 2;
+  }
+
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
@@ -81,8 +107,8 @@ export const Range = styled.input.attrs({
 
   &::-moz-range-thumb {
     -moz-appearance: none;
-    height: 17px;
-    width: 17px;
+    height: 15px;
+    width: 15px;
     background: ${(props) => props.thumbColor};
     border-radius: 50%;
     border-color: ${(props) => props.thumbColor};
@@ -100,6 +126,6 @@ export type SliderLabelProps = {
 
 export const SliderLabel = styled.label<SliderLabelProps>`
   color: ${(props) => props.labelColor};
-  margin: 8px;
+  margin: 4px;
   ${(props) => typographyToCss(props.labelTypography)}
 `
