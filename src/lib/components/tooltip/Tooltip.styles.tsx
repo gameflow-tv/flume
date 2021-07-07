@@ -2,58 +2,55 @@ import styled from 'styled-components'
 import { TooltipProps } from './Tooltip'
 
 export const ToolTip = styled.div<TooltipProps>`
-align-items: center;
-display: flex;
-background-color: #eee;
-position: relative;
-font-size: 10px;
+  align-items: center;
+  display: flex;
+  background-color: #eee;
+  position: relative;
+  font-size: 10px;
 
-
-&::before, &::after {
+  &::before,
+  &::after {
     position: absolute;
-    left: 0;
-    bottom: -2.5rem;
-    transform: scale(0);
-    transition: all .3s ease;
-    transform-origin: left left;
-    }
+    bottom: -2.50rem;
+    transition: all 0.3s ease;
+    left: 25%;
+  }
 
-&::before {
+  &::before {
+    display: flex;
+    align-items: center;
     content: attr(content);
+    color: #fff;
     height: 30px;
-    width: 118px;
-    background-color: red;
-    max-width: 100%;
+    background-color: #000;
+    width: max-content;
+    max-width: 300px;
     border-radius: 4px;
     text-align: center;
-}
+    padding: 0px 8px;
+    transform: translateY(20px);
+    opacity: 0;
+  }
 
-
-&::after {
+  &::after {
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: #000;
     clip-path: polygon(50% 0%, 100% 50%, 50% 50%, 0% 50%);
     content: '';
     position: absolute;
-    bottom: -1.2rem;
-    left: .5rem;
-    
-    /* content: '';
+    bottom: -1.1rem;
+    left: 45%;
+    transform: translateY(20px);
     opacity: 0;
-    border: 10px solid transparent;
-    border-bottom-color: black;
-    transform: translateY(100%);
-    position: absolute;
-    top: -100%; */
-  
-}
+    transition: all 0.3s ease;
+  }
 
-&:hover::before,
-&:hover::after {
-    transform: scale(1);
+  &:hover::before,
+  &:hover::after {
+    transform: translateY(0);
+    transform-origin: bottom left;
     opacity: 1;
-    
-}
-`
 
+  }
+`
