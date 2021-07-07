@@ -12,19 +12,16 @@ export const SearchInput = (props: SearchInputProps) => {
       <Search
         type="text"
         placeholder="Search"
-        fontFamily={theme.typography.body1.fontFamily}
-        fontSize={theme.typography.header5.fontSize}
+        typography={theme.typography.body1}
         borderColor={theme.colors.shimmerHighlight}
         color={theme.colors.mediumWhite}
         shadow={theme.shadows.small}
         borderRadius={theme.spacing.xxsmall}
         padding={theme.spacing.small}
-        lineHeight={theme.spacing.medium}
+        outline={theme.colors.primary}
       />
       <Icon
-        fontFamily={theme.typography.body1.fontFamily}
-        fontSize={theme.typography.header5.fontSize}
-        borderColor={theme.colors.shimmerHighlight}
+        size={'14px'}
         color={theme.colors.mediumWhite}>
         <FontAwesomeIcon icon={faSearch} />
       </Icon>
