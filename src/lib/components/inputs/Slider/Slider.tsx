@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import {
   Range,
   RangeLabel,
@@ -26,8 +26,8 @@ export type SliderProps = {
   value?: number
   min: number
   max: number
-  minLabel?: string
-  maxLabel?: string
+  minLabel?: ReactNode
+  maxLabel?: ReactNode
   onChange?: (value: number) => void
 }
 
