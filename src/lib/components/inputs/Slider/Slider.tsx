@@ -48,7 +48,8 @@ export const Slider = ({
     gap: theme.spacing.xsmall,
     labelTypography: theme.typography.header5,
     labelColor: theme.colors.onTextField,
-    labelPosition
+    labelPosition,
+    labelMargin: theme.spacing.xxsmall
   }
 
   return (
