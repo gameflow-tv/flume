@@ -116,10 +116,11 @@ export const Range = styled.input.attrs({
 export type SliderLabelProps = {
   labelTypography?: TypographyStyle
   labelColor?: string
+  labelMargin?: string
 }
 
 export const SliderLabel = styled.label<SliderLabelProps>`
   color: ${(props) => props.labelColor};
-  margin: 4px;
+  margin: ${(props) => props.labelMargin || '4px'};
   ${(props) => typographyToCss(props.labelTypography)}
 `
