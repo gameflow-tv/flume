@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components'
 import { Slider, SliderProps } from './Slider'
 
 export default {
@@ -11,7 +12,6 @@ const Template = (args: SliderProps) => <Slider {...args} />
 
 export const Default: Story<SliderProps> = Template.bind({})
 Default.args = {
-  orientation: 'horizontal',
   label: 'Label',
   min: -100,
   max: 100,
@@ -43,42 +43,20 @@ LeftLabelSlider.args = {
   labelPosition: 'left'
 }
 
-export const VerticalSlider: Story<SliderProps> = Template.bind({})
-VerticalSlider.args = {
+const FixedHorizontal = styled.div`
+  width: 700px;
+  height: 100px;
+`
+export const FixedHorizontalSize = (args: SliderProps) => (
+  <FixedHorizontal>
+    <Slider {...args} />
+  </FixedHorizontal>
+)
+FixedHorizontalSize.args = {
   label: 'Label',
   labelPosition: 'left',
-  orientation: 'vertical',
   min: -100,
   max: 100,
   minLabel: '-',
   maxLabel: '+'
-}
-
-export const TopLabelVerticalSlider: Story<SliderProps> = Template.bind({})
-TopLabelVerticalSlider.args = {
-  label: 'Label',
-  labelPosition: 'top',
-  orientation: 'vertical',
-  min: -100,
-  max: 100
-}
-
-export const RightLabelVerticalSlider: Story<SliderProps> = Template.bind({})
-RightLabelVerticalSlider.args = {
-  label: 'Label',
-  labelPosition: 'right',
-  orientation: 'vertical',
-  min: -100,
-  max: 100,
-  minLabel: 'min',
-  maxLabel: 'max'
-}
-
-export const BottomLabelVerticalSlider: Story<SliderProps> = Template.bind({})
-BottomLabelVerticalSlider.args = {
-  label: 'Label',
-  labelPosition: 'bottom',
-  orientation: 'vertical',
-  min: -100,
-  max: 100
 }
