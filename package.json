@@ -5,7 +5,6 @@
   "main": "index.js",
   "repository": "git://github.com/gameflow-tv/flume.git",
   "author": "arne@gameflow.tv",
-  "license": "",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -15,8 +14,8 @@
     ]
   },
   "scripts": {
-    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,mdx}' --config ./.prettierrc",
-    "build": "build-storybook -o ./storybook-static",
+    "format": "prettier --write ./src/**/*.{ts,tsx} --config .prettierrc",
+    "build": "build-storybook -o storybook-static",
     "storybook": "start-storybook -p 9009 -s ./public",
     "prepare": "husky install",
     "test": "jest",
@@ -25,8 +24,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+      "pre-commit": "yarn format"
     }
   },
   "dependencies": {
@@ -45,16 +43,16 @@
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@storybook/addon-a11y": "^6.3.1",
-    "@storybook/addon-backgrounds": "^6.3.1",
+    "@storybook/addon-a11y": "^6.3.2",
+    "@storybook/addon-backgrounds": "^6.3.2",
     "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-controls": "^6.3.1",
-    "@storybook/addon-docs": "^6.3.1",
-    "@storybook/addon-essentials": "^6.3.1",
+    "@storybook/addon-controls": "^6.3.2",
+    "@storybook/addon-docs": "^6.3.2",
+    "@storybook/addon-essentials": "^6.3.2",
     "@storybook/addon-knobs": "^6.3.0",
-    "@storybook/addon-storysource": "^6.3.1",
-    "@storybook/react": "^6.3.1",
-    "@storybook/theming": "^6.3.1",
+    "@storybook/addon-storysource": "^6.3.2",
+    "@storybook/react": "^6.3.2",
+    "@storybook/theming": "^6.3.2",
     "@types/chroma-js": "^2.1.3",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
@@ -65,20 +63,14 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.2",
-    "cz-conventional-changelog": "3.3.0",
     "eslint-plugin-mdx": "^1.13.0",
     "husky": "^6.0.0",
     "jest": "^27.0.6",
     "mocha": "^9.0.1",
     "prettier": "^2.3.2",
     "react-docgen-typescript-loader": "^3.7.2",
-    "storybook": "^6.3.1",
+    "storybook": "^6.3.2",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
