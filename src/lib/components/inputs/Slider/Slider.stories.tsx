@@ -47,7 +47,6 @@ const FixedHorizontal = styled.div`
   width: 700px;
   height: 100px;
 `
-
 export const FixedHorizontalSize = (args: SliderProps) => (
   <FixedHorizontal>
     <Slider {...args} />

@@ -59,7 +59,7 @@ export const Slider = ({
         {label}
       </SliderLabel>
       <RangeWrap {...styles}>
-        <RangeLabel {...styles}>{orientation === 'horizontal' ? minLabel : maxLabel}</RangeLabel>
+        <RangeLabel {...styles}>{minLabel}</RangeLabel>
         <Range
           id={id}
           value={value}
@@ -68,7 +68,7 @@ export const Slider = ({
           onChange={(e) => onChange?.call(e.target.value)}
           {...styles}
         />
-        <RangeLabel {...styles}>{orientation === 'horizontal' ? maxLabel : minLabel}</RangeLabel>
+        <RangeLabel {...styles}>{maxLabel}</RangeLabel>
       </RangeWrap>
     </Wrapper>
   )
