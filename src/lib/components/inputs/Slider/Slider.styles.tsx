@@ -36,6 +36,7 @@ export const Wrapper = styled.div<WrapperProps>`
   justify-content: flex-start;
   align-items: center;
   flex-direction: ${(props) => flexDirFromPosition(props.labelPosition)};
+  width: 100%;
   gap: ${(props) => props.gap};
   &,
   > * {
@@ -51,6 +52,7 @@ export const RangeWrap = styled.div<RangeWrapProps>`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  width: 100%;
 
   &[orientation='vertical'] {
     flex-direction: column;
@@ -69,10 +71,8 @@ export const RangeLabel = styled.label<RangeLabelProps>`
   padding: 0;
   margin: 0;
   margin-top: -3px;
-  z-index: -1;
 `
 export type RangeProps = {
-  orientation: string
   trackColor: string
   thumbColor: string
   transition: string
@@ -89,12 +89,6 @@ export const Range = styled.input.attrs({
   border-radius: 15px;
   background: ${(props) => props.trackColor};
   transition: ${(props) => props.transition};
-
-  &[orientation='vertical'] {
-    transform: rotate(-90deg);
-    margin: 50% 0;
-    z-index: 2;
-  }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;

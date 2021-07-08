@@ -14,15 +14,12 @@ import {
 } from './Slider.styles'
 import { ThemeContext, transitionToCss } from '../../../theme'
 
-export type SliderOrientation = 'horizontal' | 'vertical'
-
 export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
 
 export type SliderProps = {
   id?: string
   label?: string
   labelPosition?: LabelPosition
-  orientation?: SliderOrientation
   value?: number
   min: number
   max: number
@@ -35,7 +32,6 @@ export const Slider = ({
   id = _.uniqueId(),
   label,
   labelPosition,
-  orientation,
   value,
   min,
   max,
@@ -52,8 +48,7 @@ export const Slider = ({
     gap: theme.spacing.xsmall,
     labelTypography: theme.typography.header5,
     labelColor: theme.colors.onTextField,
-    labelPosition,
-    orientation
+    labelPosition
   }
 
   return (
@@ -62,7 +57,7 @@ export const Slider = ({
         {label}
       </SliderLabel>
       <RangeWrap {...styles}>
-        <RangeLabel {...styles}>{orientation === 'horizontal' ? minLabel : maxLabel}</RangeLabel>
+        <RangeLabel {...styles}>{minLabel}</RangeLabel>
         <Range
           id={id}
           value={value}
@@ -71,7 +66,7 @@ export const Slider = ({
           onChange={(e) => onChange?.call(e.target.value)}
           {...styles}
         />
-        <RangeLabel {...styles}>{orientation === 'horizontal' ? maxLabel : minLabel}</RangeLabel>
+        <RangeLabel {...styles}>{maxLabel}</RangeLabel>
       </RangeWrap>
     </Wrapper>
   )
