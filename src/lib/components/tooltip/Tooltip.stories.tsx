@@ -14,7 +14,6 @@ Default.args = {
   content: 'Storybook text'
 }
 
-
 // Basic.args = {
 
 //  }
