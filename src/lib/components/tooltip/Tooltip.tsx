@@ -10,16 +10,15 @@ export type TooltipProps = {
   position: TooltipPosition
 }
 
-export const Tooltip = ({ content = 'Username taken', position="right"}: TooltipProps) => {
-  const theme = useContext(ThemeContext);
+export const Tooltip = ({ content = 'Username taken', position = 'right' }: TooltipProps) => {
+  const theme = useContext(ThemeContext)
   return (
     <ToolTip
       borderRadius={theme.spacing.xxsmall}
       padding={theme.spacing.xsmall}
       mediumSpacing={theme.spacing.medium}
       content={content}
-      position={position}
-    >
+      position={position}>
       <input type="text" placeholder="This is the input" />
     </ToolTip>
   )
