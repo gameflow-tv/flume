@@ -32,7 +32,7 @@ export const Search = styled.input<SearchInputProps>`
     box-shadow: 0px 0px 0px 1px ${(props) => props.outline};
   }
 
-  ${props => typographyToCss(props.typography)}
+  ${(props) => typographyToCss(props.typography)}
 `
 export const Wrapper = styled.div`
   position: relative;
@@ -41,7 +41,6 @@ export const Wrapper = styled.div`
 export type IconProps = {
   size: string
   color: string
-  
 }
 
 export const Icon = styled.span<IconProps>`
@@ -49,7 +48,7 @@ export const Icon = styled.span<IconProps>`
   right: 15px;
   top: 0;
   color: ${(props) => props.color};
-  font-size: ${props => props.size};
+  font-size: ${(props) => props.size};
   height: 100%;
   display: flex;
   align-items: center;
