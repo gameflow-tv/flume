@@ -20,9 +20,7 @@ export const SearchInput = (props: SearchInputProps) => {
         padding={theme.spacing.small}
         outline={theme.colors.primary}
       />
-      <Icon
-        size={'14px'}
-        color={theme.colors.mediumWhite}>
+      <Icon size={'14px'} color={theme.colors.mediumWhite}>
         <FontAwesomeIcon icon={faSearch} />
       </Icon>
     </Wrapper>
