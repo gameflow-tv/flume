@@ -53,7 +53,6 @@ export const ToolTip = styled.div<TooltipProps>`
     opacity: 0;
   }
 
-  
   &::after {
     width: ${(props) => props.mediumSpacing};
     height: ${(props) => props.mediumSpacing};
@@ -76,7 +75,6 @@ export const ToolTip = styled.div<TooltipProps>`
     opacity: 0;
     transition: all 0.3s ease;
   }
-
 
   &:hover::after {
     ${(props) => {
