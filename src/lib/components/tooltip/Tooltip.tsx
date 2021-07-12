@@ -10,7 +10,7 @@ export type TooltipProps = {
   position: TooltipPosition
 }
 
-export const Tooltip = ({ content = 'Username taken', position = 'right' }: TooltipProps) => {
+export const Tooltip = ({ content = '', position = 'right' }: TooltipProps) => {
   const theme = useContext(ThemeContext)
   return (
     <ToolTip
