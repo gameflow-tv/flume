@@ -2,17 +2,17 @@ import styled from 'styled-components'
 import { TooltipProps } from './Tooltip'
 
 export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom'
-
+// top: -42px; left: 25%;
 const setTooltipCssProps = (position: TooltipPosition): string => {
   switch (position) {
     case 'top':
-      return 'top: -42px; left: 25%;'
+      return 'bottom: 100%; left: 50%;'
     case 'right':
-      return 'right: -60%;'
+      return 'top: -50%; right: calc(-5em - 4px);'
     case 'left':
-      return 'left: -60%; display: flex; justify-content: baseline;'
+      return 'top: -50%; left: calc(-5em - 4px);'
     default:
-      return 'left: 25%; bottom: -40px;'
+      return 'left: 50%; top:100%;'
   }
 }
 
@@ -37,23 +37,23 @@ export const ToolTip = styled.div<TooltipProps>`
     width: max-content;
     max-width: 300px;
     border-radius: ${(props) => props.borderRadius};
-    text-align: center;
     padding: 0px ${(props) => props.padding};
     transform: ${(props) => {
       switch (props.position) {
         case 'left':
-          return 'translateX(-20px);'
+          return 'translate(-80%, 24%);' 
         case 'right':
-          return 'translateX(20px);'
+          return 'translate(80%, 24%);'
         case 'top':
-          return 'translateY(-20px);'
+          return 'translate(-50%, -70%);'
         default:
-          return 'translateY(20px);'
+          return 'translate(-50%, 70%);'
       }
     }};
-    opacity: 1;
+    opacity: 0;
   }
 
+  
   &::after {
     width: ${(props) => props.mediumSpacing};
     height: ${(props) => props.mediumSpacing};
@@ -64,30 +64,31 @@ export const ToolTip = styled.div<TooltipProps>`
     ${(props) => {
       switch (props.position) {
         case 'left':
-          return 'transform: rotate(90deg); left: -29%; top: 30%;'
+          return 'transform: rotate(90deg) translate(-.7em, -50%); top: 50%;'
         case 'right':
-          return 'transform: rotate(-90deg); left: 117%; top: 30%;'
+          return 'transform: rotate(-90deg) translate(.7em, -50%); top: 50%;'
         case 'top':
-          return 'transform: rotate(180deg); top: -40px; left: 43%;'
+          return 'transform: translate(-50%, -90%) rotate(180deg);'
         default:
-          return 'bottom: -20px; left: 43%; transform: translateY(20px);'
+          return 'transform: translate(-50%, 90%);'
       }
     }}
-    opacity: 1;
+    opacity: 0;
     transition: all 0.3s ease;
   }
+
 
   &:hover::after {
     ${(props) => {
       switch (props.position) {
         case 'left':
-          return 'transform: translateX(20px) rotate(90deg);'
+          return 'left: calc(-20% + 4px);'
         case 'right':
-          return 'transform: rotate(-90deg) translateY(-20px);'
+          return 'right: calc(-20% + 4px);'
         case 'top':
-          return 'transform: rotate(180deg) translateY(-20px);'
+          return 'bottom: calc(25% + 4px);'
         default:
-          return 'transform: translateY(0);'
+          return 'top: calc(25% + 4px);'
       }
     }};
     opacity: 1;
@@ -95,6 +96,17 @@ export const ToolTip = styled.div<TooltipProps>`
 
   &:hover::before {
     opacity: 1;
-    transform: translateX(0);
+    ${(props) => {
+      switch (props.position) {
+        case 'left':
+          return 'left: calc(-20% + 4px);'
+        case 'right':
+          return 'right: calc(-20% + 4px);'
+        case 'top':
+          return 'transform: translate(-50%, -30%);'
+        default:
+          return 'top: calc(25% + 4px);'
+      }
+    }};
   }
 `
