@@ -41,7 +41,7 @@ export const ToolTip = styled.div<TooltipProps>`
     transform: ${(props) => {
       switch (props.position) {
         case 'left':
-          return 'translate(-80%, 24%);' 
+          return 'translate(-80%, 24%);'
         case 'right':
           return 'translate(80%, 24%);'
         case 'top':
@@ -53,7 +53,6 @@ export const ToolTip = styled.div<TooltipProps>`
     opacity: 0;
   }
 
-  
   &::after {
     width: ${(props) => props.mediumSpacing};
     height: ${(props) => props.mediumSpacing};
@@ -76,7 +75,6 @@ export const ToolTip = styled.div<TooltipProps>`
     opacity: 0;
     transition: all 0.3s ease;
   }
-
 
   &:hover::after {
     ${(props) => {
