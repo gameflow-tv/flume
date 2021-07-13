@@ -25,4 +25,8 @@ export const LikeIcon = styled.button<LikeButtonProps>`
     box-shadow: 0px 2px 6.4px rgba(0, 0, 0, 0.1);
     color: #eeeeee8b;
   }
+
+  &:focus {
+    filter: brightness(100%);
+  }
 `
