@@ -7,9 +7,7 @@ export default {
   component: LikeButton
 }
 
-const Template = (args: LikeButtonProps) => <LikeButton {...args}/>
+const Template = (args: LikeButtonProps) => <LikeButton {...args} />
 
 export const Like: Story<LikeButtonProps> = Template.bind({})
-Like.args = {
-  
-}
+Like.args = {}
