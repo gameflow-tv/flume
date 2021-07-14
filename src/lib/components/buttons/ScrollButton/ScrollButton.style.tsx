@@ -1,17 +1,18 @@
 import styled from 'styled-components'
+import {ScrollButtonProps} from './ScrollButton'
 
-export const Button = styled.button`
+export const Button = styled.button<ScrollButtonProps>`
   width: 55px;
   height: 55px;
-  border-radius: 4px;
+  border-radius: ${props => props.borderRadius};
   background: linear-gradient(180deg, #525556 0%, #434647 100%);
   border: unset;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: ${props => props.boxShadowSmall};
   font-size: 21px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: ${props => props.color};
   cursor: pointer;
   filter: brightness(80%);
   transition: all 0.3s ease;
@@ -28,12 +29,12 @@ export const Button = styled.button`
 
   &:active {
     background: linear-gradient(180deg, #3a3c3d 0%, #2b2d2e 100%);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: ${props => props.boxShadowXSmall};
   }
 
   &:disabled {
     background: #434647;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: ${props => props.boxShadowSmall};
     color: rgba(255, 255, 255, 0.5);
   }
 `
