@@ -10,6 +10,4 @@ export default {
 const Template = () => <LoadingSkeleton />
 
 export const Loading: Story = Template.bind({})
-Loading.args = {
-  
-}
+Loading.args = {}
