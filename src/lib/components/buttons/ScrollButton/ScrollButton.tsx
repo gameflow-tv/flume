@@ -12,6 +12,7 @@ export type ScrollButtonProps = {
 }
 
 export const ScrollButton = () => {
+<<<<<<< HEAD
   const theme = useContext(ThemeContext)
   return (
     <Button
@@ -19,6 +20,10 @@ export const ScrollButton = () => {
       boxShadowSmall={theme.shadows.small}
       borderRadius={theme.shapes.borders.small}
       color={theme.colors.primaryText}>
+=======
+  return (
+    <Button>
+>>>>>>> 58a45c7 (prettier)
       <FontAwesomeIcon icon={faArrowRight} />
     </Button>
   )
