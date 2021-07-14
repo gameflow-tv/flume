@@ -10,6 +10,4 @@ export default {
 const Template = () => <TeamBannerSkeleton />
 
 export const Banner: Story = Template.bind({})
-Banner.args = {
-  
-}
+Banner.args = {}
