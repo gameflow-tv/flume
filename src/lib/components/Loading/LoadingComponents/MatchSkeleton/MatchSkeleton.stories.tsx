@@ -10,6 +10,4 @@ export default {
 const Template = () => <MatchSkeleton />
 
 export const Match: Story = Template.bind({})
-Match.args = {
-  
-}
+Match.args = {}
