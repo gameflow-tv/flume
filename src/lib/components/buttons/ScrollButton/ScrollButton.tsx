@@ -4,9 +4,9 @@ import React from 'react'
 import { Button } from './ScrollButton.style'
 
 export const ScrollButton = () => {
-  return (
-    <Button>
-      <FontAwesomeIcon icon={faArrowRight} />
-    </Button>
-  )
+    return (
+        <Button>
+            <FontAwesomeIcon icon={faArrowRight}/>
+        </Button>
+    )
 }

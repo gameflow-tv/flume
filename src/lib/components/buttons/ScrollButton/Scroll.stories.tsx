@@ -7,7 +7,9 @@ export default {
   component: ScrollButton
 }
 
-const Template = () => <ScrollButton />
+const Template = () => <ScrollButton  />
 
 export const Scroll: Story = Template.bind({})
-Scroll.args = {}
+Scroll.args = {
+  
+}
