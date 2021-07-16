@@ -12,13 +12,15 @@ export const LoadingSkeleton = () => {
     <Wrapper>
       <MatchesWrapper>
         {banners.map((banner, index) => {
-          return (<SectionWrapper>
-            <TeamBannerSkeleton key={index}>
-              {matches.map((match, index) => {
-                return <MatchSkeleton key={index} />
-              })}
-            </TeamBannerSkeleton>
-            </SectionWrapper>)
+          return (
+            <SectionWrapper>
+              <TeamBannerSkeleton key={index}>
+                {matches.map((match, index) => {
+                  return <MatchSkeleton key={index} />
+                })}
+              </TeamBannerSkeleton>
+            </SectionWrapper>
+          )
         })}
       </MatchesWrapper>
       <InfoBoxSkeleton />
