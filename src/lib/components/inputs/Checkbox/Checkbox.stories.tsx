@@ -35,11 +35,6 @@ export const CustomIcon: Story<CheckboxProps> = Template.bind({})
 CustomIcon.args = {
   checkedContent: <FontAwesomeIcon icon={faGamepad} />,
   uncheckedContent: <FontAwesomeIcon icon={faGamepadAlt} />
-  // checkedBackground
-  // uncheckedBackground
-  // uncheckedBorder
-  // checkedTextColor
-  // uncheckedTextColor
 }
 
 export const CustomSize: Story<CheckboxProps> = Template.bind({})
