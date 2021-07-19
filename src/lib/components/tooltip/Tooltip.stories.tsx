@@ -20,18 +20,14 @@ top.args = {
   position: 'top'
 }
 
-
 export const left: Story<TooltipProps> = Template.bind({})
 left.args = {
   content: 'Storybook text',
   position: 'left'
 }
 
-
 export const right: Story<TooltipProps> = Template.bind({})
 right.args = {
   content: 'Storybook text',
   position: 'right'
 }
-
-
