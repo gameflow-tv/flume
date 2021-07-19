@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { loading } from '../Animation/Shimmer.styles'
 
-
 export const MatchWrapper = styled.div`
   min-width: 798px;
   height: 57px;
@@ -14,7 +13,6 @@ export const MatchWrapper = styled.div`
   margin-bottom: 8px;
   position: relative;
   box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.2);
-
 `
 
 export const TeamName = styled.p`
@@ -66,5 +64,4 @@ export const ScoreBox = styled.div`
     background-size: 450px 400px;
     ${loading()};
   }
-
 `
