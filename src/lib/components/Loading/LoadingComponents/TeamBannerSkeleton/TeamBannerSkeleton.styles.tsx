@@ -1,11 +1,14 @@
 import styled from 'styled-components'
+
 import { loading } from '../Animation/Shimmer.styles'
+
 
 export const BannerWrapper = styled.div`
   min-width: 798px;
   max-height: 80px;
   border-radius: 4px;
   background: #36393b;
+
   display: flex;
   align-items: center;
   margin-bottom: 8px;
@@ -37,6 +40,7 @@ export const Rectangle = styled.div`
     background-size: 450px 400px;
     ${loading()};
   }
+
 `
 
 export const TeamName = styled.h1`
@@ -89,6 +93,7 @@ export const Description = styled.p`
     background-size: 450px 400px;
     ${loading()};
   }
+
 `
 export const DescriptionWrapper = styled.div`
   display: flex;
