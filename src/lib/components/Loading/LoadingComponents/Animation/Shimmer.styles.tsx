@@ -13,4 +13,3 @@ export const loading = () => {
     animation: ${animation} 2s ease infinite;
   `
 }
-
