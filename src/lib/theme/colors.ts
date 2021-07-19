@@ -29,6 +29,10 @@ export type Colors = {
   shimmerBackground: string
   toggle: string
   onToggle: string
+  checkedBackground: string
+  uncheckedBorder: string
+  checkedText: string
+  uncheckedText: string
 }
 
 const fallback: Colors = {
@@ -59,7 +63,11 @@ const fallback: Colors = {
   shimmerHighlight: palette.white10,
   shimmerBackground: palette.black10,
   toggle: palette.codGray,
-  onToggle: palette.white
+  onToggle: palette.white,
+  checkedBackground: palette.amberOrange,
+  uncheckedBorder: palette.offWhite,
+  checkedText: palette.abbeyBlue,
+  uncheckedText: palette.offWhite
 }
 
 export default fallback
