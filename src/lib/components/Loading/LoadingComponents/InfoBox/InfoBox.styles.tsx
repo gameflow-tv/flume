@@ -5,5 +5,6 @@ export const Box = styled.div`
   height: 873px;
   border-radius: 4px;
   background: #36393b;
-  box-shadow: 0 4px 1rem rgba(0, 0, 0, 0.5);
+  position: relative;
+  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.2);
 `

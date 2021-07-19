@@ -7,5 +7,11 @@ export const Wrapper = styled.div`
 
 export const MatchesWrapper = styled.div`
   margin-right: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+`
+
+export const SectionWrapper = styled.div`
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
 `
