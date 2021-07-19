@@ -15,6 +15,7 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   color: ${(props) => (props.liked ? props.color : props.neutralColor)};
   filter: brightness(80%);
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     filter: brightness(100%);

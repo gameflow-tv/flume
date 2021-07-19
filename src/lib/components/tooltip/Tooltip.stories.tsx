@@ -14,6 +14,24 @@ Default.args = {
   content: 'Storybook text'
 }
 
-// Basic.args = {
+export const top: Story<TooltipProps> = Template.bind({})
+top.args = {
+  content: 'Storybook text',
+  position: 'top'
+}
 
-//  }
+
+export const left: Story<TooltipProps> = Template.bind({})
+left.args = {
+  content: 'Storybook text',
+  position: 'left'
+}
+
+
+export const right: Story<TooltipProps> = Template.bind({})
+right.args = {
+  content: 'Storybook text',
+  position: 'right'
+}
+
+
