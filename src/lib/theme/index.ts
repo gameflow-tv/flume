@@ -9,11 +9,3 @@ export * from './typography'
 export * from './transitions'
 export * from './ThemeProvider'
 export * from './units'
-
-// Types
-export type { Theme } from './theme'
-export type { Shadows } from './shadows'
-export type { Colors } from './colors'
-export type { Shapes, Borders } from './shapes'
-export type { Breakpoints } from './breakpoints'
-export type { Typography, TypographyStyle } from './typography'
