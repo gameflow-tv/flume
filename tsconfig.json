@@ -1,6 +1,7 @@
 {
-  "files": [],
-  "include": [],
+  "include": [
+    "src/**/*"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "lib": [
@@ -8,21 +9,18 @@
       "dom.iterable",
       "esnext"
     ],
+    "declaration": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-  },
-  "references": [
-    {
-      "path": "./.storybook/tsconfig.json"
-    }
-  ]
+    "outDir": "./dist"
+  }
 }

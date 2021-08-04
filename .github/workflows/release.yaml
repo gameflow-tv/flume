@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: yarn --frozen-lockfile
+      - name: Build library
+        run: yarn build
       - name: Release to GHPR
         run: yarn publish
         env:
