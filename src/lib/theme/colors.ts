@@ -29,6 +29,7 @@ export type Colors = {
   shimmerBackground: string
   toggle: string
   onToggle: string
+  card: string
 }
 
 const fallback: Colors = {
@@ -59,7 +60,8 @@ const fallback: Colors = {
   shimmerHighlight: palette.white10,
   shimmerBackground: palette.black10,
   toggle: palette.codGray,
-  onToggle: palette.white
+  onToggle: palette.white,
+  card: palette.emperorGray
 }
 
 export default fallback
