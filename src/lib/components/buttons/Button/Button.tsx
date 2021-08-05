@@ -46,24 +46,24 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
   const { horizontalMargin, verticalMargin } = getButtonMargins(props.size, theme)
   const common = {
     ...props,
-    variant: props.variant ?? 'primary',
+    variant: props.variant ? props.variant : 'primary',
     borderRadius: theme.shapes.borders.small,
     glow: theme.shadows.glow,
     borderColor: theme.colors.buttonBorder,
     typography: theme.typography.button,
     horizontalMargin: horizontalMargin,
     verticalMargin: verticalMargin,
-    size: props.size ?? 'large',
+    size: props.size ? props.size : 'large',
     shadow: theme.shadows.xsmall,
     transition: theme.transitions.short,
-    iconPosition: props.iconPosition ?? 'right',
+    iconPosition: props.iconPosition ? props.iconPosition : 'right',
     gap: props.size === 'small' ? theme.spacing.xxsmall : theme.spacing.xsmall
   }
   switch (props.variant) {
     case 'primary':
       return {
-        backgroundColor: props.backgroundColor ?? theme.colors.primary,
-        foregroundColor: props.foregroundColor ?? theme.colors.onPrimary,
+        backgroundColor: props.backgroundColor ? props.backgroundColor : theme.colors.primary,
+        foregroundColor: props.foregroundColor ? props.foregroundColor : theme.colors.onPrimary,
         ...common
       }
     case 'secondary':
@@ -78,6 +78,8 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
         foregroundColor: theme.colors.onSignal,
         ...common
       }
+    default:
+      return { ...common }
   }
 }
 

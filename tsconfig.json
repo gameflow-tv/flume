@@ -2,15 +2,27 @@
   "include": [
     "src/**/*"
   ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es6",
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2019",
+      "es2020"
     ],
     "declaration": true,
+    "declarationDir": "./dist",
     "allowJs": true,
+    "sourceMap": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
@@ -20,7 +32,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "outDir": "./dist"
+    "jsx": "react",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
   }
 }
