@@ -1,4 +1,4 @@
-import palette from './palette'
+import { palette } from './palette'
 
 export type Colors = {
   primary: string

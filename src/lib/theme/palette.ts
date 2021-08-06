@@ -1,4 +1,4 @@
-const palette = {
+export const palette = {
   amberOrange: '#ffbf00',
   abbeyBlue: '#242729',
   white: '#ffffff',
@@ -37,5 +37,3 @@ const palette = {
   white08: 'rgba(255, 255, 255, 0.08)',
   white10: 'rgba(255, 255, 255, 0.1)'
 }
-
-export default palette
