@@ -30,6 +30,7 @@ export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins 
   switch (size) {
     case 'large':
     case 'medium':
+    default:
       return {
         horizontalMargin: theme.spacing.large,
         verticalMargin: theme.spacing.small
