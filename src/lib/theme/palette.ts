@@ -14,6 +14,7 @@ export const palette = {
   rainbowSix: '#bcbcbc',
   fifa: '#ddddde',
   hearthstone: '#586b8e',
+  starcraft: '#86b3e0',
   punchRed: '#de3131',
   lightningYellow: '#f9c513',
   mustardYellow: '#735C0f',
