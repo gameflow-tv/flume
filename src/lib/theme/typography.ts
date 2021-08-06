@@ -1,10 +1,11 @@
 export type FontFamily = 'Montserrat' | 'Mulish'
 
-export const typographyToCss = (style: TypographyStyle) => `
-  font-family: ${style.fontFamily};
-  font-size: ${style.fontSize};
-  font-weight: ${style.fontWeight};
-  line-height: ${style.lineHeight};
+export const typographyToCss = (style: TypographyStyle, overrides?: Partial<TypographyStyle>) => `
+  font-family: ${overrides && overrides.fontFamily ? overrides.fontFamily : style.fontFamily};
+  font-size: ${overrides && overrides.fontSize ? overrides.fontSize : style.fontSize};
+  font-weight: ${overrides && overrides.fontWeight ? overrides.fontWeight : style.fontWeight};
+  line-height: ${overrides && overrides.lineHeight ? overrides.lineHeight : style.lineHeight};
+  margin-block: 0;
 `
 
 export type TypographyStyle = {
