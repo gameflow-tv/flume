@@ -30,6 +30,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
 
   &:hover {
     filter: brightness(${(props) => (props.variant === 'secondary' ? '125%' : '85%')});
+    cursor: pointer;
   }
 
   &:active {
