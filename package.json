@@ -27,7 +27,7 @@
     "coverage": "jest --coverage",
     "chromatic": "npx chromatic",
     "build": "tsc && rollup -c",
-    "watch": "rollup -cw"
+    "watch": "tsc && rollup -cw"
   },
   "husky": {
     "hooks": {
