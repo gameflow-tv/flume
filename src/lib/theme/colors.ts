@@ -32,6 +32,7 @@ export type Colors = {
   card: string
   shadow: string
   overlay: string
+  modalOverlay: string
 }
 
 const fallback: Colors = {
@@ -65,7 +66,8 @@ const fallback: Colors = {
   onToggle: palette.white,
   card: palette.emperorGray,
   shadow: palette.black20,
-  overlay: palette.black40
+  overlay: palette.black40,
+  modalOverlay: palette.black60
 }
 
 export default fallback

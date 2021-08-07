@@ -29,6 +29,7 @@ export const palette = {
   emperorGray: '#36393b',
   codGray: '#434647',
   abbeyGray: '#525556',
+  black60: 'rgba(0, 0, 0, 0.6)',
   black50: 'rgba(0, 0, 0, 0.5)',
   black40: 'rgba(0, 0, 0, 0.4)',
   black30: 'rgba(0, 0, 0, 0.3)',
