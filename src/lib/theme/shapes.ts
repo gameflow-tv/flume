@@ -18,7 +18,7 @@ const fallback: Shapes = {
     medium: '6px',
     pill: '100px',
     full: '50%',
-    handle: '0px 6px 0px 6px'
+    handle: '0px 4px 0px 4px'
   }
 }
 
