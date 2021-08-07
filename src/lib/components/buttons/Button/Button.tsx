@@ -24,6 +24,7 @@ export type ButtonProps = StyledButtonProps &
     backgroundColor?: string
     foregroundColor?: string
     label?: string
+    onClick?: () => void
   }
 
 export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins => {
@@ -89,7 +90,7 @@ export const Button = (props: ButtonProps): JSX.Element => {
   props = getButtonStyles(props, theme)
 
   return (
-    <StyledButton {...props}>
+    <StyledButton {...props} onClick={props.onClick}>
       <ButtonContent {...props}>
         <p>{props.label}</p>
         {props.icon && <FontAwesomeIcon icon={props.icon} />}
