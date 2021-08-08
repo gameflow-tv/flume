@@ -14,6 +14,7 @@ export type Colors = {
   onWarning: string
   success: string
   onSuccess: string
+  disabled: string
   signal: string
   onSignal: string
   secondaryButton: string
@@ -33,6 +34,11 @@ export type Colors = {
   shadow: string
   overlay: string
   modalOverlay: string
+  trophy: string
+  runnerUp: string
+  elimination: string
+  win: string
+  loss: string
 }
 
 const fallback: Colors = {
@@ -49,6 +55,7 @@ const fallback: Colors = {
   onWarning: palette.mustardYellow,
   success: palette.emeraldGreen,
   onSuccess: palette.parsleyGreen,
+  disabled: palette.lightGray,
   signal: palette.punchRed,
   onSignal: palette.white,
   secondaryButton: palette.emperorGray,
@@ -67,7 +74,12 @@ const fallback: Colors = {
   card: palette.emperorGray,
   shadow: palette.black20,
   overlay: palette.black40,
-  modalOverlay: palette.black60
+  modalOverlay: palette.black60,
+  trophy: palette.wattleGold,
+  runnerUp: palette.mistyGray,
+  elimination: palette.lightGray,
+  win: palette.emeraldGreen,
+  loss: palette.cinnabarRed
 }
 
 export default fallback
