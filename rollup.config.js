@@ -4,19 +4,12 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external"
 import typescript from "@rollup/plugin-typescript"
 import postcss from "rollup-plugin-postcss"
 
-import pkg from "./package.json"
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     input: "./src/index.ts",
     output: [
         {
-            file: pkg.main,
-            format: "cjs",
-            sourcemap: true
-        },
-        {
-            file: pkg.module,
+            dir: "dist",
             format: "esm",
             sourcemap: true
         }
@@ -27,5 +20,6 @@ export default {
         commonjs(),
         typescript(),
         postcss()
-    ]
+    ],
+    preserveModules: true,
 }
