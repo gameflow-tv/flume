@@ -39,6 +39,7 @@ export type Colors = {
   elimination: string
   win: string
   loss: string
+  inactiveStep: string
 }
 
 const fallback: Colors = {
@@ -79,7 +80,8 @@ const fallback: Colors = {
   runnerUp: palette.mistyGray,
   elimination: palette.lightGray,
   win: palette.emeraldGreen,
-  loss: palette.cinnabarRed
+  loss: palette.cinnabarRed,
+  inactiveStep: palette.white20
 }
 
 export default fallback
