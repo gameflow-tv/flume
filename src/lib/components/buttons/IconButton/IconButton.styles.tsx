@@ -26,6 +26,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   &:hover {
     filter: brightness(110%);
     box-shadow: ${(props) => props.hoverShadow};
+    cursor: pointer;
 
     svg {
       filter: brightness(110%);
