@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '../../src'
+import { Button, ButtonProps, IconButton, IconButtonProps } from '../../src'
 import { Canvas, Meta, ArgsTable, Story } from '@storybook/addon-docs'
 
 <Meta title="Docs/Buttons" component={Button} />
@@ -86,4 +86,27 @@ Buttons allow users to take actions and make choices. They are used for actions 
   <Button variant="signal" size="large" icon="trophy" label="Button" disabled />
   <Button variant="signal" size="medium" icon="trophy" label="Button" disabled />
   <Button variant="signal" size="small" icon="trophy" label="Button" disabled />
+</Canvas>
+
+## IconButton
+
+<p>
+  <IconButton icon="heart" size="small" /> is a single component that can take different properties
+  and result in different variants.
+</p>
+
+<ArgsTable of={IconButton} />
+
+## Small
+
+<Canvas>
+  <IconButton size="small" icon="trophy" />
+  <IconButton size="small" icon="heart" />
+</Canvas>
+
+## Large
+
+<Canvas>
+  <IconButton size="large" icon="trophy" />
+  <IconButton size="large" icon="heart" />
 </Canvas>

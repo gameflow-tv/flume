@@ -6,9 +6,9 @@ import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } fr
 
 export type IconPosition = 'left' | 'right'
 
-export type ButtonSize = 'large' | 'medium' | 'small'
-
 export type ButtonVariant = 'primary' | 'secondary' | 'signal'
+
+export type ButtonSize = 'large' | 'medium' | 'small'
 
 export type ButtonMargins = {
   horizontalMargin: string
