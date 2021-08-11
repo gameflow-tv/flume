@@ -1,26 +1,29 @@
 import styled from 'styled-components'
+import theme from '../../../../theme/theme'
 import { loading } from '../Animation/Shimmer.styles'
 
 export const MatchWrapper = styled.div`
   min-width: 798px;
   height: 57px;
-  border-radius: 4px;
-  background: #36393b;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.onBackground};
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 8px;
+  gap: ${theme.spacing.medium};
+  margin-bottom: ${theme.spacing.xsmall};
   position: relative;
-  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: ${theme.shadows.small};
+  overflow: hidden;
 `
 
 export const TeamName = styled.p`
   width: 98px;
   height: 17px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -29,10 +32,10 @@ export const TeamName = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -43,9 +46,10 @@ export const TeamName = styled.p`
 export const ScoreBox = styled.div`
   width: 54px;
   height: 26px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -54,10 +58,10 @@ export const ScoreBox = styled.div`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;

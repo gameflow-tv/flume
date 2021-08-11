@@ -12,6 +12,7 @@ export type LikeButtonProps = {
   borderRadius: string
   fontSize: string
   neutralColor: string
+  disabled: boolean
 }
 
 export const LikeButton = (props: Partial<LikeButtonProps>) => {
@@ -20,6 +21,7 @@ export const LikeButton = (props: Partial<LikeButtonProps>) => {
 
   return (
     <LikeIcon
+      disabled={props.disabled}
       liked={liked}
       onClick={() => setLiked(!liked)}
       smallShadow={theme.shadows.small}

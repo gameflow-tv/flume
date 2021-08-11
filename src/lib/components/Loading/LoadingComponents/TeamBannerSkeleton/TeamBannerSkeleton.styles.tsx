@@ -1,25 +1,28 @@
 import styled from 'styled-components'
+import theme from '../../../../theme/theme'
 import { loading } from '../Animation/Shimmer.styles'
 
 export const BannerWrapper = styled.div`
   min-width: 798px;
   max-height: 80px;
-  border-radius: 4px;
-  background: #36393b;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.onBackground};
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: ${theme.spacing.xsmall};
   position: relative;
-  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: ${theme.shadows.small};
+  overflow: hidden;
 `
 
 export const Rectangle = styled.div`
   width: 114px;
   height: 64px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   margin: 0 10px;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -28,10 +31,10 @@ export const Rectangle = styled.div`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -42,10 +45,11 @@ export const Rectangle = styled.div`
 export const TeamName = styled.h1`
   width: 182px;
   height: 18px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   margin: 0;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -54,10 +58,10 @@ export const TeamName = styled.h1`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -68,10 +72,11 @@ export const TeamName = styled.h1`
 export const Description = styled.p`
   width: 98px;
   height: 17px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   margin: 0;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -80,10 +85,10 @@ export const Description = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -96,16 +101,18 @@ export const DescriptionWrapper = styled.div`
   flex-grow: 4;
   height: 100%;
   justify-content: center;
-  gap: 8px;
+  gap: ${theme.spacing.xsmall};
+  overflow: hidden;
 `
 
 export const MatchState = styled.p`
   width: 71px;
   min-height: 16px;
-  border-radius: 4px;
-  background: #434647;
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.toggle};
   margin-right: 12px;
   position: relative;
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -114,10 +121,10 @@ export const MatchState = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      #434647 0%,
+      ${theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      #434647 40%,
-      #434647 100%
+      ${theme.colors.toggle} 40%,
+      ${theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -130,4 +137,5 @@ export const DetailsWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 80px;
+  overflow: hidden;
 `

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { typographyToCss } from '../../../theme'
+import theme from '../../../theme/theme'
 import { SearchInputProps } from './SearchInput'
 
 export const Search = styled.input<SearchInputProps>`
@@ -7,7 +8,7 @@ export const Search = styled.input<SearchInputProps>`
   height: 41px;
   border-radius: ${(props) => props.borderRadius};
   padding: ${(props) => props.padding};
-  background: #36393b;
+  background: ${theme.colors.background};
   border: 1px solid ${(props) => props.borderColor};
   box-sizing: border-box;
   color: ${(props) => props.color};

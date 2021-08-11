@@ -44,7 +44,7 @@ export const Checkbox = ({
   }, [isChecked])
 
   const theme = useContext(ThemeContext)
-
+  console.log(theme.typography.body2)
   const styles: SpanProps = {
     typography: typography || theme.typography.body2,
     checkedBackground: checkedBackground || theme.colors.checkedBackground,

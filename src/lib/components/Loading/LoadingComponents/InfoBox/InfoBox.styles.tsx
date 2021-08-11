@@ -1,10 +1,12 @@
 import styled from 'styled-components'
+import theme from '../../../../theme/theme'
 
 export const Box = styled.div`
   width: 799px;
   height: 873px;
-  border-radius: 4px;
-  background: #36393b;
+  border-radius: ${theme.spacing.xxsmall};
+  border-radius: ${theme.spacing.xxsmall};
+  background: ${theme.colors.onBackground};
   position: relative;
-  box-shadow: 0 4px 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: ${theme.shadows.small};
 `
