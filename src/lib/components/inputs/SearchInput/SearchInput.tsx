@@ -1,9 +1,18 @@
 import { faSearch } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext } from 'react'
-import { ThemeContext } from '../../../theme'
+import { ThemeContext, TypographyStyle } from '../../../theme'
 import { Search, Icon, Wrapper } from './SearchInput.styles'
-import { SearchInputProps } from './SearchInput.styles'
+
+export type SearchInputProps = {
+  borderColor: string
+  color: string
+  shadow: string
+  borderRadius: string
+  padding: string
+  typography: TypographyStyle
+  outline: string
+}
 
 export const SearchInput = (props: SearchInputProps) => {
   const theme = useContext(ThemeContext)
