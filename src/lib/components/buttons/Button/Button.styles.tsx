@@ -1,6 +1,6 @@
 import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
 import styled from 'styled-components'
-import { ButtonSize, IconPosition } from './'
+import { ButtonSize, IconPosition, ButtonVariant } from './'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 export type StyledButtonProps = {
@@ -11,11 +11,12 @@ export type StyledButtonProps = {
   glow?: string
   shadow?: string
   typography?: TypographyStyle
-  size: ButtonSize
+  size?: ButtonSize
   icon?: IconProp
-  iconPosition: IconPosition
+  iconPosition?: IconPosition
   gap?: string
   transition?: Transition
+  variant?: ButtonVariant
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -28,7 +29,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
   transition: ${(props) => transitionToCss(props.transition)};
 
   &:hover {
-    filter: brightness(85%);
+    filter: brightness(${(props) => (props.variant === 'secondary' ? '125%' : '85%')});
+    cursor: pointer;
   }
 
   &:active {
@@ -57,8 +59,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
 `
 
 export type ButtonContentProps = StyledButtonProps & {
-  verticalMargin: string
-  horizontalMargin: string
+  verticalMargin?: string
+  horizontalMargin?: string
 }
 
 export const ButtonContent = styled.div<ButtonContentProps>`

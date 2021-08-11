@@ -1,4 +1,4 @@
-import palette from './palette'
+import { palette } from './palette'
 
 export type Colors = {
   primary: string
@@ -14,6 +14,7 @@ export type Colors = {
   onWarning: string
   success: string
   onSuccess: string
+  disabled: string
   signal: string
   onSignal: string
   secondaryButton: string
@@ -29,6 +30,16 @@ export type Colors = {
   shimmerBackground: string
   toggle: string
   onToggle: string
+  card: string
+  shadow: string
+  overlay: string
+  modalOverlay: string
+  trophy: string
+  runnerUp: string
+  elimination: string
+  win: string
+  loss: string
+  inactiveStep: string
   checkedBackground: string
   uncheckedBorder: string
   checkedText: string
@@ -51,6 +62,7 @@ const fallback: Colors = {
   onWarning: palette.mustardYellow,
   success: palette.emeraldGreen,
   onSuccess: palette.parsleyGreen,
+  disabled: palette.lightGray,
   signal: palette.punchRed,
   onSignal: palette.white,
   secondaryButton: palette.emperorGray,
@@ -66,6 +78,16 @@ const fallback: Colors = {
   shimmerBackground: palette.black10,
   toggle: palette.codGray,
   onToggle: palette.white,
+  card: palette.emperorGray,
+  shadow: palette.black20,
+  overlay: palette.black40,
+  modalOverlay: palette.black60,
+  trophy: palette.wattleGold,
+  runnerUp: palette.mistyGray,
+  elimination: palette.lightGray,
+  win: palette.emeraldGreen,
+  loss: palette.cinnabarRed,
+  inactiveStep: palette.white20,
   checkedBackground: palette.amberOrange,
   uncheckedBorder: palette.offWhite,
   checkedText: palette.abbeyBlue,

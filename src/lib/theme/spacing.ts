@@ -1,4 +1,5 @@
 export type Spacing = {
+  xxxsmall: string
   xxsmall: string
   xsmall: string
   small: string
@@ -9,6 +10,7 @@ export type Spacing = {
 }
 
 const fallback: Spacing = {
+  xxxsmall: '2px',
   xxsmall: '4px',
   xsmall: '8px',
   small: '12px',

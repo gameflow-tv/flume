@@ -7,6 +7,6 @@ export default {
   component: SearchInput
 }
 
-const Template = (args: SearchInputProps) => <SearchInput />
+const Template = (args: SearchInputProps) => <SearchInput {...args} />
 
 export const Search: Story<SearchInputProps> = Template.bind({})

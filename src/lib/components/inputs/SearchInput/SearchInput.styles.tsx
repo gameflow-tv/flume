@@ -1,15 +1,6 @@
 import styled from 'styled-components'
-import { TypographyStyle, typographyToCss } from '../../../theme'
-
-export type SearchInputProps = {
-  borderColor: string
-  color: string
-  shadow: string
-  borderRadius: string
-  padding: string
-  typography: TypographyStyle
-  outline: string
-}
+import { typographyToCss } from '../../../theme'
+import { SearchInputProps } from './SearchInput'
 
 export const Search = styled.input<SearchInputProps>`
   width: 302px;

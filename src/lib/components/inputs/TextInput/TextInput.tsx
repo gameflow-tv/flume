@@ -57,18 +57,21 @@ export const TextInput = (props: TextInputProps) => {
       />
       {props.criteria ? (
         <ul>
-          {props.criteria.map((crit) => (
-            <ListItem
-              key={`${crit.criteria}`}
-              typography={theme.typography.body3}
-              color={
-                criteriaRule(crit.condition?.type, crit.condition?.rule, inputValue)
-                  ? theme.colors.success
-                  : theme.colors.primary
-              }>
-              {crit.criteria}
-            </ListItem>
-          ))}
+          {props.criteria.map(
+            (crit) =>
+              crit.condition && (
+                <ListItem
+                  key={`${crit.criteria}`}
+                  typography={theme.typography.body3}
+                  color={
+                    criteriaRule(crit.condition.type, crit.condition.rule, inputValue)
+                      ? theme.colors.success
+                      : theme.colors.primary
+                  }>
+                  {crit.criteria}
+                </ListItem>
+              )
+          )}
         </ul>
       ) : null}
     </>

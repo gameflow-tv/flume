@@ -45,7 +45,6 @@ export const ScoreBox = styled.div`
   height: 26px;
   border-radius: 4px;
   background: #434647;
-
   position: relative;
 
   &::before {

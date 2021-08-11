@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext, transitionToCss } from '../../../theme'
 import {
   SwitchKnob,
@@ -19,7 +19,7 @@ export type SwitchProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onChange: (checked: boolean) => void
   labelPosition?: LabelPosition
 }
 
@@ -51,12 +51,7 @@ export const Switch = ({
   return (
     <Wrapper {...styles}>
       <TrackContainer>
-        <SwitchTrack
-          id={id}
-          checked={checked}
-          onChange={(e) => onChange?.call(e.target.checked)}
-          {...styles}
-        />
+        <SwitchTrack id={id} onChange={(e) => onChange.call(e.target.checked)} {...styles} />
         <SwitchKnob {...styles} />
       </TrackContainer>
       <SwitchLabel htmlFor={id} {...styles}>

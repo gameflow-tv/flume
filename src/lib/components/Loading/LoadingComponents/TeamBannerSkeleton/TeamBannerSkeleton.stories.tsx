@@ -1,4 +1,4 @@
-import { TeamBannerSkeleton } from './TeamBannerSkeleton'
+import { TeamBannerSkeleton, TeamBannerProps } from './TeamBannerSkeleton'
 import { Story } from '@storybook/react'
 import React from 'react'
 
@@ -7,7 +7,7 @@ export default {
   component: TeamBannerSkeleton
 }
 
-const Template = () => <TeamBannerSkeleton />
+const Template: Story<TeamBannerProps> = (args) => <TeamBannerSkeleton {...args} />
 
 export const Banner: Story = Template.bind({})
 Banner.args = {}

@@ -9,7 +9,7 @@ import {
   TeamName
 } from './TeamBannerSkeleton.styles'
 
-type TeamBannerProps = {
+export type TeamBannerProps = {
   children: ReactNode
 }
 

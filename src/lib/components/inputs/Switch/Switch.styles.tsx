@@ -7,7 +7,7 @@ export type WrapperProps = {
   labelPosition?: LabelPosition
 }
 
-const flexDirFromPosition = (position: LabelPosition): string => {
+const flexDirFromPosition = (position?: LabelPosition): string => {
   switch (position) {
     case 'top':
       return 'column-reverse'
@@ -69,7 +69,7 @@ export type SwitchKnobProps = {
   transition: string
   knobRadius: string
   trackRadius: string
-  checked: boolean
+  checked?: boolean
   knobShadow: string
 }
 

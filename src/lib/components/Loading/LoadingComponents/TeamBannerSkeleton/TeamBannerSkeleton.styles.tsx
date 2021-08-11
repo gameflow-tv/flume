@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-
 import { loading } from '../Animation/Shimmer.styles'
 
 export const BannerWrapper = styled.div`
@@ -7,7 +6,6 @@ export const BannerWrapper = styled.div`
   max-height: 80px;
   border-radius: 4px;
   background: #36393b;
-
   display: flex;
   align-items: center;
   margin-bottom: 8px;
