@@ -6,7 +6,7 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   width: 42px;
   height: 42px;
   border-radius: ${(props) => props.borderRadius};
-  box-shadow: ${(props) => (props.liked ? props.xSmallShadow : props.smallShadow)};
+  box-shadow: ${(props) => props.shadow};
   background: ${theme.colors.onBackground};
   border: unset;
   font-size: ${(props) => props.fontSize};
@@ -14,7 +14,7 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.liked ? props.color : props.neutralColor)};
-  transition: ${theme.transitions.long};
+  transition: ${(props) => props.transition};
   cursor: pointer;
 
   &:hover {

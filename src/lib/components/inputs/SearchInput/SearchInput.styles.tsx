@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
 import { SearchInputProps } from './SearchInput'
 
 export const Search = styled.input<SearchInputProps>`
@@ -8,7 +7,7 @@ export const Search = styled.input<SearchInputProps>`
   height: 41px;
   border-radius: ${(props) => props.borderRadius};
   padding: ${(props) => props.padding};
-  background: ${theme.colors.background};
+  background: ${(props) => props.background};
   border: 1px solid ${(props) => props.borderColor};
   box-sizing: border-box;
   color: ${(props) => props.color};
@@ -24,7 +23,7 @@ export const Search = styled.input<SearchInputProps>`
     box-shadow: 0px 0px 0px 1px ${(props) => props.outline};
   }
 
-  ${(props) => typographyToCss(props.typography)}
+  ${(props) => typographyToCss(props.typography)};
 `
 export const Wrapper = styled.div`
   position: relative;

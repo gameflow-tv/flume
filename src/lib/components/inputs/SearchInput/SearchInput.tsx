@@ -12,6 +12,8 @@ export type SearchInputProps = {
   padding: string
   typography: TypographyStyle
   outline: string
+  background: string
+  iconSize?: string
 }
 
 export const SearchInput = (props: SearchInputProps) => {
@@ -22,14 +24,15 @@ export const SearchInput = (props: SearchInputProps) => {
         type="text"
         placeholder="Search"
         typography={theme.typography.body1}
-        borderColor={theme.colors.shimmerHighlight}
-        color={theme.colors.mediumWhite}
-        shadow={theme.shadows.small}
-        borderRadius={theme.spacing.xxsmall}
-        padding={theme.spacing.small}
+        borderColor={props.borderColor || theme.colors.shimmerHighlight}
+        color={props.color || theme.colors.mediumWhite}
+        shadow={props.shadow || theme.shadows.small}
+        borderRadius={props.borderRadius || theme.spacing.xxsmall}
+        padding={props.padding || theme.spacing.small}
         outline={theme.colors.primary}
+        background={props.background || theme.colors.background}
       />
-      <Icon size={'14px'} color={theme.colors.mediumWhite}>
+      <Icon size={props.iconSize || '14px'} color={theme.colors.mediumWhite}>
         <FontAwesomeIcon icon={faSearch} />
       </Icon>
     </Wrapper>
