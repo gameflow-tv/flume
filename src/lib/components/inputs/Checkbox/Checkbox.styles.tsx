@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 import { TypographyStyle, typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
 
 export const Wrapper = styled.label`
   display: block;
   position: relative;
   cursor: pointer;
-  ${theme.typography.body2};
+  ${(props) => props.theme.typography.body2};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -53,7 +52,7 @@ export const SpanEl = styled.span<SpanProps>`
   height: ${(props) => props.height || '21px'};
   background-color: ${(props) => props.uncheckedBackground};
   border: 1px solid ${(props) => props.uncheckedBorder};
-  border-radius: ${theme.spacing.xxsmall};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
   display: flex;
   justify-content: center;
   align-items: center;

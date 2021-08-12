@@ -1,25 +1,24 @@
 import styled from 'styled-components'
-import theme from '../../../../theme/theme'
 import { loading } from '../Animation/Shimmer.styles'
 
 export const BannerWrapper = styled.div`
   min-width: 798px;
   max-height: 80px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.onBackground};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.onBackground};
   display: flex;
   align-items: center;
-  margin-bottom: ${theme.spacing.xsmall};
+  margin-bottom: ${(props) => props.theme.spacing.xsmall};
   position: relative;
-  box-shadow: ${theme.shadows.small};
+  box-shadow: ${(props) => props.theme.shadows.small};
   overflow: hidden;
 `
 
 export const Rectangle = styled.div`
   width: 114px;
   height: 64px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   margin: 0 10px;
   position: relative;
   overflow: hidden;
@@ -31,10 +30,10 @@ export const Rectangle = styled.div`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -45,8 +44,8 @@ export const Rectangle = styled.div`
 export const TeamName = styled.h1`
   width: 182px;
   height: 18px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -58,10 +57,10 @@ export const TeamName = styled.h1`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -72,8 +71,8 @@ export const TeamName = styled.h1`
 export const Description = styled.p`
   width: 98px;
   height: 17px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -85,10 +84,10 @@ export const Description = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -101,15 +100,15 @@ export const DescriptionWrapper = styled.div`
   flex-grow: 4;
   height: 100%;
   justify-content: center;
-  gap: ${theme.spacing.xsmall};
+  gap: ${(props) => props.theme.spacing.xsmall};
   overflow: hidden;
 `
 
 export const MatchState = styled.p`
   width: 71px;
   min-height: 16px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   margin-right: 12px;
   position: relative;
   overflow: hidden;
@@ -121,10 +120,10 @@ export const MatchState = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;

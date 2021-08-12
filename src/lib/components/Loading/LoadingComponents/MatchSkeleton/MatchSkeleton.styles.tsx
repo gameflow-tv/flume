@@ -1,27 +1,26 @@
 import styled from 'styled-components'
-import theme from '../../../../theme/theme'
 import { loading } from '../Animation/Shimmer.styles'
 
 export const MatchWrapper = styled.div`
   min-width: 798px;
   height: 57px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.onBackground};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.onBackground};
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${theme.spacing.medium};
-  margin-bottom: ${theme.spacing.xsmall};
+  gap: ${(props) => props.theme.spacing.medium};
+  margin-bottom: ${(props) => props.theme.spacing.xsmall};
   position: relative;
-  box-shadow: ${theme.shadows.small};
+  box-shadow: ${(props) => props.theme.shadows.small};
   overflow: hidden;
 `
 
 export const TeamName = styled.p`
   width: 98px;
   height: 17px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   position: relative;
   overflow: hidden;
 
@@ -32,10 +31,10 @@ export const TeamName = styled.p`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;
@@ -46,8 +45,8 @@ export const TeamName = styled.p`
 export const ScoreBox = styled.div`
   width: 54px;
   height: 26px;
-  border-radius: ${theme.spacing.xxsmall};
-  background: ${theme.colors.toggle};
+  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  background: ${(props) => props.theme.colors.toggle};
   position: relative;
   overflow: hidden;
 
@@ -58,10 +57,10 @@ export const ScoreBox = styled.div`
     width: 100%;
     background-image: linear-gradient(
       to right,
-      ${theme.colors.toggle} 0%,
+      ${(props) => props.theme.colors.toggle} 0%,
       rgba(255, 255, 255, 0.05) 20%,
-      ${theme.colors.toggle} 40%,
-      ${theme.colors.toggle} 100%
+      ${(props) => props.theme.colors.toggle} 40%,
+      ${(props) => props.theme.colors.toggle} 100%
     );
     background-repeat: no-repeat;
     background-size: 450px 400px;

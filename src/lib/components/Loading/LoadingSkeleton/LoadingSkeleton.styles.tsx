@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import theme from '../../../theme/theme'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,12 +6,12 @@ export const Wrapper = styled.div`
 `
 
 export const MatchesWrapper = styled.div`
-  margin-right: ${theme.spacing.xsmall};
-  margin-bottom: ${theme.spacing.xxsmall};
+  margin-right: ${(props) => props.theme.spacing.xsmall};
+  margin-bottom: ${(props) => props.theme.spacing.xxsmall};
 `
 
 export const SectionWrapper = styled.div`
   &:not(:first-child) {
-    margin-top: ${theme.spacing.large};
+    margin-top: ${(props) => props.theme.spacing.large};
   }
 `
