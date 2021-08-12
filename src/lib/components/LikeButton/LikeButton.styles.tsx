@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import theme from '../../theme/theme'
 import { LikeButtonProps } from './LikeButton'
 
 export const LikeIcon = styled.button<LikeButtonProps>`
@@ -7,14 +6,14 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   height: 42px;
   border-radius: ${(props) => props.borderRadius};
   box-shadow: ${(props) => (props.liked ? props.xSmallShadow : props.smallShadow)};
-  background: ${theme.colors.onBackground};
+  background: ${(props) => props.theme.colors.onBackground};
   border: unset;
   font-size: ${(props) => props.fontSize};
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.liked ? props.color : props.neutralColor)};
-  transition: ${theme.transitions.long};
+  transition: ${(props) => props.theme.transitions.long};
   cursor: pointer;
 
   &:hover {
@@ -34,7 +33,7 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 1px ${theme.colors.buttonBorder}, ${theme.shadows.glow},
-      ${theme.shadows.xsmall};
+    box-shadow: 0 0 0 1px ${(props) => props.theme.colors.buttonBorder},
+      ${(props) => props.theme.shadows.glow}, ${(props) => props.theme.shadows.xsmall};
   }
 `
