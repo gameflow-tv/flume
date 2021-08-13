@@ -1,6 +1,7 @@
 import _ from 'lodash'
-import React, { useContext } from 'react'
-import { ThemeContext, transitionToCss } from '../../../theme'
+import React from 'react'
+import { useTheme } from '../../../hooks'
+import { transitionToCss } from '../../../theme'
 import {
   SwitchKnob,
   SwitchKnobProps,
@@ -30,7 +31,7 @@ export const Switch = ({
   label,
   labelPosition
 }: SwitchProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const styles: SwitchKnobProps & SwitchTrackProps & WrapperProps & SwitchLabelProps = {
     backgroundColor: theme.colors.toggle,

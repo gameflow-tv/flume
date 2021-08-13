@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ToolTip, TooltipPosition } from './Tooltip.styles'
-import { ThemeContext } from '../../theme'
+import { useTheme } from '../../hooks'
 
 export type TooltipProps = {
   content: string
@@ -11,7 +11,7 @@ export type TooltipProps = {
 }
 
 export const Tooltip = ({ content = '', position = 'bottom' }: TooltipProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   return (
     <ToolTip
       borderRadius={theme.spacing.xxsmall}

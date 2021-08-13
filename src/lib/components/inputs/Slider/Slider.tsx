@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode } from 'react'
 import {
   Range,
   RangeLabel,
@@ -12,7 +12,8 @@ import {
   Wrapper,
   WrapperProps
 } from './Slider.styles'
-import { ThemeContext, transitionToCss } from '../../../theme'
+import { transitionToCss } from '../../../theme'
+import { useTheme } from '../../../hooks'
 
 export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
 
@@ -39,7 +40,7 @@ export const Slider = ({
   maxLabel,
   onChange
 }: SliderProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const styles: RangeProps & WrapperProps & SliderLabelProps & RangeLabelProps & RangeWrapProps = {
     trackColor: theme.colors.sliderBackground,

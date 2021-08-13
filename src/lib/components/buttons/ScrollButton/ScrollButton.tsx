@@ -1,7 +1,7 @@
 import { faArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext } from 'react'
-import { ThemeContext } from '../../../theme'
+import React from 'react'
+import { useTheme } from '../../../hooks'
 import { Button } from './ScrollButton.style'
 
 export type ScrollButtonProps = {
@@ -12,7 +12,7 @@ export type ScrollButtonProps = {
 }
 
 export const ScrollButton = () => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   return (
     <Button
       boxShadowXSmall={theme.shadows.xsmall}

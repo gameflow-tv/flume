@@ -1,7 +1,8 @@
 import { IconName } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useState } from 'react'
-import { ThemeContext, Transition } from '../../theme'
+import React, { useState } from 'react'
+import { useTheme } from '../../hooks'
+import { Transition } from '../../theme'
 import { LikeIcon, LikeIconProps } from './LikeButton.styles'
 
 export type LikeButtonProps = {
@@ -19,7 +20,7 @@ export type LikeButtonProps = {
 
 export const LikeButton = (props: LikeButtonProps) => {
   const [liked, setLiked] = useState(false)
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const styles: LikeIconProps = {
     background: theme.colors.background,

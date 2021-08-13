@@ -1,5 +1,5 @@
-import { ThemeContext } from '../../../theme'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
+import { useTheme } from '../../../hooks'
 import { Input, Label, ListItem } from './TextInput.styles'
 
 export type CriteriaRules = {
@@ -31,7 +31,7 @@ const criteriaRule = (type: 'length' | 'regex', rule: number | RegExp, input: st
 }
 
 export const TextInput = (props: TextInputProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const [inputValue, setInputValue] = useState('')
   return (
     <>

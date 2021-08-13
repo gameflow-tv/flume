@@ -1,8 +1,9 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Theme, ThemeContext } from '../../../theme'
-import React, { useContext } from 'react'
+import { Theme } from '../../../theme'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
+import { useTheme } from '../../../hooks'
 
 export type IconPosition = 'left' | 'right'
 
@@ -86,7 +87,7 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
 }
 
 export const Button = (props: ButtonProps): JSX.Element => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   props = getButtonStyles(props, theme)
 
   return (

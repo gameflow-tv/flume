@@ -1,8 +1,8 @@
 import _ from 'lodash'
-import React, { ReactNode, useContext, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { faCheck, faPlus } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ThemeContext, TypographyStyle } from '../../../theme'
+import { TypographyStyle } from '../../../theme'
 import { CheckInput, SpanEl, SpanProps, Wrapper } from './Checkbox.styles'
 import { useTheme } from '../../../hooks'
 

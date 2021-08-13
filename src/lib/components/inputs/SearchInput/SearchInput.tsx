@@ -1,9 +1,8 @@
 import { faSearch } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { size } from 'lodash'
-import React, { useContext } from 'react'
+import React from 'react'
 import { useTheme } from '../../../hooks'
-import { ThemeContext, TypographyStyle } from '../../../theme'
+import { TypographyStyle } from '../../../theme'
 import { Search, Icon, Wrapper } from './SearchInput.styles'
 
 export type SearchInputProps = {
