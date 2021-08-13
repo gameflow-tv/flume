@@ -40,6 +40,12 @@ export type Colors = {
   win: string
   loss: string
   inactiveStep: string
+  checkedBackground: string
+  uncheckedBorder: string
+  checkedText: string
+  uncheckedText: string
+  sliderBackground: string
+  inputBackground: string
 }
 
 const fallback: Colors = {
@@ -81,7 +87,13 @@ const fallback: Colors = {
   elimination: palette.lightGray,
   win: palette.emeraldGreen,
   loss: palette.cinnabarRed,
-  inactiveStep: palette.white20
+  inactiveStep: palette.white20,
+  checkedBackground: palette.amberOrange,
+  uncheckedBorder: palette.offWhite,
+  checkedText: palette.abbeyBlue,
+  uncheckedText: palette.offWhite,
+  sliderBackground: palette.codGray,
+  inputBackground: palette.white50
 }
 
 export default fallback

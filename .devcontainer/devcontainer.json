@@ -1,12 +1,10 @@
 {
-    "image": "node:latest",
-    "forwardPorts": [
-        9009
-    ],
-    "extensions": [
-        "dbaeumer.vscode-eslint",
-        "dsznajder.es7-react-js-snippets",
-        "wix.vscode-import-cost",
-        "esbenp.prettier-vscode"
-    ]
+  "image": "node:latest",
+  "forwardPorts": [9009],
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "wix.vscode-import-cost",
+    "esbenp.prettier-vscode"
+  ]
 }
