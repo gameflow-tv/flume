@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { Theme } from '../../../../theme'
 import { loading } from '../Animation/Shimmer.styles'
 
-export const MatchWrapper = styled.div`
+export const MatchWrapper = styled.div<{ theme: Theme }>`
   min-width: 798px;
   height: 57px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -16,7 +17,7 @@ export const MatchWrapper = styled.div`
   overflow: hidden;
 `
 
-export const TeamName = styled.p`
+export const TeamName = styled.p<{ theme: Theme }>`
   width: 98px;
   height: 17px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -42,7 +43,7 @@ export const TeamName = styled.p`
   }
 `
 
-export const ScoreBox = styled.div`
+export const ScoreBox = styled.div<{ theme: Theme }>`
   width: 54px;
   height: 26px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};

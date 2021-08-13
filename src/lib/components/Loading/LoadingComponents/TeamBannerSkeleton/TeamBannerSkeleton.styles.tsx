@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { Theme } from '../../../../theme'
 import { loading } from '../Animation/Shimmer.styles'
 
-export const BannerWrapper = styled.div`
+export const BannerWrapper = styled.div<{ theme: Theme }>`
   min-width: 798px;
   max-height: 80px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -14,7 +15,7 @@ export const BannerWrapper = styled.div`
   overflow: hidden;
 `
 
-export const Rectangle = styled.div`
+export const Rectangle = styled.div<{ theme: Theme }>`
   width: 114px;
   height: 64px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -41,7 +42,7 @@ export const Rectangle = styled.div`
   }
 `
 
-export const TeamName = styled.h1`
+export const TeamName = styled.h1<{ theme: Theme }>`
   width: 182px;
   height: 18px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -68,7 +69,7 @@ export const TeamName = styled.h1`
   }
 `
 
-export const Description = styled.p`
+export const Description = styled.p<{ theme: Theme }>`
   width: 98px;
   height: 17px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};
@@ -94,7 +95,7 @@ export const Description = styled.p`
     ${loading()};
   }
 `
-export const DescriptionWrapper = styled.div`
+export const DescriptionWrapper = styled.div<{ theme: Theme }>`
   display: flex;
   flex-direction: column;
   flex-grow: 4;
@@ -104,7 +105,7 @@ export const DescriptionWrapper = styled.div`
   overflow: hidden;
 `
 
-export const MatchState = styled.p`
+export const MatchState = styled.p<{ theme: Theme }>`
   width: 71px;
   min-height: 16px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};

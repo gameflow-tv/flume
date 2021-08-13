@@ -7,7 +7,7 @@ export const Search = styled.input<SearchInputProps>`
   height: 41px;
   border-radius: ${(props) => props.borderRadius};
   padding: ${(props) => props.padding};
-  background: ${(props) => props.theme.colors.background};
+  background: ${(props) => props.background};
   border: 1px solid ${(props) => props.borderColor};
   box-sizing: border-box;
   color: ${(props) => props.color};

@@ -1,19 +1,29 @@
 import styled from 'styled-components'
+import { Transition, transitionToCss } from '../../theme'
 import { LikeButtonProps } from './LikeButton'
 
-export const LikeIcon = styled.button<LikeButtonProps>`
+export type LikeIconProps = LikeButtonProps & {
+  background?: string
+  transition?: Transition
+  shadowXs?: string
+  shadowS?: string
+  border?: string
+  glow?: string
+}
+
+export const LikeIcon = styled.button<LikeIconProps>`
   width: 42px;
   height: 42px;
   border-radius: ${(props) => props.borderRadius};
-  box-shadow: ${(props) => props.shadow};
-  background: ${theme.colors.onBackground};
+  box-shadow: ${(props) => (props.liked ? props.shadowXs : props.shadowS)};
+  background: ${(props) => props.background};
   border: unset;
   font-size: ${(props) => props.fontSize};
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.liked ? props.color : props.neutralColor)};
-  transition: ${(props) => props.theme.transitions.long};
+  transition: ${(props) => transitionToCss(props.transition)};
   cursor: pointer;
 
   &:hover {
@@ -33,7 +43,7 @@ export const LikeIcon = styled.button<LikeButtonProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 1px ${(props) => props.theme.colors.buttonBorder},
-      ${(props) => props.theme.shadows.glow}, ${(props) => props.theme.shadows.xsmall};
+    box-shadow: 0 0 0 1px ${(props) => props.border}, ${(props) => props.glow},
+      ${(props) => props.shadowXs};
   }
 `

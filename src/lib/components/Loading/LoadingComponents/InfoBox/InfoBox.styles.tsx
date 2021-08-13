@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Theme } from '../../../../theme'
 
-export const Box = styled.div`
+export const Box = styled.div<{ theme: Theme }>`
   width: 799px;
   height: 873px;
   border-radius: ${(props) => props.theme.spacing.xxsmall};

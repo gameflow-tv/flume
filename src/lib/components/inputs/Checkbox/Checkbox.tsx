@@ -4,6 +4,7 @@ import { faCheck, faPlus } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ThemeContext, TypographyStyle } from '../../../theme'
 import { CheckInput, SpanEl, SpanProps, Wrapper } from './Checkbox.styles'
+import { useTheme } from '../../../hooks'
 
 export type CheckboxProps = {
   id?: string
@@ -25,39 +26,33 @@ export type CheckboxProps = {
 export const Checkbox = ({
   id = _.uniqueId(),
   checked = false,
-  onChange,
   checkedContent = <FontAwesomeIcon icon={faCheck} />,
   uncheckedContent = <FontAwesomeIcon icon={faPlus} />,
-  typography,
-  width,
-  height,
-  checkedBackground,
-  uncheckedBorder,
-  checkedTextColor,
-  uncheckedTextColor,
-  uncheckedBackground
+  ...props
 }: CheckboxProps) => {
   const [isChecked, setIsChecked] = useState(checked)
 
   useEffect(() => {
-    onChange?.call(isChecked)
+    props.onChange?.call(isChecked)
   }, [isChecked])
 
-  const theme = useContext(ThemeContext)
-  console.log(theme.typography.body2)
+  const theme = useTheme()
+
   const styles: SpanProps = {
-    typography: typography || theme.typography.body2,
-    checkedBackground: checkedBackground || theme.colors.checkedBackground,
-    uncheckedBackground: uncheckedBackground || theme.colors.background,
-    uncheckedBorder: uncheckedBorder || theme.colors.uncheckedBorder,
-    checkedTextColor: checkedTextColor || theme.colors.checkedText,
-    uncheckedTextColor: uncheckedTextColor || theme.colors.uncheckedText,
-    width,
-    height
+    typography: props.typography || theme.typography.body2,
+    checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
+    uncheckedBackground: props.uncheckedBackground || theme.colors.background,
+    uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+    checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
+    uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+    width: props.width,
+    height: props.height,
+    spacing: theme.spacing.xxsmall,
+    ...props
   }
 
   return (
-    <Wrapper>
+    <Wrapper {...styles}>
       <CheckInput
         id={id}
         checked={isChecked}

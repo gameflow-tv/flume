@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { TypographyStyle, typographyToCss } from '../../../theme'
 
-export const Wrapper = styled.label`
+export const Wrapper = styled.label<{ typography: TypographyStyle }>`
   display: block;
   position: relative;
   cursor: pointer;
-  ${(props) => props.theme.typography.body2};
+  ${(props) => typographyToCss(props.typography)};
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -13,7 +13,7 @@ export const Wrapper = styled.label`
 `
 
 export type SpanProps = {
-  typography?: TypographyStyle
+  typography: TypographyStyle
   width?: string
   height?: string
   checkedBackground: string
@@ -21,6 +21,7 @@ export type SpanProps = {
   uncheckedBorder: string
   checkedTextColor: string
   uncheckedTextColor: string
+  spacing: string
 }
 
 export const CheckInput = styled.input.attrs({
@@ -52,7 +53,7 @@ export const SpanEl = styled.span<SpanProps>`
   height: ${(props) => props.height || '21px'};
   background-color: ${(props) => props.uncheckedBackground};
   border: 1px solid ${(props) => props.uncheckedBorder};
-  border-radius: ${(props) => props.theme.spacing.xxsmall};
+  border-radius: ${(props) => props.spacing};
   display: flex;
   justify-content: center;
   align-items: center;

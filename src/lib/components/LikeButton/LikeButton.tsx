@@ -1,8 +1,8 @@
 import { IconName } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useContext, useState } from 'react'
-import { ThemeContext } from '../../theme'
-import { LikeIcon } from './LikeButton.styles'
+import { ThemeContext, Transition } from '../../theme'
+import { LikeIcon, LikeIconProps } from './LikeButton.styles'
 
 export type LikeButtonProps = {
   liked?: boolean
@@ -13,13 +13,24 @@ export type LikeButtonProps = {
   disabled?: boolean
   color?: string
   background?: string
-  transition?: string
+  transition?: Transition
   onClick?: () => void
 }
 
-export const LikeButton = (props: Partial<LikeButtonProps>) => {
+export const LikeButton = (props: LikeButtonProps) => {
   const [liked, setLiked] = useState(false)
   const theme = useContext(ThemeContext)
+
+  const styles: LikeIconProps = {
+    background: theme.colors.background,
+    transition: theme.transitions.long,
+    shadow: theme.shadows.medium,
+    shadowXs: theme.shadows.xsmall,
+    shadowS: theme.shadows.small,
+    glow: theme.shadows.glow,
+    border: theme.colors.buttonBorder,
+    ...props
+  }
 
   return (
     <LikeIcon
@@ -32,7 +43,8 @@ export const LikeButton = (props: Partial<LikeButtonProps>) => {
       color={props.color || theme.colors.primary}
       neutralColor={theme.colors.primaryText}
       background={props.background || theme.colors.onBackground}
-      transition={props.transition || theme.transitions.long}>
+      transition={props.transition || theme.transitions.long}
+      {...styles}>
       <FontAwesomeIcon icon={[liked ? 'fas' : 'fal', 'heart' as IconName]} />
     </LikeIcon>
   )

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { useTheme } from '../../../../hooks'
 import {
   Description,
   DescriptionWrapper,
@@ -14,16 +15,17 @@ export type TeamBannerProps = {
 }
 
 export const TeamBannerSkeleton = ({ children }: TeamBannerProps) => {
+  const theme = useTheme()
   return (
     <>
-      <BannerWrapper>
-        <Rectangle></Rectangle>
-        <DetailsWrapper>
-          <DescriptionWrapper>
-            <TeamName />
-            <Description />
+      <BannerWrapper theme={theme}>
+        <Rectangle theme={theme}></Rectangle>
+        <DetailsWrapper theme={theme}>
+          <DescriptionWrapper theme={theme}>
+            <TeamName theme={theme} />
+            <Description theme={theme} />
           </DescriptionWrapper>
-          <MatchState />
+          <MatchState theme={theme} />
         </DetailsWrapper>
       </BannerWrapper>
       {children}
