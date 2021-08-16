@@ -14,8 +14,7 @@ import {
 } from './Slider.styles'
 import { transitionToCss } from '../../../theme'
 import { useTheme } from '../../../hooks'
-
-export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
+import { LabelPosition } from '..'
 
 export type SliderProps = {
   id?: string

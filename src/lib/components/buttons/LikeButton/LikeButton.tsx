@@ -1,8 +1,8 @@
 import { IconName } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { useTheme } from '../../hooks'
-import { Transition } from '../../theme'
+import { useTheme } from '../../../hooks'
+import { Transition } from '../../../theme'
 import { LikeIcon, LikeIconProps } from './LikeButton.styles'
 
 export type LikeButtonProps = {

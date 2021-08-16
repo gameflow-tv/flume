@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { LabelPosition } from '..'
 import { TypographyStyle, typographyToCss } from '../../../theme'
-import { LabelPosition } from './Switch'
 
 export type WrapperProps = {
   gap: string

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Transition, transitionToCss } from '../../theme'
+import { Transition, transitionToCss } from '../../../theme'
 import { LikeButtonProps } from './LikeButton'
 
 export type LikeIconProps = LikeButtonProps & {

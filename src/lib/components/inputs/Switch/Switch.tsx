@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
+import { LabelPosition } from '..'
 import { useTheme } from '../../../hooks'
 import { transitionToCss } from '../../../theme'
 import {
@@ -13,8 +14,6 @@ import {
   Wrapper,
   WrapperProps
 } from './Switch.styles'
-
-export type LabelPosition = 'left' | 'right' | 'top' | 'bottom'
 
 export type SwitchProps = {
   id?: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { LabelPosition } from '..'
 import { TypographyStyle, typographyToCss } from '../../../theme'
-import { LabelPosition } from './Slider'
 
 export type WrapperProps = {
   gap: string
