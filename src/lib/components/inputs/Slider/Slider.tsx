@@ -64,7 +64,7 @@ export const Slider = ({
           value={value}
           min={min}
           max={max}
-          onChange={(e) => onChange?.call(e.target.value)}
+          onChange={(e) => onChange && onChange.call(e.target.value)}
           {...styles}
         />
         <RangeLabel {...styles}>{maxLabel}</RangeLabel>

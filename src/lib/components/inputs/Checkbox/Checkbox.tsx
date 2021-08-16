@@ -33,7 +33,7 @@ export const Checkbox = ({
   const [isChecked, setIsChecked] = useState(checked)
 
   useEffect(() => {
-    props.onChange?.call(isChecked)
+    props.onChange && props.onChange.call(isChecked)
   }, [isChecked])
 
   const theme = useTheme()
