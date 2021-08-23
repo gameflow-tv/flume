@@ -43,13 +43,13 @@ const monthMap = [
 ]
 
 const getMonthDetails = (year, month) => {
-  let firstDay = new Date(year, month).getDay()
-  let numberOfDays = getNumberOfDays(year, month)
-  let monthArray = []
-  let rows = 6
+  const firstDay = new Date(year, month).getDay()
+  const numberOfDays = getNumberOfDays(year, month)
+  const monthArray = []
+  const rows = 6
+  const cols = 7
   let currentDay = null
   let index = 0
-  let cols = 7
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
