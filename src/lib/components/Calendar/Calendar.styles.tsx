@@ -10,7 +10,7 @@ export const Container = styled.div<CalendarProps>`
   background-color: ${(props) => props.calendarBgColor};
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: 0.4fr repeat(${props => props.monthRows / 7}, 1fr);
+  grid-template-rows: 0.4fr repeat(${(props) => props.monthRows / 7}, 1fr);
   gap: 4px;
 `
 

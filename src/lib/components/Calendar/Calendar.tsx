@@ -150,7 +150,7 @@ export const Calendar = ({
           <DateBox
             key={idx}
             className={
-              (day.month !== 0 ? ' disabled' : '') + 
+              (day.month !== 0 ? ' disabled' : '') +
               (isCurrentDay(day) ? ' today' : '') +
               (isSelectedDay(day, selectedDay) ? ' selected' : '')
             }
