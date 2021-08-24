@@ -7,18 +7,8 @@ export default {
   component: Calendar
 }
 
-const Template = (args) => (
-  <div style={{ width: '328px', height: '314px' }}>
-    <Calendar {...args} />
-  </div>
-)
+const Template = (args) => <Calendar {...args} />
 export const Default: Story = Template.bind({})
 Default.args = {
-  // dayBoxBgColor: '#00805c61'
-}
-
-export const EmptyDisabledDays: Story = Template.bind({})
-EmptyDisabledDays.args = {
-  dayCellDisabledTxt: ''
-  // dayBoxBgColor: '#00805c61'
+  width: '328px'
 }
