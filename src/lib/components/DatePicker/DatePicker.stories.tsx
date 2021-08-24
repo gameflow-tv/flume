@@ -8,5 +8,6 @@ export default {
 }
 
 const Template = (args: DatePickerProps) => <DatePicker {...args} />
+
 export const Default: Story = Template.bind({})
 Default.args = {}

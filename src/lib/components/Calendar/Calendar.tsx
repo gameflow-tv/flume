@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
 import { TypographyStyle } from '../../theme'
-import AspectRatio from './AspectRatio'
+import AspectRatio from '../AspectRatio/AspectRatio'
 import {
   DateBox,
   DayBox,
