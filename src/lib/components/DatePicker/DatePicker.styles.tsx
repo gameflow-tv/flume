@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { typographyToCss } from '../../theme'
 import { DatePickerProps } from './DatePicker'
 
 export const Wrapper = styled.div<DatePickerProps>`
@@ -6,7 +7,6 @@ export const Wrapper = styled.div<DatePickerProps>`
   width: ${(props) => props.width};
   /* height: auto; */
   height: 45px;
-  background-color: purple;
 `
 
 export const Grid = styled.div`
@@ -41,6 +41,7 @@ export const NavBtn = styled.div<DatePickerProps>`
   background-color: ${(props) => props.navBgColor};
   border-radius: 4px;
   cursor: pointer;
+  box-shadow: 0px 2px 6px ${(props) => props.shadow};
 
   & > svg {
     color: ${(props) => props.navTxtColor};
@@ -53,4 +54,41 @@ export const NavBtn = styled.div<DatePickerProps>`
       color: ${(props) => props.navHoverTxtColor};
     }
   }
+`
+
+export const DateInput = styled.div<DatePickerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${(props) => typographyToCss(props.inputTypo)};
+  background-color: ${(props) => props.navBgColor};
+  color: ${(props) => props.navTxtColor};
+  cursor: pointer;
+  box-shadow: 0px 2px 6px ${(props) => props.shadow};
+  border-radius: 4px;
+
+  & > input {
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    ${(props) => typographyToCss(props.inputTypo)};
+    color: ${(props) => props.navTxtColor};
+    background-color: transparent;
+    cursor: text;
+
+    &::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+`
+
+export const DateSpan = styled.div<DatePickerProps>`
+  ${(props) => typographyToCss(props.inputTypo)};
+  color: ${(props) => props.navTxtColor};
+  background-color: transparent;
+  margin-left: 8px;
 `
