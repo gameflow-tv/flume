@@ -120,7 +120,7 @@ export type CalendarProps = {
   dateBoxHoverBgColor?: string
   dateBoxHoverTxtColor?: string
   initialDate?: Date
-  monthRows: number
+  position?: string
   onDateSelect?: (timestamp: number) => void
 }
 
@@ -138,6 +138,7 @@ export const Calendar = ({
   dateBoxHoverBgColor,
   dateBoxHoverTxtColor,
   initialDate,
+  position,
   onDateSelect
 }: CalendarProps) => {
   const theme = useTheme()
@@ -149,7 +150,6 @@ export const Calendar = ({
   )
 
   const styles = {
-    width: width || '328px',
     calendarBgColor: calendarBgColor || theme.colors.card,
     dayBoxBgColor: dayBoxBgColor || 'transparent',
     dayBoxTxtColor: dayBoxTxtColor || theme.colors.tertiaryText,
@@ -162,13 +162,15 @@ export const Calendar = ({
     dateBoxSelectedtxtColor: dateBoxSelectedtxtColor || theme.colors.onPrimary,
     dateBoxHoverBgColor: dateBoxHoverBgColor || theme.colors.calendarOnHover,
     dateBoxHoverTxtColor: dateBoxHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
-    monthRows: Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7)
+    monthRows: Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7),
+    position,
+    width
   }
 
   const onDateClick = (day) => {
     if (day && day.month === 0) {
       setSelectedDay(day.timestamp)
-      onDateSelect?.call(day.timestamp)
+      onDateSelect?.call(null, day.timestamp)
     }
   }
 

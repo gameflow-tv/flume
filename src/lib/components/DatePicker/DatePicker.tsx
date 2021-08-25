@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { TypographyStyle } from '../../theme'
 import AspectRatio from '../AspectRatio/AspectRatio'
+import { Calendar } from '../Calendar'
 import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
 
 export type DatePickerProps = {
@@ -81,7 +82,7 @@ export const DatePicker = ({
 
   const styles = {
     width: width || '328px',
-    navBgColor: navBgColor || theme.colors.sliderBackground,
+    navBgColor: navBgColor || theme.colors.card,
     navTxtColor: navTxtColor || theme.colors.secondaryText,
     navHoverBgColor: navHoverBgColor || theme.colors.calendarOnHover,
     navHoverTxtColor: navHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
@@ -102,14 +103,18 @@ export const DatePicker = ({
     else setSelectedDate(new Date())
   }
 
+  const handleCalendar = (timestamp: number) => {
+    const selected = new Date(timestamp)
+    setSelectedDate(selected)
+    setDayLabel(getFormatedDate(selected))
+  }
+
   const handleDay = (offset) => {
     const date = selectedDate
     date.setDate(date.getDate() + offset)
     setSelectedDate(date)
     setDayLabel(getFormatedDate(date))
   }
-
-  useEffect(() => {}, [editionMode])
 
   return (
     <Wrapper {...styles}>
@@ -124,7 +129,7 @@ export const DatePicker = ({
           {editionMode ? (
             <input
               type="date"
-              defaultValue={`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1)
+              value={`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1)
                 .toString()
                 .padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`}
               onChange={handleDate}
@@ -140,6 +145,15 @@ export const DatePicker = ({
           </NavBtn>
         </AspectRatio>
       </Grid>
+      <div style={{ position: 'relative' }}>
+        {editionMode && (
+          <Calendar
+            position={'absolute'}
+            initialDate={selectedDate}
+            onDateSelect={handleCalendar}
+          />
+        )}
+      </div>
     </Wrapper>
   )
 }

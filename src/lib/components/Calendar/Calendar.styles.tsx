@@ -3,7 +3,7 @@ import { typographyToCss } from '../../theme'
 import { CalendarProps } from './Calendar'
 
 export const CalendarWrapper = styled.div<CalendarProps>`
-  position: relative;
+  position: ${(props) => props.position || 'relative'};
   width: ${(props) => props.width};
   height: auto;
   min-width: 304px;

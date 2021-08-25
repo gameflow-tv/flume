@@ -4,8 +4,8 @@ import { DatePickerProps } from './DatePicker'
 
 export const Wrapper = styled.div<DatePickerProps>`
   display: inline-block;
+  position: relative;
   width: ${(props) => props.width};
-  /* height: auto; */
   height: 45px;
 `
 
@@ -18,6 +18,7 @@ export const Grid = styled.div`
   gap: 0 8px;
   grid-auto-flow: row;
   grid-template-areas: 'prevmtharea mthdescarea nextmtharea';
+  margin-bottom: 8px;
 
   & > .prevmtharea {
     grid-area: prevmtharea;
