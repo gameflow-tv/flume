@@ -1,6 +1,6 @@
 import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
 import { TypographyStyle } from '../../theme'
@@ -124,25 +124,9 @@ export type CalendarProps = {
   onDateSelect?: (timestamp: number) => void
 }
 
-export const Calendar = ({
-  width,
-  calendarBgColor,
-  dayBoxBgColor,
-  dayBoxTxtColor,
-  dateBoxBgColor,
-  dateBoxTxtColor,
-  dateBoxDisabledTxt,
-  dateBoxDisabledTxtColor,
-  dateBoxSelectedBgColor,
-  dateBoxSelectedtxtColor,
-  dateBoxHoverBgColor,
-  dateBoxHoverTxtColor,
-  defaultDate,
-  position,
-  onDateSelect
-}: CalendarProps) => {
+export const Calendar = forwardRef((props: CalendarProps, ref) => {
   const theme = useTheme()
-  const [selectedDate, setSelectedDate] = useState<number>(defaultDate?.valueOf())
+  const [selectedDate, setSelectedDate] = useState<number>(props.defaultDate?.valueOf())
   const [month, setMonth] = useState(today.getMonth())
   const [year, setYear] = useState(today.getFullYear())
   const [monthDetails, setMonthDetails] = useState(
@@ -150,27 +134,27 @@ export const Calendar = ({
   )
 
   const styles = {
-    calendarBgColor: calendarBgColor || theme.colors.card,
-    dayBoxBgColor: dayBoxBgColor || 'transparent',
-    dayBoxTxtColor: dayBoxTxtColor || theme.colors.tertiaryText,
+    calendarBgColor: props.calendarBgColor || theme.colors.card,
+    dayBoxBgColor: props.dayBoxBgColor || 'transparent',
+    dayBoxTxtColor: props.dayBoxTxtColor || theme.colors.tertiaryText,
     dayBoxTypo: theme.typography.body3,
-    dateBoxBgColor: dateBoxBgColor || theme.colors.sliderBackground,
-    dateBoxTxtColor: dateBoxTxtColor || theme.colors.secondaryText,
+    dateBoxBgColor: props.dateBoxBgColor || theme.colors.sliderBackground,
+    dateBoxTxtColor: props.dateBoxTxtColor || theme.colors.secondaryText,
     dateBoxTypo: theme.typography.body1,
-    dateBoxDisabledTxtColor: dateBoxDisabledTxtColor || theme.colors.calendarDisabledText,
-    dateBoxSelectedBgColor: dateBoxSelectedBgColor || theme.colors.primary,
-    dateBoxSelectedtxtColor: dateBoxSelectedtxtColor || theme.colors.onPrimary,
-    dateBoxHoverBgColor: dateBoxHoverBgColor || theme.colors.calendarOnHover,
-    dateBoxHoverTxtColor: dateBoxHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
+    dateBoxDisabledTxtColor: props.dateBoxDisabledTxtColor || theme.colors.calendarDisabledText,
+    dateBoxSelectedBgColor: props.dateBoxSelectedBgColor || theme.colors.primary,
+    dateBoxSelectedtxtColor: props.dateBoxSelectedtxtColor || theme.colors.onPrimary,
+    dateBoxHoverBgColor: props.dateBoxHoverBgColor || theme.colors.calendarOnHover,
+    dateBoxHoverTxtColor: props.dateBoxHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
     monthRows: Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7),
-    position,
-    width
+    position: props.position,
+    width: props.width
   }
 
   const onDateClick = (day) => {
     if (day && day.month === 0) {
       setSelectedDate(day.timestamp)
-      onDateSelect?.call(null, day.timestamp)
+      props.onDateSelect?.call(null, day.timestamp)
     }
   }
 
@@ -190,11 +174,13 @@ export const Calendar = ({
     setMonthDetails(getMonthDetails(y, m))
   }
 
-  const handleDay = (offset: number) => {
-    const selected = new Date(selectedDate)
-    selected.setDate(selected.getDate() + offset)
-    setSelectedDate(selected.valueOf())
-  }
+  useImperativeHandle(ref, () => ({
+    handleDay(offset: number) {
+      const selected = new Date(selectedDate)
+      selected.setDate(selected.getDate() + offset)
+      setSelectedDate(selected.valueOf())
+    }
+  }))
 
   return (
     <CalendarWrapper {...styles}>
@@ -236,8 +222,8 @@ export const Calendar = ({
                   onClick={() => onDateClick(day)}
                   {...styles}>
                   {day.month !== 0
-                    ? !isNullOrUndefined(dateBoxDisabledTxt)
-                      ? dateBoxDisabledTxt
+                    ? !isNullOrUndefined(props.dateBoxDisabledTxt)
+                      ? props.dateBoxDisabledTxt
                       : day.date
                     : day.date}
                 </DateBox>
@@ -248,4 +234,4 @@ export const Calendar = ({
       </MonthWapper>
     </CalendarWrapper>
   )
-}
+})

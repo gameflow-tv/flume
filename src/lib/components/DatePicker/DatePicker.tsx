@@ -109,16 +109,15 @@ export const DatePicker = ({
     setDayLabel(getFormatedDate(selected))
   }
 
+  const calRef = useRef(null)
+
   const handleDay = (offset) => {
+    calRef?.current.handleDay(offset)
     const date = selectedDate
     date.setDate(date.getDate() + offset)
     setSelectedDate(date)
     setDayLabel(getFormatedDate(date))
   }
-
-  useEffect(() => {
-    console.log('loaded')
-  }, [])
 
   return (
     <Wrapper {...styles}>
@@ -152,6 +151,7 @@ export const DatePicker = ({
       <div style={{ position: 'relative' }}>
         {editionMode && (
           <Calendar
+            ref={calRef}
             position={'absolute'}
             defaultDate={selectedDate}
             onDateSelect={handleCalendar}
