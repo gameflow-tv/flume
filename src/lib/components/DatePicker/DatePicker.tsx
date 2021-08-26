@@ -116,6 +116,10 @@ export const DatePicker = ({
     setDayLabel(getFormatedDate(date))
   }
 
+  useEffect(() => {
+    console.log('loaded')
+  }, [])
+
   return (
     <Wrapper {...styles}>
       <Grid>
@@ -149,7 +153,7 @@ export const DatePicker = ({
         {editionMode && (
           <Calendar
             position={'absolute'}
-            initialDate={selectedDate}
+            defaultDate={selectedDate}
             onDateSelect={handleCalendar}
           />
         )}

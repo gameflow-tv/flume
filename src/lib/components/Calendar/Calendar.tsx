@@ -1,6 +1,6 @@
 import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
 import { TypographyStyle } from '../../theme'
@@ -119,7 +119,7 @@ export type CalendarProps = {
   dateBoxSelectedtxtColor?: string
   dateBoxHoverBgColor?: string
   dateBoxHoverTxtColor?: string
-  initialDate?: Date
+  defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
 }
@@ -137,12 +137,12 @@ export const Calendar = ({
   dateBoxSelectedtxtColor,
   dateBoxHoverBgColor,
   dateBoxHoverTxtColor,
-  initialDate,
+  defaultDate,
   position,
   onDateSelect
 }: CalendarProps) => {
   const theme = useTheme()
-  const [selectedDay, setSelectedDay] = useState<number>(initialDate?.valueOf())
+  const [selectedDate, setSelectedDate] = useState<number>(defaultDate?.valueOf())
   const [month, setMonth] = useState(today.getMonth())
   const [year, setYear] = useState(today.getFullYear())
   const [monthDetails, setMonthDetails] = useState(
@@ -169,12 +169,12 @@ export const Calendar = ({
 
   const onDateClick = (day) => {
     if (day && day.month === 0) {
-      setSelectedDay(day.timestamp)
+      setSelectedDate(day.timestamp)
       onDateSelect?.call(null, day.timestamp)
     }
   }
 
-  const handleMonth = (offset) => {
+  const handleMonth = (offset: number) => {
     let y = year
     let m = month + offset
     if (m === -1) {
@@ -188,6 +188,12 @@ export const Calendar = ({
     setYear(y)
     setMonth(m)
     setMonthDetails(getMonthDetails(y, m))
+  }
+
+  const handleDay = (offset: number) => {
+    const selected = new Date(selectedDate)
+    selected.setDate(selected.getDate() + offset)
+    setSelectedDate(selected.valueOf())
   }
 
   return (
@@ -219,13 +225,13 @@ export const Calendar = ({
 
           {monthDetails.map((day, idx) => {
             return (
-              <AspectRatio aspectRatio={100}>
+              <AspectRatio key={`ar_${idx}`} aspectRatio={100}>
                 <DateBox
                   key={idx}
                   className={
                     (day.month !== 0 ? ' disabled' : '') +
                     (isCurrentDay(day) ? ' today' : '') +
-                    (isSelectedDay(day, selectedDay) ? ' selected' : '')
+                    (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
                   {...styles}>
