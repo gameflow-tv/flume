@@ -17,7 +17,68 @@ import {
   MonthDescription
 } from './Calendar.styles'
 
-const dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const getFirstDayOfWeek = () => {
+  const lang = navigator.language.toLowerCase()
+
+  switch (lang) {
+    case 'nn':
+    case 'nb':
+    case 'no':
+    case 'nb-no':
+    case 'nn-no':
+    case 'it':
+    case 'it-it':
+    case 'es':
+    case 'en-gb':
+      return 1
+    case 'pt':
+    case 'en':
+    case 'en-us':
+    case 'pt-br':
+    default:
+      return 0
+  }
+}
+
+const firstDay = getFirstDayOfWeek()
+
+const getDayString = (dayIndex: number) => {
+  const day = daysList.find((f) => f.id === dayIndex)
+  return day.name
+}
+
+const getCalendarDOW = () => {
+  let d = firstDay
+  let weekIdx = 0
+
+  const calendarDOW = [
+    { name: 'Sun', id: 0, weekIndex: 0 },
+    { name: 'Mon', id: 1, weekIndex: 0 },
+    { name: 'Tue', id: 2, weekIndex: 0 },
+    { name: 'Wed', id: 3, weekIndex: 0 },
+    { name: 'Thu', id: 4, weekIndex: 0 },
+    { name: 'Fri', id: 5, weekIndex: 0 },
+    { name: 'Sat', id: 6, weekIndex: 0 }
+  ]
+
+  do {
+    const idx = calendarDOW.findIndex((f) => f.id === d)
+    calendarDOW[idx].weekIndex = weekIdx
+    weekIdx++
+    if (d + 1 > 6) d = -1
+    d++
+  } while (d != firstDay)
+
+  return calendarDOW
+}
+
+const daysList = getCalendarDOW()
+
+const getDayIndex = (dayIndex: number) => {
+  const day = daysList.find((f) => f.id === dayIndex)
+  return day.weekIndex
+}
+
 const monthList = [
   'January',
   'February',
@@ -32,6 +93,7 @@ const monthList = [
   'November',
   'December'
 ]
+
 const today = new Date()
 
 const getNumberOfDays = (year, month) => {
@@ -57,12 +119,13 @@ const getDayDetails = (args) => {
     day,
     month,
     timestamp,
-    dayString: dayList[day]
+    // dayString: dayList[day]
+    dayString: getDayString(day)
   }
 }
 
 const getMonthDetails = (year, month) => {
-  const firstDay = new Date(year, month).getDay()
+  const firstDay = getDayIndex(new Date(year, month).getDay())
   const numberOfDays = getNumberOfDays(year, month)
   const monthArray = []
   const rows = 6
@@ -79,6 +142,7 @@ const getMonthDetails = (year, month) => {
         year,
         month
       })
+      // console.log(currentDay)
       monthArray.push(currentDay)
       index++
     }
@@ -211,11 +275,13 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
       </ControlWrapper>
       <MonthWapper>
         <DateGrid {...styles}>
-          {dayList.map((day, idx) => (
-            <DayBox key={idx} {...styles}>
-              {day}
-            </DayBox>
-          ))}
+          {daysList
+            .sort((a, b) => a.weekIndex - b.weekIndex)
+            .map((day, idx) => (
+              <DayBox key={idx} {...styles}>
+                {day.name}
+              </DayBox>
+            ))}
 
           {monthDetails.map((day, idx) => {
             return (
