@@ -1,6 +1,6 @@
 import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
 import { TypographyStyle } from '../../theme'
@@ -179,6 +179,14 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
       const selected = new Date(selectedDate)
       selected.setDate(selected.getDate() + offset)
       setSelectedDate(selected.valueOf())
+    },
+    moveToDate(date: Date) {
+      setSelectedDate(date.valueOf())
+      const y = date.getFullYear(),
+        m = date.getMonth()
+      setYear(y)
+      setMonth(m)
+      setMonthDetails(getMonthDetails(y, m))
     }
   }))
 

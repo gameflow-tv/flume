@@ -1,6 +1,6 @@
 import { faCalendarAlt, faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { TypographyStyle } from '../../theme'
 import AspectRatio from '../AspectRatio/AspectRatio'
@@ -67,6 +67,12 @@ const getFormatedDate = (date?: Date) => {
   }
 }
 
+const formatFieldValue = (dt: Date) => {
+  return `${dt.getFullYear().toString().padStart(4, '0')}-${(dt.getMonth() + 1)
+    .toString()
+    .padStart(2, '0')}-${dt.getDate().toString().padStart(2, '0')}`
+}
+
 export const DatePicker = ({
   width,
   navBgColor,
@@ -75,8 +81,8 @@ export const DatePicker = ({
   navHoverTxtColor
 }: DatePickerProps) => {
   const theme = useTheme()
-  const dateInput = useRef(null)
   const [selectedDate, setSelectedDate] = useState<Date>(getToday())
+  const [dateValue, setDateValue] = useState<string>(formatFieldValue(getToday()))
   const [dayLabel, setDayLabel] = useState(getFormatedDate(getToday()))
   const [editionMode, setEditionMode] = useState<boolean>(false)
 
@@ -99,8 +105,18 @@ export const DatePicker = ({
   }
 
   const handleDate = (e) => {
-    if (e.target.value && e.target.value.length > 0) setSelectedDate(new Date(e.target.value))
-    else setSelectedDate(new Date())
+    const val = e.target.value
+
+    if (val && val.length > 0) {
+      setDateValue(val)
+      const dt = val.split('-').map((d) => parseInt(d))
+      const selected = new Date(dt[0], dt[1] - 1, dt[2])
+      setSelectedDate(selected)
+      setDayLabel(getFormatedDate(selected))
+      if (calRef?.current !== null) {
+        calRef?.current.moveToDate(selected)
+      }
+    }
   }
 
   const handleCalendar = (timestamp: number) => {
@@ -132,14 +148,7 @@ export const DatePicker = ({
         <DateInput className="mthdescarea" onClick={handleEdition} {...styles}>
           <FontAwesomeIcon icon={faCalendarAlt} />
           {editionMode ? (
-            <input
-              type="date"
-              value={`${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1)
-                .toString()
-                .padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`}
-              onChange={handleDate}
-              ref={dateInput}
-            />
+            <input type="date" value={dateValue} onChange={handleDate} />
           ) : (
             <DateSpan {...styles}>{dayLabel}</DateSpan>
           )}
