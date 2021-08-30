@@ -81,8 +81,18 @@ export const DateInput = styled.div<DatePickerProps>`
       display: none;
     }
 
+    &::-webkit-clear-button {
+      display: none;
+    }
+
     &:focus {
       outline: none;
+    }
+  }
+
+  @-moz-document url-prefix() {
+    input[type='date'] {
+      clip-path: inset(0 17px 0 0);
     }
   }
 `

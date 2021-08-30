@@ -142,7 +142,6 @@ const getMonthDetails = (year, month) => {
         year,
         month
       })
-      // console.log(currentDay)
       monthArray.push(currentDay)
       index++
     }
@@ -155,7 +154,7 @@ const isCurrentDay = (day) => {
   const ref = today
   ref.setHours(0, 0, 0, 0)
 
-  return day.timestamp === ref.valueOf()
+  return day.timestamp === ref.valueOf() && day.month === 0
 }
 
 const isSelectedDay = (day, selectedTimestamp?: number) => {
