@@ -123,6 +123,7 @@ export const DatePicker = ({
     const selected = new Date(timestamp)
     setSelectedDate(selected)
     setDayLabel(getFormatedDate(selected))
+    setDateValue(formatFieldValue(selected))
   }
 
   const calRef = useRef(null)
