@@ -29,55 +29,55 @@ export type Typography = {
 
 const fallback: Typography = {
   header1: {
-    fontSize: '36px',
+    fontSize: '2.25rem', // '36px'
     lineHeight: 1.2,
     fontWeight: 600,
     fontFamily: 'Montserrat'
   },
   header2: {
-    fontSize: '24px',
+    fontSize: '1.5rem', // '24px'
     lineHeight: 1.2,
     fontWeight: 500,
     fontFamily: 'Montserrat'
   },
   header3: {
-    fontSize: '18px',
+    fontSize: '1.125rem', // '18px'
     lineHeight: 1.2,
     fontWeight: 600,
     fontFamily: 'Montserrat'
   },
   header4: {
-    fontSize: '16px',
+    fontSize: '1rem', // '16px'
     lineHeight: 1.2,
     fontWeight: 500,
     fontFamily: 'Montserrat'
   },
   header5: {
-    fontSize: '14px',
+    fontSize: '0.875rem', // '14px'
     lineHeight: 1.2,
     fontWeight: 500,
     fontFamily: 'Montserrat'
   },
   body1: {
-    fontSize: '14px',
+    fontSize: '0.875rem', // '14px'
     lineHeight: 1.3,
     fontWeight: 400,
     fontFamily: 'Mulish'
   },
   body2: {
-    fontSize: '12px',
+    fontSize: '0.75rem', // '12px'
     lineHeight: 1.2,
     fontWeight: 400,
     fontFamily: 'Mulish'
   },
   body3: {
-    fontSize: '10px',
+    fontSize: '0.625rem', // '10px'
     lineHeight: 1.2,
     fontWeight: 500,
     fontFamily: 'Mulish'
   },
   button: {
-    fontSize: '14px',
+    fontSize: '0.875rem', // '14px'
     lineHeight: 1.2,
     fontWeight: 500,
     fontFamily: 'Montserrat'

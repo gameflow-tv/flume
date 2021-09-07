@@ -46,6 +46,9 @@ export type Colors = {
   uncheckedText: string
   sliderBackground: string
   inputBackground: string
+  calendarDisabledText: string
+  calendarOnHover: string
+  dateBoxHoverTxtColor: string
 }
 
 const fallback: Colors = {
@@ -93,7 +96,10 @@ const fallback: Colors = {
   checkedText: palette.abbeyBlue,
   uncheckedText: palette.offWhite,
   sliderBackground: palette.codGray,
-  inputBackground: palette.white50
+  inputBackground: palette.white50,
+  calendarDisabledText: palette.dustyGray,
+  calendarOnHover: palette.abbeyGray,
+  dateBoxHoverTxtColor: palette.white
 }
 
 export default fallback

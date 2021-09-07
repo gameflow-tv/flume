@@ -22,7 +22,7 @@ export const SearchInput = (props: SearchInputProps) => {
 
   const styles: SearchInputProps = {
     borderColor: props.borderColor || theme.colors.shimmerHighlight,
-    color: props.color || theme.colors.inputBackground,
+    color: props.color || theme.colors.primaryText,
     typography: props.typography || theme.typography.body1,
     shadow: props.shadow || theme.shadows.small,
     borderRadius: props.borderRadius || theme.shapes.borders.small,
@@ -35,7 +35,7 @@ export const SearchInput = (props: SearchInputProps) => {
   return (
     <Wrapper>
       <Search type="text" placeholder="Search" {...styles} />
-      <Icon size={styles.iconSize} color={theme.colors.inputBackground}>
+      <Icon size={styles.iconSize} color={theme.colors.primaryText}>
         <FontAwesomeIcon icon={faSearch} />
       </Icon>
     </Wrapper>
