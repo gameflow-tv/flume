@@ -52,10 +52,13 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
     svg,
     p {
       opacity: 50%;
-      font-size: ${(props) => (props.size === 'large' ? '18px' : '16px')};
       color: ${(props) => props.foregroundColor};
     }
   }
-  min-width: ${(props) => (props.size === 'large' ? '42px' : '30px')};
-  min-height: ${(props) => (props.size === 'large' ? '42px' : '30px')};
+  font-size: ${(props) =>
+    props.size === 'large' ? '18px' : props.size === 'medium' ? '16px' : '14px'};
+  min-width: ${(props) =>
+    props.size === 'large' ? '42px' : props.size === 'medium' ? '37px' : '30px'};
+  min-height: ${(props) =>
+    props.size === 'large' ? '42px' : props.size === 'medium' ? '37px' : '30px'};
 `

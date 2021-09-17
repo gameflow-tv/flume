@@ -5,7 +5,7 @@ import { useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
 import { StyledIconButton, StyledIconButtonProps } from './IconButton.styles'
 
-export type IconButtonSize = 'small' | 'large'
+export type IconButtonSize = 'small' | 'medium' | 'large'
 
 export type IconButtonProps = StyledIconButtonProps & {
   icon?: IconProp
