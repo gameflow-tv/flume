@@ -51,9 +51,17 @@ CustomSize.args = {
 
 export const CustomColor: Story<CheckboxProps> = Template.bind({})
 CustomColor.args = {
-  checkedBackground: '#2196F3',
-  uncheckedBackground: '#eee',
-  uncheckedBorder: 'red',
+  uncheckedBackground: '#360A14',
+  uncheckedBorder: '#961D4E',
+  uncheckedTextColor: '#FCB9B2',
+  uncheckedContent: <FontAwesomeIcon icon={faGamepadAlt} />,
   checkedTextColor: 'white',
-  uncheckedTextColor: 'red'
+  checkedBackground: '#2196F3',
+  checkedBorder: '#ffbf00'
+}
+
+export const EmptyContent: Story<CheckboxProps> = Template.bind({})
+EmptyContent.args = {
+  uncheckedContent: '',
+  checkedContent: ''
 }

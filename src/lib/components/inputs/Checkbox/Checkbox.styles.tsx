@@ -19,6 +19,7 @@ export type SpanProps = {
   checkedBackground: string
   uncheckedBackground: string
   uncheckedBorder: string
+  checkedBorder?: string
   checkedTextColor: string
   uncheckedTextColor: string
   spacing: string
@@ -36,7 +37,7 @@ export const CheckInput = styled.input.attrs({
   &:checked {
     & ~ span {
       background-color: ${(props) => props.checkedBackground};
-      border-color: ${(props) => props.checkedBackground};
+      border-color: ${(props) => props.checkedBorder || props.checkedBackground};
       display: flex;
       justify-content: center;
       align-items: center;

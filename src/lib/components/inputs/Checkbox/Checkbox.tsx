@@ -19,6 +19,7 @@ export type CheckboxProps = {
   checkedBackground?: string
   uncheckedBackground?: string
   uncheckedBorder?: string
+  checkedBorder?: string
   checkedTextColor?: string
   uncheckedTextColor?: string
 }
@@ -43,6 +44,7 @@ export const Checkbox = ({
     checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
     uncheckedBackground: props.uncheckedBackground || theme.colors.background,
     uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+    checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
     checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
     uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
     width: props.width,
