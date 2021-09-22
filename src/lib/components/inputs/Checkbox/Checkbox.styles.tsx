@@ -49,7 +49,8 @@ export const CheckInput = styled.input.attrs({
 `
 
 export const SpanEl = styled.span<SpanProps>`
-  position: absolute;
+  /* The position line below was commented due to affecting the display flex in some components
+  position: absolute; */
   width: ${(props) => props.width || '21px'};
   height: ${(props) => props.height || '21px'};
   background-color: ${(props) => props.uncheckedBackground};
