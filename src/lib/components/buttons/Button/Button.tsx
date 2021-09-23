@@ -4,10 +4,9 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useTheme } from '../../../hooks'
+import { ButtonVariant } from '..'
 
 export type IconPosition = 'left' | 'right'
-
-export type ButtonVariant = 'primary' | 'secondary' | 'signal'
 
 export type ButtonSize = 'large' | 'medium' | 'small'
 
