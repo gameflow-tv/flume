@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { forwardRef, ReactNode, useEffect, useImperativeHandle, useState } from 'react'
 import { faCheck, faPlus } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TypographyStyle } from '../../../theme'
@@ -22,46 +22,60 @@ export type CheckboxProps = {
   checkedBorder?: string
   checkedTextColor?: string
   uncheckedTextColor?: string
+  className?: string
 }
 
-export const Checkbox = ({
-  id = _.uniqueId(),
-  checked = false,
-  checkedContent = <FontAwesomeIcon icon={faCheck} />,
-  uncheckedContent = <FontAwesomeIcon icon={faPlus} />,
-  ...props
-}: CheckboxProps) => {
-  const [isChecked, setIsChecked] = useState(checked)
+export const Checkbox = forwardRef(
+  (
+    {
+      id = _.uniqueId(),
+      checked = false,
+      checkedContent = <FontAwesomeIcon icon={faCheck} />,
+      uncheckedContent = <FontAwesomeIcon icon={faPlus} />,
+      ...props
+    }: CheckboxProps,
+    ref
+  ) => {
+    const [isChecked, setIsChecked] = useState(checked)
 
-  useEffect(() => {
-    props.onChange && props.onChange.call(isChecked)
-  }, [isChecked])
+    useImperativeHandle(ref, () => {
+      return {
+        isChecked,
+        setIsChecked
+      }
+    })
 
-  const theme = useTheme()
+    useEffect(() => {
+      props.onChange && props.onChange.call(isChecked)
+    }, [isChecked])
 
-  const styles: SpanProps = {
-    typography: props.typography || theme.typography.body2,
-    checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
-    uncheckedBackground: props.uncheckedBackground || theme.colors.background,
-    uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
-    checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
-    checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
-    uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
-    width: props.width,
-    height: props.height,
-    spacing: theme.spacing.xxsmall,
-    ...props
+    const theme = useTheme()
+
+    const styles: SpanProps = {
+      typography: props.typography || theme.typography.body2,
+      checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
+      uncheckedBackground: props.uncheckedBackground || theme.colors.background,
+      uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+      checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
+      checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
+      uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+      width: props.width,
+      height: props.height,
+      spacing: theme.spacing.xxsmall,
+      ...props
+    }
+
+    return (
+      <Wrapper {...styles}>
+        <CheckInput
+          id={id}
+          className={props.className}
+          checked={isChecked}
+          onChange={(e) => setIsChecked(e.target.checked)}
+          {...styles}
+        />
+        <SpanEl {...styles}>{isChecked ? checkedContent : uncheckedContent}</SpanEl>
+      </Wrapper>
+    )
   }
-
-  return (
-    <Wrapper {...styles}>
-      <CheckInput
-        id={id}
-        checked={isChecked}
-        onChange={(e) => setIsChecked(e.target.checked)}
-        {...styles}
-      />
-      <SpanEl {...styles}>{isChecked ? checkedContent : uncheckedContent}</SpanEl>
-    </Wrapper>
-  )
-}
+)
