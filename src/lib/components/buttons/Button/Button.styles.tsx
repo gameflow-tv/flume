@@ -1,7 +1,8 @@
 import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
 import styled from 'styled-components'
-import { ButtonSize, IconPosition, ButtonVariant } from './'
+import { ButtonSize, IconPosition } from './'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { ButtonVariant } from '..'
 
 export type StyledButtonProps = {
   borderRadius?: string
