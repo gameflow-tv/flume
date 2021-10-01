@@ -2,9 +2,9 @@ import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../../hooks'
-import { isNullOrUndefined } from '../../helpers/general'
-import { TypographyStyle } from '../../theme'
-import AspectRatio from '../AspectRatio/AspectRatio'
+import { isNullOrUndefined } from '../../../helpers/general'
+import { TypographyStyle } from '../../../theme'
+import AspectRatio from '../../AspectRatio/AspectRatio'
 import {
   DateBox,
   DayBox,
@@ -18,7 +18,7 @@ import {
 } from './Calendar.styles'
 
 const getFirstDayOfWeek = () => {
-  const lang = navigator.language.toLowerCase()
+  const lang = navigator?.language?.toLowerCase() ?? 'en-gb'
 
   switch (lang) {
     case 'nn':

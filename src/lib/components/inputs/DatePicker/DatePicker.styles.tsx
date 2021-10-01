@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../theme'
+import { typographyToCss } from '../../../theme'
 import { DatePickerProps } from './DatePicker'
 
 export const Wrapper = styled.div<DatePickerProps>`

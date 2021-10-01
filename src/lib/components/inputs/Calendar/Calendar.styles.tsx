@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../theme'
+import { typographyToCss } from '../../../theme'
 import { CalendarProps } from './Calendar'
 
 export const CalendarWrapper = styled.div<CalendarProps>`
