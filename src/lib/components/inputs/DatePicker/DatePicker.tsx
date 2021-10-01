@@ -1,9 +1,9 @@
 import { faCalendarAlt, faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
-import { useTheme } from '../../../hooks'
-import { TypographyStyle } from '../../theme'
-import AspectRatio from '../AspectRatio/AspectRatio'
+import { useTheme } from '../../../../hooks'
+import { TypographyStyle } from '../../../theme'
+import AspectRatio from '../../AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
 import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
 

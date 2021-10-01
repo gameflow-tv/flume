@@ -2,9 +2,9 @@ import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../../hooks'
-import { isNullOrUndefined } from '../../helpers/general'
-import { TypographyStyle } from '../../theme'
-import AspectRatio from '../AspectRatio/AspectRatio'
+import { isNullOrUndefined } from '../../../helpers/general'
+import { TypographyStyle } from '../../../theme'
+import AspectRatio from '../../AspectRatio/AspectRatio'
 import {
   DateBox,
   DayBox,
@@ -293,7 +293,8 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
-                  {...styles}>
+                  {...styles}
+                >
                   {day.month !== 0
                     ? !isNullOrUndefined(props.dateBoxDisabledTxt)
                       ? props.dateBoxDisabledTxt
