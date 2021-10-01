@@ -18,7 +18,7 @@ import {
 } from './Calendar.styles'
 
 const getFirstDayOfWeek = () => {
-  const lang = navigator.language.toLowerCase()
+  const lang = navigator?.language?.toLowerCase() ?? 'en-gb'
 
   switch (lang) {
     case 'nn':
