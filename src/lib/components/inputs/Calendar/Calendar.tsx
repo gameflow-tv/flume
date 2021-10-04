@@ -19,7 +19,7 @@ import {
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
-  if (window) {
+  if (typeof window !== 'undefined') {
     lang = navigator?.language?.toLowerCase() ?? 'en-gb'
   }
 
@@ -296,8 +296,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
-                  {...styles}
-                >
+                  {...styles}>
                   {day.month !== 0
                     ? !isNullOrUndefined(props.dateBoxDisabledTxt)
                       ? props.dateBoxDisabledTxt
