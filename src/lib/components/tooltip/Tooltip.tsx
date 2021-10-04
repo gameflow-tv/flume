@@ -18,8 +18,7 @@ export const Tooltip = ({ content = '', position = 'bottom' }: TooltipProps) => 
       padding={theme.spacing.xsmall}
       mediumSpacing={theme.spacing.medium}
       content={content}
-      position={position}
-    >
+      position={position}>
       <input type="text" placeholder="This is the input" />
     </ToolTip>
   )

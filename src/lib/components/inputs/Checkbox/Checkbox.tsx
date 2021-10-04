@@ -50,7 +50,6 @@ export const Checkbox = forwardRef(
     }, [isChecked])
 
     const theme = useTheme()
-
     const styles: SpanProps = {
       typography: props.typography || theme.typography.body2,
       checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
