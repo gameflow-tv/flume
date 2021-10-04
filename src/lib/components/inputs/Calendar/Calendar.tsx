@@ -20,7 +20,7 @@ import {
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
   if (typeof window !== 'undefined') {
-    lang = navigator?.language?.toLowerCase() ?? 'en-gb'
+    lang = navigator.language.toLowerCase()
   }
 
   switch (lang) {
