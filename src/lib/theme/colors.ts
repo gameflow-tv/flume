@@ -78,7 +78,7 @@ const fallback: Colors = {
   textField: palette.emperorGray,
   onTextField: palette.white,
   shimmerHighlight: palette.white10,
-  shimmerBackground: palette.black10,
+  shimmerBackground: palette.emperorGray,
   toggle: palette.codGray,
   onToggle: palette.white,
   card: palette.emperorGray,

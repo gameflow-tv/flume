@@ -47,7 +47,6 @@ export const IconButton = (props: IconButtonProps) => {
   const theme = useTheme()
   props = getIconButtonStyles(props, theme)
 
-  console.log(props)
   return (
     <StyledIconButton {...props} onClick={props.onClick}>
       <FontAwesomeIcon icon={props.icon} />
