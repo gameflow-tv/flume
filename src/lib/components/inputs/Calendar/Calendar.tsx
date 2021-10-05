@@ -296,7 +296,8 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
-                  {...styles}>
+                  {...styles}
+                >
                   {day.month !== 0
                     ? !isNullOrUndefined(props.dateBoxDisabledTxt)
                       ? props.dateBoxDisabledTxt

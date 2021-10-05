@@ -67,7 +67,8 @@ export const TextInput = (props: TextInputProps) => {
                     criteriaRule(crit.condition.type, crit.condition.rule, inputValue)
                       ? theme.colors.success
                       : theme.colors.primary
-                  }>
+                  }
+                >
                   {crit.criteria}
                 </ListItem>
               )
