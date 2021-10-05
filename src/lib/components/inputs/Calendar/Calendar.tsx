@@ -192,7 +192,9 @@ export type CalendarProps = {
 
 export const Calendar = forwardRef((props: CalendarProps, ref) => {
   const theme = useTheme()
-  const [selectedDate, setSelectedDate] = useState<number>(props.defaultDate?.valueOf())
+  const [selectedDate, setSelectedDate] = useState<number>(
+    props.defaultDate ? props.defaultDate.valueOf() : 0
+  )
   const [month, setMonth] = useState(today.getMonth())
   const [year, setYear] = useState(today.getFullYear())
   const [monthDetails, setMonthDetails] = useState(
@@ -296,8 +298,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
-                  {...styles}
-                >
+                  {...styles}>
                   {day.month !== 0
                     ? !isNullOrUndefined(props.dateBoxDisabledTxt)
                       ? props.dateBoxDisabledTxt
