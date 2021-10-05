@@ -1,6 +1,6 @@
 {
   "name": "@gameflow-tv/flume",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "description": "React implementation of the Flume design system",
   "module": "dist/index.js",
   "files": [
