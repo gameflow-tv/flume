@@ -113,8 +113,8 @@ export const DatePicker = ({
       const selected = new Date(dt[0], dt[1] - 1, dt[2])
       setSelectedDate(selected)
       setDayLabel(getFormatedDate(selected))
-      if (calRef?.current !== null) {
-        calRef?.current.moveToDate(selected)
+      if (calRef ? calRef.current !== null : false) {
+        calRef.current.moveToDate(selected)
       }
     }
   }
@@ -129,8 +129,8 @@ export const DatePicker = ({
   const calRef = useRef(null)
 
   const handleDay = (offset) => {
-    if (calRef?.current !== null) {
-      calRef?.current.handleDay(offset)
+    if (calRef ? calRef.current !== null : false) {
+      calRef.current.handleDay(offset)
     }
     const date = selectedDate
     date.setDate(date.getDate() + offset)

@@ -222,7 +222,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
   const onDateClick = (day) => {
     if (day && day.month === 0) {
       setSelectedDate(day.timestamp)
-      props.onDateSelect?.call(null, day.timestamp)
+      props.onDateSelect ? props.onDateSelect.call(null, day.timestamp) : null
     }
   }
 
