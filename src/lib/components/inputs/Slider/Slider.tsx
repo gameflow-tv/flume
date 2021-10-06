@@ -26,6 +26,7 @@ export type SliderProps = {
   minLabel?: ReactNode
   maxLabel?: ReactNode
   onChange?: (value: number) => void
+  step?: string | number
 }
 
 export const Slider = ({
@@ -37,7 +38,8 @@ export const Slider = ({
   max,
   minLabel,
   maxLabel,
-  onChange
+  onChange,
+  step
 }: SliderProps) => {
   const theme = useTheme()
 
@@ -65,6 +67,7 @@ export const Slider = ({
           min={min}
           max={max}
           onChange={(e) => onChange && onChange.call(e.target.value)}
+          step={step}
           {...styles}
         />
         <RangeLabel {...styles}>{maxLabel}</RangeLabel>
