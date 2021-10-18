@@ -15,6 +15,7 @@ export type DatePickerProps = {
   navHoverTxtColor?: string
   inputTypo?: TypographyStyle
   shadow?: string
+  onDateChange?: (date: Date) => void
 }
 
 const getToday = () => {
@@ -78,10 +79,11 @@ export const DatePicker = ({
   navBgColor,
   navTxtColor,
   navHoverBgColor,
-  navHoverTxtColor
+  navHoverTxtColor,
+  onDateChange
 }: DatePickerProps) => {
   const theme = useTheme()
-  const [selectedDate, setSelectedDate] = useState<Date>(getToday())
+  const [selectedDate, setInternalSelectedDate] = useState<Date>(getToday())
   const [dateValue, setDateValue] = useState<string>(formatFieldValue(getToday()))
   const [dayLabel, setDayLabel] = useState(getFormatedDate(getToday()))
   const [editionMode, setEditionMode] = useState<boolean>(false)
@@ -94,6 +96,11 @@ export const DatePicker = ({
     navHoverTxtColor: navHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
     inputTypo: theme.typography.body1,
     shadow: theme.colors.shimmerBackground
+  }
+
+  const setSelectedDate = (date: Date) => {
+    setInternalSelectedDate(date)
+    onDateChange?.call(date)
   }
 
   const handleEdition = (e) => {
