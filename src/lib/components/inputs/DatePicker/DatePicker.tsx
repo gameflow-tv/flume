@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
 import { useTheme } from '../../../../hooks'
 import { TypographyStyle } from '../../../theme'
-import AspectRatio from '../../AspectRatio/AspectRatio'
+import AspectRatio from '../../common/AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
 import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
 
@@ -102,8 +102,9 @@ export const DatePicker = ({
   }
 
   const setSelectedDate = (date: Date) => {
+    console.log(date)
     setInternalSelectedDate(date)
-    onDateChange?.call(date)
+    onDateChange?.(date ?? new Date())
   }
 
   const handleEdition = (e) => {

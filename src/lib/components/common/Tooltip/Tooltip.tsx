@@ -1,6 +1,6 @@
 import React from 'react'
 import { ToolTip, TooltipPosition } from './Tooltip.styles'
-import { useTheme } from '../../hooks'
+import { useTheme } from '../../../hooks'
 
 export type TooltipProps = {
   content: string
