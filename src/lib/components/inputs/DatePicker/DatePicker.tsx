@@ -16,6 +16,7 @@ export type DatePickerProps = {
   inputTypo?: TypographyStyle
   shadow?: string
   onDateChange?: (date: Date) => void
+  zIndex?: number
 }
 
 const getToday = () => {
@@ -80,7 +81,8 @@ export const DatePicker = ({
   navTxtColor,
   navHoverBgColor,
   navHoverTxtColor,
-  onDateChange
+  onDateChange,
+  zIndex
 }: DatePickerProps) => {
   const theme = useTheme()
   const [selectedDate, setInternalSelectedDate] = useState<Date>(getToday())
@@ -95,7 +97,8 @@ export const DatePicker = ({
     navHoverBgColor: navHoverBgColor || theme.colors.calendarOnHover,
     navHoverTxtColor: navHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
     inputTypo: theme.typography.body1,
-    shadow: theme.colors.shimmerBackground
+    shadow: theme.colors.shimmerBackground,
+    zIndex
   }
 
   const setSelectedDate = (date: Date) => {

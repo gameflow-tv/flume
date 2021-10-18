@@ -7,6 +7,7 @@ export const Wrapper = styled.div<DatePickerProps>`
   position: relative;
   width: ${(props) => props.width};
   height: 45px;
+  z-index: ${(props) => (props.zIndex ? props.zIndex : 'inherit')};
 `
 
 export const Grid = styled.div`
