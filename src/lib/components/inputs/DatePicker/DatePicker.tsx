@@ -1,7 +1,7 @@
 import { faCalendarAlt, faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
-import { useTheme } from '../../../../hooks'
+import { useTheme } from '../../../hooks'
 import { TypographyStyle } from '../../../theme'
 import AspectRatio from '../../common/AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
@@ -102,9 +102,8 @@ export const DatePicker = ({
   }
 
   const setSelectedDate = (date: Date) => {
-    console.log(date)
     setInternalSelectedDate(date)
-    onDateChange?.(date ?? new Date())
+    onDateChange?.call(date ?? new Date())
   }
 
   const handleEdition = (e) => {

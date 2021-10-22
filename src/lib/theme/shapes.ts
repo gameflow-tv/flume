@@ -1,5 +1,6 @@
 export type Borders = {
   none: string
+  xsmall: string
   small: string
   medium: string
   pill: string
@@ -14,6 +15,7 @@ export type Shapes = {
 const fallback: Shapes = {
   borders: {
     none: '0px',
+    xsmall: '2px',
     small: '4px',
     medium: '6px',
     pill: '100px',
