@@ -174,17 +174,17 @@ export type CalendarProps = {
   width?: string
   calendarBgColor?: string
   dayBoxBgColor?: string
-  dayBoxTxtColor?: string
+  dayBoxTextColor?: string
   dayBoxTypo?: TypographyStyle
   dateBoxBgColor?: string
-  dateBoxTxtColor?: string
+  dateBoxTextColor?: string
   dateBoxTypo?: TypographyStyle
-  dateBoxDisabledTxt?: string
-  dateBoxDisabledTxtColor?: string
+  dateBoxDisabledText?: string
+  dateBoxDisabledTextColor?: string
   dateBoxSelectedBgColor?: string
   dateBoxSelectedtxtColor?: string
   dateBoxHoverBgColor?: string
-  dateBoxHoverTxtColor?: string
+  dateBoxHoverTextColor?: string
   defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
@@ -204,16 +204,16 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
   const styles = {
     calendarBgColor: props.calendarBgColor || theme.colors.card,
     dayBoxBgColor: props.dayBoxBgColor || 'transparent',
-    dayBoxTxtColor: props.dayBoxTxtColor || theme.colors.tertiaryText,
+    dayBoxTextColor: props.dayBoxTextColor || theme.colors.tertiaryText,
     dayBoxTypo: theme.typography.body3,
     dateBoxBgColor: props.dateBoxBgColor || theme.colors.sliderBackground,
-    dateBoxTxtColor: props.dateBoxTxtColor || theme.colors.secondaryText,
+    dateBoxTextColor: props.dateBoxTextColor || theme.colors.secondaryText,
     dateBoxTypo: theme.typography.body1,
-    dateBoxDisabledTxtColor: props.dateBoxDisabledTxtColor || theme.colors.calendarDisabledText,
+    dateBoxDisabledTextColor: props.dateBoxDisabledTextColor || theme.colors.calendarDisabledText,
     dateBoxSelectedBgColor: props.dateBoxSelectedBgColor || theme.colors.primary,
     dateBoxSelectedtxtColor: props.dateBoxSelectedtxtColor || theme.colors.onPrimary,
     dateBoxHoverBgColor: props.dateBoxHoverBgColor || theme.colors.calendarOnHover,
-    dateBoxHoverTxtColor: props.dateBoxHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
+    dateBoxHoverTextColor: props.dateBoxHoverTextColor || theme.colors.dateBoxHoverTextColor,
     monthRows: Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7),
     position: props.position,
     width: props.width
@@ -301,8 +301,8 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                   {...styles}
                 >
                   {day.month !== 0
-                    ? !isNullOrUndefined(props.dateBoxDisabledTxt)
-                      ? props.dateBoxDisabledTxt
+                    ? !isNullOrUndefined(props.dateBoxDisabledText)
+                      ? props.dateBoxDisabledText
                       : day.date
                     : day.date}
                 </DateBox>

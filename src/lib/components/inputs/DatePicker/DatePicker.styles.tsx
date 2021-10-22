@@ -46,14 +46,14 @@ export const NavBtn = styled.div<DatePickerProps>`
   box-shadow: 0px 2px 6px ${(props) => props.shadow};
 
   & > svg {
-    color: ${(props) => props.navTxtColor};
+    color: ${(props) => props.navTextColor};
   }
 
   &:hover {
     background-color: ${(props) => props.navHoverBgColor};
 
     & > svg {
-      color: ${(props) => props.navHoverTxtColor};
+      color: ${(props) => props.navHoverTextColor};
     }
   }
 `
@@ -64,7 +64,7 @@ export const DateInput = styled.div<DatePickerProps>`
   justify-content: center;
   ${(props) => typographyToCss(props.inputTypo)};
   background-color: ${(props) => props.navBgColor};
-  color: ${(props) => props.navTxtColor};
+  color: ${(props) => props.navTextColor};
   cursor: pointer;
   box-shadow: 0px 2px 6px ${(props) => props.shadow};
   border-radius: 4px;
@@ -74,7 +74,7 @@ export const DateInput = styled.div<DatePickerProps>`
     text-align: center;
     text-transform: uppercase;
     ${(props) => typographyToCss(props.inputTypo)};
-    color: ${(props) => props.navTxtColor};
+    color: ${(props) => props.navTextColor};
     background-color: transparent;
     cursor: text;
 
@@ -100,7 +100,7 @@ export const DateInput = styled.div<DatePickerProps>`
 
 export const DateSpan = styled.div<DatePickerProps>`
   ${(props) => typographyToCss(props.inputTypo)};
-  color: ${(props) => props.navTxtColor};
+  color: ${(props) => props.navTextColor};
   background-color: transparent;
   margin-left: 8px;
 `

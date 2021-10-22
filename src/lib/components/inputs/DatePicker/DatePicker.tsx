@@ -10,9 +10,9 @@ import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
 export type DatePickerProps = {
   width?: string
   navBgColor?: string
-  navTxtColor?: string
+  navTextColor?: string
   navHoverBgColor?: string
-  navHoverTxtColor?: string
+  navHoverTextColor?: string
   inputTypo?: TypographyStyle
   shadow?: string
   onDateChange?: (date: Date) => void
@@ -78,9 +78,9 @@ const formatFieldValue = (dt: Date) => {
 export const DatePicker = ({
   width,
   navBgColor,
-  navTxtColor,
+  navTextColor,
   navHoverBgColor,
-  navHoverTxtColor,
+  navHoverTextColor,
   onDateChange,
   zIndex
 }: DatePickerProps) => {
@@ -93,9 +93,9 @@ export const DatePicker = ({
   const styles = {
     width: width || '328px',
     navBgColor: navBgColor || theme.colors.card,
-    navTxtColor: navTxtColor || theme.colors.secondaryText,
+    navTextColor: navTextColor || theme.colors.secondaryText,
     navHoverBgColor: navHoverBgColor || theme.colors.calendarOnHover,
-    navHoverTxtColor: navHoverTxtColor || theme.colors.dateBoxHoverTxtColor,
+    navHoverTextColor: navHoverTextColor || theme.colors.dateBoxHoverTextColor,
     inputTypo: theme.typography.body1,
     shadow: theme.colors.shimmerBackground,
     zIndex

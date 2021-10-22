@@ -31,6 +31,7 @@ export type Colors = {
   toggle: string
   onToggle: string
   card: string
+  cardOverlay: string
   shadow: string
   overlay: string
   modalOverlay: string
@@ -48,7 +49,7 @@ export type Colors = {
   inputBackground: string
   calendarDisabledText: string
   calendarOnHover: string
-  dateBoxHoverTxtColor: string
+  dateBoxHoverTextColor: string
 }
 
 const fallback: Colors = {
@@ -82,6 +83,7 @@ const fallback: Colors = {
   toggle: palette.codGray,
   onToggle: palette.white,
   card: palette.emperorGray,
+  cardOverlay: palette.abbeyGray,
   shadow: palette.black20,
   overlay: palette.black40,
   modalOverlay: palette.black60,
@@ -99,7 +101,7 @@ const fallback: Colors = {
   inputBackground: palette.white50,
   calendarDisabledText: palette.dustyGray,
   calendarOnHover: palette.abbeyGray,
-  dateBoxHoverTxtColor: palette.white
+  dateBoxHoverTextColor: palette.white
 }
 
 export default fallback

@@ -54,14 +54,14 @@ export const NavBtn = styled.div<CalendarProps>`
   cursor: pointer;
 
   & > svg {
-    color: ${(props) => props.dateBoxTxtColor};
+    color: ${(props) => props.dateBoxTextColor};
   }
 
   &:hover {
     background-color: ${(props) => props.dateBoxHoverBgColor};
 
     & > svg {
-      color: ${(props) => props.dateBoxHoverTxtColor};
+      color: ${(props) => props.dateBoxHoverTextColor};
     }
   }
 `
@@ -72,7 +72,7 @@ export const MonthDescription = styled.p<CalendarProps>`
   align-items: center;
   ${(props) => typographyToCss(props.dateBoxTypo)};
   font-weight: 600;
-  color: ${(props) => props.dateBoxHoverTxtColor};
+  color: ${(props) => props.dateBoxHoverTextColor};
   text-transform: uppercase;
 `
 
@@ -102,7 +102,7 @@ export const DayBox = styled.div<CalendarProps>`
   justify-content: space-around;
   align-items: center;
   border-radius: 4px;
-  color: ${(props) => props.dayBoxTxtColor};
+  color: ${(props) => props.dayBoxTextColor};
   ${(props) => typographyToCss(props.dayBoxTypo)};
   text-transform: uppercase;
 `
@@ -115,13 +115,13 @@ export const DateBox = styled.div<CalendarProps>`
   justify-content: center;
   background-color: ${(props) => props.dateBoxBgColor};
   border-radius: 4px;
-  color: ${(props) => props.dateBoxTxtColor};
+  color: ${(props) => props.dateBoxTextColor};
   ${(props) => typographyToCss(props.dateBoxTypo)};
   cursor: pointer;
 
   &:hover {
     background-color: ${(props) => props.dateBoxHoverBgColor};
-    color: ${(props) => props.dateBoxHoverTxtColor};
+    color: ${(props) => props.dateBoxHoverTextColor};
   }
   &.today {
     border: 1px solid ${(props) => props.dateBoxSelectedBgColor};
@@ -132,6 +132,6 @@ export const DateBox = styled.div<CalendarProps>`
   }
 
   &.disabled {
-    color: ${(props) => props.dateBoxDisabledTxtColor};
+    color: ${(props) => props.dateBoxDisabledTextColor};
   }
 `
