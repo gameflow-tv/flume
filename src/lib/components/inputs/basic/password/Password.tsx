@@ -1,9 +1,13 @@
+import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
+import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { InputProps } from '../Input'
-import { InputGroup, StyledInput } from '../shared/shared.styles'
+// import { StyledInput } from '../shared/shared.styles'
+import { ShowPassword, PasswordGroup, PasswordInput, VerificationIcon } from './Password.styles'
 
 export type PasswordProps = InputProps & {
-  // specifid password component props
+  // specified password component props
   readOnly?: boolean
 }
 
@@ -22,9 +26,19 @@ export const Password = (props: PasswordProps) => {
   }
 
   return (
-    <InputGroup>
-      <StyledInput {...props} />
-      <button onClick={() => toggleType()}>o</button>
-    </InputGroup>
+    <PasswordGroup>
+      <label>Label</label>
+      <PasswordInput {...props} />
+      <ShowPassword onClick={() => toggleType()}>
+        <VerificationIcon>
+          <FontAwesomeIcon icon={faCheckCircle} />
+        </VerificationIcon>
+        {initialType === 'password' ? (
+          <FontAwesomeIcon icon={faEye} />
+        ) : (
+          <FontAwesomeIcon icon={faEyeSlash} />
+        )}
+      </ShowPassword>
+    </PasswordGroup>
   )
 }

@@ -10,7 +10,7 @@ export const StyledInput = styled.input.attrs((props) => ({
 }))<InputProps | PasswordProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
-  width: 100%;
+  width: 261px;
   height: 41px;
   background-color: #36393b;
   border-radius: 4px;
