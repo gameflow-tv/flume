@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
-import { InputGroup, StyledInput } from './shared/shared.styles'
+import { FormGroup, StyledInput, StyledLabel } from './shared/shared.styles'
 
 export type InputType =
   | 'checkbox'
@@ -18,6 +18,8 @@ export type InputType =
 export type InputProps = {
   type: InputType
   disabled?: boolean
+  label?: ReactNode
+  placeholder?: string | ReactNode
   cursor?: string
   onChange?: (e?: any) => void
 }
@@ -44,5 +46,10 @@ export const Input = (props: InputProps) => {
         return <StyledInput type="text" />
     }
   }
-  return <InputGroup>{RenderInput()}</InputGroup>
+  return (
+    <FormGroup>
+      {!isEmpty(props.label) && <StyledLabel>{props.label}</StyledLabel>}
+      {RenderInput()}
+    </FormGroup>
+  )
 }

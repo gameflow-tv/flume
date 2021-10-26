@@ -3,6 +3,8 @@ import theme from '../../../../theme/theme'
 import { InputProps } from '../Input'
 import { PasswordProps } from '../password/Password'
 
+export const StyledLabel = styled.label``
+
 export const StyledInput = styled.input.attrs((props) => ({
   type: props.type
 }))<InputProps | PasswordProps>`
@@ -20,6 +22,9 @@ export const StyledInput = styled.input.attrs((props) => ({
   display: flex;
   align-items: center;
 `
-export const InputGroup = styled.div`
+
+export const FormGroup = styled.div`
   position: relative;
 `
+
+export const InputGroup = styled.div``
