@@ -19,7 +19,7 @@ export type InputProps = {
   type: InputType
   disabled?: boolean
   cursor?: string
-  onChange?: () => void
+  onChange?: (e?: any) => void
 }
 
 const validateRequired = (props: InputProps) => {

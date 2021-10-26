@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { InputProps } from '../Input'
+import { PasswordProps } from '../password/Password'
 
 export const StyledInput = styled.input.attrs((props) => ({
   type: props.type
-}))<InputProps>`
+}))<InputProps | PasswordProps>`
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
 `
-export const InputGroup = styled.div<InputProps>``
+export const InputGroup = styled.div``

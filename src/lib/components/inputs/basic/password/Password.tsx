@@ -23,7 +23,7 @@ export const Password = (props: PasswordProps) => {
 
   return (
     <InputGroup>
-      <StyledInput type={initialType} onChange={handleChange} />
+      <StyledInput type={initialType} onChange={handleChange} {...props} />
       <button onClick={() => toggleType()}>o</button>
     </InputGroup>
   )
