@@ -2,7 +2,7 @@ import React from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
-import { StyledInput } from './shared/shared.styles'
+import { InputGroup, StyledInput } from './shared/shared.styles'
 
 export type InputType =
   | 'checkbox'
@@ -34,12 +34,15 @@ export const Input = (props: InputProps) => {
   validateRequired(props)
   const type = props.type.toLowerCase()
 
-  switch (type) {
-    case 'password':
-      return <Password {...props} />
-    case 'checkbox':
-      return <Checkbox />
-    default:
-      return <StyledInput type="text" />
+  const RenderInput = () => {
+    switch (type) {
+      case 'password':
+        return <Password {...props} />
+      case 'checkbox':
+        return <Checkbox />
+      default:
+        return <StyledInput type="text" />
+    }
   }
+  return <InputGroup>{RenderInput()}</InputGroup>
 }
