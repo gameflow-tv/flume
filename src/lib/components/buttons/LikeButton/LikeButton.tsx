@@ -45,8 +45,7 @@ export const LikeButton = (props: LikeButtonProps) => {
       neutralColor={theme.colors.primaryText}
       background={props.background || theme.colors.onBackground}
       transition={props.transition || theme.transitions.long}
-      {...styles}
-    >
+      {...styles}>
       <FontAwesomeIcon icon={[liked ? 'fas' : 'fal', 'heart' as IconName]} />
     </LikeIcon>
   )
