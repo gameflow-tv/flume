@@ -1,25 +1,19 @@
-import React, { ReactNode } from 'react'
+import React, { HTMLInputTypeAttribute, ReactNode } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import { FormGroup, StyledInput, StyledLabel } from './shared/shared.styles'
 
-export type InputType =
-  | 'checkbox'
-  | 'date'
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'search'
-  | 'text'
+export type InputType = Extract<
+  HTMLInputTypeAttribute,
+  'checkbox' | 'date' | 'email' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'text'
+>
 
 export type InputProps = {
   type: InputType
   disabled?: boolean
   label?: ReactNode
-  placeholder?: string | ReactNode
+  placeholder?: string
   cursor?: string
   onChange?: (e?: any) => void
 }
