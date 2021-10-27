@@ -2,7 +2,7 @@ import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
 import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { InputProps } from '../Input'
+import { InputProps, InputType } from '../Input'
 import { InputGroup } from '../shared/shared.styles'
 import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.styles'
 
@@ -12,7 +12,8 @@ export type PasswordProps = InputProps & {
 }
 
 export const Password = (props: PasswordProps) => {
-  const [initialType, setInitialType] = useState<string>(props.type)
+  const { type, ...rest } = props
+  const [initialType, setInitialType] = useState<InputType>(type)
 
   const toggleType = () => {
     if (initialType === 'password') setInitialType('text')
@@ -29,6 +30,7 @@ export const Password = (props: PasswordProps) => {
     <InputGroup>
       <PasswordInput {...props} />
       <VerificationWithToggle>
+        <PasswordInput type={initialType} onChange={handleChange} {...rest} />
         <FontAwesomeIcon icon={faCheckCircle} />
       </VerificationWithToggle>
       <ToggleArea onClick={() => toggleType()}>

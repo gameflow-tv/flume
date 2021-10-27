@@ -1,6 +1,7 @@
 import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode } from 'react'
+import React, { HTMLInputTypeAttribute, ReactNode } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
@@ -12,16 +13,10 @@ import {
   VerificationIcon
 } from './shared/shared.styles'
 
-export type InputType =
-  | 'checkbox'
-  | 'date'
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'radio'
-  | 'range'
-  | 'search'
-  | 'text'
+export type InputType = Extract<
+  HTMLInputTypeAttribute,
+  'checkbox' | 'date' | 'email' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'text'
+>
 
 export type InputProps = {
   type: InputType
