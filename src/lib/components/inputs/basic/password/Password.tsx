@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { InputProps } from '../Input'
 // import { StyledInput } from '../shared/shared.styles'
-import { ShowPassword, PasswordGroup, PasswordInput, VerificationIcon } from './Password.styles'
+import { ToggleArea, PasswordGroup, PasswordInput, VerificationIcon } from './Password.styles'
 
 export type PasswordProps = InputProps & {
   // specified password component props
@@ -29,16 +29,12 @@ export const Password = (props: PasswordProps) => {
     <PasswordGroup>
       <label>Label</label>
       <PasswordInput {...props} />
-      <ShowPassword onClick={() => toggleType()}>
-        <VerificationIcon>
-          <FontAwesomeIcon icon={faCheckCircle} />
-        </VerificationIcon>
-        {initialType === 'password' ? (
-          <FontAwesomeIcon icon={faEye} />
-        ) : (
-          <FontAwesomeIcon icon={faEyeSlash} />
-        )}
-      </ShowPassword>
+      <VerificationIcon>
+        <FontAwesomeIcon icon={faCheckCircle} />
+      </VerificationIcon>
+      <ToggleArea onClick={() => toggleType()}>
+        {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
+      </ToggleArea>
     </PasswordGroup>
   )
 }
