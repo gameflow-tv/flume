@@ -1,17 +1,19 @@
 export type Breakpoints = {
-  phones: string
-  tablets: string
-  desktops: string
-  large: string
-  xlarge: string
+  xs: string
+  sm: string
+  md: string
+  lg: string
+  xl: string
+  xxl: string
 }
 
 const fallback: Breakpoints = {
-  phones: '576px',
-  tablets: '768px',
-  desktops: '992px',
-  large: '1200px',
-  xlarge: '1440px'
+  xs: '29rem',
+  sm: '36rem',
+  md: '48rem',
+  lg: '62rem',
+  xl: '75rem',
+  xxl: '90rem'
 }
 
 export default fallback
