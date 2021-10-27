@@ -1,15 +1,11 @@
 import styled from 'styled-components'
-import { InputGroup, StyledInput } from '../shared/shared.styles'
+import { StyledInput } from '../shared/shared.styles'
 
 export const PasswordInput = styled(StyledInput)`
   border-radius: 4px;
   padding-right: 80px;
 `
-export const PasswordGroup = styled(InputGroup)`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-`
+
 export const ToggleArea = styled.span`
   box-sizing: border-box;
   height: 41px;

@@ -17,7 +17,8 @@ Text.args = {
 
 export const Password: Story = Template.bind({})
 Password.args = {
-  type: 'password'
+  type: 'password',
+  label: 'Label'
 }
 
 export const Checkbox: Story = Template.bind({})

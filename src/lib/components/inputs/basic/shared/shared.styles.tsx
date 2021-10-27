@@ -12,13 +12,13 @@ export const StyledInput = styled.input.attrs((props) => ({
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
   width: 261px;
   height: 41px;
-  background-color: #36393b;
+  background-color: #36393b; /* Change to prop and use default color */
   border-radius: 4px;
   padding: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5) /* Change to prop and use default color */;
   ${theme.typography.body1};
   border: none;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Change to prop and use default color */
   display: flex;
   align-items: center;
 `
@@ -27,4 +27,8 @@ export const FormGroup = styled.div`
   position: relative;
 `
 
-export const InputGroup = styled.div``
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`
