@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { StyledInput } from '../shared/shared.styles'
+import { StyledInput, VerificationIcon } from '../shared/shared.styles'
 
 export const PasswordInput = styled(StyledInput)`
   border-radius: 4px;
@@ -25,22 +25,6 @@ export const ToggleArea = styled.span`
     color: #ffffff; /* Change to prop and use default color */
   }
 `
-
-export const VerificationIcon = styled.span`
-  box-sizing: border-box;
-  height: 41px;
-  width: 41px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  position: absolute;
+export const VerificationWithToggle = styled(VerificationIcon)`
   right: 41px;
-  bottom: 0;
-
-  & > svg {
-    color: #34d058; /* Change to prop and use default color */
-  }
 `

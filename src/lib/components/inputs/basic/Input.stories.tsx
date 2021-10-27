@@ -12,13 +12,14 @@ const Template = (args: InputProps | PasswordProps) => <Input {...args} />
 
 export const Text: Story = Template.bind({})
 Text.args = {
-  type: 'text'
+  type: 'text',
+  placeholder: 'Username'
 }
 
 export const Password: Story = Template.bind({})
 Password.args = {
   type: 'password',
-  label: 'Label'
+  label: 'Password'
 }
 
 export const Checkbox: Story = Template.bind({})

@@ -1,8 +1,16 @@
+import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
-import { FormGroup, StyledInput, StyledLabel } from './shared/shared.styles'
+import {
+  FormGroup,
+  InputGroup,
+  StyledInput,
+  StyledLabel,
+  VerificationIcon
+} from './shared/shared.styles'
 
 export type InputType =
   | 'checkbox'
@@ -19,7 +27,7 @@ export type InputProps = {
   type: InputType
   disabled?: boolean
   label?: ReactNode
-  placeholder?: string | ReactNode
+  placeholder?: string
   cursor?: string
   onChange?: (e?: any) => void
 }
@@ -43,7 +51,14 @@ export const Input = (props: InputProps) => {
       case 'checkbox':
         return <Checkbox />
       default:
-        return <StyledInput type="text" />
+        return (
+          <InputGroup>
+            <VerificationIcon>
+              <FontAwesomeIcon icon={faCheckCircle} />
+            </VerificationIcon>
+            <StyledInput {...props} type="text" />
+          </InputGroup>
+        )
     }
   }
   return (

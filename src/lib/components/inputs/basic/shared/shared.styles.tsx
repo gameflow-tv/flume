@@ -21,6 +21,7 @@ export const StyledInput = styled.input.attrs((props) => ({
   border: 1px solid rgba(255, 255, 255, 0.1); /* Change to prop and use default color */
   display: flex;
   align-items: center;
+  padding-right: 41px;
 `
 
 export const FormGroup = styled.div`
@@ -31,4 +32,18 @@ export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+`
+export const VerificationIcon = styled.span`
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border: none;
+  position: absolute;
+  right: 0;
+
+  & > svg {
+    color: #34d058; /* Change to prop and use default color */
+  }
 `
