@@ -188,6 +188,7 @@ export type CalendarProps = {
   defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
+  story?: boolean
 }
 
 export const Calendar = forwardRef((props: CalendarProps, ref) => {
@@ -294,12 +295,11 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                   key={idx}
                   className={
                     (day.month !== 0 ? ' disabled' : '') +
-                    (isCurrentDay(day) ? ' today' : '') +
+                    (isCurrentDay(day) && !props.story ? ' today' : '') +
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
-                  {...styles}
-                >
+                  {...styles}>
                   {day.month !== 0
                     ? !isNullOrUndefined(props.dateBoxDisabledText)
                       ? props.dateBoxDisabledText
