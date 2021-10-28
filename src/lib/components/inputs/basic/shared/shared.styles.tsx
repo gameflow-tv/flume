@@ -3,7 +3,12 @@ import theme from '../../../../theme/theme'
 import { InputProps } from '../Input'
 import { PasswordProps } from '../password/Password'
 
-export const StyledLabel = styled.label``
+export const StyledLabel = styled.label`
+  ${theme.typography.header5};
+  text-transform: capitalize;
+  color: #eeeeee;
+  margin: 0 0 8px 0;
+`
 
 export const StyledInput = styled.input.attrs((props) => ({
   type: props.type
@@ -26,6 +31,8 @@ export const StyledInput = styled.input.attrs((props) => ({
 
 export const FormGroup = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
 `
 
 export const InputGroup = styled.div`
@@ -46,4 +53,12 @@ export const VerificationIcon = styled.span`
   & > svg {
     color: #34d058; /* Change to prop and use default color */
   }
+`
+
+export const InfoMessage = styled.div`
+  margin-top: 4px;
+  ${theme.typography.body3};
+  height: 12px;
+  width: 131px;
+  color: #34d058;
 `

@@ -1,7 +1,6 @@
 import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ReactNode } from 'react'
-import React, { HTMLInputTypeAttribute, ReactNode } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
@@ -10,7 +9,8 @@ import {
   InputGroup,
   StyledInput,
   StyledLabel,
-  VerificationIcon
+  VerificationIcon,
+  InfoMessage
 } from './shared/shared.styles'
 
 export type InputType = Extract<
@@ -39,6 +39,18 @@ export const Input = (props: InputProps) => {
   validateRequired(props)
   const type = props.type.toLowerCase()
 
+  const errorType = () => {}
+  const renderInfoMessage = () => {
+    switch (errorType) {
+      case 'error':
+        return 'Error message'
+      case 'warning':
+        return 'Warning message'
+      case 'success':
+        return 'Success message'
+    }
+  }
+
   const RenderInput = () => {
     switch (type) {
       case 'password':
@@ -60,6 +72,7 @@ export const Input = (props: InputProps) => {
     <FormGroup>
       {!isEmpty(props.label) && <StyledLabel>{props.label}</StyledLabel>}
       {RenderInput()}
+      <InfoMessage>This username is available</InfoMessage>
     </FormGroup>
   )
 }

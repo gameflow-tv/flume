@@ -28,9 +28,8 @@ export const Password = (props: PasswordProps) => {
 
   return (
     <InputGroup>
-      <PasswordInput {...props} />
+      <PasswordInput type={initialType} onChange={handleChange} {...rest} />
       <VerificationWithToggle>
-        <PasswordInput type={initialType} onChange={handleChange} {...rest} />
         <FontAwesomeIcon icon={faCheckCircle} />
       </VerificationWithToggle>
       <ToggleArea onClick={() => toggleType()}>
