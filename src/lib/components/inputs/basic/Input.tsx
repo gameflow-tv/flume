@@ -35,7 +35,6 @@ export const Input = (props: InputProps) => {
     <FormGroup>
       {!isEmpty(props.label) && <StyledLabel>{props.label}</StyledLabel>}
       {RenderInput()}
-      <InfoMessage className={validationResponse?.type}>{validationResponse?.message}</InfoMessage>
     </FormGroup>
   )
 }

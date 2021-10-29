@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps, InputType, InputValidationData } from '../shared/input.definitions'
-import { InputGroup } from '../shared/shared.styles'
+import { InfoMessage, InputGroup } from '../shared/shared.styles'
 import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.styles'
 
 export type PasswordProps = InputProps & {
@@ -27,14 +27,17 @@ export const Password = (props: PasswordProps) => {
   }
 
   return (
-    <InputGroup>
-      <PasswordInput type={initialType} onChange={handleChange} {...rest} />
-      <VerificationWithToggle>
-        {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
-      </VerificationWithToggle>
-      <ToggleArea onClick={() => toggleType()}>
-        {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
-      </ToggleArea>
-    </InputGroup>
+    <>
+      <InputGroup>
+        <PasswordInput type={initialType} onChange={handleChange} {...rest} />
+        <VerificationWithToggle>
+          {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
+        </VerificationWithToggle>
+        <ToggleArea onClick={() => toggleType()}>
+          {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
+        </ToggleArea>
+      </InputGroup>
+      <InfoMessage className={validationResponse?.type}>{validationResponse?.message}</InfoMessage>
+    </>
   )
 }
