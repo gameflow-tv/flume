@@ -29,11 +29,16 @@ export const Password = (props: PasswordProps) => {
   return (
     <>
       <InputGroup>
-        <PasswordInput type={initialType} onChange={handleChange} {...rest} />
-        <VerificationWithToggle>
+        <PasswordInput
+          className={validationResponse?.type}
+          type={initialType}
+          onChange={handleChange}
+          {...rest}
+        />
+        <VerificationWithToggle className={validationResponse?.type}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ToggleArea onClick={() => toggleType()}>
+        <ToggleArea className={validationResponse?.type} onClick={() => toggleType()}>
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ToggleArea>
       </InputGroup>

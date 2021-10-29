@@ -27,6 +27,21 @@ export const StyledInput = styled.input.attrs((props) => ({
   display: flex;
   align-items: center;
   padding-right: 41px;
+
+  &.error {
+    border: 1px solid ${theme.colors.error};
+  }
+  &.warning {
+    border: 1px solid ${theme.colors.warning};
+  }
+  &.success {
+    border: 1px solid ${theme.colors.success};
+  }
+
+  &:focus {
+    border: 1px solid #36393b;
+    outline-color: #36393b;
+  }
 `
 
 export const FormGroup = styled.div`

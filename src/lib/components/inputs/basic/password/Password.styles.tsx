@@ -5,6 +5,16 @@ import { StyledInput, VerificationIcon } from '../shared/shared.styles'
 export const PasswordInput = styled(StyledInput)`
   border-radius: 4px;
   padding-right: 80px;
+
+  &.error {
+    border: 1px solid ${theme.colors.error};
+  }
+  &.warning {
+    border: 1px solid ${theme.colors.warning};
+  }
+  &.success {
+    border: 1px solid ${theme.colors.success};
+  }
 `
 
 export const ToggleArea = styled.span`
@@ -15,7 +25,6 @@ export const ToggleArea = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
   border: none;
   border-radius: 0 4px 4px 0;
   position: absolute;
@@ -25,9 +34,27 @@ export const ToggleArea = styled.span`
   & > svg {
     color: #ffffff; /* Change to prop and use default color */
   }
+
+  &.error {
+    border-top: 1px solid ${theme.colors.error};
+    border-right: 1px solid ${theme.colors.error};
+    border-bottom: 1px solid ${theme.colors.error};
+  }
+
+  &.warning {
+    border-top: 1px solid ${theme.colors.warning};
+    border-right: 1px solid ${theme.colors.warning};
+    border-bottom: 1px solid ${theme.colors.warning};
+  }
+  &.success {
+    border-top: 1px solid ${theme.colors.success};
+    border-right: 1px solid ${theme.colors.success};
+    border-bottom: 1px solid ${theme.colors.success};
+  }
 `
 export const VerificationWithToggle = styled(VerificationIcon)`
   right: 41px;
+
   &.error {
     & > svg {
       color: ${theme.colors.error};
