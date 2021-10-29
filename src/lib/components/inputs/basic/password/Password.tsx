@@ -9,7 +9,6 @@ import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.st
 export type PasswordProps = InputProps & {
   // specified password component props
   readOnly?: boolean
-  messageIcon?: IconDefinition
 }
 
 export const Password = (props: PasswordProps) => {

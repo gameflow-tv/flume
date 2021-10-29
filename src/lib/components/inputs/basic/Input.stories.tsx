@@ -1,7 +1,8 @@
 import { Story } from '@storybook/react'
 import React from 'react'
-import { Input, InputProps } from './Input'
+import { Input } from './Input'
 import { PasswordProps } from './password/Password'
+import { InputProps } from './shared/input.definitions'
 
 export default {
   title: 'Components/Inputs/Basic',
@@ -35,6 +36,13 @@ SuccessField.args = {
   type: 'text',
   required: true,
   requiredErrorType: 'success'
+}
+
+export const Email: Story = Template.bind({})
+Email.args = {
+  type: 'email',
+  required: true,
+  label: 'E-mail'
 }
 
 export const Password: Story = Template.bind({})

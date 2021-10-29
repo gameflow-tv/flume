@@ -1,17 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+import { isEmpty } from '../helpers/general'
 import {
   InputProps,
-  InputValidationData,
   InputValidationType
 } from '../components/inputs/basic/shared/input.definitions'
-import { isEmpty } from '../helpers/general'
-
 import {
   faCheckCircle,
   faExclamationTriangle,
   faTimesCircle
 } from '@fortawesome/pro-solid-svg-icons'
-import { PasswordProps } from '../components/inputs/basic/password/Password'
 
 const getValidationIcon = (errorType: InputValidationType) => {
   switch (errorType) {
@@ -26,6 +23,12 @@ const getValidationIcon = (errorType: InputValidationType) => {
   }
 }
 
+const emailIsValid = (value: string) => {
+  const rule: RegExp =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return rule.test(value)
+}
+
 export const useInputValidation = () => {
   const [response, setResponse] = useState(undefined)
 
@@ -38,7 +41,15 @@ export const useInputValidation = () => {
         icon: getValidationIcon(errorType)
       })
     } else {
-      setResponse(undefined)
+      if (props.type === 'email') {
+        if (!emailIsValid(value)) {
+          setResponse({
+            message: 'Please fill with a valid e-mail address',
+            type: errorType,
+            icon: getValidationIcon(errorType)
+          })
+        }
+      }
     }
   }, [])
 
