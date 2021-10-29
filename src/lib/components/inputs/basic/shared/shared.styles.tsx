@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import theme from '../../../../theme/theme'
-import { InputProps } from '../Input'
 import { PasswordProps } from '../password/Password'
+import { InputProps } from './input.definitions'
 
 export const StyledLabel = styled.label`
   ${theme.typography.header5};
