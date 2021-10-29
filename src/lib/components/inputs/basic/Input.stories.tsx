@@ -16,9 +16,31 @@ Text.args = {
   placeholder: 'Username'
 }
 
+export const RequiredField: Story = Template.bind({})
+RequiredField.args = {
+  type: 'text',
+  required: true,
+  requiredErrorType: 'error'
+}
+
+export const WarningField: Story = Template.bind({})
+WarningField.args = {
+  type: 'text',
+  required: true,
+  requiredErrorType: 'warning'
+}
+
+export const SuccessField: Story = Template.bind({})
+SuccessField.args = {
+  type: 'text',
+  required: true,
+  requiredErrorType: 'success'
+}
+
 export const Password: Story = Template.bind({})
 Password.args = {
   type: 'password',
+  required: true,
   label: 'Password'
 }
 

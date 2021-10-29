@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from '../../../../theme/theme'
 import { StyledInput, VerificationIcon } from '../shared/shared.styles'
 
 export const PasswordInput = styled(StyledInput)`
@@ -27,4 +28,19 @@ export const ToggleArea = styled.span`
 `
 export const VerificationWithToggle = styled(VerificationIcon)`
   right: 41px;
+  &.error {
+    & > svg {
+      color: ${theme.colors.error};
+    }
+  }
+  &.warning {
+    & > svg {
+      color: ${theme.colors.warning};
+    }
+  }
+  &.success {
+    & > svg {
+      color: ${theme.colors.success};
+    }
+  }
 `

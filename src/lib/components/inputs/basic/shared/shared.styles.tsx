@@ -40,6 +40,7 @@ export const InputGroup = styled.div`
   flex-direction: column;
   position: relative;
 `
+
 export const VerificationIcon = styled.span`
   box-sizing: border-box;
   display: flex;
@@ -50,8 +51,20 @@ export const VerificationIcon = styled.span`
   position: absolute;
   right: 0;
 
-  & > svg {
-    color: #34d058; /* Change to prop and use default color */
+  &.error {
+    & > svg {
+      color: ${theme.colors.error};
+    }
+  }
+  &.warning {
+    & > svg {
+      color: ${theme.colors.warning};
+    }
+  }
+  &.success {
+    & > svg {
+      color: ${theme.colors.success};
+    }
   }
 `
 
@@ -60,5 +73,14 @@ export const InfoMessage = styled.div`
   ${theme.typography.body3};
   height: 12px;
   width: 131px;
-  color: #34d058;
+
+  &.error {
+    color: ${theme.colors.error};
+  }
+  &.warning {
+    color: ${theme.colors.warning};
+  }
+  &.success {
+    color: ${theme.colors.success};
+  }
 `

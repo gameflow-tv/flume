@@ -1,7 +1,13 @@
-import { faCheckCircle } from '@fortawesome/pro-solid-svg-icons'
+import {
+  faCheckCircle,
+  faExclamationTriangle,
+  faTimesCircle,
+  IconDefinition
+} from '@fortawesome/pro-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ReactNode } from 'react'
+import React, { useEffect, useState } from 'react'
 import { isEmpty } from '../../../helpers/general'
+import { InputProps, InputValidationType } from './shared/input.definitions'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import {
@@ -12,22 +18,9 @@ import {
   VerificationIcon,
   InfoMessage
 } from './shared/shared.styles'
+import { useInputValidation } from '../../../hooks/useInputValidation'
 
-export type InputType = Extract<
-  HTMLInputTypeAttribute,
-  'checkbox' | 'date' | 'email' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'text'
->
-
-export type InputProps = {
-  type: InputType
-  disabled?: boolean
-  label?: ReactNode
-  placeholder?: string
-  cursor?: string
-  onChange?: (e?: any) => void
-}
-
-const validateRequired = (props: InputProps) => {
+const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
     throw new Error('type is required')
   }
@@ -35,20 +28,28 @@ const validateRequired = (props: InputProps) => {
   // To do: Check if props.type is the same of InputType value
 }
 
+const getValidationIcon = (errorType: InputValidationType) => {
+  switch (errorType) {
+    case InputValidationType.ERROR:
+      return faTimesCircle
+    case InputValidationType.WARNING:
+      return faExclamationTriangle
+    case InputValidationType.SUCCESS:
+      return faCheckCircle
+    default:
+      return undefined
+  }
+}
+
 export const Input = (props: InputProps) => {
-  validateRequired(props)
+  const [validationResponse, setValidationResponse] = useInputValidation()
+
+  verifyRequiredProps(props)
   const type = props.type.toLowerCase()
 
-  const errorType = () => {}
-  const renderInfoMessage = () => {
-    switch (errorType) {
-      case 'error':
-        return 'Error message'
-      case 'warning':
-        return 'Warning message'
-      case 'success':
-        return 'Success message'
-    }
+  const handleChange = (e) => {
+    setValidationResponse(e.target.value, props)
+    props.onChange?.call(null, e)
   }
 
   const RenderInput = () => {
@@ -60,10 +61,15 @@ export const Input = (props: InputProps) => {
       default:
         return (
           <InputGroup>
-            <VerificationIcon>
-              <FontAwesomeIcon icon={faCheckCircle} />
+            <StyledInput
+              type="text"
+              defaultValue={props.value}
+              onChange={handleChange}
+              {...props}
+            />
+            <VerificationIcon className={validationResponse?.type}>
+              {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
             </VerificationIcon>
-            <StyledInput {...props} type="text" />
           </InputGroup>
         )
     }
@@ -72,7 +78,7 @@ export const Input = (props: InputProps) => {
     <FormGroup>
       {!isEmpty(props.label) && <StyledLabel>{props.label}</StyledLabel>}
       {RenderInput()}
-      <InfoMessage>This username is available</InfoMessage>
+      <InfoMessage className={validationResponse?.type}>{validationResponse?.message}</InfoMessage>
     </FormGroup>
   )
 }
