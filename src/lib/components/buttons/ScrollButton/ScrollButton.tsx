@@ -18,8 +18,7 @@ export const ScrollButton = () => {
       boxShadowXSmall={theme.shadows.xsmall}
       boxShadowSmall={theme.shadows.small}
       borderRadius={theme.shapes.borders.small}
-      color={theme.colors.primaryText}
-    >
+      color={theme.colors.primaryText}>
       <FontAwesomeIcon icon={faArrowRight} />
     </Button>
   )
