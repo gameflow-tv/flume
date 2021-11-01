@@ -39,8 +39,29 @@ export const StyledInput = styled.input.attrs((props) => ({
   }
 
   &:focus {
-    border: 1px solid #36393b;
-    outline-color: #36393b;
+    border: 1px solid ${theme.colors.primary};
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: #36393b;
+    opacity: 0.5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &.error:focus {
+    outline-color: ${theme.colors.error};
+    border: 1px solid ${theme.colors.error};
+  }
+
+  &.warning:focus {
+    outline-color: ${theme.colors.warning};
+    border: 1px solid ${theme.colors.warning};
+  }
+
+  &.success:focus {
+    outline-color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
   }
 `
 

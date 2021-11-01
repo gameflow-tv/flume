@@ -24,6 +24,8 @@ export const Input = (props: InputProps) => {
         return <Password {...props} />
       case 'checkbox':
         return <Checkbox />
+      case 'email':
+      case 'text':
       default:
         return <Text {...props} />
     }

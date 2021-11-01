@@ -15,6 +15,21 @@ export const PasswordInput = styled(StyledInput)`
   &.success {
     border: 1px solid ${theme.colors.success};
   }
+
+  &.error:focus {
+    outline-color: ${theme.colors.error};
+    border: 1px solid ${theme.colors.error};
+  }
+
+  &.warning:focus {
+    outline-color: ${theme.colors.warning};
+    border: 1px solid ${theme.colors.warning};
+  }
+
+  &.success:focus {
+    outline-color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
 `
 
 export const ToggleArea = styled.span`

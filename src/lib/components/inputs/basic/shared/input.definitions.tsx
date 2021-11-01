@@ -4,7 +4,7 @@ import { isEmpty } from '../../../../helpers/general'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
-  'checkbox' | 'date' | 'email' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'text'
+  'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text'
 >
 
 export type InputProps = {
