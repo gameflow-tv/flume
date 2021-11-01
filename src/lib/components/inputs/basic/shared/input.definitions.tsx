@@ -3,7 +3,7 @@ import { HTMLInputTypeAttribute, ReactNode } from 'react'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
-  'checkbox' | 'date' | 'email' | 'number' | 'password' | 'radio' | 'range' | 'search' | 'text'
+  'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text'
 >
 
 export type InputProps = {
