@@ -20,8 +20,13 @@ Text.args = {
 export const RequiredField: Story = Template.bind({})
 RequiredField.args = {
   type: 'text',
-  required: true,
-  requiredErrorType: 'error'
+  criteria: {
+    invalidMessage: 'Please fill in this field',
+    invalidResponseType: 'error',
+    validMessage: 'Well done!',
+    validResponseType: 'success',
+    condition: { type: 'required' }
+  }
 }
 
 export const WarningField: Story = Template.bind({})
@@ -31,18 +36,28 @@ WarningField.args = {
   requiredErrorType: 'warning'
 }
 
-export const SuccessField: Story = Template.bind({})
-SuccessField.args = {
-  type: 'text',
-  required: true,
-  requiredErrorType: 'success'
-}
-
 export const Email: Story = Template.bind({})
 Email.args = {
   type: 'email',
   required: true,
-  label: 'E-mail'
+  label: 'E-mail',
+  multipleCriteriaInfo: false,
+  criteria: [
+    {
+      invalidMessage: 'Please fill in this field',
+      invalidResponseType: 'error',
+      validMessage: 'Voce inseriu algo! Genio!',
+      validResponseType: 'success',
+      condition: { type: 'required' }
+    },
+    {
+      invalidMessage: 'Please fill with a valid e-mail address',
+      invalidResponseType: 'error',
+      validMessage: 'Voce digitou um e-mail!',
+      validResponseType: 'success',
+      condition: { type: 'email' }
+    }
+  ]
 }
 
 export const Password: Story = Template.bind({})

@@ -4,8 +4,7 @@ import { InputProps } from './shared/input.definitions'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import { Text } from './text/Text'
-import { FormGroup, StyledLabel, InfoMessage } from './shared/shared.styles'
-import { useInputValidation } from '../../../hooks/useInputValidation'
+import { FormGroup, StyledLabel } from './shared/shared.styles'
 
 const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
@@ -16,8 +15,6 @@ const verifyRequiredProps = (props: InputProps) => {
 }
 
 export const Input = (props: InputProps) => {
-  const [validationResponse, setValidationResponse] = useInputValidation()
-
   verifyRequiredProps(props)
   const type = props.type.toLowerCase()
 

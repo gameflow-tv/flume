@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps } from '../shared/input.definitions'
 import { InfoMessage, InputGroup, StyledInput, VerificationIcon } from '../shared/shared.styles'
@@ -11,10 +11,6 @@ export const Text = (props: InputProps) => {
     setValidationResponse(e.target.value, props)
     props.onChange?.call(null, e)
   }
-
-  useEffect(() => {
-    console.log(validationResponse)
-  }, [validationResponse])
 
   return (
     <>
