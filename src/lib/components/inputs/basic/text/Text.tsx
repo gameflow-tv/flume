@@ -16,10 +16,16 @@ export const Text = (props: InputProps) => {
     console.log(validationResponse)
   }, [validationResponse])
 
+  console.log(validationResponse?.type)
   return (
     <>
       <InputGroup>
-        <StyledInput defaultValue={props.value} onChange={handleChange} {...props} />
+        <StyledInput
+          className={validationResponse?.type}
+          defaultValue={props.value}
+          onChange={handleChange}
+          {...props}
+        />
         <VerificationIcon className={validationResponse?.type}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationIcon>

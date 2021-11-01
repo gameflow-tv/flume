@@ -17,6 +17,13 @@ Text.args = {
   placeholder: 'Username'
 }
 
+export const Disabled: Story = Template.bind({})
+Disabled.args = {
+  type: 'text',
+  placeholder: 'Username',
+  disabled: true
+}
+
 export const RequiredField: Story = Template.bind({})
 RequiredField.args = {
   type: 'text',
