@@ -37,50 +37,52 @@ export const useInputValidation = () => {
         setResponse({
           message: isValid ? props.criteria?.validMessage : props.criteria?.invalidMessage,
           type: respType,
-          icon: getValidationIcon(respType)
+          icon: getValidationIcon(respType),
+          isValid
         })
       } else {
-        props.criteria?.forEach((crit) => {
+        for (const key in props.criteria) {
+          const crit = props.criteria[key]
           const isValid = criteriaRule(crit.condition.type, value)
 
           if (!isValid) {
             setResponse({
               message: crit.invalidMessage,
               type: crit.invalidResponseType,
-              icon: getValidationIcon(crit.invalidResponseType)
+              icon: getValidationIcon(crit.invalidResponseType),
+              isValid
             })
-            return
+            break
           } else {
             setResponse({
               message: crit.validMessage,
               type: crit.validResponseType,
-              icon: getValidationIcon(crit.validResponseType)
+              icon: getValidationIcon(crit.validResponseType),
+              isValid
             })
           }
-        })
+        }
       }
     } else {
-      // if is array by consequence
-    }
+      let validations = []
+      for (const key in props.criteria) {
+        const crit = props.criteria[key]
+        const isValid = criteriaRule(crit.condition.type, value)
+        const respType = isValid ? crit.validResponseType : crit.invalidResponseType
 
-    // const errorType = props.requiredErrorType || InputValidationType.ERROR
-    // if (props.required && isEmpty(value)) {
-    //   setResponse({
-    //     message: 'Please fill in this field',
-    //     type: errorType,
-    //     icon: getValidationIcon(errorType)
-    //   })
-    // } else {
-    //   if (props.type === 'email') {
-    //     if (!emailIsValid(value)) {
-    //       setResponse({
-    //         message: 'Please fill with a valid e-mail address',
-    //         type: errorType,
-    //         icon: getValidationIcon(errorType)
-    //       })
-    //     }
-    //   }
-    // }
+        validations = [
+          ...validations,
+          {
+            message: isValid ? crit.validMessage : crit.invalidMessage,
+            type: respType,
+            icon: getValidationIcon(respType),
+            isValid
+          }
+        ]
+      }
+
+      setResponse(validations)
+    }
   }, [])
 
   return [response, setValidationResponse]
