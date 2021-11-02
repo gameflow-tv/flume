@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { typographyToCss } from '../../../../theme'
 import theme from '../../../../theme/theme'
 import { PasswordProps } from '../password/Password'
 import { InputProps } from './input.definitions'
@@ -110,6 +111,20 @@ export const InfoMessage = styled.div`
   height: 12px;
   width: 131px;
 
+  &.error {
+    color: ${theme.colors.error};
+  }
+  &.warning {
+    color: ${theme.colors.warning};
+  }
+  &.success {
+    color: ${theme.colors.success};
+  }
+`
+
+export const ListItem = styled.li`
+  ${typographyToCss(theme.typography.body3)};
+  color: ${theme.colors.primaryText};
   &.error {
     color: ${theme.colors.error};
   }

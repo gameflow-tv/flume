@@ -41,6 +41,13 @@ export interface InputValidation {
   }
 }
 
+export type InputCriteriaResponse = {
+  message: string
+  type: InputResponseType
+  icon: IconDefinition
+  isValid: boolean
+}
+
 export const criteriaRule = (type: CriteriaType, value: string, rule?: number | RegExp) => {
   switch (type) {
     case 'required':

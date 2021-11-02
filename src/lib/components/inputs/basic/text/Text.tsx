@@ -25,7 +25,11 @@ export const Text = (props: InputProps) => {
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationIcon>
       </InputGroup>
-      <InfoMessage className={validationResponse?.type}>{validationResponse?.message}</InfoMessage>
+      {!props.multipleCriteriaInfo && (
+        <InfoMessage className={validationResponse?.type}>
+          {validationResponse?.message}
+        </InfoMessage>
+      )}
     </>
   )
 }

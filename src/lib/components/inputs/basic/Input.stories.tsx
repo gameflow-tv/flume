@@ -53,17 +53,74 @@ Email.args = {
     {
       invalidMessage: 'Please fill in this field',
       invalidResponseType: 'error',
-      validMessage: 'Voce inseriu algo! Genio!',
       validResponseType: 'success',
       condition: { type: 'required' }
     },
     {
       invalidMessage: 'Please fill with a valid e-mail address',
       invalidResponseType: 'error',
-      validMessage: 'Voce digitou um e-mail!',
       validResponseType: 'success',
       condition: { type: 'email' }
     }
+  ]
+}
+
+export const MultipleCriteria: Story = Template.bind({})
+MultipleCriteria.args = {
+  type: 'password',
+  required: true,
+  label: 'Multiple Criteria',
+  multipleCriteriaInfo: true,
+  criteria: [
+    {
+      invalidMessage: 'Please fill in this field',
+      invalidResponseType: 'error',
+      validMessage: 'Please fill in this field',
+      validResponseType: 'success',
+      condition: { type: 'required' }
+    },
+    {
+      invalidMessage: 'Longer than 6 characters',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'min', rule: 6 }
+    },
+    {
+      invalidMessage: 'Not less than 9 characters',
+      invalidResponseType: 'warning',
+      validResponseType: 'success',
+      condition: { type: 'min', rule: 9 }
+    },
+    {
+      invalidMessage: 'Up to 12 characters',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'max', rule: 12 }
+    }
+    /* {
+      invalidMessage: 'Contains at least 1 lowercase letter',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[a-z]).{1,}$/) }
+    },
+    {
+      invalidMessage: 'Contains at least 1 uppercase letter',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[A-Z]).{1,}$/) }
+    },
+    {
+      invalidMessage: 'Contains at least 1 number',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[0-9]).{1,}$/) }
+    },
+    {
+      invalidMessage: 'Contains at least 1 of %, &, /, ! or ?',
+      invalidResponseType: 'error',
+      validResponseType: 'success',
+      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[!%&/?]).{1,}$/) }
+    } */
   ]
 }
 

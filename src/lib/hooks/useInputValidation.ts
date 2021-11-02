@@ -9,6 +9,7 @@ import {
   faExclamationTriangle,
   faTimesCircle
 } from '@fortawesome/pro-solid-svg-icons'
+import { isEmpty } from 'lodash'
 
 const getValidationIcon = (errorType: InputResponseType) => {
   switch (errorType) {
@@ -23,43 +24,69 @@ const getValidationIcon = (errorType: InputResponseType) => {
   }
 }
 
+const handleResponse = (invalidMessage, validMessage, type, isValid) => {
+  let message = invalidMessage
+
+  if (isValid && !isEmpty(validMessage)) {
+    message = validMessage
+  }
+  const icon = getValidationIcon(type)
+
+  return {
+    message,
+    type: type,
+    icon,
+    isValid
+  }
+}
+
 export const useInputValidation = () => {
   const [response, setResponse] = useState(undefined)
 
   const setValidationResponse = useCallback((value: string, props: InputProps) => {
     if (!props.multipleCriteriaInfo) {
       if (!Array.isArray(props.criteria)) {
-        const isValid = criteriaRule(props.criteria?.condition.type, value)
+        const isValid = criteriaRule(
+          props.criteria?.condition.type,
+          value,
+          props.criteria?.condition?.rule
+        )
         const respType = isValid
           ? props.criteria?.validResponseType
           : props.criteria?.invalidResponseType
 
-        setResponse({
-          message: isValid ? props.criteria?.validMessage : props.criteria?.invalidMessage,
-          type: respType,
-          icon: getValidationIcon(respType),
-          isValid
-        })
+        setResponse(
+          handleResponse(
+            props.criteria?.invalidMessage,
+            props.criteria?.validMessage,
+            respType,
+            isValid
+          )
+        )
       } else {
         for (const key in props.criteria) {
           const crit = props.criteria[key]
-          const isValid = criteriaRule(crit.condition.type, value)
+          const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
 
           if (!isValid) {
-            setResponse({
-              message: crit.invalidMessage,
-              type: crit.invalidResponseType,
-              icon: getValidationIcon(crit.invalidResponseType),
-              isValid
-            })
+            setResponse(
+              handleResponse(
+                crit.invalidMessage,
+                crit.validMessage,
+                crit.invalidResponseType,
+                isValid
+              )
+            )
             break
           } else {
-            setResponse({
-              message: crit.validMessage,
-              type: crit.validResponseType,
-              icon: getValidationIcon(crit.validResponseType),
-              isValid
-            })
+            setResponse(
+              handleResponse(
+                crit.invalidMessage,
+                crit.validMessage,
+                crit.validResponseType,
+                isValid
+              )
+            )
           }
         }
       }
@@ -67,19 +94,16 @@ export const useInputValidation = () => {
       let validations = []
       for (const key in props.criteria) {
         const crit = props.criteria[key]
-        const isValid = criteriaRule(crit.condition.type, value)
+        const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
         const respType = isValid ? crit.validResponseType : crit.invalidResponseType
 
         validations = [
           ...validations,
-          {
-            message: isValid ? crit.validMessage : crit.invalidMessage,
-            type: respType,
-            icon: getValidationIcon(respType),
-            isValid
-          }
+          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid)
         ]
       }
+
+      console.log(validations)
 
       setResponse(validations)
     }
