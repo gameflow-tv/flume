@@ -2,7 +2,12 @@ import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputCriteriaResponse, InputProps, InputType } from '../shared/input.definitions'
+import {
+  InputCriteriaResponse,
+  InputProps,
+  InputType,
+  InputValidation
+} from '../shared/input.definitions'
 import { InfoMessage, InputGroup, ListItem } from '../shared/shared.styles'
 import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.styles'
 
@@ -14,7 +19,7 @@ export type PasswordProps = InputProps & {
 export const Password = (props: PasswordProps) => {
   const { type, ...rest } = props
   const [initialType, setInitialType] = useState<InputType>(type)
-  const [validationResponse, setValidationResponse] = useInputValidation()
+  const [validationResponse, setValidationResponse] = useInputValidation(props)
 
   const toggleType = () => {
     if (initialType === 'password') setInitialType('text')
@@ -22,7 +27,7 @@ export const Password = (props: PasswordProps) => {
   }
 
   const handleChange = (e) => {
-    setValidationResponse(e.target.value, props)
+    setValidationResponse(e.target.value)
     rest.onChange?.call(null, e)
   }
 
@@ -52,6 +57,14 @@ export const Password = (props: PasswordProps) => {
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
               {crit.message}
+            </ListItem>
+          ))}
+        </ul>
+      ) : props.criteria ? (
+        <ul>
+          {(props.criteria as InputValidation[])?.map((crit, idx) => (
+            <ListItem key={`validation_${idx}`} className="none">
+              {crit.invalidMessage}
             </ListItem>
           ))}
         </ul>

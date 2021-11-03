@@ -27,13 +27,7 @@ Disabled.args = {
 export const RequiredField: Story = Template.bind({})
 RequiredField.args = {
   type: 'text',
-  criteria: {
-    invalidMessage: 'Please fill in this field',
-    invalidResponseType: 'error',
-    validMessage: 'Well done!',
-    validResponseType: 'success',
-    condition: { type: 'required' }
-  }
+  required: true
 }
 
 export const WarningField: Story = Template.bind({})
@@ -47,22 +41,13 @@ export const Email: Story = Template.bind({})
 Email.args = {
   type: 'email',
   required: true,
-  label: 'E-mail',
-  multipleCriteriaInfo: false,
-  criteria: [
-    {
-      invalidMessage: 'Please fill in this field',
-      invalidResponseType: 'error',
-      validResponseType: 'success',
-      condition: { type: 'required' }
-    },
-    {
-      invalidMessage: 'Please fill with a valid e-mail address',
-      invalidResponseType: 'error',
-      validResponseType: 'success',
-      condition: { type: 'email' }
-    }
-  ]
+  label: 'E-mail'
+}
+
+export const NonRequiredEmail: Story = Template.bind({})
+NonRequiredEmail.args = {
+  type: 'email',
+  label: 'E-mail'
 }
 
 export const MultipleCriteria: Story = Template.bind({})
@@ -76,7 +61,7 @@ MultipleCriteria.args = {
       invalidMessage: 'Please fill in this field',
       invalidResponseType: 'error',
       validMessage: 'Please fill in this field',
-      validResponseType: 'success',
+      validResponseType: 'none',
       condition: { type: 'required' }
     },
     {
