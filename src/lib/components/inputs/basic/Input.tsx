@@ -1,10 +1,11 @@
 import React from 'react'
 import { isEmpty } from '../../../helpers/general'
-import { InputProps } from './shared/input.definitions'
+import { InputProps } from './shared/Input.definitions'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import { Text } from './text/Text'
-import { FormGroup, StyledLabel } from './shared/shared.styles'
+import { FormGroup, StyledLabel } from './shared/Shared.styles'
+import { Select } from './select/Select'
 
 const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
@@ -24,6 +25,8 @@ export const Input = (props: InputProps) => {
         return <Password {...props} />
       case 'checkbox':
         return <Checkbox />
+      case 'select':
+        return <Select {...props} />
       case 'email':
       case 'text':
       default:

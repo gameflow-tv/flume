@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/input.definitions'
+import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/Input.definitions'
 import {
   InfoMessage,
   InputGroup,
   ListItem,
   StyledInput,
   VerificationIcon
-} from '../shared/shared.styles'
+} from '../shared/Shared.styles'
 
 export const Text = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
@@ -39,7 +39,7 @@ export const Text = (props: InputProps) => {
           {validationResponse?.message}
         </InfoMessage>
       )}
-      {validationResponse ? (
+      {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as InputCriteriaResponse[]).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
@@ -47,7 +47,7 @@ export const Text = (props: InputProps) => {
             </ListItem>
           ))}
         </ul>
-      ) : props.criteria ? (
+      ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className="none">

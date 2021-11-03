@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '../../../../theme/theme'
-import { StyledInput, VerificationIcon } from '../shared/shared.styles'
+import { StyledInput, VerificationIcon } from '../shared/Shared.styles'
 
 export const PasswordInput = styled(StyledInput)`
   border-radius: 4px;
