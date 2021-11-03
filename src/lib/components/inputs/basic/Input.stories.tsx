@@ -2,12 +2,26 @@ import { Story } from '@storybook/react'
 import React from 'react'
 import { Input } from './Input'
 import { PasswordProps } from './password/Password'
-import { InputProps } from './shared/input.definitions'
+import { SelectProps, Option } from './select/Select'
+import { InputProps } from './shared/Input.definitions'
 
 export default {
   title: 'Components/Inputs/Basic',
   component: Input
 }
+
+const itemsData = [
+  { value: 'item_1', label: 'Item 1', game: null },
+  { value: 'item_2', label: 'Item 2', game: null },
+  { value: 'item_3', label: 'Item 3', game: null },
+  { value: 'item_4', label: 'Item 4', game: null },
+  { value: 'item_5', label: 'Item 5', game: null },
+  { value: 'item_6', label: 'Item 6', game: null },
+  { value: 'item_7', label: 'Item 7', game: null },
+  { value: 'item_8', label: 'Item 8', game: null },
+  { value: 'item_9', label: 'Item 9', game: null },
+  { value: 'item_10', label: 'Item 10', game: null }
+]
 
 const Template = (args: InputProps | PasswordProps) => <Input {...args} />
 
@@ -119,4 +133,29 @@ Password.args = {
 export const Checkbox: Story = Template.bind({})
 Checkbox.args = {
   type: 'checkbox'
+}
+
+export const SingleSelect = (args: SelectProps) => (
+  <>
+    <Input {...args}>
+      {itemsData.map((itm, idx) => (
+        <Option key={idx} label={itm.label} value={itm.value}>
+          {itm.label}
+        </Option>
+      ))}
+    </Input>
+    <Input {...args}>
+      {itemsData.map((itm, idx) => (
+        <Option key={idx} label={itm.label} value={itm.value} selected={idx === 3}>
+          {itm.label}
+        </Option>
+      ))}
+    </Input>
+  </>
+)
+
+SingleSelect.args = {
+  type: 'select',
+  label: 'Single select use',
+  placeholder: 'Choose your item...'
 }

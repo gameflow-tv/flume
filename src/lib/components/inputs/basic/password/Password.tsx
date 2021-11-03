@@ -7,8 +7,8 @@ import {
   InputProps,
   InputType,
   InputValidation
-} from '../shared/input.definitions'
-import { InfoMessage, InputGroup, ListItem } from '../shared/shared.styles'
+} from '../shared/Input.definitions'
+import { InfoMessage, InputGroup, ListItem } from '../shared/Shared.styles'
 import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.styles'
 
 export type PasswordProps = InputProps & {

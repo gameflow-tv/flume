@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/input.definitions'
+import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/Input.definitions'
 import {
   InfoMessage,
   InputGroup,
   ListItem,
   StyledInput,
   VerificationIcon
-} from '../shared/shared.styles'
+} from '../shared/Shared.styles'
 
 export const Text = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)

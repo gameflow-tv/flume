@@ -3,7 +3,7 @@ import {
   criteriaRule,
   InputProps,
   InputResponseType
-} from '../components/inputs/basic/shared/input.definitions'
+} from '../components/inputs/basic/shared/Input.definitions'
 import {
   faCheckCircle,
   faExclamationTriangle,
