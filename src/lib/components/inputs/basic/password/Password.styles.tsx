@@ -6,6 +6,17 @@ export const PasswordInput = styled(StyledInput)`
   border-radius: 4px;
   padding-right: 80px;
 
+  &:focus {
+    border: 1px solid ${theme.colors.primary};
+    outline: none;
+
+    & + span + span {
+      border-top: 1px solid ${theme.colors.primary};
+      border-right: 1px solid ${theme.colors.primary};
+      border-bottom: 1px solid ${theme.colors.primary};
+    }
+  }
+
   &.error {
     border: 1px solid ${theme.colors.error};
   }
@@ -17,18 +28,33 @@ export const PasswordInput = styled(StyledInput)`
   }
 
   &.error:focus {
-    outline-color: ${theme.colors.error};
     border: 1px solid ${theme.colors.error};
+
+    & + span + span {
+      border-top: 1px solid ${theme.colors.error};
+      border-right: 1px solid ${theme.colors.error};
+      border-bottom: 1px solid ${theme.colors.error};
+    }
   }
 
   &.warning:focus {
-    outline-color: ${theme.colors.warning};
     border: 1px solid ${theme.colors.warning};
+
+    & + span + span {
+      border-top: 1px solid ${theme.colors.warning};
+      border-right: 1px solid ${theme.colors.warning};
+      border-bottom: 1px solid ${theme.colors.warning};
+    }
   }
 
   &.success:focus {
-    outline-color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
+
+    & + span + span {
+      border-top: 1px solid ${theme.colors.success};
+      border-right: 1px solid ${theme.colors.success};
+      border-bottom: 1px solid ${theme.colors.success};
+    }
   }
 `
 
@@ -48,23 +74,6 @@ export const ToggleArea = styled.span`
 
   & > svg {
     color: #ffffff; /* Change to prop and use default color */
-  }
-
-  &.error {
-    border-top: 1px solid ${theme.colors.error};
-    border-right: 1px solid ${theme.colors.error};
-    border-bottom: 1px solid ${theme.colors.error};
-  }
-
-  &.warning {
-    border-top: 1px solid ${theme.colors.warning};
-    border-right: 1px solid ${theme.colors.warning};
-    border-bottom: 1px solid ${theme.colors.warning};
-  }
-  &.success {
-    border-top: 1px solid ${theme.colors.success};
-    border-right: 1px solid ${theme.colors.success};
-    border-bottom: 1px solid ${theme.colors.success};
   }
 `
 export const VerificationWithToggle = styled(VerificationIcon)`

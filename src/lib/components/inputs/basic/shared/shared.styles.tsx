@@ -51,17 +51,14 @@ export const StyledInput = styled.input.attrs((props) => ({
   }
 
   &.error:focus {
-    outline-color: ${theme.colors.error};
     border: 1px solid ${theme.colors.error};
   }
 
   &.warning:focus {
-    outline-color: ${theme.colors.warning};
     border: 1px solid ${theme.colors.warning};
   }
 
   &.success:focus {
-    outline-color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
 `
