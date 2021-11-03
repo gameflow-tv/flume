@@ -95,8 +95,8 @@ MultipleCriteria.args = {
       invalidResponseType: 'error',
       validResponseType: 'success',
       condition: { type: 'max', rule: 12 }
-    }
-    /* {
+    },
+    {
       invalidMessage: 'Contains at least 1 lowercase letter',
       invalidResponseType: 'error',
       validResponseType: 'success',
@@ -106,20 +106,20 @@ MultipleCriteria.args = {
       invalidMessage: 'Contains at least 1 uppercase letter',
       invalidResponseType: 'error',
       validResponseType: 'success',
-      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[A-Z]).{1,}$/) }
+      condition: { type: 'regex', rule: new RegExp('^(?=.*?[A-Z]).{1,}$') }
     },
     {
       invalidMessage: 'Contains at least 1 number',
       invalidResponseType: 'error',
       validResponseType: 'success',
-      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[0-9]).{1,}$/) }
+      condition: { type: 'regex', rule: new RegExp('^(?=.*?[0-9]).{1,}$') }
     },
     {
       invalidMessage: 'Contains at least 1 of %, &, /, ! or ?',
       invalidResponseType: 'error',
       validResponseType: 'success',
-      condition: { type: 'regex', rule: new RegExp(/^(?=.*?[!%&/?]).{1,}$/) }
-    } */
+      condition: { type: 'regex', rule: new RegExp('^(?=.*?[!%&/?]).{1,}$') }
+    }
   ]
 }
 
