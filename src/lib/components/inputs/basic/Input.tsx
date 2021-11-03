@@ -6,6 +6,7 @@ import { Password } from './password/Password'
 import { Text } from './text/Text'
 import { FormGroup, StyledLabel } from './shared/Shared.styles'
 import { Select } from './select/Select'
+import { Search } from './search/Search'
 
 const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
@@ -27,6 +28,8 @@ export const Input = (props: InputProps) => {
         return <Checkbox />
       case 'select':
         return <Select {...props} />
+      case 'search':
+        return <Search {...props} />
       case 'email':
       case 'text':
       default:

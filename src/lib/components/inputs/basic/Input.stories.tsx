@@ -159,3 +159,8 @@ SingleSelect.args = {
   label: 'Single select use',
   placeholder: 'Choose your item...'
 }
+
+export const Search: Story = Template.bind({})
+Search.args = {
+  type: 'search'
+}
