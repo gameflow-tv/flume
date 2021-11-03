@@ -52,7 +52,7 @@ export const Password = (props: PasswordProps) => {
           {validationResponse?.message}
         </InfoMessage>
       )}
-      {validationResponse ? (
+      {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
@@ -60,7 +60,7 @@ export const Password = (props: PasswordProps) => {
             </ListItem>
           ))}
         </ul>
-      ) : props.criteria ? (
+      ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className="none">

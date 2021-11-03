@@ -39,7 +39,7 @@ export const Text = (props: InputProps) => {
           {validationResponse?.message}
         </InfoMessage>
       )}
-      {validationResponse ? (
+      {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as InputCriteriaResponse[]).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
@@ -47,7 +47,7 @@ export const Text = (props: InputProps) => {
             </ListItem>
           ))}
         </ul>
-      ) : props.criteria ? (
+      ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className="none">
