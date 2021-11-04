@@ -78,6 +78,7 @@ export const ToggleArea = styled.span`
   position: absolute;
   right: 0;
   bottom: 0;
+  cursor: pointer;
 
   & > svg {
     color: #ffffff; /* Change to prop and use default color */
