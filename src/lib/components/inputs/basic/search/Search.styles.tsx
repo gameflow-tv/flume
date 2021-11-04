@@ -5,7 +5,13 @@ import { StyledInput, VerificationIcon } from '../shared/Shared.styles'
 export const SearchInput = styled(StyledInput)`
   border-radius: 4px;
   padding-right: 80px;
-  -webkit-appearance: none;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
 
   &:focus {
     border: 1px solid ${theme.colors.primary};
