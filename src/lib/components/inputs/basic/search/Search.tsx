@@ -3,8 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/Input.definitions'
-import { InfoMessage, InputGroup, ListItem, VerificationWithToggle } from '../shared/Shared.styles'
-import { ToggleArea, SearchInput } from './Search.styles'
+import {
+  ActionArea,
+  InfoMessage,
+  InputGroup,
+  ListItem,
+  VerificationWithToggle
+} from '../shared/Shared.styles'
+import { SearchInput } from './Search.styles'
 
 export const Search = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
@@ -17,11 +23,15 @@ export const Search = (props: InputProps) => {
   return (
     <>
       <InputGroup>
-        <SearchInput className={validationResponse?.type} onChange={handleChange} {...props} />
+        <SearchInput
+          className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
+          onChange={handleChange}
+          {...props}
+        />
         <VerificationWithToggle className={validationResponse?.type}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ToggleArea>{<FontAwesomeIcon icon={faSearch} />}</ToggleArea>
+        <ActionArea>{<FontAwesomeIcon icon={faSearch} />}</ActionArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
         <InfoMessage className={validationResponse?.type}>

@@ -126,6 +126,26 @@ export const ListItem = styled.li`
   }
 `
 
+export const ActionArea = styled.span`
+  box-sizing: border-box;
+  height: 41px;
+  width: 41px;
+  background-color: #434647;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+
+  & > svg {
+    color: #ffffff;
+  }
+`
+
 export const VerificationWithToggle = styled(VerificationIcon)`
   right: 41px;
 
@@ -148,7 +168,11 @@ export const VerificationWithToggle = styled(VerificationIcon)`
 
 export const StyledInput = styled(GlobalInput)`
   border-radius: 4px;
-  padding-right: 80px;
+  padding-right: 46px;
+
+  &.validation {
+    padding-right: 80px;
+  }
 
   &:focus {
     outline: none;

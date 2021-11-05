@@ -9,13 +9,13 @@ import {
   InputValidation
 } from '../shared/Input.definitions'
 import {
+  ActionArea,
   InfoMessage,
   InputGroup,
   ListItem,
   StyledInput,
   VerificationWithToggle
 } from '../shared/Shared.styles'
-import { ToggleArea } from './Password.styles'
 
 export const Password = (props: InputProps) => {
   const { type, ...rest } = props
@@ -36,7 +36,7 @@ export const Password = (props: InputProps) => {
     <>
       <InputGroup>
         <StyledInput
-          className={validationResponse?.type}
+          className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           type={initialType}
           onChange={handleChange}
           {...rest}
@@ -44,9 +44,9 @@ export const Password = (props: InputProps) => {
         <VerificationWithToggle className={validationResponse?.type}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ToggleArea className={validationResponse?.type} onClick={() => toggleType()}>
+        <ActionArea className={validationResponse?.type} onClick={() => toggleType()}>
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
-        </ToggleArea>
+        </ActionArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
         <InfoMessage className={validationResponse?.type}>
