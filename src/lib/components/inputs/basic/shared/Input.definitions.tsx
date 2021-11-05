@@ -1,13 +1,14 @@
 import { IconDefinition } from '@fortawesome/fontawesome-common-types'
 import { HTMLInputTypeAttribute, ReactNode } from 'react'
 import { isEmpty } from '../../../../helpers/general'
+import { SharedProps } from './Shared.styles'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
   'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text' | 'select'
 >
 
-export type InputProps = {
+export type InputProps = SharedProps & {
   type: InputType
   name?: string
   required?: boolean

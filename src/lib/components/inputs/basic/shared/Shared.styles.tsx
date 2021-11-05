@@ -3,27 +3,52 @@ import { typographyToCss } from '../../../../theme'
 import theme from '../../../../theme/theme'
 import { InputProps } from './Input.definitions'
 
-export const StyledLabel = styled.label`
+export type SharedProps = {
+  disabled?: boolean
+  label: {
+    textColor: string
+    margin: string
+  }
+  input: {
+    backgroundColor: string
+    borderRadius: string
+    padding: string
+    textColor: string
+    borderColor: string
+    primaryBorder: string
+  }
+  inputOnFocus: {
+    errorColor: string
+    warningColor: string
+    successColor: string
+  }
+  disabledInput: {
+    backgroundColor: string
+    borderColor: string
+  }
+}
+
+export const StyledLabel = styled.label<SharedProps>`
   ${theme.typography.header5};
   text-transform: capitalize;
-  color: #eeeeee;
-  margin: 0 0 8px 0;
+  color: ${(props) => props.label.textColor};
+  margin: 0 0 ${(props) => props.label.margin} 0;
 `
 
 export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type
-}))<InputProps>`
+}))<SharedProps | InputProps>`
   box-sizing: border-box;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'text')};
   width: 261px;
   height: 41px;
-  background-color: #36393b; /* Change to prop and use default color */
-  border-radius: 4px;
-  padding: 12px;
-  color: rgba(255, 255, 255, 0.5) /* Change to prop and use default color */;
+  background-color: ${(props) => props.input.backgroundColor};
+  border-radius: ${(props) => props.input.borderRadius};
+  padding: ${(props) => props.input.padding};
+  color: ${(props) => props.input.textColor};
   ${theme.typography.body1};
   border: none;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Change to prop and use default color */
+  border: 1px solid ${(props) => props.input.borderColor}; /* Change to prop and use default color */
   display: flex;
   align-items: center;
 
@@ -33,26 +58,26 @@ export const GlobalInput = styled.input.attrs((props) => ({
 
   &.error,
   &.error:focus {
-    border: 1px solid ${theme.colors.error};
+    border: 1px solid ${(props) => props.inputOnFocus.errorColor};
   }
   &.warning,
   &.warning:focus {
-    border: 1px solid ${theme.colors.warning};
+    border: 1px solid ${(props) => props.inputOnFocus.warningColor};
   }
   &.success,
   &.success:focus {
-    border: 1px solid ${theme.colors.success};
+    border: 1px solid ${(props) => props.inputOnFocus.successColor};
   }
 
   &:focus {
-    border: 1px solid ${theme.colors.primary};
+    border: 1px solid ${(props) => props.input.primaryBorder};
     outline: none;
   }
 
   &:disabled {
-    background-color: ${theme.colors.textField};
+    background-color: ${(props) => props.disabledInput.backgroundColor};
     opacity: 0.5;
-    border: 1px solid ${theme.colors.shimmerHighlight};
+    border: 1px solid ${(props) => props.disabledInput.borderColor};
   }
 `
 
