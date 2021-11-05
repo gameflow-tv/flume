@@ -13,7 +13,8 @@ const Template: Story<IconProps> = (args: IconProps) => <Icon {...args} />
 export const Basic = Template.bind({})
 Basic.args = {
   icon: 'arrow_left',
-  color: '#fff'
+  color: 'white',
+  size: 'medium'
 }
 
 const Grid = styled.div`
