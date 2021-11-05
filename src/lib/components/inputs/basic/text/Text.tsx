@@ -6,7 +6,7 @@ import {
   InfoMessage,
   InputGroup,
   ListItem,
-  StyledInput,
+  GlobalInput,
   VerificationIcon
 } from '../shared/Shared.styles'
 
@@ -24,8 +24,8 @@ export const Text = (props: InputProps) => {
   return (
     <>
       <InputGroup>
-        <StyledInput
-          className={validationResponse?.type}
+        <GlobalInput
+          className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           defaultValue={props.value}
           onChange={handleChange}
           {...props}

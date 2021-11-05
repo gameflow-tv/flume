@@ -1,39 +1,26 @@
-import { faEye, faEyeSlash, faSearch } from '@fortawesome/pro-light-svg-icons'
+import { faSearch } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import {
-  InputCriteriaResponse,
-  InputProps,
-  InputType,
-  InputValidation
-} from '../shared/Input.definitions'
-import { InfoMessage, InputGroup, ListItem } from '../shared/Shared.styles'
+import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/Input.definitions'
+import { InfoMessage, InputGroup, ListItem, VerificationWithToggle } from '../shared/Shared.styles'
 import { ToggleArea, SearchInput } from './Search.styles'
 
-export type SearchProps = InputProps & {
-  readOnly?: boolean
-}
-
-export const Search = (props: SearchProps) => {
-  const { type, ...rest } = props
-  const [initialType, setInitialType] = useState<InputType>(type)
+export const Search = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
 
   const handleChange = (e) => {
     setValidationResponse(e.target.value)
-    rest.onChange?.call(null, e)
+    props.onChange?.call(null, e)
   }
 
   return (
     <>
       <InputGroup>
-        <SearchInput
-          className={validationResponse?.type}
-          type={initialType}
-          onChange={handleChange}
-          {...rest}
-        />
+        <SearchInput className={validationResponse?.type} onChange={handleChange} {...props} />
+        <VerificationWithToggle className={validationResponse?.type}>
+          {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
+        </VerificationWithToggle>
         <ToggleArea>{<FontAwesomeIcon icon={faSearch} />}</ToggleArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (

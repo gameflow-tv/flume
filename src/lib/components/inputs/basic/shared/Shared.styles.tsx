@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { typographyToCss } from '../../../../theme'
 import theme from '../../../../theme/theme'
-import { PasswordProps } from '../password/Password'
 import { InputProps } from './Input.definitions'
 
 export const StyledLabel = styled.label`
@@ -11,9 +10,9 @@ export const StyledLabel = styled.label`
   margin: 0 0 8px 0;
 `
 
-export const StyledInput = styled.input.attrs((props) => ({
+export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type
-}))<InputProps | PasswordProps>`
+}))<InputProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
   width: 261px;
@@ -27,15 +26,21 @@ export const StyledInput = styled.input.attrs((props) => ({
   border: 1px solid rgba(255, 255, 255, 0.1); /* Change to prop and use default color */
   display: flex;
   align-items: center;
-  padding-right: 41px;
 
-  &.error {
+  &.validation {
+    padding-right: 41px;
+  }
+
+  &.error,
+  &.error:focus {
     border: 1px solid ${theme.colors.error};
   }
-  &.warning {
+  &.warning,
+  &.warning:focus {
     border: 1px solid ${theme.colors.warning};
   }
-  &.success {
+  &.success,
+  &.success:focus {
     border: 1px solid ${theme.colors.success};
   }
 
@@ -45,21 +50,9 @@ export const StyledInput = styled.input.attrs((props) => ({
   }
 
   &:disabled {
-    background-color: #36393b;
+    background-color: ${theme.colors.textField};
     opacity: 0.5;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  &.error:focus {
-    border: 1px solid ${theme.colors.error};
-  }
-
-  &.warning:focus {
-    border: 1px solid ${theme.colors.warning};
-  }
-
-  &.success:focus {
-    border: 1px solid ${theme.colors.success};
+    border: 1px solid ${theme.colors.shimmerHighlight};
   }
 `
 
@@ -130,5 +123,64 @@ export const ListItem = styled.li`
   }
   &.success {
     color: ${theme.colors.success};
+  }
+`
+
+export const VerificationWithToggle = styled(VerificationIcon)`
+  right: 41px;
+
+  &.error {
+    & > svg {
+      color: ${theme.colors.error};
+    }
+  }
+  &.warning {
+    & > svg {
+      color: ${theme.colors.warning};
+    }
+  }
+  &.success {
+    & > svg {
+      color: ${theme.colors.success};
+    }
+  }
+`
+
+export const StyledInput = styled(GlobalInput)`
+  border-radius: 4px;
+  padding-right: 80px;
+
+  &:focus {
+    outline: none;
+
+    & + span + span {
+      border-top: 1px solid ${theme.colors.primary};
+      border-right: 1px solid ${theme.colors.primary};
+      border-bottom: 1px solid ${theme.colors.primary};
+    }
+  }
+
+  &.error:focus {
+    & + span + span {
+      border-top: 1px solid ${theme.colors.error};
+      border-right: 1px solid ${theme.colors.error};
+      border-bottom: 1px solid ${theme.colors.error};
+    }
+  }
+
+  &.warning:focus {
+    & + span + span {
+      border-top: 1px solid ${theme.colors.warning};
+      border-right: 1px solid ${theme.colors.warning};
+      border-bottom: 1px solid ${theme.colors.warning};
+    }
+  }
+
+  &.success:focus {
+    & + span + span {
+      border-top: 1px solid ${theme.colors.success};
+      border-right: 1px solid ${theme.colors.success};
+      border-bottom: 1px solid ${theme.colors.success};
+    }
   }
 `

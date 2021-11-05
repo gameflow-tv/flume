@@ -1,7 +1,6 @@
 import { Story } from '@storybook/react'
 import React from 'react'
 import { Input } from './Input'
-import { PasswordProps } from './password/Password'
 import { SelectProps, Option } from './select/Select'
 import { InputProps } from './shared/Input.definitions'
 
@@ -23,7 +22,7 @@ const itemsData = [
   { value: 'item_10', label: 'Item 10', game: null }
 ]
 
-const Template = (args: InputProps | PasswordProps) => <Input {...args} />
+const Template = (args: InputProps) => <Input {...args} />
 
 export const Text: Story = Template.bind({})
 Text.args = {
@@ -162,5 +161,6 @@ SingleSelect.args = {
 
 export const Search: Story = Template.bind({})
 Search.args = {
-  type: 'search'
+  type: 'search',
+  required: true
 }

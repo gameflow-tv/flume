@@ -8,15 +8,16 @@ import {
   InputType,
   InputValidation
 } from '../shared/Input.definitions'
-import { InfoMessage, InputGroup, ListItem } from '../shared/Shared.styles'
-import { ToggleArea, PasswordInput, VerificationWithToggle } from './Password.styles'
+import {
+  InfoMessage,
+  InputGroup,
+  ListItem,
+  StyledInput,
+  VerificationWithToggle
+} from '../shared/Shared.styles'
+import { ToggleArea } from './Password.styles'
 
-export type PasswordProps = InputProps & {
-  // specified password component props
-  readOnly?: boolean
-}
-
-export const Password = (props: PasswordProps) => {
+export const Password = (props: InputProps) => {
   const { type, ...rest } = props
   const [initialType, setInitialType] = useState<InputType>(type)
   const [validationResponse, setValidationResponse] = useInputValidation(props)
@@ -34,7 +35,7 @@ export const Password = (props: PasswordProps) => {
   return (
     <>
       <InputGroup>
-        <PasswordInput
+        <StyledInput
           className={validationResponse?.type}
           type={initialType}
           onChange={handleChange}
