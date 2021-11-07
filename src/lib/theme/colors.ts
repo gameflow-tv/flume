@@ -50,6 +50,7 @@ export type Colors = {
   calendarDisabledText: string
   calendarOnHover: string
   dateBoxHoverTextColor: string
+  border: string
 }
 
 const fallback: Colors = {
@@ -101,7 +102,8 @@ const fallback: Colors = {
   inputBackground: palette.white50,
   calendarDisabledText: palette.dustyGray,
   calendarOnHover: palette.abbeyGray,
-  dateBoxHoverTextColor: palette.white
+  dateBoxHoverTextColor: palette.white,
+  border: palette.white10
 }
 
 export default fallback
