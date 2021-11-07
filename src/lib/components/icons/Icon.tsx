@@ -11,28 +11,36 @@ export const IconSize = {
 }
 
 export type IconProps = {
-  icon?: keyof Icons | string
+  icon: keyof Icons | string
   color?: string
   size?: keyof typeof IconSize | string
   inline?: boolean
   filled?: boolean
 }
 
-const _Icon = styled.div<{ size?: string; inline?: boolean }>`
+const _Icon = styled.div<{ size: string; inline?: boolean }>`
   display: inline-flex;
   align-self: center;
-  width: ${(props) => props.size ?? IconSize.medium};
-  height: ${(props) => props.size ?? IconSize.medium};
+  vertical-align: middle;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
 
   & > svg {
-    font-size: ${(props) => (props.inline ? 'inherit' : props.size ?? IconSize.medium)};
+    position: relative;
+    font-size: ${(props) => (props.inline ? 'inherit' : props.size)};
   }
 `
 
-export const Icon = ({ icon, color, size, inline, filled }: IconProps) => {
+export const Icon = ({
+  icon,
+  color,
+  size = 'medium',
+  inline = false,
+  filled = false
+}: IconProps) => {
   const theme = useTheme()
 
-  let s
+  let s: string
 
   if (size in IconSize) {
     s = IconSize[size]
