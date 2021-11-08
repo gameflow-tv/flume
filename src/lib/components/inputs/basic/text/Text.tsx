@@ -30,19 +30,19 @@ export const Text = (props: InputProps) => {
           onChange={handleChange}
           {...props}
         />
-        <VerificationIcon className={validationResponse?.type}>
+        <VerificationIcon className={validationResponse?.type} {...props}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationIcon>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type}>
+        <InfoMessage className={validationResponse?.type} {...props}>
           {validationResponse?.message}
         </InfoMessage>
       )}
       {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as InputCriteriaResponse[]).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
+            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props}>
               {crit.message}
             </ListItem>
           ))}
@@ -50,7 +50,7 @@ export const Text = (props: InputProps) => {
       ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none">
+            <ListItem key={`validation_${idx}`} className="none" {...props}>
               {crit.invalidMessage}
             </ListItem>
           ))}

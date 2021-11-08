@@ -41,22 +41,22 @@ export const Password = (props: InputProps) => {
           onChange={handleChange}
           {...rest}
         />
-        <VerificationWithToggle className={validationResponse?.type}>
+        <VerificationWithToggle className={validationResponse?.type} {...props}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ActionArea className={validationResponse?.type} onClick={() => toggleType()}>
+        <ActionArea className={validationResponse?.type} onClick={() => toggleType()} {...props}>
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ActionArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type}>
+        <InfoMessage className={validationResponse?.type} {...props}>
           {validationResponse?.message}
         </InfoMessage>
       )}
       {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`}>
+            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props}>
               {crit.message}
             </ListItem>
           ))}
@@ -64,7 +64,7 @@ export const Password = (props: InputProps) => {
       ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none">
+            <ListItem key={`validation_${idx}`} className="none" {...props}>
               {crit.invalidMessage}
             </ListItem>
           ))}

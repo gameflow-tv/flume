@@ -26,6 +26,17 @@ export type SharedProps = {
     backgroundColor: string
     borderColor: string
   }
+  icon: {
+    iconPadding: string
+    backgroundColor: string
+    borderRadius: string
+    iconColor: string
+  }
+  infoMessage: {
+    paddingTop: string
+    typography: string
+    primaryTextColor: string
+  }
 }
 
 export const StyledLabel = styled.label<SharedProps>`
@@ -37,7 +48,7 @@ export const StyledLabel = styled.label<SharedProps>`
 
 export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type
-}))<SharedProps | InputProps>`
+}))<SharedProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'text')};
   width: 261px;
@@ -93,81 +104,97 @@ export const InputGroup = styled.div`
   position: relative;
 `
 
-export const VerificationIcon = styled.span`
+export const VerificationIcon = styled.span<SharedProps>`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: ${(props) => props.icon.iconPadding};
   border: none;
   position: absolute;
   right: 0;
 
   &.error {
     & > svg {
-      color: ${theme.colors.error};
+      color: ${(props) => props.inputOnFocus.errorColor};
     }
   }
   &.warning {
     & > svg {
-      color: ${theme.colors.warning};
+      color: ${(props) => props.inputOnFocus.warningColor};
     }
   }
   &.success {
     & > svg {
-      color: ${theme.colors.success};
+      color: ${(props) => props.inputOnFocus.successColor};
     }
   }
 `
 
-export const InfoMessage = styled.div`
-  margin-top: 4px;
-  ${theme.typography.body3};
-  height: 12px;
+export const InfoMessage = styled.div<SharedProps>`
+  padding-top: ${(props) => props.infoMessage.paddingTop};
+  ${(props) => props.infoMessage.typography};
   width: 131px;
 
   &.error {
-    color: ${theme.colors.error};
+    color: ${(props) => props.inputOnFocus.errorColor};
   }
   &.warning {
-    color: ${theme.colors.warning};
+    color: ${(props) => props.inputOnFocus.warningColor};
   }
   &.success {
-    color: ${theme.colors.success};
+    color: ${(props) => props.inputOnFocus.successColor};
   }
 `
 
-export const ListItem = styled.li`
-  ${typographyToCss(theme.typography.body3)};
-  color: ${theme.colors.primaryText};
+export const ListItem = styled.li<SharedProps>`
+  ${(props) => props.infoMessage.typography};
+  color: ${(props) => props.infoMessage.primaryTextColor};
+
   &.error {
-    color: ${theme.colors.error};
+    color: ${(props) => props.inputOnFocus.errorColor};
   }
   &.warning {
-    color: ${theme.colors.warning};
+    color: ${(props) => props.inputOnFocus.warningColor};
   }
   &.success {
-    color: ${theme.colors.success};
+    color: ${(props) => props.inputOnFocus.successColor};
   }
 `
 
-export const ActionArea = styled.span`
+export const ActionArea = styled.span<SharedProps>`
   box-sizing: border-box;
   height: 41px;
   width: 41px;
-  background-color: #434647;
+  background-color: ${(props) => props.icon.backgroundColor};
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 ${(props) => props.icon.borderRadius} ${(props) => props.icon.borderRadius} 0;
   position: absolute;
   right: 0;
   bottom: 0;
   cursor: pointer;
 
+  &.error {
+    border-top: 1px solid ${(props) => props.inputOnFocus.errorColor};
+    border-right: 1px solid ${(props) => props.inputOnFocus.errorColor};
+    border-bottom: 1px solid ${(props) => props.inputOnFocus.errorColor};
+  }
+  &.warning {
+    border-top: 1px solid ${(props) => props.inputOnFocus.warningColor};
+    border-right: 1px solid ${(props) => props.inputOnFocus.warningColor};
+    border-bottom: 1px solid ${(props) => props.inputOnFocus.warningColor};
+  }
+  &.success {
+    border-top: 1px solid ${(props) => props.inputOnFocus.successColor};
+    border-right: 1px solid ${(props) => props.inputOnFocus.successColor};
+    border-bottom: 1px solid ${(props) => props.inputOnFocus.successColor};
+  }
+
   & > svg {
-    color: #ffffff;
+    color: ${(props) => props.icon.iconColor};
   }
 `
 
@@ -176,23 +203,23 @@ export const VerificationWithToggle = styled(VerificationIcon)`
 
   &.error {
     & > svg {
-      color: ${theme.colors.error};
+      ${(props) => props.inputOnFocus.errorColor};
     }
   }
   &.warning {
     & > svg {
-      color: ${theme.colors.warning};
+      ${(props) => props.inputOnFocus.warningColor};
     }
   }
   &.success {
     & > svg {
-      color: ${theme.colors.success};
+      ${(props) => props.inputOnFocus.successColor};
     }
   }
 `
 
-export const StyledInput = styled(GlobalInput)`
-  border-radius: 4px;
+export const StyledInput = styled(GlobalInput)<SharedProps>`
+  border-radius: ${(props) => props.input.borderRadius};
   padding-right: 46px;
 
   &.validation {
@@ -203,33 +230,33 @@ export const StyledInput = styled(GlobalInput)`
     outline: none;
 
     & + span + span {
-      border-top: 1px solid ${theme.colors.primary};
-      border-right: 1px solid ${theme.colors.primary};
-      border-bottom: 1px solid ${theme.colors.primary};
+      border-top: 1px solid ${(props) => props.input.primaryBorder};
+      border-right: 1px solid ${(props) => props.input.primaryBorder};
+      border-bottom: 1px solid ${(props) => props.input.primaryBorder};
     }
   }
 
   &.error:focus {
     & + span + span {
-      border-top: 1px solid ${theme.colors.error};
-      border-right: 1px solid ${theme.colors.error};
-      border-bottom: 1px solid ${theme.colors.error};
+      border-top: 1px solid ${(props) => props.inputOnFocus.errorColor};
+      border-right: 1px solid ${(props) => props.inputOnFocus.errorColor};
+      border-bottom: 1px solid ${(props) => props.inputOnFocus.errorColor};
     }
   }
 
   &.warning:focus {
     & + span + span {
-      border-top: 1px solid ${theme.colors.warning};
-      border-right: 1px solid ${theme.colors.warning};
-      border-bottom: 1px solid ${theme.colors.warning};
+      border-top: 1px solid ${(props) => props.inputOnFocus.warningColor};
+      border-right: 1px solid ${(props) => props.inputOnFocus.warningColor};
+      border-bottom: 1px solid ${(props) => props.inputOnFocus.warningColor};
     }
   }
 
   &.success:focus {
     & + span + span {
-      border-top: 1px solid ${theme.colors.success};
-      border-right: 1px solid ${theme.colors.success};
-      border-bottom: 1px solid ${theme.colors.success};
+      border-top: 1px solid ${(props) => props.inputOnFocus.successColor};
+      border-right: 1px solid ${(props) => props.inputOnFocus.successColor};
+      border-bottom: 1px solid ${(props) => props.inputOnFocus.successColor};
     }
   }
 `

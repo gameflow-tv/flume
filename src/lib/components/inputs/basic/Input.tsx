@@ -8,6 +8,7 @@ import { FormGroup, StyledLabel } from './shared/Shared.styles'
 import { Select } from './select/Select'
 import { Search } from './search/Search'
 import { useTheme } from '../../../hooks'
+import { typographyToCss } from '../../../theme'
 
 const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
@@ -44,6 +45,17 @@ export const Input = (props: InputProps) => {
     disabledInput: {
       backgroundColor: theme.colors.textField,
       borderColor: theme.colors.shimmerHighlight
+    },
+    icon: {
+      iconPadding: theme.spacing.small,
+      backgroundColor: theme.colors.sliderBackground,
+      borderRadius: theme.spacing.xxsmall,
+      iconColor: theme.colors.primaryText
+    },
+    infoMessage: {
+      paddingTop: theme.spacing.xxsmall,
+      typography: typographyToCss(theme.typography.body3),
+      primaryTextColor: theme.colors.primaryText
     }
   }
 
