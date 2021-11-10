@@ -5,11 +5,12 @@ import { InputProps } from './Input.definitions'
 
 export type SharedProps = {
   disabled?: boolean
-  label: {
+  cursor?: string
+  label?: {
     textColor: string
     margin: string
   }
-  input: {
+  input?: {
     backgroundColor: string
     borderRadius: string
     padding: string
@@ -17,22 +18,22 @@ export type SharedProps = {
     borderColor: string
     primaryBorder: string
   }
-  inputOnFocus: {
+  inputOnFocus?: {
     errorColor: string
     warningColor: string
     successColor: string
   }
-  disabledInput: {
+  disabledInput?: {
     backgroundColor: string
     borderColor: string
   }
-  icon: {
+  icon?: {
     iconPadding: string
     backgroundColor: string
     borderRadius: string
     iconColor: string
   }
-  infoMessage: {
+  infoMessage?: {
     paddingTop: string
     typography: string
     primaryTextColor: string
@@ -50,7 +51,7 @@ export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type
 }))<SharedProps>`
   box-sizing: border-box;
-  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'text')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
   width: 261px;
   height: 41px;
   background-color: ${(props) => props.input.backgroundColor};
