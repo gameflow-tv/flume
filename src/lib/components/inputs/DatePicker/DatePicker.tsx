@@ -2,6 +2,7 @@ import { faCalendarAlt, faLongArrowLeft, faLongArrowRight } from '@fortawesome/p
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
 import { useTheme } from '../../../hooks'
+import { useOutsideClick } from '../../../hooks/useOutsideClick'
 import { TypographyStyle } from '../../../theme'
 import AspectRatio from '../../common/AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
@@ -85,10 +86,12 @@ export const DatePicker = ({
   zIndex
 }: DatePickerProps) => {
   const theme = useTheme()
-  const [selectedDate, setInternalSelectedDate] = useState<Date>(getToday())
+  const pickerRef = useRef(null)
+  const [selectedDate, setSelectedDate] = useState<Date>(getToday())
   const [dateValue, setDateValue] = useState<string>(formatFieldValue(getToday()))
   const [dayLabel, setDayLabel] = useState(getFormatedDate(getToday()))
   const [editionMode, setEditionMode] = useState<boolean>(false)
+  useOutsideClick(pickerRef, () => setEditionMode(false))
 
   const styles = {
     width: width || '328px',
@@ -101,11 +104,9 @@ export const DatePicker = ({
     zIndex
   }
 
-  const setSelectedDate = (date: Date) => {
-    setInternalSelectedDate(date)
-    if (onDateChange) {
-      onDateChange(date ? date : new Date())
-    }
+  const setNewDate = (date: Date) => {
+    setSelectedDate(new Date(date))
+    onDateChange?.call(null, date ? date : new Date())
   }
 
   const handleEdition = (e) => {
@@ -123,7 +124,7 @@ export const DatePicker = ({
       setDateValue(val)
       const dt = val.split('-').map((d) => parseInt(d))
       const selected = new Date(dt[0], dt[1] - 1, dt[2])
-      setSelectedDate(selected)
+      setNewDate(selected)
       setDayLabel(getFormatedDate(selected))
       if (calRef ? calRef.current !== null : false) {
         calRef.current.moveToDate(selected)
@@ -133,7 +134,7 @@ export const DatePicker = ({
 
   const handleCalendar = (timestamp: number) => {
     const selected = new Date(timestamp)
-    setSelectedDate(selected)
+    setNewDate(selected)
     setDayLabel(getFormatedDate(selected))
     setDateValue(formatFieldValue(selected))
   }
@@ -146,12 +147,13 @@ export const DatePicker = ({
     }
     const date = selectedDate
     date.setDate(date.getDate() + offset)
-    setSelectedDate(date)
+    setNewDate(date)
+    setDateValue(formatFieldValue(date))
     setDayLabel(getFormatedDate(date))
   }
 
   return (
-    <Wrapper {...styles}>
+    <Wrapper ref={pickerRef} {...styles}>
       <Grid>
         <AspectRatio aspectRatio={100}>
           <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>

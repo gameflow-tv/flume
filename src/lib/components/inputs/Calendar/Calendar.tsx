@@ -1,6 +1,6 @@
 import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../../helpers/general'
 import { TypographyStyle } from '../../../theme'
@@ -188,7 +188,6 @@ export type CalendarProps = {
   defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
-  story?: boolean
 }
 
 export const Calendar = forwardRef((props: CalendarProps, ref) => {
@@ -243,6 +242,20 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
     setMonthDetails(getMonthDetails(y, m))
   }
 
+  const handleDate = useCallback((date: number) => {
+    const dt = new Date(date)
+
+    const y = dt.getFullYear(),
+      m = dt.getMonth()
+    setYear(y)
+    setMonth(m)
+    setMonthDetails(getMonthDetails(y, m))
+  }, [])
+
+  useEffect(() => {
+    handleDate(selectedDate)
+  }, [selectedDate])
+
   useImperativeHandle(ref, () => ({
     handleDay(offset: number) {
       const selected = new Date(selectedDate)
@@ -251,11 +264,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
     },
     moveToDate(date: Date) {
       setSelectedDate(date.valueOf())
-      const y = date.getFullYear(),
-        m = date.getMonth()
-      setYear(y)
-      setMonth(m)
-      setMonthDetails(getMonthDetails(y, m))
+      handleDate(date.valueOf())
     }
   }))
 
@@ -295,7 +304,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                   key={idx}
                   className={
                     (day.month !== 0 ? ' disabled' : '') +
-                    (isCurrentDay(day) && !props.story ? ' today' : '') +
+                    (isCurrentDay(day) ? ' today' : '') +
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}
