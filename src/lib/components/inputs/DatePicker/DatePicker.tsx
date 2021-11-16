@@ -16,6 +16,7 @@ export type DatePickerProps = {
   navHoverTextColor?: string
   inputTypo?: TypographyStyle
   shadow?: string
+  value?: Date
   onDateChange?: (date: Date) => void
   zIndex?: number
 }
@@ -82,14 +83,15 @@ export const DatePicker = ({
   navTextColor,
   navHoverBgColor,
   navHoverTextColor,
+  value,
   onDateChange,
   zIndex
 }: DatePickerProps) => {
   const theme = useTheme()
   const pickerRef = useRef(null)
-  const [selectedDate, setSelectedDate] = useState<Date>(getToday())
-  const [dateValue, setDateValue] = useState<string>(formatFieldValue(getToday()))
-  const [dayLabel, setDayLabel] = useState(getFormatedDate(getToday()))
+  const [selectedDate, setSelectedDate] = useState<Date>(value || getToday())
+  const [dateValue, setDateValue] = useState<string>(formatFieldValue(value || getToday()))
+  const [dayLabel, setDayLabel] = useState(getFormatedDate(value || getToday()))
   const [editionMode, setEditionMode] = useState<boolean>(false)
   useOutsideClick(pickerRef, () => setEditionMode(false))
 
