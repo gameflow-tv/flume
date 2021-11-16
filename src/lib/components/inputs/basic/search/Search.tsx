@@ -26,24 +26,24 @@ export const Search = (props: InputProps) => {
         <SearchInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           onChange={handleChange}
-          {...props}
+          {...props.inputStyles}
         />
-        <VerificationWithToggle className={validationResponse?.type} {...props}>
+        <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ActionArea className={validationResponse?.type} {...props}>
+        <ActionArea className={validationResponse?.type} {...props.inputStyles}>
           {<FontAwesomeIcon icon={faSearch} />}
         </ActionArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type} {...props}>
+        <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.message}
         </InfoMessage>
       )}
       {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props}>
+            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
               {crit.message}
             </ListItem>
           ))}
@@ -51,7 +51,7 @@ export const Search = (props: InputProps) => {
       ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none" {...props}>
+            <ListItem key={`validation_${idx}`} className="none" {...props.inputStyles}>
               {crit.invalidMessage}
             </ListItem>
           ))}

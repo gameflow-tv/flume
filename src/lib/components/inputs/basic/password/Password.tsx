@@ -39,24 +39,28 @@ export const Password = (props: InputProps) => {
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           type={initialType}
           onChange={handleChange}
-          {...rest}
+          {...rest.inputStyles}
         />
-        <VerificationWithToggle className={validationResponse?.type} {...props}>
+        <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ActionArea className={validationResponse?.type} onClick={() => toggleType()} {...props}>
+        <ActionArea
+          className={validationResponse?.type}
+          onClick={() => toggleType()}
+          {...props.inputStyles}
+        >
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ActionArea>
       </InputGroup>
       {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type} {...props}>
+        <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.message}
         </InfoMessage>
       )}
       {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props}>
+            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
               {crit.message}
             </ListItem>
           ))}
@@ -64,7 +68,7 @@ export const Password = (props: InputProps) => {
       ) : props.multipleCriteriaInfo && props.criteria ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none" {...props}>
+            <ListItem key={`validation_${idx}`} className="none" {...props.inputStyles}>
               {crit.invalidMessage}
             </ListItem>
           ))}

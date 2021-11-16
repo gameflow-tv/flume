@@ -60,20 +60,22 @@ export const Input = (props: InputProps) => {
     }
   }
 
+  const inputProps = { ...props, inputStyles: styles }
+
   const RenderInput = () => {
     switch (type) {
       case 'password':
-        return <Password {...props} {...styles} />
+        return <Password {...inputProps} />
       case 'checkbox':
         return <Checkbox />
       case 'select':
-        return <Select {...props} {...styles} />
+        return <Select {...inputProps} />
       case 'search':
-        return <Search {...props} {...styles} />
+        return <Search {...inputProps} />
       case 'email':
       case 'text':
       default:
-        return <Text {...props} {...styles} />
+        return <Text {...inputProps} />
     }
   }
 
