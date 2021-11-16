@@ -23,7 +23,7 @@ export const Text = (props: InputProps) => {
 
   return (
     <>
-      <InputGroup>
+      <InputGroup {...props}>
         <GlobalInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           defaultValue={props.value}

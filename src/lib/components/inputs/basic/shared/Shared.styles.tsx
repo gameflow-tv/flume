@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../../theme'
 import theme from '../../../../theme/theme'
-import { InputProps } from './Input.definitions'
 
 export type SharedProps = {
   disabled?: boolean
   cursor?: string
+  width?: string
+  height?: string
   label?: {
     textColor: string
     margin: string
@@ -52,8 +52,8 @@ export const GlobalInput = styled.input.attrs((props) => ({
 }))<SharedProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
-  width: 261px;
-  height: 41px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   background-color: ${(props) => props.input.backgroundColor};
   border-radius: ${(props) => props.input.borderRadius};
   padding: ${(props) => props.input.padding};
@@ -97,12 +97,14 @@ export const FormGroup = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `
 
-export const InputGroup = styled.div`
+export const InputGroup = styled.div<SharedProps>`
   display: flex;
   flex-direction: column;
   position: relative;
+  width: ${(props) => props.width};
 `
 
 export const VerificationIcon = styled.span<SharedProps>`
@@ -135,7 +137,7 @@ export const VerificationIcon = styled.span<SharedProps>`
 export const InfoMessage = styled.div<SharedProps>`
   padding-top: ${(props) => props.infoMessage.paddingTop};
   ${(props) => props.infoMessage.typography};
-  width: 131px;
+  width: ${(props) => props.width};
 
   &.error {
     color: ${(props) => props.inputOnFocus.errorColor};

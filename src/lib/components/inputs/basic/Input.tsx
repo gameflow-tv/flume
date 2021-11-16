@@ -25,6 +25,8 @@ export const Input = (props: InputProps) => {
   console.log(theme)
 
   const styles = {
+    width: props.width || '100%',
+    height: props.height || '41px',
     label: {
       textColor: theme.colors.secondaryText,
       margin: theme.spacing.xsmall
