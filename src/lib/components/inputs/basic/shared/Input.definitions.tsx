@@ -8,7 +8,7 @@ export type InputType = Extract<
   'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text' | 'select'
 >
 
-export type InputProps = SharedProps & {
+export type InputProps = {
   type: InputType
   name?: string
   required?: boolean
@@ -20,6 +20,7 @@ export type InputProps = SharedProps & {
   multipleCriteriaInfo?: boolean
   criteria?: InputValidation | InputValidation[]
   onChange?: (e?: any) => void
+  inputStyles?: SharedProps
 }
 
 export enum InputResponseType {

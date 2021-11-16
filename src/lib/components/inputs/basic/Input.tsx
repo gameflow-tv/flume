@@ -22,14 +22,13 @@ export const Input = (props: InputProps) => {
   verifyRequiredProps(props)
   const type = props.type.toLowerCase()
   const theme = useTheme()
-  console.log(theme)
 
   const styles = {
-    width: props.width || '100%',
-    height: props.height || '41px',
+    width: props.inputStyles?.width || '100%',
+    height: props.inputStyles?.height || '41px',
     label: {
-      textColor: theme.colors.secondaryText,
-      margin: theme.spacing.xsmall
+      textColor: props.inputStyles?.label?.textColor || theme.colors.secondaryText,
+      margin: props.inputStyles?.label?.margin || theme.spacing.xsmall
     },
     input: {
       backgroundColor: theme.colors.onBackground,
@@ -37,12 +36,12 @@ export const Input = (props: InputProps) => {
       padding: theme.spacing.small,
       textColor: theme.colors.inputBackground,
       borderColor: theme.colors.shimmerHighlight,
-      primaryBorder: theme.colors.primary
-    },
-    inputOnFocus: {
-      errorColor: theme.colors.error,
-      warningColor: theme.colors.warning,
-      successColor: theme.colors.success
+      primaryBorder: theme.colors.primary,
+      onFocus: {
+        errorColor: theme.colors.error,
+        warningColor: theme.colors.warning,
+        successColor: theme.colors.success
+      }
     },
     disabledInput: {
       backgroundColor: theme.colors.textField,

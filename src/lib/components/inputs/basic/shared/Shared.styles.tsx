@@ -17,11 +17,11 @@ export type SharedProps = {
     textColor: string
     borderColor: string
     primaryBorder: string
-  }
-  inputOnFocus?: {
-    errorColor: string
-    warningColor: string
-    successColor: string
+    onFocus?: {
+      errorColor: string
+      warningColor: string
+      successColor: string
+    }
   }
   disabledInput?: {
     backgroundColor: string
@@ -70,15 +70,15 @@ export const GlobalInput = styled.input.attrs((props) => ({
 
   &.error,
   &.error:focus {
-    border: 1px solid ${(props) => props.inputOnFocus.errorColor};
+    border: 1px solid ${(props) => props.input?.onFocus?.errorColor};
   }
   &.warning,
   &.warning:focus {
-    border: 1px solid ${(props) => props.inputOnFocus.warningColor};
+    border: 1px solid ${(props) => props.input?.onFocus?.warningColor};
   }
   &.success,
   &.success:focus {
-    border: 1px solid ${(props) => props.inputOnFocus.successColor};
+    border: 1px solid ${(props) => props.input?.onFocus?.successColor};
   }
 
   &:focus {
@@ -119,17 +119,17 @@ export const VerificationIcon = styled.span<SharedProps>`
 
   &.error {
     & > svg {
-      color: ${(props) => props.inputOnFocus.errorColor};
+      color: ${(props) => props.input?.onFocus?.errorColor};
     }
   }
   &.warning {
     & > svg {
-      color: ${(props) => props.inputOnFocus.warningColor};
+      color: ${(props) => props.input?.onFocus?.warningColor};
     }
   }
   &.success {
     & > svg {
-      color: ${(props) => props.inputOnFocus.successColor};
+      color: ${(props) => props.input?.onFocus?.successColor};
     }
   }
 `
@@ -140,13 +140,13 @@ export const InfoMessage = styled.div<SharedProps>`
   width: ${(props) => props.width};
 
   &.error {
-    color: ${(props) => props.inputOnFocus.errorColor};
+    color: ${(props) => props.input?.onFocus?.errorColor};
   }
   &.warning {
-    color: ${(props) => props.inputOnFocus.warningColor};
+    color: ${(props) => props.input?.onFocus?.warningColor};
   }
   &.success {
-    color: ${(props) => props.inputOnFocus.successColor};
+    color: ${(props) => props.input?.onFocus?.successColor};
   }
 `
 
@@ -155,13 +155,13 @@ export const ListItem = styled.li<SharedProps>`
   color: ${(props) => props.infoMessage.primaryTextColor};
 
   &.error {
-    color: ${(props) => props.inputOnFocus.errorColor};
+    color: ${(props) => props.input?.onFocus?.errorColor};
   }
   &.warning {
-    color: ${(props) => props.inputOnFocus.warningColor};
+    color: ${(props) => props.input?.onFocus?.warningColor};
   }
   &.success {
-    color: ${(props) => props.inputOnFocus.successColor};
+    color: ${(props) => props.input?.onFocus?.successColor};
   }
 `
 
@@ -181,19 +181,19 @@ export const ActionArea = styled.span<SharedProps>`
   cursor: pointer;
 
   &.error {
-    border-top: 1px solid ${(props) => props.inputOnFocus.errorColor};
-    border-right: 1px solid ${(props) => props.inputOnFocus.errorColor};
-    border-bottom: 1px solid ${(props) => props.inputOnFocus.errorColor};
+    border-top: 1px solid ${(props) => props.input?.onFocus?.errorColor};
+    border-right: 1px solid ${(props) => props.input?.onFocus?.errorColor};
+    border-bottom: 1px solid ${(props) => props.input?.onFocus?.errorColor};
   }
   &.warning {
-    border-top: 1px solid ${(props) => props.inputOnFocus.warningColor};
-    border-right: 1px solid ${(props) => props.inputOnFocus.warningColor};
-    border-bottom: 1px solid ${(props) => props.inputOnFocus.warningColor};
+    border-top: 1px solid ${(props) => props.input?.onFocus?.warningColor};
+    border-right: 1px solid ${(props) => props.input?.onFocus?.warningColor};
+    border-bottom: 1px solid ${(props) => props.input?.onFocus?.warningColor};
   }
   &.success {
-    border-top: 1px solid ${(props) => props.inputOnFocus.successColor};
-    border-right: 1px solid ${(props) => props.inputOnFocus.successColor};
-    border-bottom: 1px solid ${(props) => props.inputOnFocus.successColor};
+    border-top: 1px solid ${(props) => props.input?.onFocus?.successColor};
+    border-right: 1px solid ${(props) => props.input?.onFocus?.successColor};
+    border-bottom: 1px solid ${(props) => props.input?.onFocus?.successColor};
   }
 
   & > svg {
@@ -206,17 +206,17 @@ export const VerificationWithToggle = styled(VerificationIcon)`
 
   &.error {
     & > svg {
-      ${(props) => props.inputOnFocus.errorColor};
+      ${(props) => props.input?.onFocus?.errorColor};
     }
   }
   &.warning {
     & > svg {
-      ${(props) => props.inputOnFocus.warningColor};
+      ${(props) => props.input?.onFocus?.warningColor};
     }
   }
   &.success {
     & > svg {
-      ${(props) => props.inputOnFocus.successColor};
+      ${(props) => props.input?.onFocus?.successColor};
     }
   }
 `
@@ -241,25 +241,25 @@ export const StyledInput = styled(GlobalInput)<SharedProps>`
 
   &.error:focus {
     & + span + span {
-      border-top: 1px solid ${(props) => props.inputOnFocus.errorColor};
-      border-right: 1px solid ${(props) => props.inputOnFocus.errorColor};
-      border-bottom: 1px solid ${(props) => props.inputOnFocus.errorColor};
+      border-top: 1px solid ${(props) => props.input?.onFocus?.errorColor};
+      border-right: 1px solid ${(props) => props.input?.onFocus?.errorColor};
+      border-bottom: 1px solid ${(props) => props.input?.onFocus?.errorColor};
     }
   }
 
   &.warning:focus {
     & + span + span {
-      border-top: 1px solid ${(props) => props.inputOnFocus.warningColor};
-      border-right: 1px solid ${(props) => props.inputOnFocus.warningColor};
-      border-bottom: 1px solid ${(props) => props.inputOnFocus.warningColor};
+      border-top: 1px solid ${(props) => props.input?.onFocus?.warningColor};
+      border-right: 1px solid ${(props) => props.input?.onFocus?.warningColor};
+      border-bottom: 1px solid ${(props) => props.input?.onFocus?.warningColor};
     }
   }
 
   &.success:focus {
     & + span + span {
-      border-top: 1px solid ${(props) => props.inputOnFocus.successColor};
-      border-right: 1px solid ${(props) => props.inputOnFocus.successColor};
-      border-bottom: 1px solid ${(props) => props.inputOnFocus.successColor};
+      border-top: 1px solid ${(props) => props.input?.onFocus?.successColor};
+      border-right: 1px solid ${(props) => props.input?.onFocus?.successColor};
+      border-bottom: 1px solid ${(props) => props.input?.onFocus?.successColor};
     }
   }
 `
