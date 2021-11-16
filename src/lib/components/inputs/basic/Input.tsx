@@ -31,16 +31,16 @@ export const Input = (props: InputProps) => {
       margin: props.inputStyles?.label?.margin || theme.spacing.xsmall
     },
     input: {
-      backgroundColor: theme.colors.onBackground,
-      borderRadius: theme.spacing.xxsmall,
-      padding: theme.spacing.small,
-      textColor: theme.colors.inputBackground,
-      borderColor: theme.colors.shimmerHighlight,
-      primaryBorder: theme.colors.primary,
+      backgroundColor: props.inputStyles?.input?.backgroundColor || theme.colors.onBackground,
+      borderRadius: props.inputStyles?.input?.borderRadius || theme.spacing.xxsmall,
+      padding: props.inputStyles?.input?.padding || theme.spacing.small,
+      textColor: props.inputStyles?.input?.textColor || theme.colors.inputBackground,
+      borderColor: props.inputStyles?.input?.borderColor || theme.colors.shimmerHighlight,
+      primaryBorder: props.inputStyles?.input?.primaryBorder || theme.colors.primary,
       onFocus: {
-        errorColor: theme.colors.error,
-        warningColor: theme.colors.warning,
-        successColor: theme.colors.success
+        errorColor: props.inputStyles?.input?.onFocus?.errorColor || theme.colors.error,
+        warningColor: props.inputStyles?.input?.onFocus?.warningColor || theme.colors.warning,
+        successColor: props.inputStyles?.input?.onFocus?.successColor || theme.colors.success
       }
     },
     disabledInput: {
