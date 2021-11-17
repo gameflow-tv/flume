@@ -128,6 +128,27 @@ MultipleCriteria.args = {
   ]
 }
 
+const customValidationExampleFunc = (args: any): boolean => {
+  if (parseInt(args) === 6) {
+    return true
+  }
+  return false
+}
+export const CustomCriteria: Story = Template.bind({})
+CustomCriteria.args = {
+  type: 'text',
+  label: 'Custom Criteria',
+  criteria: [
+    {
+      invalidMessage: 'Example function checking the field value number is equal 6',
+      invalidResponseType: 'warning',
+      validMessage: 'Value is equal 6',
+      validResponseType: 'success',
+      condition: { type: 'custom', rule: customValidationExampleFunc }
+    }
+  ]
+}
+
 export const Password: Story = Template.bind({})
 Password.args = {
   type: 'password',

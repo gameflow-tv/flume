@@ -31,7 +31,7 @@ export enum InputResponseType {
   NONE = 'none'
 }
 
-export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex'
+export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'custom'
 
 export interface InputValidation {
   invalidMessage?: string
@@ -51,20 +51,22 @@ export type InputCriteriaResponse = {
   isValid: boolean
 }
 
-export const criteriaRule = (type: CriteriaType, value: string, rule?: number | RegExp) => {
+export const criteriaRule = (type: CriteriaType, value: any, rule?: number | RegExp | Function) => {
   switch (type) {
     case 'required':
-      return !isEmpty(value)
+      return !isEmpty(value as string)
     case 'min':
-      return value.length >= (rule as number)
+      return (value as string).length >= (rule as number)
     case 'max':
-      return value.length <= (rule as number)
+      return (value as string).length <= (rule as number)
     case 'email':
       return new RegExp(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      ).test(value)
+      ).test(value as string)
     case 'regex':
-      return (rule as RegExp).test(value)
+      return (rule as RegExp).test(value as string)
+    case 'custom':
+      return (rule as Function)?.(value)
     default:
       throw new Error('Unknown criteria type')
   }
