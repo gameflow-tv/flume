@@ -5,7 +5,7 @@ import { SharedProps } from './Shared.styles'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
-  'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text' | 'select'
+  'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text'
 >
 
 export type InputProps = {

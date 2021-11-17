@@ -5,7 +5,6 @@ import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import { Text } from './text/Text'
 import { FormGroup, StyledLabel } from './shared/Shared.styles'
-import { Select } from './select/Select'
 import { Search } from './search/Search'
 import { useTheme } from '../../../hooks'
 import { typographyToCss } from '../../../theme'
@@ -69,8 +68,6 @@ export const Input = (props: InputProps) => {
         return <Password {...inputProps} />
       case 'checkbox':
         return <Checkbox />
-      case 'select':
-        return <Select {...inputProps} />
       case 'search':
         return <Search {...inputProps} />
       case 'email':
