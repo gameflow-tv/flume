@@ -141,6 +141,7 @@ export const InfoMessage = styled.div<SharedProps>`
   padding-top: ${(props) => props.infoMessage?.paddingTop};
   ${(props) => props.infoMessage?.typography};
   width: ${(props) => props.width};
+  color: ${(props) => props.infoMessage?.primaryTextColor};
 
   &.error {
     color: ${(props) => props.input?.onFocus?.errorColor};
