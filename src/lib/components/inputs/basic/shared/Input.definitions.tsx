@@ -21,6 +21,7 @@ export type InputProps = {
   criteria?: InputValidation | InputValidation[]
   onChange?: (e?: any) => void
   inputStyles?: SharedProps
+  readOnly?: boolean
 }
 
 export enum InputResponseType {

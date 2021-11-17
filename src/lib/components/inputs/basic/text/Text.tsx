@@ -24,6 +24,9 @@ export const Text = (props: InputProps) => {
         <GlobalInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           defaultValue={props.value}
+          placeholder={props.placeholder}
+          disabled={props.disabled}
+          readOnly={props.readOnly}
           onChange={handleChange}
           {...props.inputStyles}
         />

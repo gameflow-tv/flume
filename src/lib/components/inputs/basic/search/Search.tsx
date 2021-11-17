@@ -26,6 +26,9 @@ export const Search = (props: InputProps) => {
         <SearchInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           onChange={handleChange}
+          placeholder={props.placeholder}
+          readOnly={props.readOnly}
+          disabled={props.disabled}
           {...props.inputStyles}
         />
         <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>

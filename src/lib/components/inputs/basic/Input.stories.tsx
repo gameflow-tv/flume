@@ -16,6 +16,14 @@ Text.args = {
   placeholder: 'Username'
 }
 
+export const ReadOnlyTextInput: Story = Template.bind({})
+ReadOnlyTextInput.args = {
+  type: 'text',
+  placeholder: 'Username',
+  readOnly: true,
+  value: 'Lasagne boy'
+}
+
 export const Disabled: Story = Template.bind({})
 Disabled.args = {
   type: 'text',
@@ -26,13 +34,15 @@ Disabled.args = {
 export const RequiredField: Story = Template.bind({})
 RequiredField.args = {
   type: 'text',
-  required: true
+  required: true,
+  placeholder: 'Required Field'
 }
 
 export const RequiredAsWarning: Story = Template.bind({})
 RequiredAsWarning.args = {
   type: 'text',
   required: true,
+  placeholder: 'Required as a warning',
   criteria: [
     {
       invalidMessage: 'Please fill in this field',
@@ -48,13 +58,15 @@ export const Email: Story = Template.bind({})
 Email.args = {
   type: 'email',
   required: true,
-  label: 'E-mail'
+  label: 'E-mail',
+  placeholder: 'Insert email'
 }
 
 export const NonRequiredEmail: Story = Template.bind({})
 NonRequiredEmail.args = {
   type: 'email',
-  label: 'E-mail'
+  label: 'E-mail',
+  placeholder: 'Insert email'
 }
 
 export const MultipleCriteria: Story = Template.bind({})
@@ -120,7 +132,8 @@ export const Password: Story = Template.bind({})
 Password.args = {
   type: 'password',
   required: true,
-  label: 'Password'
+  label: 'Password',
+  placeholder: 'Insert password'
 }
 
 export const Checkbox: Story = Template.bind({})
@@ -131,5 +144,6 @@ Checkbox.args = {
 export const Search: Story = Template.bind({})
 Search.args = {
   type: 'search',
-  required: true
+  required: true,
+  placeholder: 'Type your search'
 }

@@ -32,10 +32,11 @@ export const Input = (props: InputProps) => {
       backgroundColor: props.inputStyles?.input?.backgroundColor || theme.colors.onBackground,
       borderRadius: props.inputStyles?.input?.borderRadius || theme.spacing.xxsmall,
       padding: props.inputStyles?.input?.padding || theme.spacing.small,
-      textColor: props.inputStyles?.input?.textColor || theme.colors.inputBackground,
+      textColor: props.inputStyles?.input?.textColor || theme.colors.onTextField,
       borderColor: props.inputStyles?.input?.borderColor || theme.colors.shimmerHighlight,
       primaryBorder: props.inputStyles?.input?.primaryBorder || theme.colors.primary,
       typography: props.inputStyles?.input?.typography || typographyToCss(theme.typography.body1),
+      placeholder: props.inputStyles?.input?.placeholder || theme.colors.inputBackground,
       onFocus: {
         errorColor: props.inputStyles?.input?.onFocus?.errorColor || theme.colors.error,
         warningColor: props.inputStyles?.input?.onFocus?.warningColor || theme.colors.warning,

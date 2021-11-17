@@ -19,6 +19,7 @@ export type SharedProps = {
     borderColor: string
     primaryBorder: string
     typography: string
+    placeholder: string
 
     onFocus?: {
       errorColor: string
@@ -66,6 +67,10 @@ export const GlobalInput = styled.input.attrs((props) => ({
   border: 1px solid ${(props) => props.input.borderColor}; /* Change to prop and use default color */
   display: flex;
   align-items: center;
+
+  &::placeholder {
+    color: ${(props) => props.input.placeholder};
+  }
 
   &.validation {
     padding-right: 41px;

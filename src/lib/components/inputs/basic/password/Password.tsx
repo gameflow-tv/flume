@@ -39,6 +39,9 @@ export const Password = (props: InputProps) => {
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           type={initialType}
           onChange={handleChange}
+          disabled={props.disabled}
+          readOnly={props.readOnly}
+          placeholder={props.placeholder}
           {...rest.inputStyles}
         />
         <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
