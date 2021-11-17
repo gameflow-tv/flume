@@ -85,14 +85,14 @@ export const GlobalInput = styled.input.attrs((props) => ({
   }
 
   &:focus {
-    border: 1px solid ${(props) => props.input.primaryBorder};
+    border: 1px solid ${(props) => props.input?.primaryBorder};
     outline: none;
   }
 
   &:disabled {
-    background-color: ${(props) => props.input.disabled?.backgroundColor};
+    background-color: ${(props) => props.input?.disabled?.backgroundColor};
     opacity: 0.5;
-    border: 1px solid ${(props) => props.input.disabled?.borderColor};
+    border: 1px solid ${(props) => props.input?.disabled?.borderColor};
   }
 `
 
@@ -115,7 +115,7 @@ export const VerificationIcon = styled.span<SharedProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${(props) => props.icon.iconPadding};
+  padding: ${(props) => props.icon?.iconPadding};
   border: none;
   position: absolute;
   right: 0;
@@ -138,8 +138,8 @@ export const VerificationIcon = styled.span<SharedProps>`
 `
 
 export const InfoMessage = styled.div<SharedProps>`
-  padding-top: ${(props) => props.infoMessage.paddingTop};
-  ${(props) => props.infoMessage.typography};
+  padding-top: ${(props) => props.infoMessage?.paddingTop};
+  ${(props) => props.infoMessage?.typography};
   width: ${(props) => props.width};
 
   &.error {
@@ -154,8 +154,8 @@ export const InfoMessage = styled.div<SharedProps>`
 `
 
 export const ListItem = styled.li<SharedProps>`
-  ${(props) => props.infoMessage.typography};
-  color: ${(props) => props.infoMessage.primaryTextColor};
+  ${(props) => props.infoMessage?.typography};
+  color: ${(props) => props.infoMessage?.primaryTextColor};
 
   &.error {
     color: ${(props) => props.input?.onFocus?.errorColor};
@@ -172,12 +172,12 @@ export const ActionArea = styled.span<SharedProps>`
   box-sizing: border-box;
   height: 41px;
   width: 41px;
-  background-color: ${(props) => props.icon.backgroundColor};
+  background-color: ${(props) => props.icon?.backgroundColor};
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  border-radius: 0 ${(props) => props.icon.borderRadius} ${(props) => props.icon.borderRadius} 0;
+  border-radius: 0 ${(props) => props.icon?.borderRadius} ${(props) => props.icon?.borderRadius} 0;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -200,7 +200,7 @@ export const ActionArea = styled.span<SharedProps>`
   }
 
   & > svg {
-    color: ${(props) => props.icon.iconColor};
+    color: ${(props) => props.icon?.iconColor};
   }
 `
 
@@ -225,7 +225,7 @@ export const VerificationWithToggle = styled(VerificationIcon)`
 `
 
 export const StyledInput = styled(GlobalInput)<SharedProps>`
-  border-radius: ${(props) => props.input.borderRadius};
+  border-radius: ${(props) => props.input?.borderRadius};
   padding-right: 46px;
 
   &.validation {
@@ -236,9 +236,9 @@ export const StyledInput = styled(GlobalInput)<SharedProps>`
     outline: none;
 
     & + span + span {
-      border-top: 1px solid ${(props) => props.input.primaryBorder};
-      border-right: 1px solid ${(props) => props.input.primaryBorder};
-      border-bottom: 1px solid ${(props) => props.input.primaryBorder};
+      border-top: 1px solid ${(props) => props.input?.primaryBorder};
+      border-right: 1px solid ${(props) => props.input?.primaryBorder};
+      border-bottom: 1px solid ${(props) => props.input?.primaryBorder};
     }
   }
 
