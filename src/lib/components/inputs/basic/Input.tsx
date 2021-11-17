@@ -48,16 +48,16 @@ export const Input = (props: InputProps) => {
       }
     },
     icon: {
-      iconPadding: props.inputStyles?.icon.iconPadding || theme.spacing.small,
-      backgroundColor: props.inputStyles?.icon.backgroundColor || theme.colors.sliderBackground,
-      borderRadius: props.inputStyles?.icon.borderRadius || theme.spacing.xxsmall,
-      iconColor: props.inputStyles?.icon.iconColor || theme.colors.primaryText
+      iconPadding: props.inputStyles?.icon?.iconPadding || theme.spacing.small,
+      backgroundColor: props.inputStyles?.icon?.backgroundColor || theme.colors.sliderBackground,
+      borderRadius: props.inputStyles?.icon?.borderRadius || theme.spacing.xxsmall,
+      iconColor: props.inputStyles?.icon?.iconColor || theme.colors.primaryText
     },
     infoMessage: {
-      paddingTop: props.inputStyles?.infoMessage.paddingTop || theme.spacing.xxsmall,
+      paddingTop: props.inputStyles?.infoMessage?.paddingTop || theme.spacing.xxsmall,
       typography:
-        props.inputStyles?.infoMessage.typography || typographyToCss(theme.typography.body3),
-      primaryTextColor: props.inputStyles?.infoMessage.primaryTextColor || theme.colors.primaryText
+        props.inputStyles?.infoMessage?.typography || typographyToCss(theme.typography.body3),
+      primaryTextColor: props.inputStyles?.infoMessage?.primaryTextColor || theme.colors.primaryText
     }
   }
 
