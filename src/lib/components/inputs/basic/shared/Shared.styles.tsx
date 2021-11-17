@@ -9,6 +9,7 @@ export type SharedProps = {
   label?: {
     textColor: string
     margin: string
+    typography: string
   }
   input?: {
     backgroundColor: string
@@ -17,15 +18,17 @@ export type SharedProps = {
     textColor: string
     borderColor: string
     primaryBorder: string
+    typography: string
+
     onFocus?: {
       errorColor: string
       warningColor: string
       successColor: string
     }
-  }
-  disabledInput?: {
-    backgroundColor: string
-    borderColor: string
+    disabled?: {
+      backgroundColor: string
+      borderColor: string
+    }
   }
   icon?: {
     iconPadding: string
@@ -41,7 +44,7 @@ export type SharedProps = {
 }
 
 export const StyledLabel = styled.label<SharedProps>`
-  ${theme.typography.header5};
+  ${(props) => props.label.typography}
   text-transform: capitalize;
   color: ${(props) => props.label.textColor};
   margin: 0 0 ${(props) => props.label.margin} 0;
@@ -58,7 +61,7 @@ export const GlobalInput = styled.input.attrs((props) => ({
   border-radius: ${(props) => props.input.borderRadius};
   padding: ${(props) => props.input.padding};
   color: ${(props) => props.input.textColor};
-  ${theme.typography.body1};
+  ${(props) => props.input.typography};
   border: none;
   border: 1px solid ${(props) => props.input.borderColor}; /* Change to prop and use default color */
   display: flex;
@@ -87,9 +90,9 @@ export const GlobalInput = styled.input.attrs((props) => ({
   }
 
   &:disabled {
-    background-color: ${(props) => props.disabledInput.backgroundColor};
+    background-color: ${(props) => props.input.disabled?.backgroundColor};
     opacity: 0.5;
-    border: 1px solid ${(props) => props.disabledInput.borderColor};
+    border: 1px solid ${(props) => props.input.disabled?.borderColor};
   }
 `
 

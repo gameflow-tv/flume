@@ -14,8 +14,6 @@ const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
     throw new Error('type is required')
   }
-
-  // To do: Check if props.type is the same of InputType value
 }
 
 export const Input = (props: InputProps) => {
@@ -28,7 +26,8 @@ export const Input = (props: InputProps) => {
     height: props.inputStyles?.height || '41px',
     label: {
       textColor: props.inputStyles?.label?.textColor || theme.colors.secondaryText,
-      margin: props.inputStyles?.label?.margin || theme.spacing.xsmall
+      margin: props.inputStyles?.label?.margin || theme.spacing.xsmall,
+      typography: props.inputStyles?.label?.typography || typographyToCss(theme.typography.header5)
     },
     input: {
       backgroundColor: props.inputStyles?.input?.backgroundColor || theme.colors.onBackground,
@@ -37,26 +36,28 @@ export const Input = (props: InputProps) => {
       textColor: props.inputStyles?.input?.textColor || theme.colors.inputBackground,
       borderColor: props.inputStyles?.input?.borderColor || theme.colors.shimmerHighlight,
       primaryBorder: props.inputStyles?.input?.primaryBorder || theme.colors.primary,
+      typography: props.inputStyles?.input?.typography || typographyToCss(theme.typography.body1),
       onFocus: {
         errorColor: props.inputStyles?.input?.onFocus?.errorColor || theme.colors.error,
         warningColor: props.inputStyles?.input?.onFocus?.warningColor || theme.colors.warning,
         successColor: props.inputStyles?.input?.onFocus?.successColor || theme.colors.success
+      },
+      disabled: {
+        backgroundColor: props.inputStyles?.input?.backgroundColor || theme.colors.textField,
+        borderColor: props.inputStyles?.input?.borderColor || theme.colors.shimmerHighlight
       }
     },
-    disabledInput: {
-      backgroundColor: theme.colors.textField,
-      borderColor: theme.colors.shimmerHighlight
-    },
     icon: {
-      iconPadding: theme.spacing.small,
-      backgroundColor: theme.colors.sliderBackground,
-      borderRadius: theme.spacing.xxsmall,
-      iconColor: theme.colors.primaryText
+      iconPadding: props.inputStyles?.icon.iconPadding || theme.spacing.small,
+      backgroundColor: props.inputStyles?.icon.backgroundColor || theme.colors.sliderBackground,
+      borderRadius: props.inputStyles?.icon.borderRadius || theme.spacing.xxsmall,
+      iconColor: props.inputStyles?.icon.iconColor || theme.colors.primaryText
     },
     infoMessage: {
-      paddingTop: theme.spacing.xxsmall,
-      typography: typographyToCss(theme.typography.body3),
-      primaryTextColor: theme.colors.primaryText
+      paddingTop: props.inputStyles?.infoMessage.paddingTop || theme.spacing.xxsmall,
+      typography:
+        props.inputStyles?.infoMessage.typography || typographyToCss(theme.typography.body3),
+      primaryTextColor: props.inputStyles?.infoMessage.primaryTextColor || theme.colors.primaryText
     }
   }
 
