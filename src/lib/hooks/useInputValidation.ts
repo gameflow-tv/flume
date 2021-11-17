@@ -59,7 +59,7 @@ const getCriteriaSet = (props: InputProps) => {
       criteriaSet = [
         {
           invalidMessage: 'Please fill with a valid e-mail address',
-          invalidResponseType: 'error',
+          invalidResponseType: 'warning',
           validResponseType: 'success',
           condition: { type: 'email' }
         },

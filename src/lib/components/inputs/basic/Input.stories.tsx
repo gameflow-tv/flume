@@ -43,11 +43,19 @@ RequiredField.args = {
   required: true
 }
 
-export const WarningField: Story = Template.bind({})
-WarningField.args = {
+export const RequiredAsWarningField: Story = Template.bind({})
+RequiredAsWarningField.args = {
   type: 'text',
   required: true,
-  requiredErrorType: 'warning'
+  criteria: [
+    {
+      invalidMessage: 'Please fill in this field',
+      invalidResponseType: 'warning',
+      validMessage: 'Please fill in this field',
+      validResponseType: 'none',
+      condition: { type: 'required' }
+    }
+  ]
 }
 
 export const Email: Story = Template.bind({})
