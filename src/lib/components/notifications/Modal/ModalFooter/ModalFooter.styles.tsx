@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
+import { typographyToCss } from '../../../../theme'
+import theme from '../../../../theme/theme'
 import { ModalFooterProps } from './ModalFooter'
 
 export const Footer = styled.div<ModalFooterProps>`

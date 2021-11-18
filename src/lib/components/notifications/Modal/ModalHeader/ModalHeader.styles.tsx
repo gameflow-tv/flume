@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
+import { typographyToCss } from '../../../../theme'
+import theme from '../../../../theme/theme'
 import { ModalHeaderProps } from './ModalHeader'
 
 export const Header = styled.div<ModalHeaderProps>`

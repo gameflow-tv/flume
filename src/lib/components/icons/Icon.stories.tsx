@@ -17,19 +17,44 @@ Basic.args = {
   size: 'medium'
 }
 
-const Grid = styled.div`
-  display: inline-grid;
-  gap: 1rem;
+// const Grid = styled.div`
+//   display: inline-grid;
+//   gap: 1rem;
 
-  grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
-  grid-auto-rows: 1rem;
+//   grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+//   grid-auto-rows: 1rem;
+// `
+
+const Grid = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 1fr;
+  gap: 36px 20px;
+  grid-auto-flow: row;
+`
+const IconArea = styled.div`
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Text = styled.p`
+  line-height: 0;
+  font-size: small;
+  font-weight: 300;
 `
 
 export const All = () => {
   return (
     <Grid>
       {Object.keys(IconData).map((key) => (
-        <Icon key={key} icon={key} color="white" />
+        <IconArea className="roso">
+          <Icon key={key} icon={key} size="large" color="white" />
+          <Text>{key}</Text>
+        </IconArea>
       ))}
     </Grid>
   )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
+import { typographyToCss } from '../../../../theme'
+import theme from '../../../../theme/theme'
 import { ModalBodyProps } from './ModalBody'
 
 export const Body = styled.div<ModalBodyProps>`
