@@ -7,7 +7,7 @@ import { Text } from './text/Text'
 import { FormGroup, StyledLabel } from './shared/Shared.styles'
 import { Search } from './search/Search'
 import { useTheme } from '../../../hooks'
-import { typographyToCss } from '../../../theme'
+import { transitionToCss, typographyToCss } from '../../../theme'
 
 const verifyRequiredProps = (props: InputProps) => {
   if (isEmpty(props.type)) {
@@ -37,14 +37,21 @@ export const Input = (props: InputProps) => {
       primaryBorder: props.inputStyles?.input?.primaryBorder || theme.colors.primary,
       typography: props.inputStyles?.input?.typography || typographyToCss(theme.typography.body1),
       placeholder: props.inputStyles?.input?.placeholder || theme.colors.inputBackground,
+      transition: props.inputStyles?.input?.transition || transitionToCss(theme.transitions.long),
+
       onFocus: {
         errorColor: props.inputStyles?.input?.onFocus?.errorColor || theme.colors.error,
         warningColor: props.inputStyles?.input?.onFocus?.warningColor || theme.colors.warning,
         successColor: props.inputStyles?.input?.onFocus?.successColor || theme.colors.success
       },
       disabled: {
-        backgroundColor: props.inputStyles?.input?.backgroundColor || theme.colors.textField,
-        borderColor: props.inputStyles?.input?.borderColor || theme.colors.shimmerHighlight
+        backgroundColor:
+          props.inputStyles?.input?.disabled?.backgroundColor || theme.colors.textField,
+        borderColor:
+          props.inputStyles?.input?.disabled?.borderColor || theme.colors.shimmerHighlight
+      },
+      onHover: {
+        borderColor: props.inputStyles?.input?.onHover?.borderColor || theme.colors.primary
       }
     },
     icon: {

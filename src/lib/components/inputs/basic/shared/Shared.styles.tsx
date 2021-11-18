@@ -20,7 +20,7 @@ export type SharedProps = {
     primaryBorder: string
     typography: string
     placeholder: string
-
+    transition: string
     onFocus?: {
       errorColor: string
       warningColor: string
@@ -28,6 +28,9 @@ export type SharedProps = {
     }
     disabled?: {
       backgroundColor: string
+      borderColor: string
+    }
+    onHover?: {
       borderColor: string
     }
   }
@@ -67,7 +70,11 @@ export const GlobalInput = styled.input.attrs((props) => ({
   border: 1px solid ${(props) => props.input.borderColor}; /* Change to prop and use default color */
   display: flex;
   align-items: center;
+  transition: ${(props) => props.input.transition};
 
+  &:hover {
+    border: 1px solid ${(props) => props.input.onHover.borderColor};
+  }
   &::placeholder {
     color: ${(props) => props.input.placeholder};
   }
