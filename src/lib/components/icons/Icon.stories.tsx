@@ -17,14 +17,6 @@ Basic.args = {
   size: 'medium'
 }
 
-// const Grid = styled.div`
-//   display: inline-grid;
-//   gap: 1rem;
-
-//   grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
-//   grid-auto-rows: 1rem;
-// `
-
 const Grid = styled.div`
   width: 100%;
   height: 100%;

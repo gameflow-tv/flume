@@ -2,9 +2,6 @@ import { Story } from '@storybook/react'
 import * as React from 'react'
 import { Button } from '../../buttons'
 import Modal, { ModalProps } from './Modal'
-import ModalBody from './ModalBody/ModalBody'
-import ModalFooter from './ModalFooter/ModalFooter'
-import ModalHeader from './ModalHeader/ModalHeader'
 
 export default {
   title: 'Components/Notifications/Modal',

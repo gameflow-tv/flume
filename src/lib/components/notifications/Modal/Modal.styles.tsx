@@ -148,7 +148,7 @@ export const CloseButton = styled.button<ModalProps>`
   right: 8px;
   border: none;
   outline: inherit;
-  color: ${(props) => theme.colors.tertiaryText};
+  color: ${theme.colors.tertiaryText};
   font-size: 24px;
   cursor: pointer;
 
@@ -164,7 +164,7 @@ export type ModalHeaderProps = {
 
 export const Header = styled.div<ModalHeaderProps>`
   color: ${(props) => props.color ?? theme.colors.primaryText};
-  ${(props) => typographyToCss(theme.typography.header1)};
+  ${typographyToCss(theme.typography.header1)};
   text-align: ${(props) => props.textAlign ?? 'center'};
   letter-spacing: 0.3px;
   font-weight: 600;
@@ -180,12 +180,12 @@ export type ModalBodyProps = {
 export const Body = styled.div<ModalBodyProps>`
   position: relative;
   color: ${(props) => props.color ?? theme.colors.tertiaryText};
-  ${(props) => typographyToCss(theme.typography.body1)}
+  ${typographyToCss(theme.typography.body1)}
   text-align: ${(props) => props.textAlign ?? 'center'};
   overflow: auto;
   padding: 0 10px;
   scrollbar-width: thin;
-  scrollbar-color: ${(props) => theme.colors.primary} transparent;
+  scrollbar-color: ${theme.colors.primary} transparent;
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -197,12 +197,12 @@ export const Body = styled.div<ModalBodyProps>`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: ${(props) => theme.colors.primary};
+    background: ${theme.colors.primary};
   }
 
   &::-webkit-scrollbar-button {
     width: 5px;
-    background: ${(props) => theme.colors.primary};
+    background: ${theme.colors.primary};
     height: 5px;
   }
 
@@ -219,7 +219,7 @@ export type ModalFooterProps = {
 export const Footer = styled.div<ModalFooterProps>`
   color: ${(props) => props.color ?? theme.colors.primaryText};
   text-align: ${(props) => props.textAlign ?? 'center'};
-  ${(props) => typographyToCss(theme.typography.body2)}
+  ${typographyToCss(theme.typography.body2)}
   margin-top: 32px;
   padding: 0 10px;
 `
