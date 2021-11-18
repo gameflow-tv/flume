@@ -108,7 +108,9 @@ export const DatePicker = ({
 
   const setNewDate = (date: Date) => {
     setSelectedDate(new Date(date))
-    onDateChange?.call(null, date ? date : new Date())
+    if (onDateChange) {
+      onDateChange(date ? date : new Date())
+    }
   }
 
   const handleEdition = (e) => {
