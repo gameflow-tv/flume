@@ -77,6 +77,7 @@ export const GlobalInput = styled.input.attrs((props) => ({
   }
 
   &:hover + span + span {
+    transition: ${(props) => props.input.transition};
     border-top: 1px solid ${(props) => props.input.onHover.borderColor};
     border-right: 1px solid ${(props) => props.input.onHover.borderColor};
     border-bottom: 1px solid ${(props) => props.input.onHover.borderColor};
