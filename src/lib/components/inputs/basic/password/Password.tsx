@@ -50,7 +50,8 @@ export const Password = (props: InputProps) => {
         <ActionArea
           className={validationResponse?.type}
           onClick={() => toggleType()}
-          {...props.inputStyles}>
+          {...props.inputStyles}
+        >
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ActionArea>
       </InputGroup>
