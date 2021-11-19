@@ -75,6 +75,13 @@ export const GlobalInput = styled.input.attrs((props) => ({
   &:hover {
     border: 1px solid ${(props) => props.input.onHover.borderColor};
   }
+
+  &:hover + span + span {
+    border-top: 1px solid ${(props) => props.input.onHover.borderColor};
+    border-right: 1px solid ${(props) => props.input.onHover.borderColor};
+    border-bottom: 1px solid ${(props) => props.input.onHover.borderColor};
+  }
+
   &::placeholder {
     color: ${(props) => props.input.placeholder};
   }
@@ -195,6 +202,7 @@ export const ActionArea = styled.span<SharedProps>`
   right: 0;
   bottom: 0;
   cursor: pointer;
+  transition: ${(props) => props.input.transition};
 
   &.error {
     border-top: 1px solid ${(props) => props.input?.onFocus?.errorColor};
