@@ -50,8 +50,7 @@ export const Password = (props: InputProps) => {
         <ActionArea
           className={validationResponse?.type}
           onClick={() => toggleType()}
-          {...props.inputStyles}
-        >
+          {...props.inputStyles}>
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ActionArea>
       </InputGroup>
@@ -60,7 +59,7 @@ export const Password = (props: InputProps) => {
           {validationResponse?.message}
         </InfoMessage>
       )}
-      {props.multipleCriteriaInfo && validationResponse ? (
+      {props.multipleCriteriaInfo && validationResponse && props.value ? (
         <ul>
           {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
@@ -68,7 +67,7 @@ export const Password = (props: InputProps) => {
             </ListItem>
           ))}
         </ul>
-      ) : props.multipleCriteriaInfo && props.criteria ? (
+      ) : props.multipleCriteriaInfo && props.criteria && props.value ? (
         <ul>
           {(props.criteria as InputValidation[])?.map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className="none" {...props.inputStyles}>
