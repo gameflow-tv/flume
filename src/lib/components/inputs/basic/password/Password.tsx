@@ -68,14 +68,6 @@ export const Password = (props: InputProps) => {
             </ListItem>
           ))}
         </ul>
-      ) : props.multipleCriteriaInfo && props.criteria ? (
-        <ul>
-          {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none" {...props.inputStyles}>
-              {crit.invalidMessage}
-            </ListItem>
-          ))}
-        </ul>
       ) : null}
     </>
   )
