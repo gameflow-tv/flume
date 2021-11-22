@@ -2,17 +2,12 @@ import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import {
-  InputCriteriaResponse,
-  InputProps,
-  InputType,
-  InputValidation
-} from '../shared/Input.definitions'
+import { InputProps, InputType } from '../shared/Input.definitions'
+import { ValidationInfo } from '../shared/ValidationInfo'
+
 import {
   ActionArea,
-  InfoMessage,
   InputGroup,
-  ListItem,
   StyledInput,
   VerificationWithToggle
 } from '../shared/Shared.styles'
@@ -55,20 +50,8 @@ export const Password = (props: InputProps) => {
           {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
         </ActionArea>
       </InputGroup>
-      {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
-          {validationResponse?.message}
-        </InfoMessage>
-      )}
-      {props.multipleCriteriaInfo && validationResponse ? (
-        <ul>
-          {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
-              {crit.message}
-            </ListItem>
-          ))}
-        </ul>
-      ) : null}
+
+      {ValidationInfo(props, validationResponse)}
     </>
   )
 }
