@@ -1,12 +1,12 @@
 import React from 'react'
-import { Modal, ModalBody } from '..'
-import { Header } from './SharingModal.styles'
+import { Modal, ModalBody } from '../Modal'
+import { SharingHeader } from './SharingModal.styles'
 
 export const SharingModal = () => {
   return (
     <Modal show={true} size="546px">
-      <Header>Share link</Header>
-      <ModalBody></ModalBody>
+      <SharingHeader>Share link</SharingHeader>
+      <ModalBody>asdfasdfasdf</ModalBody>
     </Modal>
   )
 }
