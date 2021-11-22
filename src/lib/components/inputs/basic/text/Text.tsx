@@ -1,14 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputCriteriaResponse, InputProps, InputValidation } from '../shared/Input.definitions'
-import {
-  InfoMessage,
-  InputGroup,
-  ListItem,
-  GlobalInput,
-  VerificationIcon
-} from '../shared/Shared.styles'
+import { InputProps } from '../shared/Input.definitions'
+import { InputGroup, GlobalInput, VerificationIcon } from '../shared/Shared.styles'
+import { ValidationInfo } from '../shared/ValidationInfo'
 
 export const Text = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
@@ -34,28 +29,7 @@ export const Text = (props: InputProps) => {
           {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
         </VerificationIcon>
       </InputGroup>
-      {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
-          {validationResponse?.message}
-        </InfoMessage>
-      )}
-      {props.multipleCriteriaInfo && validationResponse ? (
-        <ul>
-          {(validationResponse as InputCriteriaResponse[]).map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
-              {crit.message}
-            </ListItem>
-          ))}
-        </ul>
-      ) : props.multipleCriteriaInfo && props.criteria ? (
-        <ul>
-          {(props.criteria as InputValidation[])?.map((crit, idx) => (
-            <ListItem key={`validation_${idx}`} className="none" {...props.inputStyles}>
-              {crit.invalidMessage}
-            </ListItem>
-          ))}
-        </ul>
-      ) : null}
+      {ValidationInfo(props, validationResponse)}
     </>
   )
 }
