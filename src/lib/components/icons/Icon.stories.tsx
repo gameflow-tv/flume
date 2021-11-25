@@ -43,7 +43,7 @@ export const All = () => {
   return (
     <Grid>
       {Object.keys(IconData).map((key) => (
-        <IconArea className="roso">
+        <IconArea>
           <Icon key={key} icon={key} size="large" color="white" />
           <Text>{key}</Text>
         </IconArea>
