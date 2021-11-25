@@ -12,12 +12,7 @@ export const Default: Story<SharingModalProps> = Template.bind({})
 
 export const CustomValue: Story<SharingModalProps> = Template.bind({})
 CustomValue.args = {
-  link: 'https://gameflow.tv/'
-}
-
-export const FacebookSharing: Story<SharingModalProps> = Template.bind({})
-FacebookSharing.args = {
-  link: 'https://gameflow.tv',
+  link: 'https://gameflow.tv/',
   facebook: {
     app_id: 427532265538385,
     display: 'popup',

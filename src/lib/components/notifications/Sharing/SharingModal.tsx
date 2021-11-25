@@ -1,8 +1,16 @@
+import { faShareAlt } from '@fortawesome/pro-solid-svg-icons'
 import React from 'react'
 import { Button, Icon, IconButton, Input } from '../..'
 import { useTheme } from '../../../hooks'
 import { Modal } from '../Modal'
-import { ButtonsWrapper, SharingBody, SharingHeader, SocialLink } from './SharingModal.styles'
+import {
+  ButtonsWrapper,
+  SharingBody,
+  SharingHeader,
+  SocialButton,
+  SocialLink,
+  SocialWrapper
+} from './SharingModal.styles'
 
 export type FacebookSharingProps = {
   app_id: string | number
@@ -13,13 +21,15 @@ export type FacebookSharingProps = {
 
 export type TwitterSharingProps = {
   hashtags?: string[]
-  text: string
+  text?: string
   via?: string
   related: string[2]
 }
 
 export type SharingModalProps = {
   link?: string
+  title?: string
+  description?: string
   facebook?: FacebookSharingProps
   twitter?: TwitterSharingProps
 }
@@ -51,31 +61,60 @@ const getTwitterShareLink = (sharingData: TwitterSharingProps, link: string) => 
 
 export const SharingModal = (props: SharingModalProps) => {
   const theme = useTheme()
-  const link = props.link || document?.location?.href || ''
 
-  const handleCopy = (e) => {
-    navigator?.clipboard?.writeText(link)
+  const sharingData = {
+    link: props.link || document?.location?.href || '',
+    title: props.title || document?.title || 'Gameflow',
+    description:
+      props.description ||
+      document?.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
+      'Gameflow'
+  }
+
+  const twitterData = {
+    ...props.twitter,
+    text: props.twitter?.text || sharingData.description
+  }
+
+  const handleCopy = () => {
+    navigator?.clipboard?.writeText(sharingData.link)
+  }
+
+  const handleShareAPI = () => {
+    const shareData = {
+      title: sharingData.title,
+      text: sharingData.description,
+      url: sharingData.link
+    }
+    navigator?.share?.(shareData)
   }
 
   return (
     <Modal show={true} size="546px">
       <SharingHeader>Share link</SharingHeader>
       <SharingBody>
-        <Input type="text" value={link} disabled />
+        <Input type="text" value={sharingData.link} disabled />
         <ButtonsWrapper>
           <div>
             <Button variant="primary" size="medium" onClick={handleCopy}>
-              COPY LINK &nbsp; <Icon icon="arrow_right" color={theme.colors.onPrimary} />
+              COPY LINK &nbsp; <Icon icon="link" color={theme.colors.onPrimary} />
             </Button>
           </div>
-          <div>
-            <SocialLink href={getFBShareLink(props.facebook, link)} rel="noopener noreferrer">
+          <SocialWrapper>
+            {navigator.share && (
+              <SocialButton size="large" icon={faShareAlt} onClick={() => handleShareAPI()} />
+            )}
+            <SocialLink
+              href={getFBShareLink(props.facebook, sharingData.link)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <IconButton size="large">
                 <Icon icon="facebook" size="large" />
               </IconButton>
             </SocialLink>
             <SocialLink
-              href={getTwitterShareLink(props.twitter, link)}
+              href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -83,7 +122,7 @@ export const SharingModal = (props: SharingModalProps) => {
                 <Icon icon="twitter" size="large" />
               </IconButton>
             </SocialLink>
-          </div>
+          </SocialWrapper>
         </ButtonsWrapper>
       </SharingBody>
     </Modal>
