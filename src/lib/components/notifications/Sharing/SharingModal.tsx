@@ -1,11 +1,12 @@
 import { faShareAlt } from '@fortawesome/pro-solid-svg-icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Icon, IconButton, Input } from '../..'
 import { useTheme } from '../../../hooks'
 import { Modal } from '../Modal'
 import {
   ButtonsWrapper,
   SharingBody,
+  SharingButton,
   SharingHeader,
   SocialButton,
   SocialLink,
@@ -60,6 +61,7 @@ const getTwitterShareLink = (sharingData: TwitterSharingProps, link: string) => 
 }
 
 export const SharingModal = (props: SharingModalProps) => {
+  const [linkCopied, setLinkCopied] = useState(false)
   const theme = useTheme()
 
   const sharingData = {
@@ -78,6 +80,7 @@ export const SharingModal = (props: SharingModalProps) => {
 
   const handleCopy = () => {
     navigator?.clipboard?.writeText(sharingData.link)
+    setLinkCopied(true)
   }
 
   const handleShareAPI = () => {
@@ -96,14 +99,19 @@ export const SharingModal = (props: SharingModalProps) => {
         <Input type="text" value={sharingData.link} disabled />
         <ButtonsWrapper>
           <div>
-            <Button variant="primary" size="medium" onClick={handleCopy}>
-              COPY LINK &nbsp; <Icon icon="link" color={theme.colors.onPrimary} />
-            </Button>
+            <SharingButton variant="primary" size="medium" onClick={handleCopy}>
+              <>
+                {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
+                <Icon icon={linkCopied ? 'check_filled' : 'link'} color={theme.colors.onPrimary} />
+              </>
+            </SharingButton>
           </div>
           <SocialWrapper>
-            {navigator.share && (
-              <SocialButton size="large" icon={faShareAlt} onClick={() => handleShareAPI()} />
-            )}
+            {/* {navigator.share && ( */}
+            <SocialButton size="large" onClick={() => handleShareAPI()}>
+              <Icon icon="share" size="large" />
+            </SocialButton>
+            {/* )} */}
             <SocialLink
               href={getFBShareLink(props.facebook, sharingData.link)}
               target="_blank"

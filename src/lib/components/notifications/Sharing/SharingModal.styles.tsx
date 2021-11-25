@@ -28,6 +28,7 @@ export const SocialWrapper = styled.div`
 `
 
 export const SocialButton = styled(IconButton)`
+  margin: 0;
   margin-right: 8px;
   &:last-child {
     margin-right: 0;
@@ -35,12 +36,23 @@ export const SocialButton = styled(IconButton)`
 `
 
 export const SocialLink = styled.a`
+  margin: 0;
   margin-right: 8px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
   &:last-child {
     margin-right: 0;
+  }
+  & > button {
+    margin: 0;
   }
 `
 
 export const SharingButton = styled(Button)`
-  ${typographyToCss(theme.typography.button)};
+  font-family: ${theme.typography.button.fontFamily};
+  font-size: ${theme.typography.button.fontSize};
+  font-weight: ${theme.typography.button.fontWeight};
+  line-height: ${theme.typography.button.lineHeight};
 `
