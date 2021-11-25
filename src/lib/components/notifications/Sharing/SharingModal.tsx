@@ -107,11 +107,11 @@ export const SharingModal = (props: SharingModalProps) => {
             </SharingButton>
           </div>
           <SocialWrapper>
-            {/* {navigator.share && ( */}
-            <SocialButton size="large" onClick={() => handleShareAPI()}>
-              <Icon icon="share" size="large" />
-            </SocialButton>
-            {/* )} */}
+            {navigator.share && (
+              <SocialButton size="large" onClick={() => handleShareAPI()}>
+                <Icon icon="share" size="large" />
+              </SocialButton>
+            )}
             <SocialLink
               href={getFBShareLink(props.facebook, sharingData.link)}
               target="_blank"
