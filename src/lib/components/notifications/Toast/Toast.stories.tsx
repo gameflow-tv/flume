@@ -15,6 +15,13 @@ export default {
       options: ['top', 'middle', 'bottom'],
       control: { type: 'radio' },
       defaultValue: 'top'
+    },
+    animation: {
+      slideDirection: {
+        options: ['fromTop', 'fromBottom', 'fromLeft', 'fromRight'],
+        control: { type: 'radio' },
+        defaultValue: 'fromTop'
+      }
     }
   }
 }
@@ -23,19 +30,65 @@ const Template = (args: ToastProps) => <Toast {...args} />
 
 export const Default: Story<ToastProps> = Template.bind({})
 Default.args = {
-  children: <p style={{ margin: 0 }}>Link copied to clipboard</p>
+  children: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
+      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+      aspernatur sit, vero architecto dignissimos. Eligendi, minima
+    </p>
+  ),
+  horizontalAlign: 'left',
+  verticalAlign: 'top'
 }
 
-export const MiddlePos: Story<ToastProps> = Template.bind({})
-MiddlePos.args = {
-  children: <p style={{ margin: 0 }}>Link copied to clipboard</p>,
+export const FromRight: Story<ToastProps> = Template.bind({})
+FromRight.args = {
+  children: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
+      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
+    </p>
+  ),
+  horizontalAlign: 'right',
+  verticalAlign: 'bottom'
+}
+
+export const FromBottom: Story<ToastProps> = Template.bind({})
+FromBottom.args = {
+  children: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
+      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
+    </p>
+  ),
+  horizontalAlign: 'middle',
+  verticalAlign: 'bottom'
+}
+
+export const FromLeft: Story<ToastProps> = Template.bind({})
+FromLeft.args = {
+  children: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
+      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
+    </p>
+  ),
   horizontalAlign: 'middle',
   verticalAlign: 'bottom'
 }
 
 export const LongEffect: Story<ToastProps> = Template.bind({})
 LongEffect.args = {
-  children: <p style={{ margin: 0 }}>Link copied to clipboard</p>,
+  children: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
+      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+      aspernatur sit, vero architecto dignissimos. Eligendi, minima
+    </p>
+  ),
   animation: {
     slideInTime: 1.5,
     visibilityTime: 5,

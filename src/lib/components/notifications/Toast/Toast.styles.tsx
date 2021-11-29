@@ -3,88 +3,191 @@ import { ToastProps } from '.'
 import { typographyToCss } from '../../../theme'
 import theme from '../../../theme/theme'
 
-const positions = {
-  iniXPos: 'left: 50%',
-  finalXPos: 'left: 50%',
-  translateXPos: '-50%',
-  iniYPos: 'top: -53px',
-  finalYPos: 'top: 32px',
-  translateYPos: '0'
+const toastConfig = {
+  width: '270px',
+  slideDirection: 'top',
+  position: {
+    initial: {
+      bottom: '100%',
+      left: '50%',
+      transformX: '-50%',
+      transformY: '0'
+    },
+    final: {
+      bottom: '100%',
+      left: '50%',
+      transformX: '-50%',
+      transformY: 'calc(100% + 32px)'
+    }
+  }
 }
 
-const initializePosition = (props: ToastProps) => {
-  const { horizontalAlign, verticalAlign } = props
+const initializeToast = (props: ToastProps) => {
+  const setInitialPos = () => {
+    if (['left', 'right'].includes(toastConfig.slideDirection)) {
+      toastConfig.position.initial.left = toastConfig.slideDirection === 'left' ? '0' : '100%'
+      toastConfig.position.initial.transformX =
+        toastConfig.slideDirection === 'left' ? '-100%' : '0'
 
-  switch (horizontalAlign) {
+      if (props.verticalAlign === 'top') {
+        toastConfig.position.initial.bottom = '100%'
+        toastConfig.position.initial.transformY = 'calc(100% + 32px)'
+      }
+      if (props.verticalAlign === 'middle') {
+        toastConfig.position.initial.bottom = '50%'
+        toastConfig.position.initial.transformY = '50%'
+      }
+      if (props.verticalAlign === 'bottom') {
+        toastConfig.position.initial.bottom = '0'
+        toastConfig.position.initial.transformY = '-32px'
+      }
+    }
+
+    if (['top', 'bottom'].includes(toastConfig.slideDirection)) {
+      toastConfig.position.initial.left = '50%'
+      toastConfig.position.initial.transformX = '-50%'
+
+      if (props.verticalAlign === 'top') {
+        toastConfig.position.initial.bottom = '100%'
+        toastConfig.position.initial.transformY = '0'
+      }
+
+      if (props.verticalAlign === 'middle') {
+        toastConfig.position.initial.bottom = '100%'
+        toastConfig.position.initial.transformY = '0'
+      }
+
+      if (props.verticalAlign === 'bottom') {
+        toastConfig.position.initial.bottom = '0'
+        toastConfig.position.initial.transformY = '100%'
+      }
+    }
+  }
+
+  const setFinalPos = () => {
+    switch (props.verticalAlign) {
+      case 'top':
+        toastConfig.position.final.bottom = '100%'
+        toastConfig.position.final.transformY = 'calc(100% + 32px)'
+        break
+      case 'middle':
+        toastConfig.position.final.bottom = '50%'
+        if (props.horizontalAlign === 'middle') {
+          toastConfig.position.final.transformY = '175%'
+        } else {
+          toastConfig.position.final.transformY = '50%'
+        }
+        break
+      case 'bottom':
+        toastConfig.position.final.bottom = '0'
+        toastConfig.position.final.transformY = '-32px'
+        break
+      default:
+        break
+    }
+
+    switch (props.horizontalAlign) {
+      case 'left':
+        toastConfig.position.final.left = '0'
+        toastConfig.position.final.transformX = '32px'
+        break
+      case 'middle':
+        toastConfig.position.final.left = '50%'
+        toastConfig.position.final.transformX = '-50%'
+        break
+      case 'right':
+        toastConfig.position.final.left = '100%'
+        toastConfig.position.final.transformX = 'calc(-100% - 32px)'
+        break
+      default:
+        break
+    }
+  }
+
+  switch (props.horizontalAlign) {
     case 'left':
-      positions.iniXPos = 'left: 32px'
+      toastConfig.slideDirection = 'left'
       break
     case 'right':
-      positions.finalXPos = 'right: 32px'
+      toastConfig.slideDirection = 'right'
       break
     case 'middle':
     default:
-      positions.iniXPos = 'left: 50%'
-      positions.translateXPos = '-50%'
+      toastConfig.slideDirection = ['middle', 'top'].includes(props.verticalAlign)
+        ? 'top'
+        : 'bottom'
+      break
   }
 
-  switch (verticalAlign) {
-    case 'bottom':
-      positions.iniYPos = 'bottom: -53px'
-      positions.finalYPos = 'bottom: 32px'
-      positions.translateYPos = '0'
-      break
-    case 'middle':
-      positions.iniYPos = 'top: -53px'
-      positions.finalYPos = 'top: 50%'
-      positions.translateYPos = '-50%'
-      break
-    case 'top':
+  setInitialPos()
+  setFinalPos()
+}
+
+const getAnimation = (step) => {
+  switch (step) {
+    case 'in':
+      return {
+        from: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`,
+        to: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
+      }
+    case 'stay':
+      return {
+        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
+      }
+    case 'out':
+      return {
+        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
+      }
     default:
-      positions.iniYPos = 'top: -53px'
-      positions.finalYPos = 'top: 32px'
-      positions.translateYPos = '0'
+      return {
+        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
+      }
   }
 }
 
-const getToastPosition = (props: ToastProps) => {
-  initializePosition(props)
-  return css`
-    ${positions.iniYPos};
-    ${positions.iniXPos};
-    transform: translateX(${positions.translateXPos}) translateY(${positions.translateYPos});
+const slideIn = (props) => {
+  const { from, to } = getAnimation('in')
+
+  return keyframes`
+    from {
+      ${from}
+    }
+    to {
+      ${to}
+    }
   `
 }
 
-const slideIn = (props) => keyframes`
-  from {
-    ${positions.iniYPos};
-  }
-  to {
-    ${positions.finalYPos};
-  }
-`
+const stay = (props) => {
+  const { from, to } = getAnimation('stay')
 
-const stay = (props) => keyframes`
-from {
-  ${positions.finalYPos};
+  return keyframes`
+    from {
+      ${from}
+    }
+    to {
+      ${to}
+    }
+  `
 }
-to {
-  ${positions.finalYPos};
-}
-`
 
-const slideOut = (props) => keyframes`
-  from {
-    ${positions.finalYPos};
-  }
-  to {
-    ${positions.iniYPos};
-  }
-`
+const slideOut = (props) => {
+  const { from, to } = getAnimation('out')
+
+  return keyframes`
+    from {
+      ${from}
+    }
+    to {
+      ${to}
+    }
+  `
+}
 
 const animation = (props) => {
-  initializePosition(props)
   return css<ToastProps>`
     animation: ${slideIn}, ${stay}, ${slideOut};
     animation-duration: ${(props) =>
@@ -97,16 +200,26 @@ const animation = (props) => {
   `
 }
 
-export const StyleToast = styled.div<ToastProps>`
-  position: fixed;
-  ${typographyToCss(theme.typography.body1)}
-  letter-spacing: 0.3px;
-  color: ${theme.colors.secondaryText};
-  padding: 16px 24px;
-  background-color: ${theme.colors.toggle};
-  border: ${theme.shapes.borders.xxsmall} solid ${theme.colors.border};
-  box-shadow: ${theme.shadows.xsmall};
-  border-radius: ${theme.spacing.xxsmall};
-  ${getToastPosition}
-  ${animation}
-`
+export const StyledToast = styled.div((props: ToastProps) => {
+  initializeToast(props)
+
+  return css`
+    position: fixed;
+    ${typographyToCss(theme.typography.body1)}
+    letter-spacing: 0.3px;
+    color: ${theme.colors.secondaryText};
+    padding: 16px 24px;
+    background-color: ${theme.colors.toggle};
+    border: ${theme.shapes.borders.xxsmall} solid ${theme.colors.border};
+    border-radius: ${theme.spacing.xxsmall};
+    box-shadow: ${theme.shadows.xsmall};
+    box-sizing: border-box;
+    width: ${toastConfig.width};
+    max-width: ${toastConfig.width};
+    z-index: ${props.zIndex};
+    bottom: ${toastConfig.position.initial.bottom};
+    left: ${toastConfig.position.initial.left};
+    transform: ${`translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY})`};
+    ${animation}
+  `
+})
