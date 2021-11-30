@@ -28,3 +28,10 @@ Small.args = {
   size: 'small',
   icon: faInfo
 }
+
+export const FlumeIcon: Story<IconButtonProps> = Template.bind({})
+FlumeIcon.args = {
+  size: 'large',
+  icon: 'share',
+  fontAwesome: false
+}
