@@ -55,7 +55,7 @@ export const IconButton = (props: IconButtonProps) => {
       {props.fontAwesome ? (
         <FontAwesomeIcon icon={props.icon as IconProp} />
       ) : (
-        <Icon icon={props.icon as string} />
+        <Icon icon={props.icon as string} size={props.size} color={props.foregroundColor} />
       )}
     </StyledIconButton>
   )

@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+import React, { useRef } from 'react'
 import { Toast, ToastProps } from '.'
+import { Button } from '../../buttons/Button'
 
 export default {
   title: 'Components/Notifications/Toast',
@@ -26,69 +27,71 @@ export default {
   }
 }
 
-const Template = (args: ToastProps) => <Toast {...args} />
+const lorem = (
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam ut
+    nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
+    aspernatur sit, vero architecto dignissimos. Eligendi, minima
+  </p>
+)
+
+const Template = (args: ToastProps) => {
+  const refToastRef = useRef(null)
+  return (
+    <div>
+      <Toast ref={refToastRef} {...args} />
+      <Button
+        variant="primary"
+        size="large"
+        label="Show Toast"
+        onClick={() => refToastRef.current?.dispatchShow()}
+      />
+    </div>
+  )
+}
 
 export const Default: Story<ToastProps> = Template.bind({})
 Default.args = {
-  children: (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
-      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
-      aspernatur sit, vero architecto dignissimos. Eligendi, minima
-    </p>
-  ),
+  children: lorem
+}
+
+export const MidRight: Story<ToastProps> = Template.bind({})
+MidRight.args = {
+  children: lorem,
+  horizontalAlign: 'right',
+  verticalAlign: 'middle'
+}
+export const VerticalBottom: Story<ToastProps> = Template.bind({})
+VerticalBottom.args = {
+  children: lorem,
+  horizontalAlign: 'right',
+  verticalAlign: 'bottom'
+}
+export const TopLeft: Story<ToastProps> = Template.bind({})
+TopLeft.args = {
+  children: lorem,
   horizontalAlign: 'left',
   verticalAlign: 'top'
 }
 
-export const FromRight: Story<ToastProps> = Template.bind({})
-FromRight.args = {
-  children: (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
-      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
-      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
-    </p>
-  ),
-  horizontalAlign: 'right',
-  verticalAlign: 'bottom'
-}
-
-export const FromBottom: Story<ToastProps> = Template.bind({})
-FromBottom.args = {
-  children: (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
-      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
-      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
-    </p>
-  ),
+export const MidBottom: Story<ToastProps> = Template.bind({})
+MidBottom.args = {
+  children: lorem,
   horizontalAlign: 'middle',
   verticalAlign: 'bottom'
 }
 
-export const FromLeft: Story<ToastProps> = Template.bind({})
-FromLeft.args = {
-  children: (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
-      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
-      aspernatur sit, vero architecto dignissimos. Eligendi, minima'
-    </p>
-  ),
+export const Middle: Story<ToastProps> = Template.bind({})
+Middle.args = {
+  children: lorem,
   horizontalAlign: 'middle',
-  verticalAlign: 'bottom'
+  verticalAlign: 'middle',
+  zIndex: 2
 }
 
 export const LongEffect: Story<ToastProps> = Template.bind({})
 LongEffect.args = {
-  children: (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, eligendi. Distinctio quisquam
-      ut nesciunt expedita temporibus dolorum dolore voluptate vitae numquam, aliquam quibusdam,
-      aspernatur sit, vero architecto dignissimos. Eligendi, minima
-    </p>
-  ),
+  children: lorem,
   animation: {
     slideInTime: 1.5,
     visibilityTime: 5,

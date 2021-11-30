@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { forwardRef, ReactNode, useImperativeHandle, useState } from 'react'
 import { StyledToast } from './Toast.styles'
 
 export type ToastProps = {
@@ -14,11 +14,13 @@ export type ToastProps = {
   }
 }
 
-export const Toast = (props: ToastProps) => {
+export const Toast = forwardRef((props: ToastProps, ref) => {
+  const [show, setShow] = useState(false)
+
   const styles = {
     horizontalAlign: props.horizontalAlign || 'middle',
     verticalAlign: props.verticalAlign || 'top',
-    width: props.width || '270px',
+    width: props.width || '220px',
     zIndex: props.zIndex,
     animation: {
       slideInTime: props.animation?.slideInTime || 0.5,
@@ -27,5 +29,20 @@ export const Toast = (props: ToastProps) => {
     }
   }
 
-  return <StyledToast {...styles}>{props.children}</StyledToast>
-}
+  useImperativeHandle(ref, () => ({
+    dispatchShow() {
+      const { animation } = styles
+
+      setShow(true)
+      setTimeout(function () {
+        setShow(false)
+      }, (animation.slideInTime + animation.slideOutTime + animation.visibilityTime) * 1000)
+    }
+  }))
+
+  return (
+    <StyledToast {...styles} className={show && 'show'}>
+      {props.children}
+    </StyledToast>
+  )
+})

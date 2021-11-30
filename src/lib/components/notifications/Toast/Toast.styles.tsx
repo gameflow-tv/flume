@@ -216,10 +216,14 @@ export const StyledToast = styled.div((props: ToastProps) => {
     box-sizing: border-box;
     width: ${toastConfig.width};
     max-width: ${toastConfig.width};
+    text-align: center;
     z-index: ${props.zIndex};
     bottom: ${toastConfig.position.initial.bottom};
     left: ${toastConfig.position.initial.left};
     transform: ${`translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY})`};
-    ${animation}
+
+    &.show {
+      ${animation}
+    }
   `
 })
