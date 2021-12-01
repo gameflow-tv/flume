@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { typographyToCss } from '../../theme'
+import theme from '../../theme/theme'
 import { CalendarProps } from './Calendar'
 
 export const CalendarWrapper = styled.div<CalendarProps>`
@@ -8,7 +9,7 @@ export const CalendarWrapper = styled.div<CalendarProps>`
   height: auto;
   min-width: 304px;
   min-height: 290px;
-  border-radius: 4px;
+  border-radius: ${theme.shapes.borders.small};
   padding: 12px;
   background-color: ${(props) => props.calendarBgColor};
 `
@@ -50,7 +51,7 @@ export const NavBtn = styled.div<CalendarProps>`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.dateBoxBgColor};
-  border-radius: 4px;
+  border-radius: ${theme.shapes.borders.small};
   cursor: pointer;
 
   & > svg {
@@ -101,7 +102,7 @@ export const DayBox = styled.div<CalendarProps>`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 4px;
+  border-radius: ${theme.shapes.borders.small};
   color: ${(props) => props.dayBoxTextColor};
   ${(props) => typographyToCss(props.dayBoxTypo)};
   text-transform: uppercase;
@@ -114,7 +115,7 @@ export const DateBox = styled.div<CalendarProps>`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.dateBoxBgColor};
-  border-radius: 4px;
+  border-radius: ${theme.shapes.borders.small};
   color: ${(props) => props.dateBoxTextColor};
   ${(props) => typographyToCss(props.dateBoxTypo)};
   cursor: pointer;

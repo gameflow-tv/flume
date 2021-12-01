@@ -127,8 +127,8 @@ export const ModalContent = styled.div.attrs((props) => ({
   color: ${theme.colors.primaryText};
   background-color: ${(props) => props.backgroundColor ?? theme.colors.background};
   width: ${(props) => setModalSize(props.size)};
-  box-shadow: 0px 4px 8px ${(props) => theme.colors.shadow};
-  border-radius: 6px;
+  box-shadow: 0px 4px 8px ${theme.colors.shadow};
+  border-radius: ${theme.shapes.borders.medium};
   max-height: 95%;
   padding: ${(props) => props.padding || '20px 0'};
   opacity: 0;
