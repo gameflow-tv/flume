@@ -1,6 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Theme } from '../../../theme'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useTheme } from '../../../hooks'
@@ -24,7 +24,8 @@ export type ButtonProps = StyledButtonProps &
     backgroundColor?: string
     foregroundColor?: string
     label?: string
-    onClick?: () => void
+    onClick?: (e?: React.MouseEvent<HTMLElement>) => void
+    children?: ReactNode
   }
 
 export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins => {
@@ -92,8 +93,14 @@ export const Button = (props: ButtonProps): JSX.Element => {
   return (
     <StyledButton {...props} onClick={props.onClick}>
       <ButtonContent {...props}>
-        <p>{props.label}</p>
-        {props.icon && <FontAwesomeIcon icon={props.icon} />}
+        {props.children ? (
+          props.children
+        ) : (
+          <>
+            <p>{props.label}</p>
+            {props.icon && <FontAwesomeIcon icon={props.icon} />}
+          </>
+        )}
       </ButtonContent>
     </StyledButton>
   )

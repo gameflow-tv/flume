@@ -1,7 +1,7 @@
-import React from 'react'
 import styled from 'styled-components'
 import { LabelPosition } from '../inputs'
 import { TypographyStyle, typographyToCss } from '../../theme'
+import theme from '../../theme/theme'
 
 export type WrapperProps = {
   gap: string
@@ -95,7 +95,7 @@ export const Range = styled.input.attrs({
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
-    border-radius: 50%;
+    border-radius: ${theme.shapes.borders.full};
     border-color: ${(props) => props.thumbColor};
   }
 
@@ -104,7 +104,7 @@ export const Range = styled.input.attrs({
     height: 15px;
     width: 15px;
     background: ${(props) => props.thumbColor};
-    border-radius: 50%;
+    border-radius: ${theme.shapes.borders.full};
     border-color: ${(props) => props.thumbColor};
   }
 

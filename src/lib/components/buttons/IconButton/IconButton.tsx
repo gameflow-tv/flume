@@ -1,6 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ButtonVariant } from '..'
 import { useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
@@ -14,6 +14,7 @@ export type IconButtonProps = StyledIconButtonProps & {
   onClick?: () => void
   size?: IconButtonSize
   variant?: ButtonVariant
+  children?: ReactNode
 }
 
 const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonProps => {
@@ -49,7 +50,7 @@ export const IconButton = (props: IconButtonProps) => {
 
   return (
     <StyledIconButton {...props} onClick={props.onClick}>
-      <FontAwesomeIcon icon={props.icon} />
+      {props.children ? props.children : <FontAwesomeIcon icon={props.icon} />}
     </StyledIconButton>
   )
 }
