@@ -1,6 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ButtonVariant } from '..'
 import { useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
