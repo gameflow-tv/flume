@@ -1,6 +1,5 @@
-import { faShareAlt } from '@fortawesome/pro-solid-svg-icons'
 import React, { useState } from 'react'
-import { Button, Icon, IconButton, Input } from '../..'
+import { Icon, IconButton, Input } from '../..'
 import { useTheme } from '../../../hooks'
 import { Modal } from '../Modal'
 import {
