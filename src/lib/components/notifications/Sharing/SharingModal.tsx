@@ -1,6 +1,5 @@
-import { faShareAlt } from '@fortawesome/pro-solid-svg-icons'
 import React, { useState } from 'react'
-import { Button, Icon, IconButton, Input } from '../..'
+import { Icon, IconButton, Input } from '../..'
 import { useTheme } from '../../../hooks'
 import { Modal } from '../Modal'
 import {
@@ -108,27 +107,26 @@ export const SharingModal = (props: SharingModalProps) => {
           </div>
           <SocialWrapper>
             {navigator.share && (
-              <SocialButton size="large" onClick={() => handleShareAPI()}>
-                <Icon icon="share" size="large" />
-              </SocialButton>
+              <SocialButton
+                icon="share"
+                size="large"
+                onClick={() => handleShareAPI()}
+                fontAwesome={false}
+              />
             )}
             <SocialLink
               href={getFBShareLink(props.facebook, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large">
-                <Icon icon="facebook" size="large" />
-              </IconButton>
+              <IconButton size="large" icon="facebook" fontAwesome={false} />
             </SocialLink>
             <SocialLink
               href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large">
-                <Icon icon="twitter" size="large" />
-              </IconButton>
+              <IconButton size="large" icon="twitter" fontAwesome={false} />
             </SocialLink>
           </SocialWrapper>
         </ButtonsWrapper>

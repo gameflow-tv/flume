@@ -1,2 +1,3 @@
-export * from './Modal/Modal'
+export * from './Toast'
+export * from './Modal'
 export * from './Sharing'

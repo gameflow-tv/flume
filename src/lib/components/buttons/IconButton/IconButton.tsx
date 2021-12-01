@@ -4,17 +4,18 @@ import React, { ReactNode } from 'react'
 import { ButtonVariant } from '..'
 import { useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
+import { Icon } from '../../icons/Icon'
 import { StyledIconButton, StyledIconButtonProps } from './IconButton.styles'
 
 export type IconButtonSize = 'small' | 'medium' | 'large'
 
 export type IconButtonProps = StyledIconButtonProps & {
-  icon?: IconProp
+  icon?: IconProp | string
   label?: string
   onClick?: () => void
   size?: IconButtonSize
   variant?: ButtonVariant
-  children?: ReactNode
+  fontAwesome?: boolean
 }
 
 const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonProps => {
@@ -25,7 +26,8 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
     shadow: theme.shadows.xsmall,
     hoverShadow: theme.shadows.small,
     borderColor: theme.colors.buttonBorder,
-    glow: theme.shadows.glow
+    glow: theme.shadows.glow,
+    fontAwesome: props.fontAwesome ?? true
   }
 
   switch (props.variant) {
@@ -50,7 +52,11 @@ export const IconButton = (props: IconButtonProps) => {
 
   return (
     <StyledIconButton {...props} onClick={props.onClick}>
-      {props.children ? props.children : <FontAwesomeIcon icon={props.icon} />}
+      {props.fontAwesome ? (
+        <FontAwesomeIcon icon={props.icon as IconProp} />
+      ) : (
+        <Icon icon={props.icon as string} size={props.size} color={props.foregroundColor} />
+      )}
     </StyledIconButton>
   )
 }
