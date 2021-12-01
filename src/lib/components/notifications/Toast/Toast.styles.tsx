@@ -72,11 +72,7 @@ const initializeToast = (props: ToastProps) => {
         break
       case 'middle':
         toastConfig.position.final.bottom = '50%'
-        if (props.horizontalAlign === 'middle') {
-          toastConfig.position.final.transformY = '175%'
-        } else {
-          toastConfig.position.final.transformY = '50%'
-        }
+        toastConfig.position.final.transformY = '50%'
         break
       case 'bottom':
         toastConfig.position.final.bottom = '0'
@@ -127,23 +123,23 @@ const getAnimation = (step) => {
   switch (step) {
     case 'in':
       return {
-        from: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`,
-        to: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
+        from: `bottom: ${toastConfig.position.initial.bottom}; transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`,
+        to: `bottom: ${toastConfig.position.final.bottom}; transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
       }
     case 'stay':
       return {
-        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
-        to: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
+        from: `bottom: ${toastConfig.position.final.bottom}; transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `bottom: ${toastConfig.position.final.bottom}; transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`
       }
     case 'out':
       return {
-        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
-        to: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
+        from: `bottom: ${toastConfig.position.final.bottom}; transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `bottom: ${toastConfig.position.initial.bottom}; transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
       }
     default:
       return {
-        from: `transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
-        to: `transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
+        from: `bottom: ${toastConfig.position.final.bottom}; transform: translateX(${toastConfig.position.final.transformX}) translateY(${toastConfig.position.final.transformY});`,
+        to: `bottom: ${toastConfig.position.initial.bottom}; transform: translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY});`
       }
   }
 }
