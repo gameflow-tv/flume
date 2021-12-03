@@ -30,6 +30,8 @@ export type SharingModalProps = {
   link?: string
   title?: string
   description?: string
+  show?: boolean
+  onClose?: (value?: boolean) => void
   facebook?: FacebookSharingProps
   twitter?: TwitterSharingProps
 }
@@ -92,7 +94,7 @@ export const SharingModal = (props: SharingModalProps) => {
   }
 
   return (
-    <Modal show={true} size="546px">
+    <Modal show={props.show} onClose={props.onClose} size="546px">
       <SharingHeader>Share link</SharingHeader>
       <SharingBody>
         <Input type="text" value={sharingData.link} disabled />
