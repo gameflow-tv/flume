@@ -1,6 +1,6 @@
 import { faSearch } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { ChangeEventHandler } from 'react'
 import { useTheme } from '../../../hooks'
 import { TypographyStyle } from '../../../theme'
 import { Search, Icon, Wrapper } from './SearchInput.styles'
@@ -15,6 +15,7 @@ export type SearchInputProps = {
   outline?: string
   background?: string
   iconSize?: string
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 export const SearchInput = (props: SearchInputProps) => {

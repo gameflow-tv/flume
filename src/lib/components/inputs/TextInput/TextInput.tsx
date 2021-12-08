@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEventHandler, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { Input, Label, ListItem } from './TextInput.styles'
 
@@ -18,6 +18,7 @@ export type TextInputProps = {
   label?: string
   criteria?: TextInputCriteria[]
   type: 'text' | 'password' | 'select'
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 const criteriaRule = (type: 'length' | 'regex', rule: number | RegExp, input: string) => {
@@ -32,7 +33,15 @@ const criteriaRule = (type: 'length' | 'regex', rule: number | RegExp, input: st
 
 export const TextInput = (props: TextInputProps) => {
   const theme = useTheme()
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInternalInputValue] = useState('')
+
+  const setInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (props.onChange) {
+      props.onChange(e)
+    }
+    setInternalInputValue(e.target.value)
+  }
+
   return (
     <>
       <Label typography={theme.typography.header5} htmlFor={`${props.type}-${props.placeholder}`}>
@@ -48,7 +57,7 @@ export const TextInput = (props: TextInputProps) => {
         foregroundColor={theme.colors.onTextField}
         type={props.type}
         placeholder={props.placeholder}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e) => setInputValue(e)}
         borderRadius={theme.shapes.borders.small}
         shadow={theme.shadows.xsmall}
         glow={theme.shadows.glow}
