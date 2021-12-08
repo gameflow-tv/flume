@@ -1,4 +1,10 @@
-import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
+import {
+  TypographyStyle,
+  typographyToCss,
+  Transition,
+  transitionToCss,
+  Theme
+} from '../../../theme'
 import styled from 'styled-components'
 
 type InputProps = {
@@ -36,6 +42,14 @@ export const Input = styled.input<InputProps>`
   border: none;
 `
 
+export const Wrapper = styled.div<{ gap: string }>`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-begin;
+  justify-content: center;
+  gap: ${(props) => props.gap};
+`
+
 type ListItemProps = {
   typography?: TypographyStyle
   color?: string
@@ -48,9 +62,11 @@ export const ListItem = styled.li<ListItemProps>`
 
 type LabelProps = {
   typography?: TypographyStyle
+  color?: string
   for?: string
 }
 
 export const Label = styled.label<LabelProps>`
   ${(props) => typographyToCss(props.typography)};
+  color: ${(props) => props.color};
 `

@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, useState } from 'react'
 import { useTheme } from '../../../hooks'
-import { Input, Label, ListItem } from './TextInput.styles'
+import { Input, Label, ListItem, Wrapper } from './TextInput.styles'
 
 export type CriteriaRules = {
   type: 'length' | 'regex'
@@ -43,12 +43,15 @@ export const TextInput = (props: TextInputProps) => {
   }
 
   return (
-    <>
-      <Label typography={theme.typography.header5} htmlFor={`${props.type}-${props.placeholder}`}>
+    <Wrapper gap={theme.spacing.xsmall}>
+      <Label
+        typography={theme.typography.header5}
+        htmlFor={`${props.type}-${props.placeholder}`}
+        color={theme.colors.secondaryText}
+      >
         {props.placeholder.slice(0, 1).toUpperCase() + props.placeholder.slice(1).toLowerCase()}
       </Label>
-      <br />
-      <br />
+
       <Input
         id={`${props.type}-${props.placeholder}`}
         typography={theme.typography.body1}
@@ -84,6 +87,6 @@ export const TextInput = (props: TextInputProps) => {
           )}
         </ul>
       ) : null}
-    </>
+    </Wrapper>
   )
 }
