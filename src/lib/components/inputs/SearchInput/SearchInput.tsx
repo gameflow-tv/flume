@@ -1,9 +1,8 @@
-import { faSearch } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { ChangeEventHandler } from 'react'
+import { Icon } from '../../icons'
 import { useTheme } from '../../../hooks'
 import { TypographyStyle } from '../../../theme'
-import { Search, Icon, Wrapper } from './SearchInput.styles'
+import { Search, SearchIcon, Wrapper } from './SearchInput.styles'
 
 export type SearchInputProps = {
   borderColor?: string
@@ -36,9 +35,9 @@ export const SearchInput = (props: SearchInputProps) => {
   return (
     <Wrapper>
       <Search type="text" placeholder="Search" {...styles} />
-      <Icon size={styles.iconSize} color={theme.colors.primaryText}>
-        <FontAwesomeIcon icon={faSearch} />
-      </Icon>
+      <SearchIcon size={styles.iconSize} color={theme.colors.primaryText}>
+        <Icon icon="search" />
+      </SearchIcon>
     </Wrapper>
   )
 }

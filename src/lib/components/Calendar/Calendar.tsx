@@ -1,5 +1,3 @@
-import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
 import { useTheme } from '../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
@@ -16,6 +14,7 @@ import {
   NavBtn,
   MonthDescription
 } from './Calendar.styles'
+import { Icon } from '..'
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
@@ -264,7 +263,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
         <ControlGrid>
           <AspectRatio aspectRatio={100}>
             <NavBtn className="prevmtharea" onClick={() => handleMonth(-1)} {...styles}>
-              <FontAwesomeIcon icon={faLongArrowLeft} />
+              <Icon icon="arrow_left" />
             </NavBtn>
           </AspectRatio>
           <MonthDescription className="mthdescarea" {...styles}>
@@ -272,7 +271,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
           </MonthDescription>
           <AspectRatio aspectRatio={100}>
             <NavBtn className="nextmtharea" onClick={() => handleMonth(1)} {...styles}>
-              <FontAwesomeIcon icon={faLongArrowRight} />
+              <Icon icon={'arrow_right'} />
             </NavBtn>
           </AspectRatio>
         </ControlGrid>

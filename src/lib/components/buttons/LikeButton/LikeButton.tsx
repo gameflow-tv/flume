@@ -1,6 +1,5 @@
-import { IconName } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import { Icon } from '../../icons'
 import { useTheme } from '../../../hooks'
 import { Transition } from '../../../theme'
 import { LikeIcon, LikeIconProps } from './LikeButton.styles'
@@ -47,7 +46,7 @@ export const LikeButton = (props: LikeButtonProps) => {
       transition={props.transition || theme.transitions.long}
       {...styles}
     >
-      <FontAwesomeIcon icon={[liked ? 'fas' : 'fal', 'heart' as IconName]} />
+      <Icon icon={liked ? 'heart_filled' : 'hear'} />
     </LikeIcon>
   )
 }

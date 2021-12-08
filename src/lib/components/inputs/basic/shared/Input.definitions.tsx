@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute, ReactNode, EventHandler, ChangeEventHandler } from 'react'
+import { HTMLInputTypeAttribute, ReactNode, ChangeEventHandler } from 'react'
 import { Icons } from '../../..'
 import { isEmpty } from '../../../../helpers/general'
 import { SharedProps } from './Shared.styles'

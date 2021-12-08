@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps } from '../shared/Input.definitions'
 import { InputGroup, GlobalInput, VerificationIcon } from '../shared/Shared.styles'
@@ -28,7 +28,7 @@ export const Text = (props: InputProps) => {
           {...props.inputStyles}
         />
         <VerificationIcon className={validationResponse?.type} {...props.inputStyles}>
-          {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
+          {validationResponse?.icon && <Icon icon={validationResponse?.icon} />}
         </VerificationIcon>
       </InputGroup>
       {ValidationInfo(props, validationResponse)}

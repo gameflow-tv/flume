@@ -4,21 +4,17 @@ import {
   InputProps,
   InputResponseType
 } from '../components/inputs/basic/shared/Input.definitions'
-import {
-  faCheckCircle,
-  faExclamationTriangle,
-  faTimesCircle
-} from '@fortawesome/pro-solid-svg-icons'
+
 import { isEmpty } from 'lodash'
 
 const getValidationIcon = (errorType: InputResponseType) => {
   switch (errorType) {
     case InputResponseType.ERROR:
-      return faTimesCircle
+      return 'close_filled'
     case InputResponseType.WARNING:
-      return faExclamationTriangle
+      return 'warning_filled'
     case InputResponseType.SUCCESS:
-      return faCheckCircle
+      return 'check_filled'
     default:
       return undefined
   }
