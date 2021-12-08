@@ -10,6 +10,8 @@ jobs:
         with:
           node-version: "16"
       - uses: actions/checkout@v2
+      - name: Set version
+        run: yarn version --new-version $(echo ${{ env.GITHUB_REF_SLUG }}|cut -c2-) --no-git-tag-version
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: Build library
