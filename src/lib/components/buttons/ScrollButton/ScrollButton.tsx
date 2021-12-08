@@ -1,6 +1,5 @@
-import { faArrowRight } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { Icon } from '../..'
 import { useTheme } from '../../../hooks'
 import { Button } from './ScrollButton.style'
 
@@ -20,7 +19,7 @@ export const ScrollButton = () => {
       borderRadius={theme.shapes.borders.small}
       color={theme.colors.primaryText}
     >
-      <FontAwesomeIcon icon={faArrowRight} />
+      <Icon icon={'arrow_right'} />
     </Button>
   )
 }

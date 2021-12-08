@@ -127,7 +127,6 @@ export const SharingModal = (props: SharingModalProps) => {
                 icon="share"
                 size="large"
                 onClick={() => handleShareAPI()}
-                fontAwesome={false}
                 backgroundColor={lum04}
               />
             )}
@@ -136,19 +135,14 @@ export const SharingModal = (props: SharingModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton
-                size="large"
-                icon="facebook"
-                fontAwesome={false}
-                backgroundColor={lum04}
-              />
+              <IconButton size="large" icon="facebook" backgroundColor={lum04} />
             </SocialLink>
             <SocialLink
               href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large" icon="twitter" fontAwesome={false} backgroundColor={lum04} />
+              <IconButton size="large" icon="twitter" backgroundColor={lum04} />
             </SocialLink>
           </SocialWrapper>
         </ButtonsWrapper>

@@ -1,7 +1,6 @@
-import { faGamepad, faGamepadAlt } from '@fortawesome/pro-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Story } from '@storybook/react'
 import React from 'react'
+import { Icon } from '../..'
 import { Checkbox, CheckboxProps } from './Checkbox'
 
 export default {
@@ -33,8 +32,8 @@ LetterAsMark.args = {
 
 export const CustomIcon: Story<CheckboxProps> = Template.bind({})
 CustomIcon.args = {
-  checkedContent: <FontAwesomeIcon icon={faGamepad} />,
-  uncheckedContent: <FontAwesomeIcon icon={faGamepadAlt} />
+  checkedContent: <Icon icon="swords_filled" />,
+  uncheckedContent: <Icon icon="swords" />
 }
 
 export const CustomSize: Story<CheckboxProps> = Template.bind({})
@@ -54,7 +53,7 @@ CustomColor.args = {
   uncheckedBackground: '#360A14',
   uncheckedBorder: '#961D4E',
   uncheckedTextColor: '#FCB9B2',
-  uncheckedContent: <FontAwesomeIcon icon={faGamepadAlt} />,
+  uncheckedContent: <Icon icon="swords" />,
   checkedTextColor: 'white',
   checkedBackground: '#2196F3',
   checkedBorder: '#ffbf00'
