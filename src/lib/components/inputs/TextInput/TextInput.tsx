@@ -49,11 +49,11 @@ export const TextInput = (props: TextInputProps) => {
         htmlFor={`${props.type}-${props.placeholder}`}
         color={theme.colors.secondaryText}
       >
-        {props.placeholder.slice(0, 1).toUpperCase() + props.placeholder.slice(1).toLowerCase()}
+        {props.label}
       </Label>
 
       <Input
-        id={`${props.type}-${props.placeholder}`}
+        id={`${props.type}-${props.label}`}
         typography={theme.typography.body1}
         transition={theme.transitions.short}
         backgroundColor={theme.colors.textField}
