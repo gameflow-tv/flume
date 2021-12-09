@@ -10,9 +10,11 @@ import { SearchInput } from './Search.styles'
 export const Search = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValidationResponse(e.target.value)
-    props.onChange?.call(null, e)
+    if (props.onChange) {
+      props.onChange(e)
+    }
   }
 
   return (

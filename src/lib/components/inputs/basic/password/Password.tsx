@@ -22,9 +22,11 @@ export const Password = (props: InputProps) => {
     else setInitialType('password')
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValidationResponse(e.target.value)
-    rest.onChange?.call(null, e)
+    if (props.onChange) {
+      props.onChange(e)
+    }
   }
 
   return (

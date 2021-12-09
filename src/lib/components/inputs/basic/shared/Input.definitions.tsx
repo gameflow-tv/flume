@@ -1,5 +1,5 @@
-import { IconDefinition } from '@fortawesome/fontawesome-common-types'
-import { HTMLInputTypeAttribute, ReactNode } from 'react'
+import { HTMLInputTypeAttribute, ReactNode, EventHandler, ChangeEventHandler } from 'react'
+import { Icons } from '../../..'
 import { isEmpty } from '../../../../helpers/general'
 import { SharedProps } from './Shared.styles'
 
@@ -19,7 +19,7 @@ export type InputProps = {
   disabled?: boolean
   multipleCriteriaInfo?: boolean
   criteria?: InputValidation | InputValidation[]
-  onChange?: (e?: any) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
   inputStyles?: SharedProps
   readOnly?: boolean
 }
@@ -47,7 +47,7 @@ export interface InputValidation {
 export type InputCriteriaResponse = {
   message: string
   type: InputResponseType
-  icon: IconDefinition
+  icon: keyof Icons | string
   isValid: boolean
 }
 

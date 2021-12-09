@@ -8,9 +8,11 @@ import { ValidationInfo } from '../shared/ValidationInfo'
 export const Text = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValidationResponse(e.target.value)
-    props.onChange?.call(null, e)
+    if (props.onChange) {
+      props.onChange(e)
+    }
   }
 
   return (
