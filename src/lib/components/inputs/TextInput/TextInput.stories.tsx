@@ -9,24 +9,15 @@ export default {
 
 const Template = (args: TextInputProps) => <TextInput {...args} />
 
-export const Text: Story<TextInputProps> = Template.bind({})
-Text.args = {
+export const Basic: Story<TextInputProps> = Template.bind({})
+Basic.args = {
   placeholder: 'Username-0',
   type: 'text'
 }
 
-export const Text1: Story<TextInputProps> = Template.bind({})
-Text1.args = {
-  placeholder: 'Username-1',
-  type: 'text',
-  criteria: [
-    {
-      criteria: 'Longer than 6 characters',
-      fulfilled: false
-    },
-    {
-      criteria: 'Is not Tobinator',
-      fulfilled: true
-    }
-  ]
+export const WithLabel: Story<TextInputProps> = Template.bind({})
+WithLabel.args = {
+  label: 'Username',
+  placeholder: 'Username',
+  type: 'text'
 }

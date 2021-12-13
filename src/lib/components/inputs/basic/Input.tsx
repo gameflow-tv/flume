@@ -70,7 +70,7 @@ export const Input = (props: InputProps) => {
 
   const inputProps = { ...props, inputStyles: styles }
 
-  const RenderInput = () => {
+  const input = () => {
     switch (type) {
       case 'password':
         return <Password {...inputProps} />
@@ -88,7 +88,7 @@ export const Input = (props: InputProps) => {
   return (
     <FormGroup>
       {!isEmpty(props.label) && <StyledLabel {...styles}>{props.label}</StyledLabel>}
-      {RenderInput()}
+      {input()}
     </FormGroup>
   )
 }
