@@ -8,7 +8,7 @@ import { ButtonVariant } from '..'
 
 export type IconPosition = 'left' | 'right'
 
-export type ButtonSize = 'large' | 'medium' | 'small'
+export type ButtonSize = 'large' | 'medium' | 'small' | 'full'
 
 export type ButtonMargins = {
   horizontalMargin: string

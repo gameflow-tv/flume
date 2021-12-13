@@ -56,6 +56,8 @@ export const StyledButton = styled.button<StyledButtonProps>`
     ${(props) => typographyToCss(props.typography)}
   }
 
+  width: ${(props) => props.size === 'full' && '100%'};
+
   min-width: ${(props) => props.size === 'large' && '160px'};
 `
 
