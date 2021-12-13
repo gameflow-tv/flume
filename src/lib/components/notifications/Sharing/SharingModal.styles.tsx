@@ -5,9 +5,8 @@ import { Button, IconButton } from '../../buttons'
 import { ModalBody, ModalHeader } from '../Modal'
 
 export const SharingHeader = styled(ModalHeader)`
-  ${typographyToCss(theme.typography.header1)};
-  font-size: 1.5rem;
-  font-weight: normal;
+  ${typographyToCss(theme.typography.header2)};
+  font-weight: 600;
   margin-top: 28px;
 `
 

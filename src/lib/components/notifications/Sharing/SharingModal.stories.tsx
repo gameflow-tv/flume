@@ -9,10 +9,14 @@ export default {
 
 const Template = (args) => <SharingModal {...args} />
 export const Default: Story<SharingModalProps> = Template.bind({})
+Default.args = {
+  show: true
+}
 
 export const CustomValue: Story<SharingModalProps> = Template.bind({})
 CustomValue.args = {
   link: 'https://gameflow.tv/',
+  show: true,
   facebook: {
     app_id: 427532265538385,
     display: 'popup',
