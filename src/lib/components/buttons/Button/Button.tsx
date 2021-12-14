@@ -18,7 +18,7 @@ export type ButtonMargins = {
 
 export type ButtonProps = StyledButtonProps &
   ButtonContentProps & {
-    icon: keyof Icons
+    icon?: keyof Icons
     faIcon?: IconProp
     iconPosition?: IconPosition
     size?: ButtonSize
