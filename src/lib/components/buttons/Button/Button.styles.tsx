@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ButtonSize, IconPosition } from './'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ButtonVariant } from '..'
+import { Icons } from '../../icons'
 
 export type StyledButtonProps = {
   borderRadius?: string
@@ -13,7 +14,7 @@ export type StyledButtonProps = {
   shadow?: string
   typography?: TypographyStyle
   size?: ButtonSize
-  icon?: IconProp
+  icon?: keyof Icons
   iconPosition?: IconPosition
   gap?: string
   transition?: Transition
