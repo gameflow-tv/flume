@@ -1,5 +1,11 @@
 import _ from 'lodash'
-import React, { forwardRef, ReactNode, useEffect, useImperativeHandle, useState } from 'react'
+import React, {
+  forwardRef,
+  ReactEventHandler,
+  ReactNode,
+  useImperativeHandle,
+  useState
+} from 'react'
 import { faCheck, faPlus } from '@fortawesome/pro-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TypographyStyle } from '../../../theme'
@@ -10,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onChange?: ReactEventHandler<HTMLInputElement>
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
@@ -45,9 +51,10 @@ export const Checkbox = forwardRef(
       }
     })
 
-    useEffect(() => {
-      props.onChange && props.onChange.call(isChecked)
-    }, [isChecked])
+    const handleCheckEvent = (e: any) => {
+      setIsChecked(e.target.checked)
+      props.onChange(e)
+    }
 
     const theme = useTheme()
     const styles: SpanProps = {
@@ -70,7 +77,7 @@ export const Checkbox = forwardRef(
           id={id}
           className={props.className}
           checked={isChecked}
-          onChange={(e) => setIsChecked(e.target.checked)}
+          onChange={handleCheckEvent}
           {...styles}
         />
         <SpanEl {...styles}>{isChecked ? checkedContent : uncheckedContent}</SpanEl>
