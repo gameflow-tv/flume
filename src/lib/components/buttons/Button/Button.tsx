@@ -98,7 +98,7 @@ export const Button = (props: ButtonProps): JSX.Element => {
         ) : (
           <>
             <p>{props.label}</p>
-            {props.icon && <Icon icon={props.icon} />}
+            {props.icon && <Icon icon={props.icon} color={props.foregroundColor} />}
             {!props.icon && props.faIcon && <FontAwesomeIcon icon={props.faIcon} />}
           </>
         )}
