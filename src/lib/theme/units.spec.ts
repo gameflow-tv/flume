@@ -1,4 +1,3 @@
-import 'jest'
 import { pxToRem } from './units'
 
 describe('conversions between px and rem', function () {

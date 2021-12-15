@@ -4,7 +4,7 @@ import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useStat
 import { useTheme } from '../../../hooks'
 import { isNullOrUndefined } from '../../../helpers/general'
 import { TypographyStyle } from '../../../theme'
-import AspectRatio from '../../common/AspectRatio/AspectRatio'
+import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import {
   DateBox,
   DayBox,

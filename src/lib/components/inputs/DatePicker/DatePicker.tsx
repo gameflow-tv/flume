@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { useOutsideClick } from '../../../hooks/useOutsideClick'
 import { TypographyStyle } from '../../../theme'
-import AspectRatio from '../../common/AspectRatio/AspectRatio'
+import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
 import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
 

@@ -3,5 +3,8 @@ module.exports = {
   testEnvironment: 'node',
   transform: {
     'node_modules/variables/.+\\.(j|t)sx?$': 'ts-jest'
-  }
+  },
+  testPathIgnorePatterns: [
+    "dist"
+  ]
 }

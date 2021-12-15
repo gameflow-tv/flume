@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Icon, IconButton, Input } from '../..'
+import { Icon } from '../../icons'
+import { IconButton } from '../../buttons'
+import { Input } from '../../inputs'
 import { useTheme } from '../../../hooks'
 import { Modal } from '../Modal'
 import {

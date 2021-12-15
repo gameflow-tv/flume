@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
-import { Icon, Icons } from '../..'
+import { Icon, Icons } from '../../icons'
 
 export type IconPosition = 'left' | 'right'
 
