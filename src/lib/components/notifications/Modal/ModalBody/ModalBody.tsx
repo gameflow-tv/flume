@@ -12,12 +12,10 @@ export type ModalBodyProps = {
   onScroll?: (e: React.UIEvent<HTMLElement>) => void
 }
 
-const ModalBody = ({ children, onScroll, ...styles }: Partial<ModalBodyProps>) => {
+export const ModalBody = ({ children, onScroll, ...styles }: Partial<ModalBodyProps>) => {
   return (
     <Body onScroll={onScroll} {...styles}>
       {children}
     </Body>
   )
 }
-
-export default ModalBody

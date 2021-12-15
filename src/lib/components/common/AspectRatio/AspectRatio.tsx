@@ -6,12 +6,10 @@ export type AspectRatioProps = StyledAspectRatioProps & {
   children?: ReactNode
 }
 
-const AspectRatio = ({ children, aspectRatio }: AspectRatioProps) => {
+export const AspectRatio = ({ children, aspectRatio }: AspectRatioProps) => {
   return (
     <StyledAspectRatio aspectRatio={aspectRatio}>
       <ChildContainer>{children}</ChildContainer>
     </StyledAspectRatio>
   )
 }
-
-export default AspectRatio

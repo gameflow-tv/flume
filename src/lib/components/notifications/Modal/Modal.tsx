@@ -34,7 +34,7 @@ export type ModalProps = {
   backgroundColor?: string
 }
 
-const Modal = ({
+export const Modal = ({
   id,
   show,
   animation,
@@ -108,5 +108,3 @@ const Modal = ({
     </ModalOverlay>
   )
 }
-
-export default Modal

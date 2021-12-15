@@ -12,8 +12,6 @@ export type ModalHeaderProps = {
   children?: ReactNode
 }
 
-const ModalHeader = ({ children, ...styles }: Partial<ModalHeaderProps>) => {
+export const ModalHeader = ({ children, ...styles }: Partial<ModalHeaderProps>) => {
   return <Header {...styles}>{children}</Header>
 }
-
-export default ModalHeader

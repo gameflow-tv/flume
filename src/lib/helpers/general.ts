@@ -5,5 +5,3 @@ export const isNullOrUndefined = (value: any) => {
 export const isEmpty = (value: any) => {
   return isNullOrUndefined(value) || value.trim().length === 0
 }
-
-export default { isNullOrUndefined, isEmpty }

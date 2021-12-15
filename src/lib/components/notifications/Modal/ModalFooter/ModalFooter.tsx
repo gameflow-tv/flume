@@ -11,8 +11,6 @@ export type ModalFooterProps = {
   children?: ReactNode
 }
 
-const ModalFooter = ({ children, ...styles }: Partial<ModalFooterProps>) => {
+export const ModalFooter = ({ children, ...styles }: Partial<ModalFooterProps>) => {
   return <Footer {...styles}>{children}</Footer>
 }
-
-export default ModalFooter
