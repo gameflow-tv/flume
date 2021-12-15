@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import React, { ReactNode } from 'react'
+import React, { ChangeEventHandler, ReactNode } from 'react'
 import {
   Range,
   RangeLabel,
@@ -25,7 +25,7 @@ export type SliderProps = {
   max: number
   minLabel?: ReactNode
   maxLabel?: ReactNode
-  onChange?: (value: number) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
   step?: string | number
 }
 
@@ -66,7 +66,7 @@ export const Slider = ({
           value={value}
           min={min}
           max={max}
-          onChange={(e) => onChange && onChange.call(e.target.value)}
+          onChange={(e) => onChange && onChange(e)}
           step={step}
           {...styles}
         />
