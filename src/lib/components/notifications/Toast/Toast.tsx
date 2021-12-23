@@ -1,4 +1,5 @@
 import React, { forwardRef, ReactNode, useImperativeHandle, useState } from 'react'
+import { useTheme } from '../../../hooks'
 import { StyledToast } from './Toast.styles'
 
 export type ToastProps = {
@@ -7,6 +8,7 @@ export type ToastProps = {
   verticalAlign?: 'top' | 'middle' | 'bottom'
   width?: string
   zIndex?: number
+  backgroundColor?: string
   animation?: {
     slideInTime?: number
     slideOutTime?: number
@@ -16,12 +18,14 @@ export type ToastProps = {
 
 export const Toast = forwardRef((props: ToastProps, ref) => {
   const [show, setShow] = useState(false)
+  const theme = useTheme()
 
   const styles = {
     horizontalAlign: props.horizontalAlign || 'middle',
     verticalAlign: props.verticalAlign || 'top',
     width: props.width || '220px',
     zIndex: props.zIndex,
+    backgroundColor: props.backgroundColor || theme.colors.toggle,
     animation: {
       slideInTime: props.animation?.slideInTime || 0.5,
       slideOutTime: props.animation?.slideOutTime || 0.5,
