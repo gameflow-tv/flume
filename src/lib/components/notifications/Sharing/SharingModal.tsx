@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Icon } from '../../icons'
 import { IconButton } from '../../buttons'
-import { Input } from '../../inputs'
 import { useTheme } from '../../../hooks'
-import { Modal } from '../Modal'
+import { Modal, ModalProps } from '../Modal'
 import {
   ButtonsWrapper,
   SharingBody,
@@ -13,6 +12,8 @@ import {
   SocialLink,
   SocialWrapper
 } from './SharingModal.styles'
+import { getLuminance } from '../../../helpers'
+import { Input } from '../../inputs'
 
 export type FacebookSharingProps = {
   app_id: string | number
@@ -28,7 +29,7 @@ export type TwitterSharingProps = {
   related: string[2]
 }
 
-export type SharingModalProps = {
+export type SharingModalProps = ModalProps & {
   link?: string
   title?: string
   description?: string
@@ -67,6 +68,12 @@ export const SharingModal = (props: SharingModalProps) => {
   const [linkCopied, setLinkCopied] = useState(false)
   const theme = useTheme()
 
+  const styles = {
+    backgroundColor: props.backgroundColor || theme.colors.background
+  }
+
+  const { lum04 } = getLuminance(styles.backgroundColor)
+
   const sharingData = {
     link: props.link || document?.location?.href || '',
     title: props.title || document?.title || 'Gameflow',
@@ -96,10 +103,15 @@ export const SharingModal = (props: SharingModalProps) => {
   }
 
   return (
-    <Modal show={props.show} onClose={props.onClose} size="546px">
+    <Modal size="546px" {...props} {...styles}>
       <SharingHeader>Share link</SharingHeader>
       <SharingBody>
-        <Input type="text" value={sharingData.link} disabled />
+        <Input
+          type="text"
+          value={sharingData.link}
+          inputStyles={{ input: { disabled: { backgroundColor: lum04 } } }}
+          disabled
+        />
         <ButtonsWrapper>
           <div>
             <SharingButton variant="primary" size="medium" onClick={handleCopy}>
@@ -116,6 +128,7 @@ export const SharingModal = (props: SharingModalProps) => {
                 size="large"
                 onClick={() => handleShareAPI()}
                 fontAwesome={false}
+                backgroundColor={lum04}
               />
             )}
             <SocialLink
@@ -123,14 +136,19 @@ export const SharingModal = (props: SharingModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large" icon="facebook" fontAwesome={false} />
+              <IconButton
+                size="large"
+                icon="facebook"
+                fontAwesome={false}
+                backgroundColor={lum04}
+              />
             </SocialLink>
             <SocialLink
               href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large" icon="twitter" fontAwesome={false} />
+              <IconButton size="large" icon="twitter" fontAwesome={false} backgroundColor={lum04} />
             </SocialLink>
           </SocialWrapper>
         </ButtonsWrapper>
