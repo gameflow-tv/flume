@@ -17,7 +17,7 @@ const toastConfig = {
       bottom: '100%',
       left: '50%',
       transformX: '-50%',
-      transformY: 'calc(100% + 32px)'
+      transformY: 'calc(100% + 64px)'
     }
   }
 }
@@ -31,7 +31,7 @@ const initializeToast = (props: ToastProps) => {
 
       if (props.verticalAlign === 'top') {
         toastConfig.position.initial.bottom = '100%'
-        toastConfig.position.initial.transformY = 'calc(100% + 32px)'
+        toastConfig.position.initial.transformY = 'calc(100% + 64px)'
       }
       if (props.verticalAlign === 'middle') {
         toastConfig.position.initial.bottom = '50%'
@@ -39,7 +39,7 @@ const initializeToast = (props: ToastProps) => {
       }
       if (props.verticalAlign === 'bottom') {
         toastConfig.position.initial.bottom = '0'
-        toastConfig.position.initial.transformY = '-32px'
+        toastConfig.position.initial.transformY = '-64px'
       }
     }
 
@@ -68,7 +68,7 @@ const initializeToast = (props: ToastProps) => {
     switch (props.verticalAlign) {
       case 'top':
         toastConfig.position.final.bottom = '100%'
-        toastConfig.position.final.transformY = 'calc(100% + 32px)'
+        toastConfig.position.final.transformY = 'calc(100% + 64px)'
         break
       case 'middle':
         toastConfig.position.final.bottom = '50%'
@@ -76,7 +76,7 @@ const initializeToast = (props: ToastProps) => {
         break
       case 'bottom':
         toastConfig.position.final.bottom = '0'
-        toastConfig.position.final.transformY = '-32px'
+        toastConfig.position.final.transformY = '-64px'
         break
       default:
         break
@@ -205,7 +205,7 @@ export const StyledToast = styled.div((props: ToastProps) => {
     letter-spacing: 0.3px;
     color: ${theme.colors.secondaryText};
     padding: 16px 24px;
-    background-color: ${theme.colors.toggle};
+    background-color: ${props.backgroundColor || theme.colors.toggle};
     border: ${theme.shapes.borders.xxsmall} solid ${theme.colors.border};
     border-radius: ${theme.spacing.xxsmall};
     box-shadow: ${theme.shadows.xsmall};

@@ -7,43 +7,43 @@ export type SharedProps = {
   width?: string
   height?: string
   label?: {
-    textColor: string
-    margin: string
-    typography: string
+    textColor?: string
+    margin?: string
+    typography?: string
   }
   input?: {
-    backgroundColor: string
-    borderRadius: string
-    padding: string
-    textColor: string
-    borderColor: string
-    primaryBorder: string
-    typography: string
-    placeholder: string
-    transition: string
+    backgroundColor?: string
+    borderRadius?: string
+    padding?: string
+    textColor?: string
+    borderColor?: string
+    primaryBorder?: string
+    typography?: string
+    placeholder?: string
+    transition?: string
     onFocus?: {
-      errorColor: string
-      warningColor: string
-      successColor: string
+      errorColor?: string
+      warningColor?: string
+      successColor?: string
     }
     disabled?: {
-      backgroundColor: string
-      borderColor: string
+      backgroundColor?: string
+      borderColor?: string
     }
     onHover?: {
-      borderColor: string
+      borderColor?: string
     }
   }
   icon?: {
-    iconPadding: string
-    backgroundColor: string
-    borderRadius: string
-    iconColor: string
+    iconPadding?: string
+    backgroundColor?: string
+    borderRadius?: string
+    iconColor?: string
   }
   infoMessage?: {
-    paddingTop: string
-    typography: string
-    primaryTextColor: string
+    paddingTop?: string
+    typography?: string
+    primaryTextColor?: string
   }
 }
 

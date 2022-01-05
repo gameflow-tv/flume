@@ -98,3 +98,9 @@ LongEffect.args = {
     slideOutTime: 2
   }
 }
+
+export const CustomColor: Story<ToastProps> = Template.bind({})
+CustomColor.args = {
+  children: lorem,
+  backgroundColor: '#2e3a45'
+}
