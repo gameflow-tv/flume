@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 
+// TODO: Add types to this hook
 export const useOutsideClick = (ref, callback) => {
   useEffect(() => {
     function handleClickOutside(event) {
