@@ -31,9 +31,9 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
     elevation = parent.elevation + 1
   }
 
-  if(!parent && !color) {
+  if (!parent && !color) {
     color = theme.colors.card
-  } else if(!color) {
+  } else if (!color) {
     color = parent.baseColor
   }
 
