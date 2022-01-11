@@ -1,42 +1,49 @@
 import * as React from 'react'
 import { getLuminance } from '../helpers'
 import { useTheme } from '../hooks'
+import { useAmbiance } from '../hooks/useAmbiance'
 
-export type Ambiance = {
+type AmbianceProps = {
   baseColor: string
   color: string
   elevation: number
-  setElevation: (elevation: number) => void
 }
 
-export type AmbianceProviderProps = {
+type AmbianceProviderProps = {
   elevation?: number
   color?: string
   children?: React.ReactNode
 }
 
-const AmbientColorContext = React.createContext<Ambiance>(undefined)
+const AmbianceContext = React.createContext<AmbianceProps>(undefined)
 
-const AmbianceProvider: React.FC = ({
+const Ambiance: React.FC<AmbianceProviderProps> = ({
   color,
   children,
-  elevation: baseElevation = 0
+  elevation
 }: AmbianceProviderProps) => {
-  const [elevation, setElevation] = React.useState(baseElevation)
+  const parent = useAmbiance()
   const theme = useTheme()
 
-  if (!color) {
-    color = theme.colors.primary
+  if (!parent && !elevation) {
+    elevation = 0
+  } else if (!elevation) {
+    elevation = parent.elevation + 1
+  }
+
+  if(!parent && !color) {
+    color = theme.colors.card
+  } else if(!color) {
+    color = parent.baseColor
   }
 
   const value = {
     baseColor: color,
-    elevation: 0,
-    setElevation,
+    elevation: elevation,
     color: getColorFromElevation(color, elevation)
   }
 
-  return <AmbientColorContext.Provider value={value}>{children}</AmbientColorContext.Provider>
+  return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
 }
 
 const getColorFromElevation = (color: string, elevation: number) => {
@@ -59,4 +66,4 @@ const getColorFromElevation = (color: string, elevation: number) => {
   }
 }
 
-export { AmbientColorContext, AmbianceProvider }
+export { Ambiance, AmbianceContext }
