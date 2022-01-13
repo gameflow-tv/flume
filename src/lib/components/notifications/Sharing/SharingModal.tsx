@@ -106,10 +106,7 @@ export const SharingModal = (props: SharingModalProps) => {
       }
     }
 
-    navigator
-      ?.share?.(shareData)
-      .then(() => console.log('Successful share'))
-      .catch(checkError)
+    navigator?.share?.(shareData).catch(checkError)
   }
 
   return (
