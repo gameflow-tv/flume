@@ -46,11 +46,11 @@
     "@fortawesome/pro-regular-svg-icons": "^5.15.4",
     "@fortawesome/pro-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "chroma-js": "^2.1.2",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3",
-    "chroma-js": "^2.1.2"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -86,6 +86,7 @@
     "acorn-jsx": "^5.3.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.3",
+    "chroma-js": "^2.1.2",
     "chromatic": "^6.2.0",
     "eslint-plugin-mdx": "^1.16.0",
     "husky": "^7.0.4",

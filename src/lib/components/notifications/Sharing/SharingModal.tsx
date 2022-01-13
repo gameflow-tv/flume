@@ -99,7 +99,17 @@ export const SharingModal = (props: SharingModalProps) => {
       text: sharingData.description,
       url: sharingData.link
     }
-    navigator?.share?.(shareData)
+    
+    const checkError = (e) => {
+      if (e.toString().includes('AbortError')) {
+        console.log('Error while sharing')
+      }
+    }
+
+    navigator
+      ?.share?.(shareData)
+      .then(() => console.log('Successful share'))
+      .catch(checkError)
   }
 
   return (
@@ -134,8 +144,7 @@ export const SharingModal = (props: SharingModalProps) => {
             <SocialLink
               href={getFBShareLink(props.facebook, sharingData.link)}
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               <IconButton
                 size="large"
                 icon="facebook"
@@ -146,8 +155,7 @@ export const SharingModal = (props: SharingModalProps) => {
             <SocialLink
               href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
-              rel="noopener noreferrer"
-            >
+              rel="noopener noreferrer">
               <IconButton size="large" icon="twitter" fontAwesome={false} backgroundColor={lum04} />
             </SocialLink>
           </SocialWrapper>
