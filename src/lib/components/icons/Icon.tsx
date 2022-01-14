@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '../../hooks'
-import { IconData, Icons } from './data'
+import { IconData, IconName } from './data'
 
-export const IconSize = {
+export const IconSizes = {
   small: '0.75rem',
   medium: '1rem',
   large: '1.5rem',
   xlarge: '2rem'
 }
 
+export type IconSize = keyof typeof IconSizes
+
 export type IconProps = {
-  icon: keyof Icons | string
+  icon: IconName
   color?: string
-  size?: keyof typeof IconSize | string
+  size?: IconSize | string
   inline?: boolean
   filled?: boolean
 }
@@ -42,8 +44,8 @@ export const Icon = ({
 
   let s: string
 
-  if (size in IconSize) {
-    s = IconSize[size]
+  if (size in IconSizes) {
+    s = IconSizes[size]
   } else {
     s = size
   }
@@ -61,7 +63,7 @@ export const Icon = ({
         height="100%"
         fill={color ? color : theme.colors.primaryText}
       >
-        <path d={IconData[icon as keyof Icons]} style={{ fillRule: 'evenodd' }} />
+        <path d={IconData[icon as IconName]} style={{ fillRule: 'evenodd' }} />
       </svg>
     </_Icon>
   )

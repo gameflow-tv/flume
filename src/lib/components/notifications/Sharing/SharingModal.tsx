@@ -117,7 +117,10 @@ export const SharingModal = (props: SharingModalProps) => {
             <SharingButton variant="primary" size="medium" onClick={handleCopy}>
               <>
                 {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
-                <Icon icon={linkCopied ? 'check_filled' : 'link'} color={theme.colors.onPrimary} />
+                <Icon
+                  icon={linkCopied ? 'check_circle_filled' : 'link'}
+                  color={theme.colors.onPrimary}
+                />
               </>
             </SharingButton>
           </div>

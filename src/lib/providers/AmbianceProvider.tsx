@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { getLuminance } from '../helpers'
-import { useTheme } from '../hooks'
-import { useAmbiance } from '../hooks/useAmbiance'
+import { getLuminance } from '../helpers/getLuminance'
+import { useTheme } from '../hooks/useTheme'
 
 type AmbianceProps = {
   baseColor: string
@@ -22,7 +21,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   children,
   elevation
 }: AmbianceProviderProps) => {
-  const parent = useAmbiance()
+  const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
 
   if (!parent && !elevation) {

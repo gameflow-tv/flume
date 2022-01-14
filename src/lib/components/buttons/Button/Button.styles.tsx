@@ -2,7 +2,7 @@ import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '.
 import styled from 'styled-components'
 import { ButtonSize, IconPosition } from './'
 import { ButtonVariant } from '..'
-import { Icons } from '../../icons'
+import { IconName } from '../../icons'
 
 export type StyledButtonProps = {
   borderRadius?: string
@@ -13,7 +13,7 @@ export type StyledButtonProps = {
   shadow?: string
   typography?: TypographyStyle
   size?: ButtonSize
-  icon?: keyof Icons | string
+  icon?: IconName
   iconPosition?: IconPosition
   gap?: string
   transition?: Transition

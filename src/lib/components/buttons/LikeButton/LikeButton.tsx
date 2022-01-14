@@ -46,7 +46,7 @@ export const LikeButton = (props: LikeButtonProps) => {
       transition={props.transition || theme.transitions.long}
       {...styles}
     >
-      <Icon icon={liked ? 'heart_filled' : 'hear'} />
+      <Icon icon={liked ? 'heart_filled' : 'heart'} />
     </LikeIcon>
   )
 }

@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { ButtonVariant } from '..'
-import { Icons } from '../..'
+import { IconName } from '../../icons'
 import { useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
 import { Icon } from '../../icons/Icon'
@@ -9,7 +9,7 @@ import { StyledIconButton, StyledIconButtonProps } from './IconButton.styles'
 export type IconButtonSize = 'small' | 'medium' | 'large'
 
 export type IconButtonProps = StyledIconButtonProps & {
-  icon?: keyof Icons | string
+  icon?: IconName
   label?: string
   onClick?: () => void
   size?: IconButtonSize
@@ -49,7 +49,7 @@ export const IconButton = (props: IconButtonProps) => {
 
   return (
     <StyledIconButton {...props} onClick={props.onClick}>
-      <Icon icon={props.icon as string} size={props.size} color={props.foregroundColor} />
+      <Icon icon={props.icon} size={props.size} color={props.foregroundColor} />
     </StyledIconButton>
   )
 }

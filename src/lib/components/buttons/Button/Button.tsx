@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
-import { Icon, Icons } from '../../icons'
+import { Icon, IconName } from '../../icons'
 
 export type IconPosition = 'left' | 'right'
 
@@ -16,7 +16,7 @@ export type ButtonMargins = {
 
 export type ButtonProps = StyledButtonProps &
   ButtonContentProps & {
-    icon?: keyof Icons | string
+    icon?: IconName
     iconPosition?: IconPosition
     size?: ButtonSize
     variant?: ButtonVariant
