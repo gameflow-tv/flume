@@ -29,6 +29,7 @@ export const IconData = {
   chevron_left: 'm13.12 4-5.6 8 5.6 8H15l-5.6-8L15 4Z',
   chevron_right: 'm10.88 4 5.6 8-5.6 8H9l5.6-8L9 4Z',
   chevron_up: 'm4 13.12 8-5.6 8 5.6V15l-8-5.6L4 15Z',
+  circle: 'M6,12a6,6 0 1,0 12,0a6,6 0 1,0 -12,0',
   clock:
     'M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm0 20a9 9 0 1 1 9-9 9 9 0 0 1-9 9Zm1-10h3v2h-5V5h2Z',
   clock_filled: 'M12 1a11 11 0 1 0 11 11A11 11 0 0 0 12 1Zm4 12h-5V5h2v6h3Z',
