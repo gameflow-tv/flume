@@ -118,3 +118,4 @@ export const IconData = {
 }
 
 export type Icons = typeof IconData
+export type IconName = keyof Icons
