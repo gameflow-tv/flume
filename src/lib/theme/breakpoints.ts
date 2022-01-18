@@ -1,4 +1,5 @@
 export type Breakpoints = {
+  default: string
   xs: string
   sm: string
   md: string
@@ -8,6 +9,7 @@ export type Breakpoints = {
 }
 
 const fallback: Breakpoints = {
+  default: '0rem',
   xs: '29rem',
   sm: '36rem',
   md: '48rem',
