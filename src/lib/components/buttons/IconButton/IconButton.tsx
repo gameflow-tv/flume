@@ -1,12 +1,12 @@
 import React from 'react'
 import { ButtonVariant } from '..'
 import { IconName } from '../../icons'
-import { useTheme } from '../../../hooks'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
 import { Icon } from '../../icons/Icon'
 import { StyledIconButton, StyledIconButtonProps } from './IconButton.styles'
 
-export type IconButtonSize = 'small' | 'medium' | 'large'
+export type IconButtonSize = 'small' | 'medium' | 'large' | 'xlarge'
 
 export type IconButtonProps = StyledIconButtonProps & {
   icon?: IconName
@@ -45,11 +45,18 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
 
 export const IconButton = (props: IconButtonProps) => {
   const theme = useTheme()
-  props = getIconButtonStyles(props, theme)
+  const { color, nextColor } = useAmbiance()
+
+  const styles = getIconButtonStyles(props, theme)
+
+  if (!props.backgroundColor) {
+    styles.backgroundColor = color
+    styles.hoverColor = nextColor
+  }
 
   return (
-    <StyledIconButton {...props} onClick={props.onClick}>
-      <Icon icon={props.icon} size={props.size} color={props.foregroundColor} />
+    <StyledIconButton {...styles} onClick={props.onClick}>
+      <Icon icon={styles.icon} size={styles.size} color={styles.foregroundColor} />
     </StyledIconButton>
   )
 }

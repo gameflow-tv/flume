@@ -5,6 +5,7 @@ import { useTheme } from '../hooks/useTheme'
 type AmbianceProps = {
   baseColor: string
   color: string
+  nextColor: string
   elevation: number
 }
 
@@ -39,7 +40,8 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   const value = {
     baseColor: color,
     elevation: elevation,
-    color: getColorFromElevation(color, elevation)
+    color: getColorFromElevation(color, elevation),
+    nextColor: getColorFromElevation(color, elevation + 1)
   }
 
   return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
