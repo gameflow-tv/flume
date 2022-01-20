@@ -1,7 +1,6 @@
 import React from 'react'
-import { Icon } from '../..'
-import { useTheme } from '../../../hooks'
-import { Button } from './ScrollButton.style'
+import { AmbianceContext } from '../../../providers'
+import { IconButton } from '../../buttons/IconButton'
 
 export type ScrollButtonProps = {
   boxShadowSmall: string
@@ -11,15 +10,11 @@ export type ScrollButtonProps = {
 }
 
 export const ScrollButton = () => {
-  const theme = useTheme()
   return (
-    <Button
-      boxShadowXSmall={theme.shadows.xsmall}
-      boxShadowSmall={theme.shadows.small}
-      borderRadius={theme.shapes.borders.small}
-      color={theme.colors.primaryText}
-    >
-      <Icon icon={'arrow_right'} />
-    </Button>
+    <AmbianceContext.Consumer>
+      {(ambiance) => (
+        <IconButton icon="arrow_right" size="xlarge" backgroundColor={ambiance.color} />
+      )}
+    </AmbianceContext.Consumer>
   )
 }

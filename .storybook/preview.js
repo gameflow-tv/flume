@@ -1,12 +1,14 @@
 import React from 'react'
-import { ThemeProvider } from '../src'
+import { Ambiance, ThemeProvider } from '../src'
 import '../src/lib/theme/fonts.css'
 import theme from './theme'
 
 export const decorators = [
   (Story) => (
     <ThemeProvider>
-      <Story />
+      <Ambiance>
+        <Story />
+      </Ambiance>
     </ThemeProvider>
   )
 ]
