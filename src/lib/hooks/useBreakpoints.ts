@@ -45,17 +45,17 @@ export const useCurrentBreakpoint = (): keyof Breakpoints => {
   const { breakpoints } = useTheme()
   const parsed = parseBreakpoints(breakpoints)
 
-  if (width > parsed.default) {
-    return 'default'
-  } else if (width > parsed.xs) {
-    return 'xs'
-  } else if (width > parsed.xs) {
-    return 'sm'
-  } else if (width > parsed.md) {
-    return 'md'
+  if (width > parsed.xl) {
+    return 'xl'
   } else if (width > parsed.lg) {
     return 'lg'
-  } else if (width > parsed.xl) {
-    return 'xl'
+  } else if (width > parsed.md) {
+    return 'md'
+  } else if (width > parsed.sm) {
+    return 'sm'
+  } else if (width > parsed.xs) {
+    return 'xs'
+  } else {
+    return 'default'
   }
 }
