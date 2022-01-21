@@ -7,9 +7,10 @@ export type ScrollButtonProps = {
   onClick?: () => void
   left?: boolean
   right?: boolean
+  visible?: boolean
 }
 
-export const ScrollButton = ({ onClick, left, right }: ScrollButtonProps) => {
+export const ScrollButton = ({ onClick, left, right, visible }: ScrollButtonProps) => {
   const { color, bottom, root } = useAmbiance()
 
   const icon: IconName = left ? 'arrow_left' : 'arrow_right'
@@ -22,6 +23,7 @@ export const ScrollButton = ({ onClick, left, right }: ScrollButtonProps) => {
       hoverBackgroundColor={bottom.color}
       hoverForegroundColor={root.color}
       onClick={onClick}
+      hidden={!visible}
     />
   )
 }

@@ -14,6 +14,7 @@ export type StyledIconButtonProps = {
   size?: IconButtonSize
   hoverBackgroundColor?: string
   hoverForegroundColor?: string
+  hidden?: boolean
 }
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
@@ -24,6 +25,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   border: none;
   outline: none;
   transition: ${(props) => transitionToCss(props.transition)};
+  opacity: ${(props) => (props.hidden ? 0 : 1)};
 
   &:hover {
     ${(props) =>
