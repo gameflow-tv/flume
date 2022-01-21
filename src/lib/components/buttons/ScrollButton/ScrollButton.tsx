@@ -1,16 +1,12 @@
 import React from 'react'
 import { useAmbiance } from '../../../hooks'
-import { AmbianceContext } from '../../../providers'
 import { IconButton } from '../../buttons/IconButton'
 
 export type ScrollButtonProps = {
-  boxShadowSmall: string
-  boxShadowXSmall: string
-  borderRadius: string
-  color: string
+  onClick?: () => void
 }
 
-export const ScrollButton = () => {
+export const ScrollButton = ({ onClick }: ScrollButtonProps) => {
   const { color, bottom, root } = useAmbiance()
 
   return (
@@ -20,6 +16,7 @@ export const ScrollButton = () => {
       backgroundColor={color}
       hoverBackgroundColor={bottom.color}
       hoverForegroundColor={root.color}
+      onClick={onClick}
     />
   )
 }
