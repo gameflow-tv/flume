@@ -1,14 +1,36 @@
 import { useState, useEffect } from 'react'
 
+export type WindowDimensions = {
+  width: {
+    px: number
+    rem: number
+  }
+  height: {
+    px: number
+    rem: number
+  }
+}
+
 export function useWindowDimensions() {
   const hasWindow = typeof window !== 'undefined'
 
   function getWindowDimensions() {
-    const width = hasWindow ? window.innerWidth : null
-    const height = hasWindow ? window.innerHeight : null
-    return {
-      width,
-      height
+    if (hasWindow) {
+      const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize)
+
+      const dimensions: WindowDimensions = {
+        width: {
+          px: window.innerWidth,
+          rem: window.innerWidth / rootFontSize
+        },
+
+        height: {
+          px: window.innerHeight,
+          rem: window.innerHeight / rootFontSize
+        }
+      }
+
+      return dimensions
     }
   }
 
