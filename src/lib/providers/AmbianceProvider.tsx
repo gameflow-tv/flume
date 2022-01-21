@@ -2,10 +2,11 @@ import * as React from 'react'
 import { getLuminance } from '../helpers/getLuminance'
 import { useTheme } from '../hooks/useTheme'
 
-type AmbianceProps = {
-  baseColor: string
+export type AmbianceProps = {
+  root: AmbianceProps
+  parent?: AmbianceProps
+  child?: AmbianceProps
   color: string
-  nextColor: string
   elevation: number
 }
 
@@ -34,17 +35,48 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   if (!parent && !color) {
     color = theme.colors.card
   } else if (!color) {
-    color = parent.baseColor
+    color = parent.root.color
   }
 
-  const value = {
-    baseColor: color,
-    elevation: elevation,
-    color: getColorFromElevation(color, elevation),
-    nextColor: getColorFromElevation(color, elevation + 1)
+  let tmp = {
+    root: null,
+    parent,
+    elevation,
+    color: getColorFromElevation(color, elevation)
+  }
+
+  let value: AmbianceProps = {
+    ...tmp,
+    root: getRootAmbiance(tmp),
+    child: getChildAmbiance(tmp)
   }
 
   return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
+}
+
+const getChildAmbiance = (a: AmbianceProps): AmbianceProps => {
+  if (!a.child && a.elevation <= 5) {
+    let child: AmbianceProps = {
+      root: a.root,
+      elevation: a.elevation + 1,
+      color: getColorFromElevation(a.color, a.elevation + 1),
+      parent: a
+    }
+
+    child.child = getChildAmbiance(child)
+
+    return child
+  }
+
+  return null
+}
+
+const getRootAmbiance = (a?: AmbianceProps): AmbianceProps => {
+  if (!a?.parent) {
+    return a
+  }
+
+  return getRootAmbiance(a.parent)
 }
 
 const getColorFromElevation = (color: string, elevation: number) => {
