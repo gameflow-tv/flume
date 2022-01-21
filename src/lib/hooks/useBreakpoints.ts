@@ -1,4 +1,5 @@
-import { useTheme, useWindowDimensions } from '.'
+import { useTheme } from './useTheme'
+import { useWindowDimensions } from './useWindowDimensions'
 import { Breakpoints } from '../theme'
 
 type NumberedBreakpoints = {
