@@ -10,12 +10,15 @@ export type Transitions = {
   long: Transition
 }
 
-export const transitionToCss = (t: Transition): string => `${t.selection} ${t.duration} ${t.curve}`
+export const transitionToCss = (t: Transition, o?: Partial<Transition>): string =>
+  `${o?.selection ?? t.selection} ${o?.duration ?? t.duration} ${o?.curve ?? t.curve}`
+
+export const curve = 'cubic-bezier(0.215, 0.61, 0.355, 1)'
 
 const fallback: Transitions = {
-  short: { selection: 'all', duration: '100ms', curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)' },
-  medium: { selection: 'all', duration: '200ms', curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)' },
-  long: { selection: 'all', duration: '300ms', curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)' }
+  short: { selection: 'all', duration: '100ms', curve },
+  medium: { selection: 'all', duration: '200ms', curve },
+  long: { selection: 'all', duration: '300ms', curve }
 }
 
 export default fallback
