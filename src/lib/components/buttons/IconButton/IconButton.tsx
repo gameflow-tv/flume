@@ -45,13 +45,13 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
 
 export const IconButton = (props: IconButtonProps) => {
   const theme = useTheme()
-  const { color, nextColor } = useAmbiance()
+  const { color, child } = useAmbiance()
 
   const styles = getIconButtonStyles(props, theme)
 
   if (!props.backgroundColor) {
     styles.backgroundColor = color
-    styles.hoverColor = nextColor
+    styles.hoverColor = child.color
   }
 
   return (
