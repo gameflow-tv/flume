@@ -1,17 +1,22 @@
 import React from 'react'
+import { IconName } from '../../icons'
 import { useAmbiance } from '../../../hooks'
 import { IconButton } from '../../buttons/IconButton'
 
 export type ScrollButtonProps = {
   onClick?: () => void
+  left?: boolean
+  right?: boolean
 }
 
-export const ScrollButton = ({ onClick }: ScrollButtonProps) => {
+export const ScrollButton = ({ onClick, left, right }: ScrollButtonProps) => {
   const { color, bottom, root } = useAmbiance()
+
+  const icon: IconName = left ? 'arrow_left' : 'arrow_right'
 
   return (
     <IconButton
-      icon="arrow_right"
+      icon={icon}
       size="xlarge"
       backgroundColor={color}
       hoverBackgroundColor={bottom.color}
