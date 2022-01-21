@@ -152,7 +152,7 @@ export const CloseButton = styled.button<ModalProps>`
   font-size: 24px;
   cursor: pointer;
 
-  & > svg {
+  & > div {
     pointer-events: none;
   }
 `
