@@ -4,6 +4,7 @@ import { useTheme } from '../hooks/useTheme'
 
 export type AmbianceProps = {
   root: AmbianceProps
+  bottom: AmbianceProps
   parent?: AmbianceProps
   child?: AmbianceProps
   color: string
@@ -39,6 +40,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   }
 
   let tmp = {
+    bottom: null,
     root: null,
     parent,
     elevation,
@@ -48,7 +50,8 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   let value: AmbianceProps = {
     ...tmp,
     root: getRootAmbiance(tmp),
-    child: getChildAmbiance(tmp)
+    child: getChildAmbiance(tmp),
+    bottom: getBottomAmbiance(tmp)
   }
 
   return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
@@ -57,6 +60,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
 const getChildAmbiance = (a: AmbianceProps): AmbianceProps => {
   if (!a.child && a.elevation <= 5) {
     let child: AmbianceProps = {
+      bottom: a.bottom,
       root: a.root,
       elevation: a.elevation + 1,
       color: getColorFromElevation(a.color, a.elevation + 1),
@@ -69,6 +73,23 @@ const getChildAmbiance = (a: AmbianceProps): AmbianceProps => {
   }
 
   return null
+}
+
+const getBottomAmbiance = (a: AmbianceProps): AmbianceProps => {
+  if (!a.bottom && a.elevation <= 5) {
+    let tmp = {
+      bottom: null,
+      root: a.root,
+      elevation: 5,
+      color: getColorFromElevation(a.color, 5),
+      parent: a
+    }
+
+    tmp.bottom = tmp
+    return tmp
+  }
+
+  return a
 }
 
 const getRootAmbiance = (a?: AmbianceProps): AmbianceProps => {

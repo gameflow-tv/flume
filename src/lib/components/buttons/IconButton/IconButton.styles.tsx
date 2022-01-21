@@ -12,7 +12,8 @@ export type StyledIconButtonProps = {
   borderColor?: string
   glow?: string
   size?: IconButtonSize
-  hoverColor?: string
+  hoverBackgroundColor?: string
+  hoverForegroundColor?: string
 }
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
@@ -26,12 +27,18 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
 
   &:hover {
     ${(props) =>
-      props.hoverColor ? `background-color: ${props.hoverColor}` : 'filter: brightness(110%)'};
+      props.hoverBackgroundColor
+        ? `background-color: ${props.hoverBackgroundColor}`
+        : 'filter: brightness(110%)'};
+
     box-shadow: ${(props) => props.hoverShadow};
     cursor: pointer;
 
     svg {
-      filter: brightness(110%);
+      ${(props) =>
+        props.hoverForegroundColor
+          ? `fill: ${props.hoverForegroundColor}`
+          : 'filter: brightness(40%)'};
     }
   }
 
