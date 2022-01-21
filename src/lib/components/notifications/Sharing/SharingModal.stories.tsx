@@ -7,7 +7,7 @@ export default {
   component: SharingModal
 }
 
-const Template = (args) => <SharingModal {...args} />
+const Template = (args) => <SharingModal {...args} story />
 export const Default: Story<SharingModalProps> = Template.bind({})
 Default.args = {
   show: true

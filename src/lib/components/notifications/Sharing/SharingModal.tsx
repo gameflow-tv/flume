@@ -37,6 +37,7 @@ export type SharingModalProps = ModalProps & {
   onClose?: (value?: boolean) => void
   facebook?: FacebookSharingProps
   twitter?: TwitterSharingProps
+  story?: boolean
 }
 
 const getFBShareLink = (sharingData: FacebookSharingProps, link: string) => {
@@ -75,7 +76,7 @@ export const SharingModal = (props: SharingModalProps) => {
   const { lum04 } = getLuminance(styles.backgroundColor)
 
   const sharingData = {
-    link: props.link || document?.location?.href || '',
+    link: props.story ? 'https://flume.gameflow.tv' : props.link || document?.location?.href || '',
     title: props.title || document?.title || 'Gameflow',
     description:
       props.description ||
