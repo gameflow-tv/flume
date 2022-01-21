@@ -1,9 +1,8 @@
 import { TypographyStyle, typographyToCss, Transition, transitionToCss } from '../../../theme'
 import styled from 'styled-components'
 import { ButtonSize, IconPosition } from './'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { ButtonVariant } from '..'
-import { Icons } from '../../icons'
+import { IconName } from '../../icons'
 
 export type StyledButtonProps = {
   borderRadius?: string
@@ -14,8 +13,7 @@ export type StyledButtonProps = {
   shadow?: string
   typography?: TypographyStyle
   size?: ButtonSize
-  icon?: keyof Icons
-  faIcon?: IconProp
+  icon?: IconName
   iconPosition?: IconPosition
   gap?: string
   transition?: Transition
@@ -72,7 +70,7 @@ export const ButtonContent = styled.div<ButtonContentProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: ${(props) => (props.icon || props.faIcon) && props.gap};
+  gap: ${(props) => props.icon && props.gap};
   flex-direction: ${(props) => (props.iconPosition === 'right' ? 'row' : 'row-reverse')};
   p {
     margin-block-start: 0;

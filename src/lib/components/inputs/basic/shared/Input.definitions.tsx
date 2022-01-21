@@ -1,5 +1,5 @@
-import { HTMLInputTypeAttribute, ReactNode, EventHandler, ChangeEventHandler } from 'react'
-import { Icons } from '../../..'
+import { HTMLInputTypeAttribute, ReactNode, ChangeEventHandler } from 'react'
+import { IconName } from '../../../icons'
 import { isEmpty } from '../../../../helpers/general'
 import { SharedProps } from './Shared.styles'
 
@@ -47,7 +47,7 @@ export interface InputValidation {
 export type InputCriteriaResponse = {
   message: string
   type: InputResponseType
-  icon: keyof Icons | string
+  icon: IconName
   isValid: boolean
 }
 

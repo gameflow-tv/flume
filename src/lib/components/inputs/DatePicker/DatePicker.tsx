@@ -1,6 +1,5 @@
-import { faCalendarAlt, faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef, useState } from 'react'
+import { Icon } from '../../icons'
 import { useTheme } from '../../../hooks'
 import { useOutsideClick } from '../../../hooks/useOutsideClick'
 import { TypographyStyle } from '../../../theme'
@@ -161,11 +160,11 @@ export const DatePicker = ({
       <Grid>
         <AspectRatio aspectRatio={100}>
           <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>
-            <FontAwesomeIcon icon={faLongArrowLeft} />
+            <Icon icon="arrow_left" />
           </NavBtn>
         </AspectRatio>
         <DateInput className="mthdescarea" onClick={handleEdition} {...styles}>
-          <FontAwesomeIcon icon={faCalendarAlt} />
+          <Icon icon="calendar" />
           {editionMode ? (
             <input type="date" value={dateValue} onChange={handleDate} />
           ) : (
@@ -174,7 +173,7 @@ export const DatePicker = ({
         </DateInput>
         <AspectRatio aspectRatio={100}>
           <NavBtn className="nextmtharea" onClick={() => handleDay(1)} {...styles}>
-            <FontAwesomeIcon icon={faLongArrowRight} />
+            <Icon icon="arrow_right" />
           </NavBtn>
         </AspectRatio>
       </Grid>

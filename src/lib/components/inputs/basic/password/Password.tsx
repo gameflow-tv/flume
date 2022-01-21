@@ -1,5 +1,3 @@
-import { faEye, faEyeSlash } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps, InputType } from '../shared/Input.definitions'
@@ -11,6 +9,7 @@ import {
   StyledInput,
   VerificationWithToggle
 } from '../shared/Shared.styles'
+import { Icon } from '../../../icons'
 
 export const Password = (props: InputProps) => {
   const { type, ...rest } = props
@@ -42,14 +41,14 @@ export const Password = (props: InputProps) => {
           {...rest.inputStyles}
         />
         <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
-          {validationResponse?.icon && <FontAwesomeIcon icon={validationResponse?.icon} />}
+          {validationResponse?.icon && <Icon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
         <ActionArea
           className={validationResponse?.type}
           onClick={() => toggleType()}
           {...props.inputStyles}
         >
-          {<FontAwesomeIcon icon={initialType === 'password' ? faEye : faEyeSlash} />}
+          {<Icon icon={initialType === 'password' ? 'eye' : 'hide'} />}
         </ActionArea>
       </InputGroup>
 

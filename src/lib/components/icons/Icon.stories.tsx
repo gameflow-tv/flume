@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components'
-import { Icon, IconData, IconProps, Icons } from '.'
+import { Icon, IconData, IconName, IconProps } from '.'
 
 export default {
   title: 'Components/Icon',
@@ -44,7 +44,7 @@ export const All = () => {
     <Grid>
       {Object.keys(IconData).map((key) => (
         <IconArea>
-          <Icon key={key} icon={key} size="large" color="white" />
+          <Icon key={key} icon={key as IconName} size="large" color="white" />
           <Text>{key}</Text>
         </IconArea>
       ))}

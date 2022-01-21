@@ -33,14 +33,23 @@ const AmbientBox = ({ children }: { children?: ReactNode }) => {
 
 export const Sample = () => {
   return (
-    <AmbientBox>
-      <AmbientBox>
-        <AmbientBox>
-          <AmbientBox>
-            <AmbientBox></AmbientBox>
-          </AmbientBox>
-        </AmbientBox>
-      </AmbientBox>
-    </AmbientBox>
+    <AmbianceContext.Consumer>
+      {(ambiance) => {
+        return (
+          <ColorBox color={ambiance.color}>
+            <p>Elevation: {ambiance.elevation}</p>
+            <AmbientBox>
+              <AmbientBox>
+                <AmbientBox>
+                  <AmbientBox>
+                    <AmbientBox></AmbientBox>
+                  </AmbientBox>
+                </AmbientBox>
+              </AmbientBox>
+            </AmbientBox>
+          </ColorBox>
+        )
+      }}
+    </AmbianceContext.Consumer>
   )
 }

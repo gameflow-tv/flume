@@ -1,11 +1,9 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { Theme } from '../../../theme'
 import React, { ReactNode } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
-import { Icon, Icons } from '../../icons'
+import { Icon, IconName } from '../../icons'
 
 export type IconPosition = 'left' | 'right'
 
@@ -18,8 +16,7 @@ export type ButtonMargins = {
 
 export type ButtonProps = StyledButtonProps &
   ButtonContentProps & {
-    icon?: keyof Icons
-    faIcon?: IconProp
+    icon?: IconName
     iconPosition?: IconPosition
     size?: ButtonSize
     variant?: ButtonVariant
@@ -99,7 +96,6 @@ export const Button = (props: ButtonProps): JSX.Element => {
           <>
             <p>{props.label}</p>
             {props.icon && <Icon icon={props.icon} color={props.foregroundColor} />}
-            {!props.icon && props.faIcon && <FontAwesomeIcon icon={props.faIcon} />}
           </>
         )}
       </ButtonContent>

@@ -7,7 +7,7 @@ export default {
   component: Calendar
 }
 
-const Template = (args) => <Calendar {...args} />
+const Template = (args) => <Calendar {...args} story />
 export const Default: Story = Template.bind({})
 Default.args = {
   width: '328px'

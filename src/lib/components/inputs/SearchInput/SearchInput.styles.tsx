@@ -29,12 +29,12 @@ export const Wrapper = styled.div`
   position: relative;
 `
 
-export type IconProps = {
+export type SearchIconProps = {
   size: string
   color: string
 }
 
-export const Icon = styled.span<IconProps>`
+export const SearchIcon = styled.span<SearchIconProps>`
   position: absolute;
   right: 15px;
   top: 0;

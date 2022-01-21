@@ -1,6 +1,4 @@
-import { faLongArrowLeft, faLongArrowRight } from '@fortawesome/pro-light-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useMemo, useState } from 'react'
 import { useTheme } from '../../hooks'
 import { isNullOrUndefined } from '../../helpers/general'
 import { TypographyStyle } from '../../theme'
@@ -16,6 +14,7 @@ import {
   NavBtn,
   MonthDescription
 } from './Calendar.styles'
+import { Icon } from '..'
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
@@ -45,7 +44,7 @@ const getFirstDayOfWeek = () => {
 
 const firstDay = getFirstDayOfWeek()
 
-const getDayString = (dayIndex: number) => {
+const getDayString = (dayIndex: number): string => {
   const day = daysList.find((f) => f.id === dayIndex)
   return day.name
 }
@@ -97,13 +96,27 @@ const monthList = [
   'December'
 ]
 
-const today = new Date()
+type Month = keyof typeof monthList
 
-const getNumberOfDays = (year, month) => {
+const getNumberOfDays = (year: number, month: number) => {
   return 40 - new Date(year, month, 40).getDate()
 }
 
-const getDayDetails = (args) => {
+type DayDetails = {
+  date: number
+  day: number
+  month: number
+  timestamp: number
+  dayString: string
+}
+
+const getDayDetails = (args: {
+  index: number
+  firstDay: number
+  month: number
+  year: number
+  numberOfDays: number
+}): DayDetails => {
   const date = args.index - args.firstDay
   const day = args.index % 7
   let prevMonth = args.month - 1
@@ -127,10 +140,10 @@ const getDayDetails = (args) => {
   }
 }
 
-const getMonthDetails = (year, month) => {
+const getMonthDetails = (year: number, month: number): DayDetails[] => {
   const firstDay = getDayIndex(new Date(year, month).getDay())
   const numberOfDays = getNumberOfDays(year, month)
-  const monthArray = []
+  const monthArray: DayDetails[] = []
   const rows = 6
   const cols = 7
   let currentDay = null
@@ -153,14 +166,14 @@ const getMonthDetails = (year, month) => {
   return monthArray
 }
 
-const isCurrentDay = (day) => {
+const isCurrentDay = (day: { timestamp: number; month: number }, today: Date) => {
   const ref = today
   ref.setHours(0, 0, 0, 0)
 
   return day.timestamp === ref.valueOf() && day.month === 0
 }
 
-const isSelectedDay = (day, selectedTimestamp?: number) => {
+const isSelectedDay = (day: DayDetails, selectedTimestamp?: number) => {
   if (!selectedTimestamp) {
     return false
   }
@@ -168,7 +181,7 @@ const isSelectedDay = (day, selectedTimestamp?: number) => {
   return day.timestamp === selectedTimestamp && day.month === 0
 }
 
-const getMonthStr = (month) => monthList[Math.max(Math.min(11, month), 0)] || 'Month'
+const getMonthStr = (month: number) => monthList[Math.max(Math.min(11, month), 0)] || 'Month'
 
 export type CalendarProps = {
   width?: string
@@ -188,9 +201,11 @@ export type CalendarProps = {
   defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
+  story?: boolean
 }
 
 export const Calendar = forwardRef((props: CalendarProps, ref) => {
+  const today = useMemo(() => (props.story ? new Date(2022, 0, 1) : new Date()), [props.story])
   const theme = useTheme()
   const [selectedDate, setSelectedDate] = useState<number>(
     props.defaultDate ? props.defaultDate.valueOf() : 0
@@ -219,14 +234,14 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
     width: props.width
   }
 
-  const onDateClick = (day) => {
+  const onDateClick = (day: DayDetails) => {
     if (day && day.month === 0) {
       setSelectedDate(day.timestamp)
       props.onDateSelect ? props.onDateSelect.call(null, day.timestamp) : null
     }
   }
 
-  const handleMonth = (offset: number) => {
+  const handleMonth = (offset: number): void => {
     let y = year
     let m = month + offset
     if (m === -1) {
@@ -264,7 +279,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
         <ControlGrid>
           <AspectRatio aspectRatio={100}>
             <NavBtn className="prevmtharea" onClick={() => handleMonth(-1)} {...styles}>
-              <FontAwesomeIcon icon={faLongArrowLeft} />
+              <Icon icon="arrow_left" />
             </NavBtn>
           </AspectRatio>
           <MonthDescription className="mthdescarea" {...styles}>
@@ -272,7 +287,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
           </MonthDescription>
           <AspectRatio aspectRatio={100}>
             <NavBtn className="nextmtharea" onClick={() => handleMonth(1)} {...styles}>
-              <FontAwesomeIcon icon={faLongArrowRight} />
+              <Icon icon={'arrow_right'} />
             </NavBtn>
           </AspectRatio>
         </ControlGrid>
@@ -294,7 +309,7 @@ export const Calendar = forwardRef((props: CalendarProps, ref) => {
                   key={idx}
                   className={
                     (day.month !== 0 ? ' disabled' : '') +
-                    (isCurrentDay(day) ? ' today' : '') +
+                    (isCurrentDay(day, today) ? ' today' : '') +
                     (isSelectedDay(day, selectedDate) ? ' selected' : '')
                   }
                   onClick={() => onDateClick(day)}

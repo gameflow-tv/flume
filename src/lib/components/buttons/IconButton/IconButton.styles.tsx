@@ -12,6 +12,8 @@ export type StyledIconButtonProps = {
   borderColor?: string
   glow?: string
   size?: IconButtonSize
+  hoverBackgroundColor?: string
+  hoverForegroundColor?: string
 }
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
@@ -24,12 +26,19 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   transition: ${(props) => transitionToCss(props.transition)};
 
   &:hover {
-    filter: brightness(110%);
+    ${(props) =>
+      props.hoverBackgroundColor
+        ? `background-color: ${props.hoverBackgroundColor}`
+        : 'filter: brightness(110%)'};
+
     box-shadow: ${(props) => props.hoverShadow};
     cursor: pointer;
 
     svg {
-      filter: brightness(110%);
+      ${(props) =>
+        props.hoverForegroundColor
+          ? `fill: ${props.hoverForegroundColor}`
+          : 'filter: brightness(40%)'};
     }
   }
 
@@ -55,10 +64,29 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
       color: ${(props) => props.foregroundColor};
     }
   }
+
   font-size: ${(props) =>
-    props.size === 'large' ? '18px' : props.size === 'medium' ? '16px' : '14px'};
+    props.size === 'large' || props.size === 'xlarge'
+      ? '18px'
+      : props.size === 'medium'
+      ? '16px'
+      : '14px'};
+
   min-width: ${(props) =>
-    props.size === 'large' ? '42px' : props.size === 'medium' ? '37px' : '30px'};
+    props.size === 'xlarge'
+      ? '55px'
+      : props.size === 'large'
+      ? '42px'
+      : props.size === 'medium'
+      ? '37px'
+      : '30px'};
+
   min-height: ${(props) =>
-    props.size === 'large' ? '42px' : props.size === 'medium' ? '37px' : '30px'};
+    props.size === 'xlarge'
+      ? '55px'
+      : props.size === 'large'
+      ? '42px'
+      : props.size === 'medium'
+      ? '37px'
+      : '30px'};
 `

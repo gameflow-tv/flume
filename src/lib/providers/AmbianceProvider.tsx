@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { getLuminance } from '../helpers'
-import { useTheme } from '../hooks'
-import { useAmbiance } from '../hooks/useAmbiance'
+import { getLuminance } from '../helpers/getLuminance'
+import { useTheme } from '../hooks/useTheme'
 
-type AmbianceProps = {
-  baseColor: string
+export type AmbianceProps = {
+  root: AmbianceProps
+  bottom: AmbianceProps
+  parent?: AmbianceProps
+  child?: AmbianceProps
   color: string
   elevation: number
 }
@@ -22,7 +24,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   children,
   elevation
 }: AmbianceProviderProps) => {
-  const parent = useAmbiance()
+  const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
 
   if (!parent && !elevation) {
@@ -34,16 +36,68 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   if (!parent && !color) {
     color = theme.colors.card
   } else if (!color) {
-    color = parent.baseColor
+    color = parent.root.color
   }
 
-  const value = {
-    baseColor: color,
-    elevation: elevation,
+  let tmp = {
+    bottom: null,
+    root: null,
+    parent,
+    elevation,
     color: getColorFromElevation(color, elevation)
   }
 
+  let value: AmbianceProps = {
+    ...tmp,
+    root: getRootAmbiance(tmp),
+    child: getChildAmbiance(tmp),
+    bottom: getBottomAmbiance(tmp)
+  }
+
   return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
+}
+
+const getChildAmbiance = (a: AmbianceProps): AmbianceProps => {
+  if (!a.child && a.elevation <= 5) {
+    let child: AmbianceProps = {
+      bottom: a.bottom,
+      root: a.root,
+      elevation: a.elevation + 1,
+      color: getColorFromElevation(a.color, a.elevation + 1),
+      parent: a
+    }
+
+    child.child = getChildAmbiance(child)
+
+    return child
+  }
+
+  return null
+}
+
+const getBottomAmbiance = (a: AmbianceProps): AmbianceProps => {
+  if (!a.bottom && a.elevation <= 5) {
+    let tmp = {
+      bottom: null,
+      root: a.root,
+      elevation: 5,
+      color: getColorFromElevation(a.color, 5),
+      parent: a
+    }
+
+    tmp.bottom = tmp
+    return tmp
+  }
+
+  return a
+}
+
+const getRootAmbiance = (a?: AmbianceProps): AmbianceProps => {
+  if (!a?.parent) {
+    return a
+  }
+
+  return getRootAmbiance(a.parent)
 }
 
 const getColorFromElevation = (color: string, elevation: number) => {

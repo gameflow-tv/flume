@@ -1,6 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import _ from 'lodash'
 import React, { ReactNode } from 'react'
+import { Icon } from '../../icons'
 import { Body, CloseButton, Footer, Header, ModalContent, ModalOverlay } from './Modal.styles'
 import { ModalBodyProps } from './ModalBody/ModalBody'
 import { ModalFooterProps } from './ModalFooter/ModalFooter'
@@ -92,7 +92,7 @@ export const Modal = ({
       >
         {closeOnlyOnButton === true || showCloseButton ? (
           <CloseButton id="ModalCloseButton" onClick={handleClick} {...styles}>
-            <FontAwesomeIcon icon={['fal', 'times']} />
+            <Icon icon="close" />
           </CloseButton>
         ) : null}
         {children ? (

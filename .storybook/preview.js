@@ -1,15 +1,14 @@
 import React from 'react'
-import { importIcons } from '../src/lib/theme/icons'
-import { ThemeProvider } from '../src'
+import { Ambiance, ThemeProvider } from '../src'
 import '../src/lib/theme/fonts.css'
 import theme from './theme'
-
-importIcons()
 
 export const decorators = [
   (Story) => (
     <ThemeProvider>
-      <Story />
+      <Ambiance>
+        <Story />
+      </Ambiance>
     </ThemeProvider>
   )
 ]

@@ -37,6 +37,7 @@ export type SharingModalProps = ModalProps & {
   onClose?: (value?: boolean) => void
   facebook?: FacebookSharingProps
   twitter?: TwitterSharingProps
+  story?: boolean
 }
 
 const getFBShareLink = (sharingData: FacebookSharingProps, link: string) => {
@@ -75,7 +76,7 @@ export const SharingModal = (props: SharingModalProps) => {
   const { lum04 } = getLuminance(styles.backgroundColor)
 
   const sharingData = {
-    link: props.link || document?.location?.href || '',
+    link: props.story ? 'https://flume.gameflow.tv' : props.link || document?.location?.href || '',
     title: props.title || document?.title || 'Gameflow',
     description:
       props.description ||
@@ -124,7 +125,10 @@ export const SharingModal = (props: SharingModalProps) => {
             <SharingButton variant="primary" size="medium" onClick={handleCopy}>
               <>
                 {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
-                <Icon icon={linkCopied ? 'check_filled' : 'link'} color={theme.colors.onPrimary} />
+                <Icon
+                  icon={linkCopied ? 'check_circle_filled' : 'link'}
+                  color={theme.colors.onPrimary}
+                />
               </>
             </SharingButton>
           </div>
@@ -134,7 +138,6 @@ export const SharingModal = (props: SharingModalProps) => {
                 icon="share"
                 size="large"
                 onClick={() => handleShareAPI()}
-                fontAwesome={false}
                 backgroundColor={lum04}
               />
             )}
@@ -143,19 +146,14 @@ export const SharingModal = (props: SharingModalProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton
-                size="large"
-                icon="facebook"
-                fontAwesome={false}
-                backgroundColor={lum04}
-              />
+              <IconButton size="large" icon="facebook" backgroundColor={lum04} />
             </SocialLink>
             <SocialLink
               href={getTwitterShareLink(twitterData, sharingData.link)}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconButton size="large" icon="twitter" fontAwesome={false} backgroundColor={lum04} />
+              <IconButton size="large" icon="twitter" backgroundColor={lum04} />
             </SocialLink>
           </SocialWrapper>
         </ButtonsWrapper>
