@@ -27,10 +27,12 @@ export const useBreakpoints = () => {
   const theme = useTheme()
   const breakpoints = parseBreakpoints(theme.breakpoints)
   const current = useCurrentBreakpoint()
+  const dimensions = useWindowDimensions()
 
   return {
     breakpoints,
-    current
+    current,
+    dimensions
   }
 }
 
@@ -46,15 +48,17 @@ export const useCurrentBreakpoint = (): keyof Breakpoints => {
   const { breakpoints } = useTheme()
   const parsed = parseBreakpoints(breakpoints)
 
-  if (width > parsed.xl) {
+  if (width.rem > parsed.xxl) {
+    return 'xxl'
+  } else if (width.rem > parsed.xl) {
     return 'xl'
-  } else if (width > parsed.lg) {
+  } else if (width.rem > parsed.lg) {
     return 'lg'
-  } else if (width > parsed.md) {
+  } else if (width.rem > parsed.md) {
     return 'md'
-  } else if (width > parsed.sm) {
+  } else if (width.rem > parsed.sm) {
     return 'sm'
-  } else if (width > parsed.xs) {
+  } else if (width.rem > parsed.xs) {
     return 'xs'
   } else {
     return 'default'
