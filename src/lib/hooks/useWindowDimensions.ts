@@ -11,10 +11,10 @@ export type WindowDimensions = {
   }
 }
 
-export function useWindowDimensions() {
+export function useWindowDimensions(): WindowDimensions | undefined {
   const hasWindow = typeof window !== 'undefined'
 
-  function getWindowDimensions() {
+  function getWindowDimensions(): WindowDimensions | undefined {
     if (hasWindow) {
       const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize)
 
@@ -31,6 +31,8 @@ export function useWindowDimensions() {
       }
 
       return dimensions
+    } else {
+      return undefined
     }
   }
 
