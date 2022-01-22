@@ -1,5 +1,6 @@
 import { Story } from '@storybook/react'
 import React from 'react'
+import { Ambiance } from '../../../providers'
 import { IconButton, IconButtonProps } from './IconButton'
 
 export default {
@@ -29,6 +30,17 @@ Small.args = {
 
 export const FlumeIcon: Story<IconButtonProps> = Template.bind({})
 FlumeIcon.args = {
+  size: 'large',
+  icon: 'share'
+}
+
+export const Ambient = (args: IconButtonProps) => (
+  <Ambiance color="#2d2610">
+    <IconButton {...args} />
+  </Ambiance>
+)
+
+Ambient.args = {
   size: 'large',
   icon: 'share'
 }

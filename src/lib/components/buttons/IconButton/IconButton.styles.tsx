@@ -40,7 +40,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
       ${(props) =>
         props.hoverForegroundColor
           ? `fill: ${props.hoverForegroundColor}`
-          : 'filter: brightness(40%)'};
+          : 'filter: brightness(120%)'};
     }
   }
 
