@@ -44,9 +44,15 @@ export const useNumberedBreakpoints = (): NumberedBreakpoints => {
 
 /** Retrieves the currently exceeded breakpoint */
 export const useCurrentBreakpoint = (): keyof Breakpoints => {
-  const { width } = useWindowDimensions()
+  const dimensions = useWindowDimensions()
+  const width = dimensions?.width
+
   const { breakpoints } = useTheme()
   const parsed = parseBreakpoints(breakpoints)
+
+  if (!width) {
+    return 'default'
+  }
 
   if (width.rem > parsed.xxl) {
     return 'xxl'
