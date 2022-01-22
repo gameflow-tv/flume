@@ -1,9 +1,10 @@
 import { Theme } from '../../../theme'
 import React, { ReactNode } from 'react'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
-import { useTheme } from '../../../hooks'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
 import { Icon, IconName } from '../../icons'
+import chroma from 'chroma-js'
 
 export type IconPosition = 'left' | 'right'
 
@@ -43,6 +44,7 @@ export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins 
 }
 
 export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps => {
+  const { color } = useAmbiance()
   const { horizontalMargin, verticalMargin } = getButtonMargins(props.size, theme)
   const common = {
     ...props,
@@ -62,13 +64,13 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
   switch (props.variant) {
     case 'primary':
       return {
-        backgroundColor: props.backgroundColor ? props.backgroundColor : theme.colors.primary,
-        foregroundColor: props.foregroundColor ? props.foregroundColor : theme.colors.onPrimary,
+        backgroundColor: theme.colors.primary,
+        foregroundColor: theme.colors.onPrimary,
         ...common
       }
     case 'secondary':
       return {
-        backgroundColor: theme.colors.secondaryButton,
+        backgroundColor: color ? chroma(color).saturate(0.4).hex() : theme.colors.secondaryButton,
         foregroundColor: theme.colors.onSecondaryButton,
         ...common
       }
