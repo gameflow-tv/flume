@@ -1,7 +1,8 @@
 import React from 'react'
 import { IconName } from '../../icons'
-import { useAmbiance } from '../../../hooks'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { IconButton } from '../../buttons/IconButton'
+import chroma from 'chroma-js'
 
 export type ScrollButtonProps = {
   onClick?: () => void
@@ -11,7 +12,8 @@ export type ScrollButtonProps = {
 }
 
 export const ScrollButton = ({ onClick, left, right, visible }: ScrollButtonProps) => {
-  const { color, bottom, root } = useAmbiance()
+  const ambiance = useAmbiance()
+  const theme = useTheme()
 
   const icon: IconName = left ? 'arrow_left' : 'arrow_right'
 
@@ -19,9 +21,13 @@ export const ScrollButton = ({ onClick, left, right, visible }: ScrollButtonProp
     <IconButton
       icon={icon}
       size="xlarge"
-      backgroundColor={color}
-      hoverBackgroundColor={bottom.color}
-      hoverForegroundColor={root.color}
+      backgroundColor={ambiance?.color ?? theme.colors.secondaryButton}
+      hoverBackgroundColor={
+        ambiance?.bottom.color ?? chroma(theme.colors.secondaryButton).luminance(0.04).hex()
+      }
+      hoverForegroundColor={
+        ambiance?.root.color ?? chroma(theme.colors.secondaryButton).luminance(0.4).hex()
+      }
       onClick={onClick}
       hidden={!visible}
     />

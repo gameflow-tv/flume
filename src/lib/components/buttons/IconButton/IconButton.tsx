@@ -5,7 +5,6 @@ import { useAmbiance, useTheme } from '../../../hooks'
 import { Theme } from '../../../theme'
 import { Icon } from '../../icons/Icon'
 import { StyledIconButton, StyledIconButtonProps } from './IconButton.styles'
-import { Ambiance } from '../../../providers'
 
 export type IconButtonSize = 'small' | 'medium' | 'large' | 'xlarge'
 
@@ -46,14 +45,14 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
 }
 
 export const IconButton = (props: IconButtonProps) => {
-  const { color, child } = useAmbiance()
+  const ambiance = useAmbiance()
   const theme = useTheme()
 
   const styles = getIconButtonStyles(props, theme)
 
-  if (!props.backgroundColor) {
-    styles.backgroundColor = color
-    styles.hoverBackgroundColor = child.color
+  if (!props.backgroundColor && ambiance) {
+    styles.backgroundColor = ambiance.color
+    styles.hoverBackgroundColor = ambiance.child.color
   }
 
   return (

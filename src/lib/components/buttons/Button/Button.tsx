@@ -44,7 +44,7 @@ export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins 
 }
 
 export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps => {
-  const { color } = useAmbiance()
+  const ambiance = useAmbiance()
   const { horizontalMargin, verticalMargin } = getButtonMargins(props.size, theme)
   const common = {
     ...props,
@@ -70,7 +70,9 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
       }
     case 'secondary':
       return {
-        backgroundColor: color ? chroma(color).saturate(0.4).hex() : theme.colors.secondaryButton,
+        backgroundColor: ambiance?.color
+          ? chroma(ambiance.color).saturate(0.4).hex()
+          : theme.colors.secondaryButton,
         foregroundColor: theme.colors.onSecondaryButton,
         ...common
       }
