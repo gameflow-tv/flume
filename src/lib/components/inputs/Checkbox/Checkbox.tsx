@@ -16,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onChange?: (checked: boolean) => void
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
