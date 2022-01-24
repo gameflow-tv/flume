@@ -11,43 +11,34 @@ export type WindowDimensions = {
   }
 }
 
-export function useWindowDimensions(): WindowDimensions | undefined {
-  const hasWindow = typeof window !== 'undefined'
+function getWindowDimensions(): WindowDimensions {
+  const { innerWidth: width, innerHeight: height } = window
 
-  function getWindowDimensions(): WindowDimensions | undefined {
-    if (hasWindow) {
-      const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize)
+  const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize) ?? 16
 
-      const dimensions: WindowDimensions = {
-        width: {
-          px: window.innerWidth,
-          rem: window.innerWidth / rootFontSize
-        },
-
-        height: {
-          px: window.innerHeight,
-          rem: window.innerHeight / rootFontSize
-        }
-      }
-
-      return dimensions
-    } else {
-      return undefined
+  return {
+    width: {
+      px: width,
+      rem: width / rootFontSize
+    },
+    height: {
+      px: height,
+      rem: height / rootFontSize
     }
   }
+}
 
+export const useWindowDimensions = (): WindowDimensions => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
-  function handleResize() {
-    setWindowDimensions(getWindowDimensions())
-  }
 
   useEffect(() => {
-    if (hasWindow) {
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions())
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasWindow])
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   return windowDimensions
 }
