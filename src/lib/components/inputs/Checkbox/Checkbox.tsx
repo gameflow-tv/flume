@@ -16,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onChange?: (checked: boolean) => void
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
@@ -43,18 +43,37 @@ export const Checkbox = ({
   uncheckedContent ??= <Icon icon="plus" color={theme.colors.primaryText} />
   checkedContent ??= <Icon icon="check" color={props.checkedTextColor || theme.colors.onPrimary} />
 
-  const styles: SpanProps = {
-    typography: props.typography || theme.typography.body2,
-    checkedBackground: props.checkedBackground || theme.colors.primary,
-    uncheckedBackground: props.uncheckedBackground || theme.colors.background,
-    uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
-    checkedBorder: props.checkedBorder || theme.colors.onPrimary,
-    checkedTextColor: props.checkedTextColor || theme.colors.onPrimary,
-    uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
-    width: props.width,
-    height: props.height,
-    spacing: theme.spacing.xxsmall,
-    ...props
+    useEffect(() => {
+      props.onChange && props.onChange.call(isChecked)
+    }, [isChecked])
+
+    const theme = useTheme()
+    const styles: SpanProps = {
+      typography: props.typography || theme.typography.body2,
+      checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
+      uncheckedBackground: props.uncheckedBackground || theme.colors.background,
+      uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+      checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
+      checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
+      uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+      width: props.width,
+      height: props.height,
+      spacing: theme.spacing.xxsmall,
+      ...props
+    }
+
+    return (
+      <Wrapper {...styles}>
+        <CheckInput
+          id={id}
+          className={props.className}
+          checked={checked}
+          onChange={(e) => setIsChecked(e.target.checked)}
+          {...styles}
+        />
+        <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
+      </Wrapper>
+    )
   }
 
   return (
