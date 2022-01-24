@@ -16,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onChange?: (checked: boolean) => void
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
@@ -76,7 +76,7 @@ export const Checkbox = forwardRef(
           id={id}
           className={props.className}
           checked={checked}
-          onChange={props.onChange}
+          onChange={(e) => setIsChecked(e.target.checked)}
           {...styles}
         />
         <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
