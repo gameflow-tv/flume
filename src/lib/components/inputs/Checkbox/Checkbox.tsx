@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import React, {
+  ChangeEvent,
   ChangeEventHandler,
   forwardRef,
   ReactNode,
-  useEffect,
   useImperativeHandle,
   useState
 } from 'react'
@@ -16,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
@@ -42,7 +42,7 @@ export const Checkbox = forwardRef(
     }: CheckboxProps,
     ref
   ) => {
-    const [isChecked, setIsChecked] = useState(checked)
+    const [isChecked, setIsChecked] = useState<boolean>(checked)
 
     useImperativeHandle(ref, () => {
       return {
@@ -51,9 +51,10 @@ export const Checkbox = forwardRef(
       }
     })
 
-    useEffect(() => {
-      props.onChange && props.onChange.call(isChecked)
-    }, [isChecked])
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(e.target && e.target.checked)
+      props.onChange && props.onChange(e)
+    }
 
     const theme = useTheme()
     const styles: SpanProps = {
@@ -75,11 +76,11 @@ export const Checkbox = forwardRef(
         <CheckInput
           id={id}
           className={props.className}
-          checked={checked}
-          onChange={(e) => setIsChecked(e.target.checked)}
+          checked={isChecked}
+          onChange={handleChange}
           {...styles}
         />
-        <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
+        <SpanEl {...styles}>{isChecked ? checkedContent : uncheckedContent}</SpanEl>
       </Wrapper>
     )
   }
