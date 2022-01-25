@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import React, {
+  ChangeEvent,
   ChangeEventHandler,
   forwardRef,
   ReactNode,
-  useEffect,
   useImperativeHandle,
   useState
 } from 'react'
@@ -16,7 +16,7 @@ export type CheckboxProps = {
   id?: string
   label?: string
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
   checkedContent?: ReactNode
   uncheckedContent?: ReactNode
   typography?: TypographyStyle
@@ -31,21 +31,26 @@ export type CheckboxProps = {
   className?: string
 }
 
-export const Checkbox = ({
-  id = _.uniqueId(),
-  checked,
-  checkedContent,
-  uncheckedContent,
-  ...props
-}: CheckboxProps) => {
-  const theme = useTheme()
+export const Checkbox = forwardRef(
+  (
+    {
+      id = _.uniqueId(),
+      checked = false,
+      checkedContent = <Icon icon="check" />,
+      uncheckedContent = <Icon icon="close" />,
+      ...props
+    }: CheckboxProps,
+    ref
+  ) => {
+    const [isChecked, setIsChecked] = useState<boolean>(checked)
 
   uncheckedContent ??= <Icon icon="plus" color={theme.colors.primaryText} />
   checkedContent ??= <Icon icon="check" color={props.checkedTextColor || theme.colors.onPrimary} />
 
-    useEffect(() => {
-      props.onChange && props.onChange.call(isChecked)
-    }, [isChecked])
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(e.target && e.target.checked)
+      props.onChange && props.onChange(e)
+    }
 
     const theme = useTheme()
     const styles: SpanProps = {
@@ -67,25 +72,12 @@ export const Checkbox = ({
         <CheckInput
           id={id}
           className={props.className}
-          checked={checked}
-          onChange={(e) => setIsChecked(e.target.checked)}
+          checked={isChecked}
+          onChange={handleChange}
           {...styles}
         />
-        <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
+        <SpanEl {...styles}>{isChecked ? checkedContent : uncheckedContent}</SpanEl>
       </Wrapper>
     )
   }
-
-  return (
-    <Wrapper {...styles}>
-      <CheckInput
-        id={id}
-        className={props.className}
-        checked={checked}
-        onChange={props.onChange}
-        {...styles}
-      />
-      <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
-    </Wrapper>
-  )
 }
