@@ -4,7 +4,6 @@ import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } fr
 import { useAmbiance, useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
 import { Icon, IconName } from '../../icons'
-import chroma from 'chroma-js'
 
 export type IconPosition = 'left' | 'right'
 
@@ -70,9 +69,7 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
       }
     case 'secondary':
       return {
-        backgroundColor: ambiance?.color
-          ? chroma(ambiance.color).saturate(0.4).hex()
-          : theme.colors.secondaryButton,
+        backgroundColor: ambiance?.color ? ambiance.color : theme.colors.secondaryButton,
         foregroundColor: theme.colors.onSecondaryButton,
         ...common
       }

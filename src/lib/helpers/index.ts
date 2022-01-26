@@ -1,2 +1,2 @@
-export * from './getLuminance'
+export * from './colorAdjust'
 export * from './general'
