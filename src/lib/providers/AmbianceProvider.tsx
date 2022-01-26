@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getLuminance } from '../helpers/getLuminance'
+import { getLuminance } from '../helpers'
 import { useTheme } from '../hooks/useTheme'
 
 export type AmbianceProps = {

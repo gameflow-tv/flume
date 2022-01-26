@@ -100,7 +100,14 @@ export const SharingModal = (props: SharingModalProps) => {
       text: sharingData.description,
       url: sharingData.link
     }
-    navigator?.share?.(shareData)
+
+    const checkError = (e: Error) => {
+      if (e.toString().includes('AbortError')) {
+        console.log('Error while sharing')
+      }
+    }
+
+    navigator?.share?.(shareData).catch(checkError)
   }
 
   return (
