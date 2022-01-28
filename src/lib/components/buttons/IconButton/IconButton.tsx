@@ -50,7 +50,7 @@ export const IconButton = (props: IconButtonProps) => {
 
   const styles = getIconButtonStyles(props, theme)
 
-  if (!props.backgroundColor && ambiance) {
+  if (!props.backgroundColor && props.variant === 'secondary' && ambiance) {
     styles.backgroundColor = ambiance.color
     styles.hoverBackgroundColor = ambiance.child.color
   }
