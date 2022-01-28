@@ -25,6 +25,7 @@ export type ButtonProps = StyledButtonProps &
     label?: string
     onClick?: (e?: React.MouseEvent<HTMLElement>) => void
     children?: ReactNode
+    disabled?: boolean
   }
 
 export const getButtonMargins = (size: ButtonSize, theme: Theme): ButtonMargins => {

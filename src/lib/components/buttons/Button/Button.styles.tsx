@@ -18,9 +18,12 @@ export type StyledButtonProps = {
   gap?: string
   transition?: Transition
   variant?: ButtonVariant
+  disabled?: boolean
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
+export const StyledButton = styled.button.attrs((props) => ({
+  disabled: props.disabled
+}))<StyledButtonProps>`
   border-radius: ${(props) => props.borderRadius};
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.foregroundColor};
