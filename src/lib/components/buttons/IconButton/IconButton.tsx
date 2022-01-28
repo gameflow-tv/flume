@@ -34,6 +34,13 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
         foregroundColor: theme.colors.onSignal,
         ...common
       }
+
+    case 'primary':
+      return {
+        backgroundColor: theme.colors.primary,
+        foregroundColor: theme.colors.onPrimary,
+        ...common
+      }
     default:
       return {
         backgroundColor: theme.colors.iconButton,
