@@ -17,7 +17,7 @@ export const Search = (props: InputProps) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <InputGroup>
         <SearchInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
@@ -35,6 +35,6 @@ export const Search = (props: InputProps) => {
         </ActionArea>
       </InputGroup>
       {ValidationInfo(props, validationResponse)}
-    </>
+    </React.Fragment>
   )
 }

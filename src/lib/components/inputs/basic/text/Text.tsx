@@ -16,7 +16,7 @@ export const Text = (props: InputProps) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <InputGroup {...props.inputStyles}>
         <GlobalInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
@@ -32,6 +32,6 @@ export const Text = (props: InputProps) => {
         </VerificationIcon>
       </InputGroup>
       {ValidationInfo(props, validationResponse)}
-    </>
+    </React.Fragment>
   )
 }

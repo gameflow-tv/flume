@@ -98,11 +98,11 @@ export const Modal = ({
         {children ? (
           children
         ) : (
-          <>
+          <React.Fragment>
             {modalHeader && <Header {...modalHeaderProps}>{modalHeader}</Header>}
             {modalBody && <Body {...modalBodyProps}>{modalBody}</Body>}
             {modalFooter && <Footer {...modalFooterProps}>{modalFooter}</Footer>}
-          </>
+          </React.Fragment>
         )}
       </ModalContent>
     </ModalOverlay>

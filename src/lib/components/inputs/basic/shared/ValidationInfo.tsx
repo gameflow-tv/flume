@@ -4,7 +4,7 @@ import { InfoMessage, ListItem } from './Shared.styles'
 
 export const ValidationInfo = (props: InputProps, validationResponse) => {
   return (
-    <>
+    <React.Fragment>
       {!props.multipleCriteriaInfo && (
         <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.message}
@@ -19,6 +19,6 @@ export const ValidationInfo = (props: InputProps, validationResponse) => {
           ))}
         </ul>
       ) : null}
-    </>
+    </React.Fragment>
   )
 }

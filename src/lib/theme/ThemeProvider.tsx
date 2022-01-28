@@ -10,6 +10,6 @@ export const ThemeContext: React.Context<Theme> = React.createContext(fallback)
 
 export const ThemeProvider = ({ theme = fallback, children }: ThemeContextProps): JSX.Element => (
   <ThemeContext.Provider value={theme}>
-    <>{children}</>
+    <React.Fragment>{children}</React.Fragment>
   </ThemeContext.Provider>
 )

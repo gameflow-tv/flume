@@ -29,7 +29,7 @@ export const Password = (props: InputProps) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <InputGroup>
         <StyledInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
@@ -53,6 +53,6 @@ export const Password = (props: InputProps) => {
       </InputGroup>
 
       {ValidationInfo(props, validationResponse)}
-    </>
+    </React.Fragment>
   )
 }

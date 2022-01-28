@@ -123,13 +123,13 @@ export const SharingModal = (props: SharingModalProps) => {
         <ButtonsWrapper>
           <div>
             <SharingButton variant="primary" size="medium" onClick={handleCopy}>
-              <>
+              <React.Fragment>
                 {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
                 <Icon
                   icon={linkCopied ? 'check_circle_filled' : 'link'}
                   color={theme.colors.onPrimary}
                 />
-              </>
+              </React.Fragment>
             </SharingButton>
           </div>
           <SocialWrapper>

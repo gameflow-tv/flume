@@ -95,10 +95,10 @@ export const Button = (props: ButtonProps): JSX.Element => {
         {props.children ? (
           props.children
         ) : (
-          <>
+          <React.Fragment>
             <p>{props.label}</p>
             {props.icon && <Icon icon={props.icon} color={props.foregroundColor} />}
-          </>
+          </React.Fragment>
         )}
       </ButtonContent>
     </StyledButton>
