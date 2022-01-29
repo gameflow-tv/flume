@@ -62,4 +62,8 @@ export const SpanEl = styled.span<SpanProps>`
   align-content: center;
   color: ${(props) => props.uncheckedTextColor};
   ${(props) => typographyToCss(props.typography)};
+
+  & > svg {
+    color: ${(props) => props.checkedTextColor};
+  }
 `
