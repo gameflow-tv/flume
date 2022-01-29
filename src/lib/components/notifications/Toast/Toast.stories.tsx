@@ -92,10 +92,10 @@ Middle.args = {
 export const LongEffect: Story<ToastProps> = Template.bind({})
 LongEffect.args = {
   children: lorem,
+  duration: 5000,
   animation: {
-    slideInTime: 1.5,
-    visibilityTime: 5,
-    slideOutTime: 2
+    slideInTime: 1500,
+    slideOutTime: 2000
   }
 }
 

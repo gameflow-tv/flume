@@ -183,15 +183,17 @@ const slideOut = (props) => {
   `
 }
 
-const animation = (props) => {
+const animation = (props: ToastProps) => {
   return css<ToastProps>`
     animation: ${slideIn}, ${stay}, ${slideOut};
     animation-duration: ${(props) =>
-      `${props.animation.slideInTime}s, ${props.animation.visibilityTime}s, ${props.animation.slideOutTime}s`};
+      `${props.animation.slideInTime / 1000}s, ${props.duration / 1000}s, ${
+        props.animation.slideOutTime / 1000
+      }s`};
     animation-timing-function: ease-in-out;
     animation-delay: ${(props) =>
-      `0s, ${props.animation.slideInTime}s, ${
-        props.animation.visibilityTime + props.animation.slideInTime
+      `0s, ${props.animation.slideInTime / 1000}s, ${
+        (props.duration + props.animation.slideInTime) / 1000
       }s`};
   `
 }
