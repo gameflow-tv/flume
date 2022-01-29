@@ -31,56 +31,42 @@ export type CheckboxProps = {
   className?: string
 }
 
-export const Checkbox = forwardRef(
-  (
-    {
-      id = _.uniqueId(),
-      checked = false,
-      checkedContent = <Icon icon="check" />,
-      uncheckedContent = <Icon icon="close" />,
-      ...props
-    }: CheckboxProps,
-    ref
-  ) => {
-    const [isChecked, setIsChecked] = useState(checked)
+export const Checkbox = ({
+  id = _.uniqueId(),
+  checked,
+  checkedContent,
+  uncheckedContent,
+  ...props
+}: CheckboxProps) => {
+  const theme = useTheme()
 
-    useImperativeHandle(ref, () => {
-      return {
-        isChecked,
-        setIsChecked
-      }
-    })
+  uncheckedContent ??= <Icon icon="plus" color={theme.colors.primaryText} />
+  checkedContent ??= <Icon icon="check" color={props.checkedTextColor || theme.colors.onPrimary} />
 
-    useEffect(() => {
-      props.onChange && props.onChange.call(isChecked)
-    }, [isChecked])
-
-    const theme = useTheme()
-    const styles: SpanProps = {
-      typography: props.typography || theme.typography.body2,
-      checkedBackground: props.checkedBackground || theme.colors.checkedBackground,
-      uncheckedBackground: props.uncheckedBackground || theme.colors.background,
-      uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
-      checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
-      checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
-      uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
-      width: props.width,
-      height: props.height,
-      spacing: theme.spacing.xxsmall,
-      ...props
-    }
-
-    return (
-      <Wrapper {...styles}>
-        <CheckInput
-          id={id}
-          className={props.className}
-          checked={checked}
-          onChange={props.onChange}
-          {...styles}
-        />
-        <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
-      </Wrapper>
-    )
+  const styles: SpanProps = {
+    typography: props.typography || theme.typography.body2,
+    checkedBackground: props.checkedBackground || theme.colors.primary,
+    uncheckedBackground: props.uncheckedBackground || theme.colors.background,
+    uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+    checkedBorder: props.checkedBorder || theme.colors.onPrimary,
+    checkedTextColor: props.checkedTextColor || theme.colors.onPrimary,
+    uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+    width: props.width,
+    height: props.height,
+    spacing: theme.spacing.xxsmall,
+    ...props
   }
-)
+
+  return (
+    <Wrapper {...styles}>
+      <CheckInput
+        id={id}
+        className={props.className}
+        checked={checked}
+        onChange={props.onChange}
+        {...styles}
+      />
+      <SpanEl {...styles}>{checked ? checkedContent : uncheckedContent}</SpanEl>
+    </Wrapper>
+  )
+}
