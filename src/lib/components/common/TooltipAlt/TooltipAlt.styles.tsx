@@ -8,9 +8,8 @@ export const TooltipWrapper = styled.div`
   display: inline-flex;
 `
 export const TooltipTarget = styled.div`
-  border: 1px solid black;
   background: none;
-  padding: 5px;
+  padding: ${theme.spacing.xxsmall};
   color: inherit;
   cursor: inherit;
   display: flex;
