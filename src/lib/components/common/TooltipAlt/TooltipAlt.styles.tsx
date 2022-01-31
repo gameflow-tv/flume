@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components'
-import { TooltipAltProps, TooltipPosition } from './TooltipAlt'
+import { typographyToCss } from '../../../theme'
+import theme from '../../../theme/theme'
+import { TooltipAltProps } from './TooltipAlt'
 
 export const TooltipWrapper = styled.div`
   position: relative;
   display: inline-flex;
 `
-export const TooltipTarget = styled.button`
+export const TooltipTarget = styled.div`
   border: 1px solid black;
   background: none;
   padding: 5px;
@@ -33,7 +35,7 @@ export const CenterContainer = styled.div<TooltipAltProps>`
         `
       case 'left':
         return css`
-          margin-left: 0;
+          margin-right: 0;
           width: 100%;
           left: unset;
           top: 50%;
@@ -44,7 +46,6 @@ export const CenterContainer = styled.div<TooltipAltProps>`
         return css`
           margin-left: 0;
           width: 100%;
-          left: unset;
           top: 50%;
           left: calc(100% + 5px);
           width: max-content;
@@ -57,13 +58,13 @@ export const CenterContainer = styled.div<TooltipAltProps>`
   }}
 `
 export const TooltipBox = styled.span<TooltipAltProps>`
+  ${typographyToCss(theme.typography.body1)};
+  color: ${theme.colors.secondaryText};
   position: relative;
-  background-color: #000;
-  color: #fff;
+  background-color: ${theme.colors.onBackground};
   text-align: center;
-  border-radius: 6px;
-  padding: 10px 8px;
-  font-size: 14px;
+  border-radius: ${theme.shapes.borders.small};
+  padding: ${theme.spacing.xsmall};
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.2);
 
   &::after {
@@ -73,7 +74,7 @@ export const TooltipBox = styled.span<TooltipAltProps>`
     height: 1px;
     border-width: 5px;
     border-style: solid;
-    border-color: #000000 transparent transparent transparent;
+    border-color: ${theme.colors.onBackground} transparent transparent transparent;
     left: calc(50% - 4.5px);
     top: 100%;
   }
@@ -83,7 +84,7 @@ export const TooltipBox = styled.span<TooltipAltProps>`
       case 'bottom':
         return css`
           &::after {
-            border-color: transparent transparent #000000 transparent;
+            border-color: transparent transparent ${theme.colors.onBackground} transparent;
             top: unset;
             width: 1px;
             bottom: 100%;
@@ -93,7 +94,7 @@ export const TooltipBox = styled.span<TooltipAltProps>`
       case 'left':
         return css`
           &::after {
-            border-color: transparent transparent transparent #000000 transparent transparent;
+            border-color: transparent transparent transparent ${theme.colors.onBackground};
             left: 100%;
             top: calc(50% - 5px);
           }
@@ -101,7 +102,7 @@ export const TooltipBox = styled.span<TooltipAltProps>`
       case 'right':
         return css`
           &::after {
-            border-color: transparent #000000 transparent transparent;
+            border-color: transparent ${theme.colors.onBackground} transparent transparent;
             right: 100%;
             left: unset;
             top: calc(50% - 5px);
