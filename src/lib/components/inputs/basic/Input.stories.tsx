@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { Input } from './Input'
 import { InputProps } from './shared/Input.definitions'
 

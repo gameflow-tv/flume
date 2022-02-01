@@ -32,26 +32,7 @@ export type CheckboxProps = {
 }
 
 export const Checkbox = forwardRef(
-  (
-    {
-      id = _.uniqueId(),
-      checked = false,
-      checkedContent = <Icon icon="check" />,
-      uncheckedContent = <Icon icon="close" />,
-      ...props
-    }: CheckboxProps,
-    ref
-  ) => {
-    const [isChecked, setIsChecked] = useState<boolean>(checked)
-
-  uncheckedContent ??= <Icon icon="plus" color={theme.colors.primaryText} />
-  checkedContent ??= <Icon icon="check" color={props.checkedTextColor || theme.colors.onPrimary} />
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setIsChecked(e.target && e.target.checked)
-      props.onChange && props.onChange(e)
-    }
-
+  ({ id = _.uniqueId(), checked = false, ...props }: CheckboxProps, ref) => {
     const theme = useTheme()
     const styles: SpanProps = {
       typography: props.typography || theme.typography.body2,
@@ -59,13 +40,33 @@ export const Checkbox = forwardRef(
       uncheckedBackground: props.uncheckedBackground || theme.colors.background,
       uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
       checkedBorder: props.checkedBorder || theme.colors.checkedBackground,
-      checkedTextColor: props.checkedTextColor || theme.colors.checkedText,
-      uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+      checkedTextColor: props.checkedTextColor || theme.colors.onPrimary,
+      uncheckedTextColor: props.uncheckedTextColor || theme.colors.primaryText,
       width: props.width,
       height: props.height,
       spacing: theme.spacing.xxsmall,
       ...props
     }
+    const [isChecked, setIsChecked] = useState<boolean>(checked)
+
+    useImperativeHandle(ref, () => {
+      return {
+        isChecked,
+        setIsChecked
+      }
+    })
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(e.target && e.target.checked)
+      props.onChange && props.onChange(e)
+    }
+
+    const uncheckedContent = props.uncheckedContent || (
+      <Icon icon="plus" color={styles.uncheckedTextColor} />
+    )
+    const checkedContent = props.checkedContent || (
+      <Icon icon="check" color={styles.checkedTextColor || theme.colors.onPrimary} />
+    )
 
     return (
       <Wrapper {...styles}>
@@ -80,4 +81,4 @@ export const Checkbox = forwardRef(
       </Wrapper>
     )
   }
-}
+)
