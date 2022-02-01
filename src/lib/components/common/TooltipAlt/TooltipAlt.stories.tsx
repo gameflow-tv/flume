@@ -10,8 +10,8 @@ export default {
 
 const Template = (props: TooltipAltProps) => {
   return (
-    <TooltipAlt label="This is a tooltip" position="right">
-      <div style={{ height: '200px', width: '100px', border: '1px solid red' }}>I am target</div>
+    <TooltipAlt label="This is a tooltip" position="top">
+      <div style={{ height: '50px', width: '50px', border: '1px solid red' }}>I am target</div>
     </TooltipAlt>
   )
 }

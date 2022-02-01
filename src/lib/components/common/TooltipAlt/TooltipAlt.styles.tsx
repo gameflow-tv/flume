@@ -65,6 +65,27 @@ export const TooltipBox = styled.span<TooltipAltProps>`
   border-radius: ${theme.shapes.borders.small};
   padding: ${theme.spacing.xsmall};
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: ${(props) => (props.show ? 'translateY(0)' : 'translateY(-100%)')};
+  visibility: ${(props) => (props.show ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.show ? '1' : '0')};
+
+  ${({ position, show }) => {
+    switch (position) {
+      case 'bottom':
+        return css`
+          transform: ${show ? 'translateY(0)' : 'translateY(100%)'};
+        `
+      case 'right':
+        return css`
+          transform: ${show ? 'translateY(0)' : 'translateX(100%)'};
+        `
+      case 'left':
+        return css`
+          transform: ${show ? 'translateY(0)' : 'translateX(-100%)'};
+        `
+    }
+  }}
+  transition: all 0.2s ease-out;
 
   &::after {
     content: '';

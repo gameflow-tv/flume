@@ -7,6 +7,7 @@ export type TooltipAltProps = {
   children: ReactNode
   label?: string
   position: TooltipPosition
+  show?: boolean
 }
 
 export const TooltipAlt = ({ children, label, position }) => {
@@ -16,15 +17,14 @@ export const TooltipAlt = ({ children, label, position }) => {
     <TooltipWrapper>
       <TooltipTarget
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+        onMouseLeave={() => setIsHovered(false)}>
         {children}
       </TooltipTarget>
-      {isHovered && (
-        <CenterContainer position={position}>
-          <TooltipBox position={position}>{label}</TooltipBox>
-        </CenterContainer>
-      )}
+      <CenterContainer position={position}>
+        <TooltipBox show={isHovered} position={position}>
+          {label}
+        </TooltipBox>
+      </CenterContainer>
     </TooltipWrapper>
   )
 }
