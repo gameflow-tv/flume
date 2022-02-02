@@ -55,6 +55,8 @@ This package is made by developers and is consumed by developers. When adding ne
 
 Every component must be responsive and accessible, and should be repesented with as few DOM elements as possible. For testing, you can use e.g. `a11y` in Storybook or tools such as [Lighthouse](https://developers.google.com/web/tools/lighthouse). We also recommend using screen readers and keyboard navigation for further testing.
 
+This is a UI library. As such, we don't intend on writing more internal logic than what's required for UI purposes, leaving state management up to the consumer. This effectively lets consumers choose their own state management apporach, gain control over component behaviour and results in a more transparent library. Any internal behaviour determined by internally kept state *must* have a very good reasoning and such behaviour has to be explicitly documented.
+
 ### Semantic versioning
 
 This repository uses [semantic-release](https://github.com/semantic-release/semantic-release) for versioning. In order for us to automate the release process, we need to adhere to the commit message format specified by semantic-release.
