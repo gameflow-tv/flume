@@ -9,10 +9,10 @@ export type ToastProps = {
   width?: string
   zIndex?: number
   backgroundColor?: string
+  duration?: number
   animation?: {
     slideInTime?: number
     slideOutTime?: number
-    visibilityTime?: number
   }
 }
 
@@ -27,20 +27,20 @@ export const Toast = forwardRef((props: ToastProps, ref) => {
     zIndex: props.zIndex,
     backgroundColor: props.backgroundColor || theme.colors.toggle,
     animation: {
-      slideInTime: props.animation?.slideInTime || 0.5,
-      slideOutTime: props.animation?.slideOutTime || 0.5,
-      visibilityTime: props.animation?.visibilityTime || 2
+      slideInTime: props.animation?.slideInTime || 500,
+      slideOutTime: props.animation?.slideOutTime || 500,
+      visibilityTime: props.duration || 2000
     }
   }
 
   useImperativeHandle(ref, () => ({
-    dispatchShow() {
+    show() {
       const { animation } = styles
 
       setShow(true)
       setTimeout(function () {
         setShow(false)
-      }, (animation.slideInTime + animation.slideOutTime + animation.visibilityTime) * 1000)
+      }, animation.slideInTime + animation.slideOutTime + animation.visibilityTime)
     }
   }))
 
