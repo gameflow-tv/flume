@@ -85,7 +85,7 @@ export const TooltipBox = styled.span<TooltipAltProps>`
         `
     }
   }}
-  transition: all 0.2s ease-out;
+  transition: all 0.1s ease-out;
 
   &::after {
     content: '';
