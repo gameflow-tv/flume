@@ -1,31 +1,31 @@
-import React, { useRef } from 'react'
-import { ToolTip, TooltipPosition } from './Tooltip.styles'
-import { useTheme } from '../../../hooks'
+import React, { ReactNode, useState } from 'react'
+import { CenterContainer, TooltipBox, TooltipTarget, TooltipWrapper } from './Tooltip.styles'
+
+export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom'
 
 export type TooltipProps = {
-  content: string
-  borderRadius: string
-  padding: string
-  mediumSpacing: string
+  children: ReactNode
+  label?: string
   position: TooltipPosition
+  show?: boolean
 }
 
-export const Tooltip = ({ content = '', position = 'bottom' }: TooltipProps) => {
-  const theme = useTheme()
-  const element = useRef(null)
-  console.log(element)
+export const Tooltip = ({ children, label, position }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
   return (
-    <ToolTip
-      borderRadius={theme.spacing.xxsmall}
-      padding={theme.spacing.xsmall}
-      mediumSpacing={theme.spacing.medium}
-      content={content}
-      position={position}
-    >
-      {/* <input type="text" placeholder="This is the input" /> */}
-      <div ref={element} style={{ height: '210px', width: '350px', backgroundColor: 'white' }}>
-        hello
-      </div>
-    </ToolTip>
+    <TooltipWrapper>
+      <TooltipTarget
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {children}
+      </TooltipTarget>
+      <CenterContainer position={position}>
+        <TooltipBox show={isHovered} position={position}>
+          {label}
+        </TooltipBox>
+      </CenterContainer>
+    </TooltipWrapper>
   )
 }
