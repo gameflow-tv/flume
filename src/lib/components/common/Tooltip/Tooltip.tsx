@@ -4,9 +4,9 @@ import { CenterContainer, TooltipBox, TooltipTarget, TooltipWrapper } from './To
 export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom'
 
 export type TooltipProps = {
-  children: ReactNode
+  children?: ReactNode
   label?: string
-  position: TooltipPosition
+  position?: TooltipPosition
   show?: boolean
 }
 
@@ -17,8 +17,7 @@ export const Tooltip = ({ children, label, position }) => {
     <TooltipWrapper>
       <TooltipTarget
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+        onMouseLeave={() => setIsHovered(false)}>
         {children}
       </TooltipTarget>
       <CenterContainer position={position}>
