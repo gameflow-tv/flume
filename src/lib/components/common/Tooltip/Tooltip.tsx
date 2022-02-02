@@ -17,7 +17,8 @@ export const Tooltip = ({ children, label, position }) => {
     <TooltipWrapper>
       <TooltipTarget
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {children}
       </TooltipTarget>
       <CenterContainer position={position}>
