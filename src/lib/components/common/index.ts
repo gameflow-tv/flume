@@ -1,2 +1,4 @@
-export * from './AspectRatio/AspectRatio'
-export * from './Tooltip/Tooltip'
+export * from './AspectRatio/'
+export * from './Tooltip'
+export * from './Modal'
+export * from './Toast'
