@@ -7,7 +7,6 @@ import { ValidationInfo } from '../shared/ValidationInfo'
 import { SearchInput } from './Search.styles'
 
 export const Search = (props: InputProps) => {
-  const inputRef = useRef(null)
   const [value, setValue] = useState('')
   const [validationResponse, setValidationResponse] = useInputValidation(props)
 
@@ -25,7 +24,6 @@ export const Search = (props: InputProps) => {
     <React.Fragment>
       <InputGroup>
         <SearchInput
-          ref={inputRef}
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           onChange={handleChange}
           value={value}

@@ -166,5 +166,6 @@ export const Search: Story = Template.bind({})
 Search.args = {
   type: 'search',
   required: true,
-  placeholder: 'Type your search'
+  placeholder: 'Type your search',
+  onChange: (value) => console.log(value)
 }
