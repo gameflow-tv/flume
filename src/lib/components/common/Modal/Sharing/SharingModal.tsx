@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Icon } from '../../icons'
-import { IconButton } from '../../buttons'
-import { useTheme } from '../../../hooks'
+import { Icon } from '../../../icons'
+import { IconButton } from '../../../buttons'
+import { useTheme } from '../../../../hooks'
 import { Modal, ModalProps } from '../Modal'
 import {
   ButtonsWrapper,
@@ -12,8 +12,8 @@ import {
   SocialLink,
   SocialWrapper
 } from './SharingModal.styles'
-import { getLuminance } from '../../../helpers'
-import { Input } from '../../inputs'
+import { getLuminance } from '../../../../helpers'
+import { Input } from '../../../inputs'
 
 export type FacebookSharingProps = {
   app_id: string | number

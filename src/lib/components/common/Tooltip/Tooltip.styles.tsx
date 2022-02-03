@@ -9,7 +9,6 @@ export const TooltipWrapper = styled.div`
 `
 export const TooltipTarget = styled.div`
   background: none;
-  padding: ${theme.spacing.xxsmall};
   color: inherit;
   cursor: inherit;
   display: flex;
