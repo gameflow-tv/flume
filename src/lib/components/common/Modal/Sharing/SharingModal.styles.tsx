@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { typographyToCss } from '../../../../theme'
 import theme from '../../../../theme/theme'
 import { Button, IconButton } from '../../../buttons'
-import { ModalBody, ModalHeader } from '../../Modal'
+import { ModalBody } from '../ModalBody/ModalBody'
+import { ModalHeader } from '../ModalHeader/ModalHeader'
 
 export const SharingHeader = styled(ModalHeader)`
   ${typographyToCss(theme.typography.header2)};
