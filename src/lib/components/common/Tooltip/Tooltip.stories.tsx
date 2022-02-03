@@ -1,34 +1,45 @@
 import { Story } from '@storybook/react'
 import React from 'react'
 import { Tooltip, TooltipProps } from './Tooltip'
+import { TooltipTarget } from './Tooltip.styles'
 
 export default {
   title: 'components/Tooltip',
   component: Tooltip
 }
-// export const TooltipStory: Story = () => <Tooltip />
 
-const Template = (args: TooltipProps) => <Tooltip {...args} />
-
-export const Default: Story<TooltipProps> = Template.bind({})
-Default.args = {
-  content: 'Storybook text'
+const Template = (props: TooltipProps) => {
+  return (
+    <Tooltip label="This is a tooltip" position="top">
+      <div style={{ height: '50px', width: '50px', backgroundColor: 'black' }}>I am target</div>
+    </Tooltip>
+  )
 }
+export const Default: Story = Template.bind({})
 
-export const top: Story<TooltipProps> = Template.bind({})
-top.args = {
-  content: 'Storybook text',
-  position: 'top'
+const Bottom = (props: TooltipProps) => {
+  return (
+    <Tooltip label="This is a tooltip" position="bottom">
+      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
+    </Tooltip>
+  )
 }
+export const BottomTooltip: Story = Bottom.bind({})
 
-export const left: Story<TooltipProps> = Template.bind({})
-left.args = {
-  content: 'Storybook text',
-  position: 'left'
+const Left = (props: TooltipProps) => {
+  return (
+    <Tooltip label="This is a tooltip" position="left">
+      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
+    </Tooltip>
+  )
 }
+export const LeftTooltip: Story = Left.bind({})
 
-export const right: Story<TooltipProps> = Template.bind({})
-right.args = {
-  content: 'Storybook text',
-  position: 'right'
+const Right = (props: TooltipProps) => {
+  return (
+    <Tooltip label="This is a tooltip" position="right">
+      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
+    </Tooltip>
+  )
 }
+export const RightTooltip: Story = Right.bind({})
