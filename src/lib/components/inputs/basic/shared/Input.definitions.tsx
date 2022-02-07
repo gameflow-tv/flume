@@ -40,7 +40,7 @@ export interface InputValidation {
   validResponseType?: InputResponseType
   condition: {
     type: CriteriaType
-    rule?: number | RegExp
+    rule?: number | RegExp | Function
   }
 }
 
