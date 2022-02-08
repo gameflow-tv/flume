@@ -1,8 +1,8 @@
 import React from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps } from '../shared/Input.definitions'
-import { ActionArea, InputGroup, VerificationWithToggle } from '../shared/Shared.styles'
+import { InputProps } from '../shared'
+import { ActionArea, InputGroup, VerificationWithToggle } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 import { SearchInput } from './Search.styles'
 
@@ -34,7 +34,7 @@ export const Search = (props: InputProps) => {
           {<Icon icon="search" />}
         </ActionArea>
       </InputGroup>
-      {ValidationInfo(props, validationResponse)}
+      <ValidationInfo props={props} validationResponse={validationResponse} />
     </React.Fragment>
   )
 }

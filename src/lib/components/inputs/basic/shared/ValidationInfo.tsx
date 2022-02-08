@@ -1,8 +1,14 @@
 import React from 'react'
-import { InputCriteriaResponse, InputProps } from './Input.definitions'
-import { InfoMessage, ListItem } from './Shared.styles'
+import { InputCriteriaResponse, InputProps } from './types'
+import { InfoMessage, ListItem } from './styles'
 
-export const ValidationInfo = (props: InputProps, validationResponse) => {
+export const ValidationInfo = ({
+  props,
+  validationResponse
+}: {
+  props: InputProps
+  validationResponse: any
+}) => {
   return (
     <React.Fragment>
       {!props.multipleCriteriaInfo && (

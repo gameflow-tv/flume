@@ -1,8 +1,8 @@
 import React from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps } from '../shared/Input.definitions'
-import { InputGroup, GlobalInput, VerificationIcon } from '../shared/Shared.styles'
+import { InputProps } from '../shared'
+import { InputGroup, GlobalInput, VerificationIcon } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 
 export const Text = (props: InputProps) => {
@@ -31,7 +31,7 @@ export const Text = (props: InputProps) => {
           {validationResponse?.icon && <Icon icon={validationResponse?.icon} />}
         </VerificationIcon>
       </InputGroup>
-      {ValidationInfo(props, validationResponse)}
+      {<ValidationInfo props={props} validationResponse={validationResponse} />}
     </React.Fragment>
   )
 }

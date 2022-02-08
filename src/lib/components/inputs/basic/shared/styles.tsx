@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '../../../../theme/theme'
+import { InputProps } from './types'
 
 export type SharedProps = {
   disabled?: boolean
@@ -56,8 +56,7 @@ export const StyledLabel = styled.label<SharedProps>`
 
 export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type,
-  autocomplete: props.autoComplete,
-  ...props
+  autocomplete: 'new-password'
 }))<SharedProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};

@@ -2,25 +2,31 @@ import { useCallback, useState } from 'react'
 import {
   criteriaRule,
   InputProps,
-  InputResponseType
-} from '../components/inputs/basic/shared/Input.definitions'
+  InputResponseType,
+  InputValidation
+} from '../components/inputs/basic/shared'
 
 import { isEmpty } from 'lodash'
 
 const getValidationIcon = (errorType: InputResponseType) => {
   switch (errorType) {
-    case InputResponseType.ERROR:
+    case 'error':
       return 'close_filled'
-    case InputResponseType.WARNING:
+    case 'warning':
       return 'warning_filled'
-    case InputResponseType.SUCCESS:
+    case 'success':
       return 'check_filled'
     default:
       return undefined
   }
 }
 
-const handleResponse = (invalidMessage, validMessage, type, isValid) => {
+const handleResponse = (
+  invalidMessage: string,
+  validMessage: string,
+  type: InputResponseType,
+  isValid: boolean
+) => {
   let message = invalidMessage
 
   if (isValid && !isEmpty(validMessage)) {
@@ -37,7 +43,7 @@ const handleResponse = (invalidMessage, validMessage, type, isValid) => {
 }
 
 const getCriteriaSet = (props: InputProps) => {
-  let criteriaSet = []
+  let criteriaSet: InputValidation[] = []
 
   // Initializing criteriaSet
   if (props.criteria) {

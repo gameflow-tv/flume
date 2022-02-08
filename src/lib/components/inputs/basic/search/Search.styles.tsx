@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { StyledInput } from '../shared/Shared.styles'
+import { StyledInput } from '../shared'
 
 export const SearchInput = styled(StyledInput)`
   &::-webkit-search-decoration,

@@ -1,14 +1,18 @@
 import { Story } from '@storybook/react'
 import React from 'react'
 import { Input } from './Input'
-import { InputProps } from './shared/Input.definitions'
+import { InputProps } from './shared'
 
 export default {
   title: 'Components/Inputs/Basic',
   component: Input
 }
 
-const Template = (args: InputProps) => <Input {...args} />
+const Template = (args: InputProps) => (
+  <form>
+    <Input {...args} />
+  </form>
+)
 
 export const Text: Story = Template.bind({})
 Text.args = {
@@ -72,6 +76,7 @@ NonRequiredEmail.args = {
 export const MultipleCriteria: Story = Template.bind({})
 MultipleCriteria.args = {
   type: 'password',
+  autoComplete: 'new-password',
   required: true,
   label: 'Multiple Criteria',
   multipleCriteriaInfo: true,
@@ -154,7 +159,8 @@ Password.args = {
   type: 'password',
   required: true,
   label: 'Password',
-  placeholder: 'Insert password'
+  placeholder: 'Insert password',
+  autoComplete: 'new-password'
 }
 
 export const Checkbox: Story = Template.bind({})

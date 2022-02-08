@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps, InputType } from '../shared/Input.definitions'
+import { InputProps, InputType } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 
 import {
@@ -8,11 +8,11 @@ import {
   InputGroup,
   StyledInput,
   VerificationWithToggle
-} from '../shared/Shared.styles'
+} from '../shared'
 import { Icon } from '../../../icons'
 
 export const Password = (props: InputProps) => {
-  const { type, ...rest } = props
+  const { type } = props
   const [initialType, setInitialType] = useState<InputType>(type)
   const [validationResponse, setValidationResponse] = useInputValidation(props)
 
@@ -38,7 +38,8 @@ export const Password = (props: InputProps) => {
           disabled={props.disabled}
           readOnly={props.readOnly}
           placeholder={props.placeholder}
-          {...rest.inputStyles}
+          autoComplete={props.autoComplete}
+          {...props.inputStyles}
         />
         <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.icon && <Icon icon={validationResponse?.icon} />}
@@ -46,13 +47,11 @@ export const Password = (props: InputProps) => {
         <ActionArea
           className={validationResponse?.type}
           onClick={() => toggleType()}
-          {...props.inputStyles}
-        >
+          {...props.inputStyles}>
           {<Icon icon={initialType === 'password' ? 'eye' : 'hide'} />}
         </ActionArea>
       </InputGroup>
-
-      {ValidationInfo(props, validationResponse)}
+      <ValidationInfo props={props} validationResponse={validationResponse} />
     </React.Fragment>
   )
 }
