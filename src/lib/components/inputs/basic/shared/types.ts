@@ -1,7 +1,7 @@
 import { HTMLInputTypeAttribute, ReactNode, ChangeEventHandler } from 'react'
 import { IconName } from '../../../icons'
 import { isEmpty } from '../../../../helpers/general'
-import { SharedProps } from './Shared.styles'
+import { SharedProps } from './styles'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
@@ -22,16 +22,13 @@ export type InputProps = {
   onChange?: ChangeEventHandler<HTMLInputElement>
   inputStyles?: SharedProps
   readOnly?: boolean
-}
+} & React.HTMLProps<HTMLInputElement>
 
-export enum InputResponseType {
-  ERROR = 'error',
-  WARNING = 'warning',
-  SUCCESS = 'success',
-  NONE = 'none'
-}
+export type InputResponseType = 'error' | 'warning' | 'success' | 'none'
 
-export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'custom'
+export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'validation'
+
+export type ValidationFunction = (value: string) => boolean
 
 export interface InputValidation {
   invalidMessage?: string
@@ -40,7 +37,7 @@ export interface InputValidation {
   validResponseType?: InputResponseType
   condition: {
     type: CriteriaType
-    rule?: number | RegExp | Function
+    rule?: number | RegExp | ValidationFunction
   }
 }
 
@@ -51,7 +48,11 @@ export type InputCriteriaResponse = {
   isValid: boolean
 }
 
-export const criteriaRule = (type: CriteriaType, value: any, rule?: number | RegExp | Function) => {
+export const criteriaRule = (
+  type: CriteriaType,
+  value: any,
+  rule?: number | RegExp | ValidationFunction
+) => {
   switch (type) {
     case 'required':
       return !isEmpty(value as string)
@@ -65,8 +66,8 @@ export const criteriaRule = (type: CriteriaType, value: any, rule?: number | Reg
       ).test(value as string)
     case 'regex':
       return (rule as RegExp).test(value as string)
-    case 'custom':
-      return (rule as Function)?.(value)
+    case 'validation':
+      return (rule as ValidationFunction)?.(value)
     default:
       throw new Error('Unknown criteria type')
   }

@@ -1,10 +1,10 @@
 import React from 'react'
 import { isEmpty } from '../../../helpers/general'
-import { InputProps } from './shared/Input.definitions'
+import { InputProps } from './shared'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
 import { Text } from './text/Text'
-import { FormGroup, StyledLabel } from './shared/Shared.styles'
+import { FormGroup, StyledLabel } from './shared'
 import { Search } from './search/Search'
 import { useTheme } from '../../../hooks'
 import { transitionToCss, typographyToCss } from '../../../theme'
@@ -15,9 +15,23 @@ const verifyRequiredProps = (props: InputProps) => {
   }
 }
 
+const InputVariant: React.FC<InputProps> = (props) => {
+  switch (props.type) {
+    case 'password':
+      return <Password {...props} />
+    case 'checkbox':
+      return <Checkbox />
+    case 'search':
+      return <Search {...props} />
+    case 'email':
+    case 'text':
+    default:
+      return <Text {...props} />
+  }
+}
+
 export const Input = (props: InputProps) => {
   verifyRequiredProps(props)
-  const type = props.type.toLowerCase()
   const theme = useTheme()
 
   const styles = {
@@ -68,27 +82,12 @@ export const Input = (props: InputProps) => {
     }
   }
 
-  const inputProps = { ...props, inputStyles: styles }
-
-  const input = () => {
-    switch (type) {
-      case 'password':
-        return <Password {...inputProps} />
-      case 'checkbox':
-        return <Checkbox />
-      case 'search':
-        return <Search {...inputProps} />
-      case 'email':
-      case 'text':
-      default:
-        return <Text {...inputProps} />
-    }
-  }
+  const inputProps: InputProps = { ...props, inputStyles: styles }
 
   return (
     <FormGroup>
       {!isEmpty(props.label) && <StyledLabel {...styles}>{props.label}</StyledLabel>}
-      {input()}
+      <InputVariant {...inputProps} />
     </FormGroup>
   )
 }
