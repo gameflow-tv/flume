@@ -55,7 +55,9 @@ export const StyledLabel = styled.label<SharedProps>`
 `
 
 export const GlobalInput = styled.input.attrs((props) => ({
-  type: props.type
+  type: props.type,
+  autocomplete: props.autoComplete,
+  ...props
 }))<SharedProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};
