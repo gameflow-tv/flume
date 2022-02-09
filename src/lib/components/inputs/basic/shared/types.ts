@@ -44,7 +44,7 @@ export interface InputValidation {
   validResponseType?: InputResponseType
   condition: {
     type: CriteriaType
-    rule?: number | RegExp | ValidationFunction
+    rule?: number | RegExp | ValidationFunction | boolean
   }
 }
 
