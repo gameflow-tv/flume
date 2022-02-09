@@ -26,7 +26,14 @@ export type InputProps = {
 
 export type InputResponseType = 'error' | 'warning' | 'success' | 'none'
 
-export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'validation'
+export type CriteriaType =
+  | 'min'
+  | 'max'
+  | 'email'
+  | 'required'
+  | 'regex'
+  | 'validation'
+  | 'condition'
 
 export type ValidationFunction = (value: string) => boolean
 
@@ -51,8 +58,8 @@ export type InputCriteriaResponse = {
 export const criteriaRule = (
   type: CriteriaType,
   value: any,
-  rule?: number | RegExp | ValidationFunction
-) => {
+  rule?: number | RegExp | ValidationFunction | boolean
+): boolean => {
   switch (type) {
     case 'required':
       return !isEmpty(value as string)
@@ -68,6 +75,8 @@ export const criteriaRule = (
       return (rule as RegExp).test(value as string)
     case 'validation':
       return (rule as ValidationFunction)?.(value)
+    case 'condition':
+      return value
     default:
       throw new Error('Unknown criteria type')
   }
