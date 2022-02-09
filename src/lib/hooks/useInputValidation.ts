@@ -62,6 +62,7 @@ const getCriteriaSet = (props: InputProps) => {
         {
           invalidMessage: 'Please fill with a valid e-mail address',
           invalidResponseType: 'warning',
+          validMessage: '',
           validResponseType: 'success',
           condition: { type: 'email' }
         },
@@ -78,6 +79,7 @@ const getCriteriaSet = (props: InputProps) => {
           invalidMessage: 'Please fill in this field',
           invalidResponseType: 'error',
           validResponseType: 'success',
+          validMessage: '',
           condition: { type: 'required' }
         },
         ...criteriaSet

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { InputProps } from './types'
 
 export type SharedProps = {
   disabled?: boolean
