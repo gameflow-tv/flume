@@ -8,6 +8,62 @@ export type InputType = Extract<
   'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text'
 >
 
+export type AutocompleteValues =
+  | 'off'
+  | 'on'
+  | 'name'
+  | 'honorific-prefix'
+  | 'given-name'
+  | 'additional-name'
+  | 'family-name'
+  | 'honorific-suffix'
+  | 'nickname'
+  | 'email'
+  | 'username'
+  | 'new-password'
+  | 'current-password'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'street-address'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'address-level4'
+  | 'address-level3'
+  | 'address-level2'
+  | 'address-level1'
+  | 'country'
+  | 'country-name'
+  | 'postal-code'
+  | 'cc-name'
+  | 'cc-given-name'
+  | 'cc-additional-name'
+  | 'cc-family-name'
+  | 'cc-number'
+  | 'cc-exp'
+  | 'cc-exp-month'
+  | 'cc-exp-year'
+  | 'cc-csc'
+  | 'cc-type'
+  | 'transaction-currency'
+  | 'transaction-amount'
+  | 'language'
+  | 'bday'
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'sex'
+  | 'tel'
+  | 'tel-country-code'
+  | 'tel-national'
+  | 'tel-area-code'
+  | 'tel-local'
+  | 'tel-extension'
+  | 'impp'
+  | 'url'
+  | 'photo'
+
 export type InputProps = {
   type: InputType
   name?: string
@@ -22,20 +78,12 @@ export type InputProps = {
   onChange?: ChangeEventHandler<HTMLInputElement>
   inputStyles?: SharedProps
   readOnly?: boolean
+  autoComplete?: AutocompleteValues
 } & React.HTMLProps<HTMLInputElement>
 
 export type InputResponseType = 'error' | 'warning' | 'success' | 'none'
 
-export type CriteriaType =
-  | 'min'
-  | 'max'
-  | 'email'
-  | 'required'
-  | 'regex'
-  | 'validation'
-  | 'condition'
-
-export type ValidationFunction = (value: string) => boolean
+export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'custom'
 
 export interface InputValidation {
   invalidMessage?: string
@@ -44,7 +92,7 @@ export interface InputValidation {
   validResponseType?: InputResponseType
   condition: {
     type: CriteriaType
-    rule?: number | RegExp | ValidationFunction | boolean
+    rule?: number | RegExp | Function
   }
 }
 
@@ -55,11 +103,7 @@ export type InputCriteriaResponse = {
   isValid: boolean
 }
 
-export const criteriaRule = (
-  type: CriteriaType,
-  value: any,
-  rule?: number | RegExp | ValidationFunction | boolean
-): boolean => {
+export const criteriaRule = (type: CriteriaType, value: any, rule?: number | RegExp | Function) => {
   switch (type) {
     case 'required':
       return !isEmpty(value as string)
@@ -73,10 +117,8 @@ export const criteriaRule = (
       ).test(value as string)
     case 'regex':
       return (rule as RegExp).test(value as string)
-    case 'validation':
-      return (rule as ValidationFunction)?.(value)
-    case 'condition':
-      return value
+    case 'custom':
+      return (rule as Function)?.(value)
     default:
       throw new Error('Unknown criteria type')
   }

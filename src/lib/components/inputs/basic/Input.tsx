@@ -86,7 +86,11 @@ export const Input = (props: InputProps) => {
 
   return (
     <FormGroup>
-      {!isEmpty(props.label) && <StyledLabel {...styles}>{props.label}</StyledLabel>}
+      {!isEmpty(props.label) && (
+        <StyledLabel htmlFor={props.id} {...styles}>
+          {props.label}
+        </StyledLabel>
+      )}
       <InputVariant {...inputProps} />
     </FormGroup>
   )
