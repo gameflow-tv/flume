@@ -5,6 +5,8 @@ import { ButtonVariant } from '..'
 import { IconName } from '../../icons'
 
 export type StyledButtonProps = {
+  type?: 'button' | 'reset' | 'submit'
+  form?: string
   borderRadius?: string
   backgroundColor?: string
   foregroundColor?: string
@@ -22,7 +24,9 @@ export type StyledButtonProps = {
 }
 
 export const StyledButton = styled.button.attrs((props) => ({
-  disabled: props.disabled
+  disabled: props.disabled,
+  type: props.type,
+  form: props.form
 }))<StyledButtonProps>`
   border-radius: ${(props) => props.borderRadius};
   background-color: ${(props) => props.backgroundColor};
