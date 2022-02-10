@@ -19,11 +19,13 @@ export const Text = (props: InputProps) => {
     <React.Fragment>
       <InputGroup {...props.inputStyles}>
         <GlobalInput
+          id={props.id}
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           defaultValue={props.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
           readOnly={props.readOnly}
+          autoComplete={props.autoComplete}
           onChange={handleChange}
           {...props.inputStyles}
         />
