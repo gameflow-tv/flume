@@ -56,7 +56,7 @@ export const StyledLabel = styled.label<SharedProps>`
 
 export const GlobalInput = styled.input.attrs((props) => ({
   type: props.type,
-  autocomplete: 'new-password'
+  autoComplete: props.autoComplete
 }))<SharedProps>`
   box-sizing: border-box;
   cursor: ${(props) => (props.disabled ? 'not-allowed' : props.cursor)};

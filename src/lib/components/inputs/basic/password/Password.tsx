@@ -3,12 +3,7 @@ import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps, InputType } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 
-import {
-  ActionArea,
-  InputGroup,
-  StyledInput,
-  VerificationWithToggle
-} from '../shared'
+import { ActionArea, InputGroup, StyledInput, VerificationWithToggle } from '../shared'
 import { Icon } from '../../../icons'
 
 export const Password = (props: InputProps) => {
@@ -47,7 +42,8 @@ export const Password = (props: InputProps) => {
         <ActionArea
           className={validationResponse?.type}
           onClick={() => toggleType()}
-          {...props.inputStyles}>
+          {...props.inputStyles}
+        >
           {<Icon icon={initialType === 'password' ? 'eye' : 'hide'} />}
         </ActionArea>
       </InputGroup>
