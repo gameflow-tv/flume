@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+import React, { FormEvent, FormEventHandler, SyntheticEvent } from 'react'
 import { Input } from './Input'
 import { InputProps } from './shared'
 
@@ -8,7 +8,7 @@ export default {
   component: Input
 }
 
-const Template = (args: InputProps) => (
+const Template: Story<InputProps> = (args: InputProps) => (
   <form>
     <Input {...args} />
   </form>
@@ -173,4 +173,29 @@ Search.args = {
   type: 'search',
   required: true,
   placeholder: 'Type your search'
+}
+
+const handleSubmit: FormEventHandler<HTMLFormElement> = (e: SyntheticEvent<HTMLFormElement>) => {
+  e.preventDefault()
+
+  const formElements = e.currentTarget.elements as typeof e.currentTarget.elements & {
+    emailInput: { value: string }
+  }
+
+  console.log(formElements)
+}
+
+export const AutoComplete: Story<InputProps> = (args: InputProps) => (
+  <form onSubmit={handleSubmit}>
+    <Input {...args} />
+    <input type="submit" value="Submit" />
+  </form>
+)
+AutoComplete.args = {
+  type: 'email',
+  id: 'emailInput',
+  label: 'E-mail',
+  required: true,
+  placeholder: 'Type your search',
+  autoComplete: 'email'
 }
