@@ -35,7 +35,6 @@ const handleResponse = (
   if (isValid && !fromMultiple) {
     message = !isEmpty(validMessage) ? validMessage : ''
   }
-
   const icon = getValidationIcon(type)
 
   return {
