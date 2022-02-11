@@ -76,6 +76,7 @@ export type InputProps = {
   multipleCriteriaInfo?: boolean
   criteria?: InputValidation | InputValidation[]
   onChange?: ChangeEventHandler<HTMLInputElement>
+  onValidate?: (isValid: boolean) => void
   inputStyles?: SharedProps
   readOnly?: boolean
   autoComplete?: AutocompleteValues
