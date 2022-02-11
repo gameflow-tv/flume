@@ -27,11 +27,12 @@ const handleResponse = (
   type: InputResponseType,
   isValid: boolean
 ) => {
-  let message = invalidMessage
+  let message = invalidMessage ?? ''
 
-  if (isValid && !isEmpty(validMessage)) {
-    message = validMessage
+  if (isValid) {
+    message = !isEmpty(validMessage) ? validMessage : ''
   }
+
   const icon = getValidationIcon(type)
 
   return {
