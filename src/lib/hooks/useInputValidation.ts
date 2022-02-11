@@ -25,14 +25,14 @@ const handleResponse = (
   invalidMessage: string,
   validMessage: string,
   type: InputResponseType,
-  isValid: boolean
+  isValid: boolean,
+  fromMultiple: boolean
 ) => {
-  let message = invalidMessage ?? ''
+  let message = invalidMessage
 
-  if (isValid) {
+  if (isValid && !fromMultiple) {
     message = !isEmpty(validMessage) ? validMessage : ''
   }
-
   const icon = getValidationIcon(type)
 
   return {
@@ -63,7 +63,6 @@ const getCriteriaSet = (props: InputProps) => {
         {
           invalidMessage: 'Please fill with a valid e-mail address',
           invalidResponseType: 'warning',
-          validMessage: '',
           validResponseType: 'success',
           condition: { type: 'email' }
         },
@@ -80,7 +79,6 @@ const getCriteriaSet = (props: InputProps) => {
           invalidMessage: 'Please fill in this field',
           invalidResponseType: 'error',
           validResponseType: 'success',
-          validMessage: '',
           condition: { type: 'required' }
         },
         ...criteriaSet
@@ -107,13 +105,20 @@ export const useInputValidation = (props: InputProps) => {
               crit.invalidMessage,
               crit.validMessage,
               crit.invalidResponseType,
-              isValid
+              isValid,
+              false
             )
           )
           break
         } else {
           setResponse(
-            handleResponse(crit.invalidMessage, crit.validMessage, crit.validResponseType, isValid)
+            handleResponse(
+              crit.invalidMessage,
+              crit.validMessage,
+              crit.validResponseType,
+              isValid,
+              false
+            )
           )
         }
       }
@@ -126,7 +131,7 @@ export const useInputValidation = (props: InputProps) => {
 
         validations = [
           ...validations,
-          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid)
+          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid, true)
         ]
       }
 

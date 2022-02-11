@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { InputProps } from '../shared'
@@ -14,6 +14,10 @@ export const Text = (props: InputProps) => {
       props.onChange(e)
     }
   }
+
+  useEffect(() => {
+    // console.log(validationResponse)
+  }, [validationResponse])
 
   return (
     <React.Fragment>
