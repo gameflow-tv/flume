@@ -44,7 +44,7 @@ const Template = (args: ToastProps) => {
         variant="primary"
         size="large"
         label="Show Toast"
-        onClick={() => refToastRef.current?.dispatchShow()}
+        onClick={() => refToastRef.current?.show()}
       />
     </div>
   )

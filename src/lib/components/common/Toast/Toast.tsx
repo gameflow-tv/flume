@@ -24,23 +24,21 @@ export const Toast = forwardRef((props: ToastProps, ref) => {
     horizontalAlign: props.horizontalAlign || 'middle',
     verticalAlign: props.verticalAlign || 'top',
     width: props.width || '220px',
-    zIndex: props.zIndex,
+    zIndex: props.zIndex || 99,
     backgroundColor: props.backgroundColor || theme.colors.toggle,
+    duration: props.duration || 2000,
     animation: {
       slideInTime: props.animation?.slideInTime || 500,
-      slideOutTime: props.animation?.slideOutTime || 500,
-      visibilityTime: props.duration || 2000
+      slideOutTime: props.animation?.slideOutTime || 500
     }
   }
 
   useImperativeHandle(ref, () => ({
     show() {
-      const { animation } = styles
-
       setShow(true)
       setTimeout(function () {
         setShow(false)
-      }, animation.slideInTime + animation.slideOutTime + animation.visibilityTime)
+      }, styles.animation.slideInTime + styles.animation.slideOutTime + styles.duration)
     }
   }))
 
