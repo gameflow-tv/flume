@@ -67,13 +67,6 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
     }
   }
 
-  font-size: ${(props) =>
-    props.size === 'large' || props.size === 'xlarge'
-      ? '18px'
-      : props.size === 'medium'
-      ? '16px'
-      : '14px'};
-
   min-width: ${(props) =>
     props.size === 'xlarge'
       ? '55px'
