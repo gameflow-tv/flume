@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps } from '../shared'
+import { getResultantValidationResponse, InputProps } from '../shared'
 import { ActionArea, InputGroup, VerificationWithToggle } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 import { SearchInput } from './Search.styles'
@@ -15,6 +15,10 @@ export const Search = (props: InputProps) => {
       props.onChange(e)
     }
   }
+
+  useEffect(() => {
+    props.onValidate?.call(null, getResultantValidationResponse(validationResponse))
+  }, [validationResponse])
 
   return (
     <React.Fragment>

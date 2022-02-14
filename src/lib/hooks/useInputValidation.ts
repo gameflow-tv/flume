@@ -1,21 +1,23 @@
 import { useCallback, useState } from 'react'
 import {
   criteriaRule,
+  InputCriteriaResponse,
   InputProps,
   InputResponseType,
   InputValidation
 } from '../components/inputs/basic/shared'
 
 import { isEmpty } from 'lodash'
+import { IconName } from '../components'
 
 const getValidationIcon = (errorType: InputResponseType) => {
   switch (errorType) {
     case 'error':
-      return 'close_filled'
+      return 'close_filled' as IconName
     case 'warning':
-      return 'warning_filled'
+      return 'warning_filled' as IconName
     case 'success':
-      return 'check_filled'
+      return 'check_filled' as IconName
     default:
       return undefined
   }
@@ -27,7 +29,7 @@ const handleResponse = (
   type: InputResponseType,
   isValid: boolean,
   fromMultiple: boolean
-) => {
+): InputCriteriaResponse => {
   let message = invalidMessage
 
   if (isValid && !fromMultiple) {
@@ -123,7 +125,7 @@ export const useInputValidation = (props: InputProps) => {
         }
       }
     } else {
-      let validations = []
+      let validations: InputCriteriaResponse[] = []
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
         const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
