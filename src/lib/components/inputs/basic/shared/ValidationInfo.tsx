@@ -7,18 +7,21 @@ export const ValidationInfo = ({
   validationResponse
 }: {
   props: InputProps
-  validationResponse: any
+  validationResponse: InputCriteriaResponse | InputCriteriaResponse[]
 }) => {
   return (
     <React.Fragment>
       {!props.multipleCriteriaInfo && (
-        <InfoMessage className={validationResponse?.type} {...props.inputStyles}>
-          {validationResponse?.message}
+        <InfoMessage
+          className={(validationResponse as InputCriteriaResponse)?.type}
+          {...props.inputStyles}
+        >
+          {(validationResponse as InputCriteriaResponse)?.message}
         </InfoMessage>
       )}
       {props.multipleCriteriaInfo && validationResponse ? (
         <ul>
-          {(validationResponse as Array<InputCriteriaResponse>).map((crit, idx) => (
+          {(validationResponse as InputCriteriaResponse[]).map((crit, idx) => (
             <ListItem key={`validation_${idx}`} className={`${crit.type}`} {...props.inputStyles}>
               {crit.message}
             </ListItem>

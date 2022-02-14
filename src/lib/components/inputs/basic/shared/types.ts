@@ -100,7 +100,7 @@ export interface InputValidation {
 export type InputCriteriaResponse = {
   message: string
   type: InputResponseType
-  icon: IconName
+  icon: IconName | undefined
   isValid: boolean
 }
 
@@ -123,4 +123,19 @@ export const criteriaRule = (type: CriteriaType, value: any, rule?: number | Reg
     default:
       throw new Error('Unknown criteria type')
   }
+}
+
+export const getResultantValidationResponse = (
+  validationResponse: InputCriteriaResponse | InputCriteriaResponse[] | undefined
+) => {
+  if (!validationResponse) {
+    return validationResponse
+  }
+
+  if (Array.isArray(validationResponse)) {
+    const allResp = validationResponse.map((v) => v.isValid)
+    return allResp.includes(false) ? false : true
+  }
+
+  return validationResponse.isValid
 }
