@@ -17,7 +17,7 @@ const getValidationIcon = (errorType: InputResponseType) => {
     case 'warning':
       return 'warning_filled' as IconName
     case 'success':
-      return 'check_filled' as IconName
+      return 'check_circle_filled' as IconName
     default:
       return undefined
   }

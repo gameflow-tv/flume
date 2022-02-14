@@ -135,7 +135,7 @@ export const getResultantValidationResponse = (
   validationResponse: InputCriteriaResponse | InputCriteriaResponse[] | undefined
 ) => {
   if (!validationResponse) {
-    return validationResponse
+    return false
   }
 
   if (Array.isArray(validationResponse)) {
