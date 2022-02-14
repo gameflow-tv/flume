@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps } from '../shared'
+import { getResultantValidationResponse, InputProps } from '../shared'
 import { InputGroup, GlobalInput, VerificationIcon } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 
@@ -16,7 +16,7 @@ export const Text = (props: InputProps) => {
   }
 
   useEffect(() => {
-    // console.log(validationResponse)
+    props.onValidate?.call(null, getResultantValidationResponse(validationResponse))
   }, [validationResponse])
 
   return (
