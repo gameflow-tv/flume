@@ -141,18 +141,18 @@ export const VerificationIcon = styled.span<SharedProps>`
   right: 0;
 
   &.error {
-    & > svg {
-      color: ${(props) => props.input?.onFocus?.errorColor};
+    svg {
+      fill: ${(props) => props.input?.onFocus?.errorColor};
     }
   }
   &.warning {
-    & > svg {
-      color: ${(props) => props.input?.onFocus?.warningColor};
+    svg {
+      fill: ${(props) => props.input?.onFocus?.warningColor};
     }
   }
   &.success {
-    & > svg {
-      color: ${(props) => props.input?.onFocus?.successColor};
+    svg {
+      fill: ${(props) => props.input?.onFocus?.successColor};
     }
   }
 `
@@ -264,6 +264,7 @@ export const StyledInput = styled(GlobalInput)<SharedProps>`
     }
   }
 
+  &.error,
   &.error:focus {
     & + span + span {
       border-top: 1px solid ${(props) => props.input?.onFocus?.errorColor};
@@ -272,6 +273,7 @@ export const StyledInput = styled(GlobalInput)<SharedProps>`
     }
   }
 
+  &.warning,
   &.warning:focus {
     & + span + span {
       border-top: 1px solid ${(props) => props.input?.onFocus?.warningColor};
@@ -280,6 +282,7 @@ export const StyledInput = styled(GlobalInput)<SharedProps>`
     }
   }
 
+  &.success,
   &.success:focus {
     & + span + span {
       border-top: 1px solid ${(props) => props.input?.onFocus?.successColor};

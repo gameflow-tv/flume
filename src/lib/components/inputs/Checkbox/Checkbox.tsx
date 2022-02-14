@@ -40,9 +40,6 @@ export const Checkbox = ({
 }: CheckboxProps) => {
   const theme = useTheme()
 
-  uncheckedContent ??= <Icon icon="plus" color={theme.colors.primaryText} />
-  checkedContent ??= <Icon icon="check" color={props.checkedTextColor || theme.colors.onPrimary} />
-
   const styles: SpanProps = {
     typography: props.typography || theme.typography.body2,
     checkedBackground: props.checkedBackground || theme.colors.primary,
@@ -50,12 +47,15 @@ export const Checkbox = ({
     uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
     checkedBorder: props.checkedBorder || theme.colors.onPrimary,
     checkedTextColor: props.checkedTextColor || theme.colors.onPrimary,
-    uncheckedTextColor: props.uncheckedTextColor || theme.colors.uncheckedText,
+    uncheckedTextColor: props.uncheckedTextColor || theme.colors.primaryText,
     width: props.width,
     height: props.height,
     spacing: theme.spacing.xxsmall,
     ...props
   }
+
+  uncheckedContent ??= <Icon icon="plus" color={styles.uncheckedTextColor} />
+  checkedContent ??= <Icon icon="check" color={styles.checkedTextColor} />
 
   return (
     <Wrapper {...styles}>
