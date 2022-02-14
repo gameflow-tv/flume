@@ -99,7 +99,11 @@ export const useInputValidation = (props: InputProps) => {
     if (!props.multipleCriteriaInfo) {
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
-        const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+
+        if (crit.nonBlocking) {
+          isValid = true
+        }
 
         if (!isValid) {
           setResponse(
@@ -128,7 +132,10 @@ export const useInputValidation = (props: InputProps) => {
       let validations: InputCriteriaResponse[] = []
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
-        const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+        if (crit.nonBlocking) {
+          isValid = true
+        }
         const respType = isValid ? crit.validResponseType : crit.invalidResponseType
 
         validations = [

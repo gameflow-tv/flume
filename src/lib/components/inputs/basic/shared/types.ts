@@ -95,6 +95,7 @@ export interface InputValidation {
     type: CriteriaType
     rule?: number | boolean | RegExp | Function
   }
+  nonBlocking?: boolean
 }
 
 export type InputCriteriaResponse = {
