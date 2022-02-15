@@ -151,6 +151,7 @@ export const CloseButton = styled.button<ModalProps>`
   color: ${theme.colors.tertiaryText};
   font-size: 24px;
   cursor: pointer;
+  z-index: 1;
 
   & > div {
     pointer-events: none;
