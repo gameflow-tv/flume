@@ -76,7 +76,7 @@ export const criteriaRule = (
     case 'validation':
       return (rule as ValidationFunction)?.(value)
     case 'condition':
-      return value
+      return rule as boolean
     default:
       throw new Error('Unknown criteria type')
   }
