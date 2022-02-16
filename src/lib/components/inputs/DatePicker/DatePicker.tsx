@@ -160,7 +160,7 @@ export const DatePicker = ({
       <Grid>
         <AspectRatio aspectRatio={100}>
           <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>
-            <Icon icon="arrow_left" />
+            <Icon icon="arrow_left" size="large" />
           </NavBtn>
         </AspectRatio>
         <DateInput className="mthdescarea" onClick={handleEdition} {...styles}>
@@ -173,7 +173,7 @@ export const DatePicker = ({
         </DateInput>
         <AspectRatio aspectRatio={100}>
           <NavBtn className="nextmtharea" onClick={() => handleDay(1)} {...styles}>
-            <Icon icon="arrow_right" />
+            <Icon icon="arrow_right" size="large" />
           </NavBtn>
         </AspectRatio>
       </Grid>
