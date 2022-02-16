@@ -33,6 +33,7 @@ export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'con
 export type ValidationFunction = (value: any) => boolean
 
 export interface InputValidation {
+  id?: string | number
   invalidMessage?: string
   invalidResponseType?: InputResponseType
   validMessage?: string
@@ -41,7 +42,6 @@ export interface InputValidation {
     type: CriteriaType
     rule?: number | boolean | RegExp | ValidationFunction
   }
-  nonBlocking?: boolean
 }
 
 export type InputCriteriaResponse = {
@@ -49,6 +49,7 @@ export type InputCriteriaResponse = {
   type: InputResponseType
   icon?: IconName
   isValid: boolean
+  criteriaId?: string | number
 }
 
 export const criteriaRule = (

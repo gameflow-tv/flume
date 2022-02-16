@@ -28,7 +28,8 @@ const handleResponse = (
   validMessage: string,
   type: InputResponseType,
   isValid: boolean,
-  fromMultiple: boolean
+  fromMultiple: boolean,
+  criteriaId?: string | number
 ): InputCriteriaResponse => {
   let message = invalidMessage
 
@@ -41,7 +42,8 @@ const handleResponse = (
     message,
     type: type,
     icon,
-    isValid
+    isValid,
+    criteriaId
   }
 }
 
@@ -101,10 +103,6 @@ export const useInputValidation = (props: InputProps) => {
         const crit = criteriaSet[key]
         let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
 
-        if (crit.nonBlocking) {
-          isValid = true
-        }
-
         if (!isValid) {
           setResponse(
             handleResponse(
@@ -112,7 +110,8 @@ export const useInputValidation = (props: InputProps) => {
               crit.validMessage,
               crit.invalidResponseType,
               isValid,
-              false
+              false,
+              crit.id
             )
           )
           break
@@ -123,7 +122,8 @@ export const useInputValidation = (props: InputProps) => {
               crit.validMessage,
               crit.validResponseType,
               isValid,
-              false
+              false,
+              crit.id
             )
           )
         }
@@ -133,14 +133,12 @@ export const useInputValidation = (props: InputProps) => {
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
         let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
-        if (crit.nonBlocking) {
-          isValid = true
-        }
+
         const respType = isValid ? crit.validResponseType : crit.invalidResponseType
 
         validations = [
           ...validations,
-          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid, true)
+          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid, true, crit.id)
         ]
       }
 
