@@ -101,6 +101,7 @@ export const DatePicker = ({
     navHoverBgColor: navHoverBgColor || theme.colors.calendarOnHover,
     navHoverTextColor: navHoverTextColor || theme.colors.dateBoxHoverTextColor,
     inputTypo: theme.typography.body1,
+    shadow: theme.shadows.xsmall,
     zIndex
   }
 

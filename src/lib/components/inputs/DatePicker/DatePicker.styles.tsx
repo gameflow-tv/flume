@@ -43,7 +43,7 @@ export const NavBtn = styled.div<DatePickerProps>`
   background-color: ${(props) => props.navBgColor};
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: ${(props) => props.theme.shadows.xsmall};
+  box-shadow: ${(props) => props.shadow};
 
   & > svg {
     color: ${(props) => props.navTextColor};
