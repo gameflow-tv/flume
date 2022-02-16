@@ -27,23 +27,27 @@ const handleResponse = (
   invalidMessage: string,
   validMessage: string,
   type: InputResponseType,
+  nonBlocking: boolean,
   isValid: boolean,
-  fromMultiple: boolean,
-  criteriaId?: string | number
+  fromMultiple: boolean
 ): InputCriteriaResponse => {
   let message = invalidMessage
 
   if (isValid && !fromMultiple) {
     message = !isEmpty(validMessage) ? validMessage : ''
   }
+
+  if (!isValid && nonBlocking) {
+    type = 'warning'
+  }
+
   const icon = getValidationIcon(type)
 
   return {
     message,
     type: type,
     icon,
-    isValid,
-    criteriaId
+    isValid
   }
 }
 
@@ -109,9 +113,9 @@ export const useInputValidation = (props: InputProps) => {
               crit.invalidMessage,
               crit.validMessage,
               crit.invalidResponseType,
+              crit.nonBlocking,
               isValid,
-              false,
-              crit.id
+              false
             )
           )
           break
@@ -121,9 +125,9 @@ export const useInputValidation = (props: InputProps) => {
               crit.invalidMessage,
               crit.validMessage,
               crit.validResponseType,
+              crit.nonBlocking,
               isValid,
-              false,
-              crit.id
+              false
             )
           )
         }
@@ -138,7 +142,14 @@ export const useInputValidation = (props: InputProps) => {
 
         validations = [
           ...validations,
-          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid, true, crit.id)
+          handleResponse(
+            crit.invalidMessage,
+            crit.validMessage,
+            respType,
+            crit.nonBlocking,
+            isValid,
+            true
+          )
         ]
       }
 

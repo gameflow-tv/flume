@@ -17,7 +17,6 @@ export const Text = (props: InputProps) => {
 
   useEffect(() => {
     props.onValidate?.call(null, getResultantValidationResponse(validationResponse))
-    props.onFeedback?.call(null, validationResponse)
   }, [validationResponse])
 
   return (

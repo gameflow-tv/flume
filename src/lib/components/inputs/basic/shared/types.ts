@@ -43,6 +43,7 @@ export interface InputValidation {
     type: CriteriaType
     rule?: number | boolean | RegExp | ValidationFunction
   }
+  nonBlocking?: boolean
 }
 
 export type InputCriteriaResponse = {
@@ -50,7 +51,6 @@ export type InputCriteriaResponse = {
   type: InputResponseType
   icon?: IconName
   isValid: boolean
-  criteriaId?: string | number
 }
 
 export const criteriaRule = (
