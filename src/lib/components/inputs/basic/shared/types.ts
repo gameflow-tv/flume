@@ -22,6 +22,7 @@ export type InputProps = {
   criteria?: InputValidation | InputValidation[]
   onChange?: ChangeEventHandler<HTMLInputElement>
   onValidate?: (isValid: boolean) => void
+  onFeedback?: (validationResponse: InputCriteriaResponse | InputCriteriaResponse[]) => void
   inputStyles?: SharedProps
   readOnly?: boolean
   autoComplete?: AutocompleteValues
@@ -80,7 +81,7 @@ export const criteriaRule = (
 }
 
 export const getResultantValidationResponse = (
-  validationResponse: InputCriteriaResponse | InputCriteriaResponse[] | undefined
+  validationResponse?: InputCriteriaResponse | InputCriteriaResponse[]
 ) => {
   if (!validationResponse) {
     return false
