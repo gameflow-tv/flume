@@ -2,67 +2,12 @@ import { HTMLInputTypeAttribute, ReactNode, ChangeEventHandler } from 'react'
 import { IconName } from '../../../icons'
 import { isEmpty } from '../../../../helpers/general'
 import { SharedProps } from './styles'
+import { AutocompleteValues } from './AutocompleteValues'
 
 export type InputType = Extract<
   HTMLInputTypeAttribute,
   'checkbox' | 'email' | 'password' | 'radio' | 'search' | 'text'
 >
-
-export type AutocompleteValues =
-  | 'off'
-  | 'on'
-  | 'name'
-  | 'honorific-prefix'
-  | 'given-name'
-  | 'additional-name'
-  | 'family-name'
-  | 'honorific-suffix'
-  | 'nickname'
-  | 'email'
-  | 'username'
-  | 'new-password'
-  | 'current-password'
-  | 'one-time-code'
-  | 'organization-title'
-  | 'organization'
-  | 'street-address'
-  | 'address-line1'
-  | 'address-line2'
-  | 'address-line3'
-  | 'address-level4'
-  | 'address-level3'
-  | 'address-level2'
-  | 'address-level1'
-  | 'country'
-  | 'country-name'
-  | 'postal-code'
-  | 'cc-name'
-  | 'cc-given-name'
-  | 'cc-additional-name'
-  | 'cc-family-name'
-  | 'cc-number'
-  | 'cc-exp'
-  | 'cc-exp-month'
-  | 'cc-exp-year'
-  | 'cc-csc'
-  | 'cc-type'
-  | 'transaction-currency'
-  | 'transaction-amount'
-  | 'language'
-  | 'bday'
-  | 'bday-day'
-  | 'bday-month'
-  | 'bday-year'
-  | 'sex'
-  | 'tel'
-  | 'tel-country-code'
-  | 'tel-national'
-  | 'tel-area-code'
-  | 'tel-local'
-  | 'tel-extension'
-  | 'impp'
-  | 'url'
-  | 'photo'
 
 export type InputProps = {
   type: InputType
@@ -84,7 +29,8 @@ export type InputProps = {
 
 export type InputResponseType = 'error' | 'warning' | 'success' | 'none'
 
-export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'condition' | 'custom'
+export type CriteriaType = 'min' | 'max' | 'email' | 'required' | 'regex' | 'condition' | 'function'
+export type ValidationFunction = (value: any) => boolean
 
 export interface InputValidation {
   invalidMessage?: string
@@ -93,7 +39,7 @@ export interface InputValidation {
   validResponseType?: InputResponseType
   condition: {
     type: CriteriaType
-    rule?: number | boolean | RegExp | Function
+    rule?: number | boolean | RegExp | ValidationFunction
   }
   nonBlocking?: boolean
 }
@@ -101,14 +47,14 @@ export interface InputValidation {
 export type InputCriteriaResponse = {
   message: string
   type: InputResponseType
-  icon: IconName | undefined
+  icon?: IconName
   isValid: boolean
 }
 
 export const criteriaRule = (
   type: CriteriaType,
   value: any,
-  rule?: number | boolean | RegExp | Function
+  rule?: number | boolean | RegExp | ValidationFunction
 ) => {
   switch (type) {
     case 'required':
@@ -124,9 +70,9 @@ export const criteriaRule = (
     case 'regex':
       return (rule as RegExp).test(value as string)
     case 'condition':
-      return rule as boolean
-    case 'custom':
-      return (rule as Function)?.(value)
+      return value as boolean
+    case 'function':
+      return (rule as ValidationFunction)?.(value)
     default:
       throw new Error('Unknown criteria type')
   }

@@ -175,22 +175,7 @@ Search.args = {
   placeholder: 'Type your search'
 }
 
-const handleSubmit: FormEventHandler<HTMLFormElement> = (e: SyntheticEvent<HTMLFormElement>) => {
-  e.preventDefault()
-
-  const formElements = e.currentTarget.elements as typeof e.currentTarget.elements & {
-    emailInput: { value: string }
-  }
-
-  console.log(formElements)
-}
-
-export const AutoComplete: Story<InputProps> = (args: InputProps) => (
-  <form onSubmit={handleSubmit}>
-    <Input {...args} />
-    <input type="submit" value="Submit" />
-  </form>
-)
+export const AutoComplete: Story = Template.bind({})
 AutoComplete.args = {
   type: 'email',
   id: 'emailInput',

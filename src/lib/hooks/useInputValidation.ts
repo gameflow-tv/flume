@@ -10,14 +10,14 @@ import {
 import { isEmpty } from 'lodash'
 import { IconName } from '../components'
 
-const getValidationIcon = (errorType: InputResponseType) => {
+const getValidationIcon = (errorType: InputResponseType): IconName => {
   switch (errorType) {
     case 'error':
-      return 'close_filled' as IconName
+      return 'close_filled'
     case 'warning':
-      return 'warning_filled' as IconName
+      return 'warning_filled'
     case 'success':
-      return 'check_circle_filled' as IconName
+      return 'check_circle_filled'
     default:
       return undefined
   }
