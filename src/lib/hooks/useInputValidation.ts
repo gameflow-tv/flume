@@ -37,9 +37,9 @@ const handleResponse = (
     message = !isEmpty(validMessage) ? validMessage : ''
   }
 
-  if (!isValid && nonBlocking) {
-    type = 'warning'
-  }
+  // if (!isValid && nonBlocking) {
+  //   type = 'warning'
+  // }
 
   const icon = getValidationIcon(type)
 
@@ -47,7 +47,8 @@ const handleResponse = (
     message,
     type: type,
     icon,
-    isValid
+    isValid,
+    nonBlocking
   }
 }
 

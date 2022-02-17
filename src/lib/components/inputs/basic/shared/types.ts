@@ -21,8 +21,7 @@ export type InputProps = {
   multipleCriteriaInfo?: boolean
   criteria?: InputValidation | InputValidation[]
   onChange?: ChangeEventHandler<HTMLInputElement>
-  onValidate?: (isValid: boolean) => void
-  onFeedback?: (validationResponse: InputCriteriaResponse | InputCriteriaResponse[]) => void
+  onValidate?: (isValid: boolean, nonBlocking: boolean) => void
   inputStyles?: SharedProps
   readOnly?: boolean
   autoComplete?: AutocompleteValues
@@ -51,6 +50,7 @@ export type InputCriteriaResponse = {
   type: InputResponseType
   icon?: IconName
   isValid: boolean
+  nonBlocking: boolean
 }
 
 export const criteriaRule = (
@@ -82,15 +82,26 @@ export const criteriaRule = (
 
 export const getResultantValidationResponse = (
   validationResponse?: InputCriteriaResponse | InputCriteriaResponse[]
-) => {
+): {
+  isValid: boolean
+  nonBlocking: boolean
+} => {
   if (!validationResponse) {
-    return false
+    return { isValid: false, nonBlocking: false }
   }
 
   if (Array.isArray(validationResponse)) {
-    const allResp = validationResponse.map((v) => v.isValid)
-    return allResp.includes(false) ? false : true
+    const allResp = validationResponse.map((v: InputCriteriaResponse) => {
+      const { isValid, nonBlocking } = v
+      return { isValid, nonBlocking }
+    })
+
+    const found = allResp.find((v) => v.isValid === false)
+
+    if (found) {
+      return found
+    }
   }
 
-  return validationResponse.isValid
+  return { isValid: true, nonBlocking: true }
 }
