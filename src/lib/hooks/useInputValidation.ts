@@ -37,10 +37,6 @@ const handleResponse = (
     message = !isEmpty(validMessage) ? validMessage : ''
   }
 
-  // if (!isValid && nonBlocking) {
-  //   type = 'warning'
-  // }
-
   const icon = getValidationIcon(type)
 
   return {
@@ -73,7 +69,8 @@ const getCriteriaSet = (props: InputProps) => {
           invalidMessage: 'Please fill with a valid e-mail address',
           invalidResponseType: 'warning',
           validResponseType: 'success',
-          condition: { type: 'email' }
+          condition: { type: 'email' },
+          nonBlocking: false
         },
         ...criteriaSet
       ]
@@ -88,7 +85,8 @@ const getCriteriaSet = (props: InputProps) => {
           invalidMessage: 'Please fill in this field',
           invalidResponseType: 'error',
           validResponseType: 'success',
-          condition: { type: 'required' }
+          condition: { type: 'required' },
+          nonBlocking: false
         },
         ...criteriaSet
       ]
