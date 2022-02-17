@@ -103,5 +103,8 @@ export const getResultantValidationResponse = (
     }
   }
 
-  return { isValid: true, nonBlocking: true }
+  return {
+    isValid: (validationResponse as InputCriteriaResponse).isValid,
+    nonBlocking: (validationResponse as InputCriteriaResponse).nonBlocking
+  }
 }
