@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+import React, { FormEvent, FormEventHandler, SyntheticEvent } from 'react'
 import { Input } from './Input'
 import { InputProps } from './shared'
 
@@ -8,7 +8,7 @@ export default {
   component: Input
 }
 
-const Template = (args: InputProps) => (
+const Template: Story<InputProps> = (args: InputProps) => (
   <form>
     <Input {...args} />
   </form>
@@ -173,4 +173,14 @@ Search.args = {
   type: 'search',
   required: true,
   placeholder: 'Type your search'
+}
+
+export const AutoComplete: Story = Template.bind({})
+AutoComplete.args = {
+  type: 'email',
+  id: 'emailInput',
+  label: 'E-mail',
+  required: true,
+  placeholder: 'Type your search',
+  autoComplete: 'email'
 }

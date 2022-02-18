@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps } from '../shared'
+import { getResultantValidationResponse, InputProps } from '../shared'
 import { ActionArea, InputGroup, VerificationWithToggle } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 import { SearchInput } from './Search.styles'
 
 export const Search = (props: InputProps) => {
   const [validationResponse, setValidationResponse] = useInputValidation(props)
+  const [value, setValue] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValidationResponse(e.target.value)
-    if (props.onChange) {
-      props.onChange(e)
-    }
+    setValue(e.target.value)
+    props.onChange && props.onChange(e)
   }
+
+  const cleanUp = () => {
+    value && handleChange.call(null, { target: { value: '' } })
+  }
+
+  useEffect(() => {
+    const { isValid, nonBlocking } = getResultantValidationResponse(validationResponse)
+    props.onValidate?.call(null, isValid, nonBlocking)
+  }, [validationResponse])
 
   return (
     <React.Fragment>
@@ -22,16 +31,18 @@ export const Search = (props: InputProps) => {
         <SearchInput
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           onChange={handleChange}
+          value={value}
           placeholder={props.placeholder}
           readOnly={props.readOnly}
           disabled={props.disabled}
+          autoComplete={props.autoComplete}
           {...props.inputStyles}
         />
         <VerificationWithToggle className={validationResponse?.type} {...props.inputStyles}>
           {validationResponse?.icon && <Icon icon={validationResponse?.icon} />}
         </VerificationWithToggle>
-        <ActionArea className={validationResponse?.type} {...props.inputStyles}>
-          {<Icon icon="search" />}
+        <ActionArea className={validationResponse?.type} {...props.inputStyles} onClick={cleanUp}>
+          {<Icon icon={!value ? 'search' : 'close'} />}
         </ActionArea>
       </InputGroup>
       <ValidationInfo props={props} validationResponse={validationResponse} />

@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
-import { InputProps, InputType } from '../shared'
+import { getResultantValidationResponse, InputProps, InputType } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
 
 import { ActionArea, InputGroup, StyledInput, VerificationWithToggle } from '../shared'
@@ -22,6 +22,11 @@ export const Password = (props: InputProps) => {
       props.onChange(e)
     }
   }
+
+  useEffect(() => {
+    const { isValid, nonBlocking } = getResultantValidationResponse(validationResponse)
+    props.onValidate?.call(null, isValid, nonBlocking)
+  }, [validationResponse])
 
   return (
     <React.Fragment>

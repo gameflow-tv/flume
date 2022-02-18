@@ -1,21 +1,23 @@
 import { useCallback, useState } from 'react'
 import {
   criteriaRule,
+  InputCriteriaResponse,
   InputProps,
   InputResponseType,
   InputValidation
 } from '../components/inputs/basic/shared'
 
 import { isEmpty } from 'lodash'
+import { IconName } from '../components'
 
-const getValidationIcon = (errorType: InputResponseType) => {
+const getValidationIcon = (errorType: InputResponseType): IconName => {
   switch (errorType) {
     case 'error':
       return 'close_filled'
     case 'warning':
       return 'warning_filled'
     case 'success':
-      return 'check_filled'
+      return 'check_circle_filled'
     default:
       return undefined
   }
@@ -25,20 +27,24 @@ const handleResponse = (
   invalidMessage: string,
   validMessage: string,
   type: InputResponseType,
-  isValid: boolean
-) => {
+  nonBlocking: boolean,
+  isValid: boolean,
+  fromMultiple: boolean
+): InputCriteriaResponse => {
   let message = invalidMessage
 
-  if (isValid && !isEmpty(validMessage)) {
-    message = validMessage
+  if (isValid && !fromMultiple) {
+    message = !isEmpty(validMessage) ? validMessage : ''
   }
+
   const icon = getValidationIcon(type)
 
   return {
     message,
     type: type,
     icon,
-    isValid
+    isValid,
+    nonBlocking
   }
 }
 
@@ -62,9 +68,9 @@ const getCriteriaSet = (props: InputProps) => {
         {
           invalidMessage: 'Please fill with a valid e-mail address',
           invalidResponseType: 'warning',
-          validMessage: '',
           validResponseType: 'success',
-          condition: { type: 'email' }
+          condition: { type: 'email' },
+          nonBlocking: false
         },
         ...criteriaSet
       ]
@@ -79,8 +85,8 @@ const getCriteriaSet = (props: InputProps) => {
           invalidMessage: 'Please fill in this field',
           invalidResponseType: 'error',
           validResponseType: 'success',
-          validMessage: '',
-          condition: { type: 'required' }
+          condition: { type: 'required' },
+          nonBlocking: false
         },
         ...criteriaSet
       ]
@@ -98,7 +104,7 @@ export const useInputValidation = (props: InputProps) => {
     if (!props.multipleCriteriaInfo) {
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
-        const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
 
         if (!isValid) {
           setResponse(
@@ -106,26 +112,43 @@ export const useInputValidation = (props: InputProps) => {
               crit.invalidMessage,
               crit.validMessage,
               crit.invalidResponseType,
-              isValid
+              crit.nonBlocking,
+              isValid,
+              false
             )
           )
           break
         } else {
           setResponse(
-            handleResponse(crit.invalidMessage, crit.validMessage, crit.validResponseType, isValid)
+            handleResponse(
+              crit.invalidMessage,
+              crit.validMessage,
+              crit.validResponseType,
+              crit.nonBlocking,
+              isValid,
+              false
+            )
           )
         }
       }
     } else {
-      let validations = []
+      let validations: InputCriteriaResponse[] = []
       for (const key in criteriaSet) {
         const crit = criteriaSet[key]
-        const isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+
         const respType = isValid ? crit.validResponseType : crit.invalidResponseType
 
         validations = [
           ...validations,
-          handleResponse(crit.invalidMessage, crit.validMessage, respType, isValid)
+          handleResponse(
+            crit.invalidMessage,
+            crit.validMessage,
+            respType,
+            crit.nonBlocking,
+            isValid,
+            true
+          )
         ]
       }
 
