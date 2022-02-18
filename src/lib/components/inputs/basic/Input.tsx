@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { isEmpty } from '../../../helpers/general'
 import { InputProps } from './shared'
 import { Checkbox } from '../Checkbox'
@@ -31,7 +31,6 @@ const InputVariant: React.FC<InputProps> = (props) => {
 }
 
 export const Input = (props: InputProps) => {
-  verifyRequiredProps(props)
   const theme = useTheme()
 
   const styles = {
@@ -82,7 +81,13 @@ export const Input = (props: InputProps) => {
     }
   }
 
-  const inputProps: InputProps = { ...props, inputStyles: styles }
+  verifyRequiredProps(props)
+
+  const [inputProps, setInputProps] = useState<InputProps>({ ...props, inputStyles: styles })
+
+  useEffect(() => {
+    setInputProps({ ...props, inputStyles: styles })
+  }, [props])
 
   return (
     <FormGroup>
