@@ -72,7 +72,7 @@ export const criteriaRule = (
     case 'regex':
       return (rule as RegExp).test(value as string)
     case 'condition':
-      return value as boolean
+      return rule as boolean
     case 'function':
       return (rule as ValidationFunction)?.(value)
     default:

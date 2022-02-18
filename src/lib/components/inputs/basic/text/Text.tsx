@@ -21,8 +21,7 @@ export const Text = (props: InputProps) => {
   }, [validationResponse])
 
   useEffect(() => {
-    console.log({ log: 'roso', props })
-    setValidationResponse(props.value)
+    setValidationResponse(props.value, props.criteria)
   }, [props])
 
   return (

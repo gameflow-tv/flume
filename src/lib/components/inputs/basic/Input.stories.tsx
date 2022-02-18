@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React, { FormEvent, FormEventHandler, SyntheticEvent } from 'react'
+import React, { FormEvent, FormEventHandler, SyntheticEvent, useState } from 'react'
 import { Input } from './Input'
 import { InputProps } from './shared'
 
@@ -181,6 +181,42 @@ AutoComplete.args = {
   id: 'emailInput',
   label: 'E-mail',
   required: true,
+  placeholder: 'Type your search',
+  autoComplete: 'email'
+}
+
+export const Conditional: Story<InputProps> = (args: InputProps) => {
+  const [isChecked, setIsChecked] = useState(false)
+  return (
+    <>
+      <input
+        type="checkbox"
+        onChange={(e) => setIsChecked(e.target.checked)}
+        defaultChecked={isChecked}
+      />
+      <Input
+        {...args}
+        criteria={[
+          {
+            invalidMessage: 'Display name is already taken',
+            invalidResponseType: 'error',
+            validMessage: 'Display name is available',
+            validResponseType: 'success',
+            condition: {
+              type: 'condition',
+              rule: isChecked
+            },
+            nonBlocking: false
+          }
+        ]}
+      />
+    </>
+  )
+}
+Conditional.args = {
+  type: 'text',
+  id: 'none',
+  label: 'text',
   placeholder: 'Type your search',
   autoComplete: 'email'
 }
