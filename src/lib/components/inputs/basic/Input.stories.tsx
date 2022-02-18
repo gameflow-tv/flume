@@ -149,7 +149,7 @@ CustomCriteria.args = {
       invalidResponseType: 'warning',
       validMessage: 'Value is equal 6',
       validResponseType: 'success',
-      condition: { type: 'custom', rule: customValidationExampleFunc }
+      condition: { type: 'function', rule: customValidationExampleFunc }
     }
   ]
 }

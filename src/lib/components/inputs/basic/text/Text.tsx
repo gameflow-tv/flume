@@ -20,6 +20,10 @@ export const Text = (props: InputProps) => {
     props.onValidate?.call(null, isValid, nonBlocking)
   }, [validationResponse])
 
+  useEffect(() => {
+    setValidationResponse(props.value)
+  }, [props])
+
   return (
     <React.Fragment>
       <InputGroup {...props.inputStyles}>
