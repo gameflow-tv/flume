@@ -28,6 +28,10 @@ export const Password = (props: InputProps) => {
     props.onValidate?.call(null, isValid, nonBlocking)
   }, [validationResponse])
 
+  useEffect(() => {
+    setValidationResponse(props.value, props.criteria)
+  }, [props])
+
   return (
     <React.Fragment>
       <InputGroup>

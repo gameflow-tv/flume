@@ -98,63 +98,70 @@ const getCriteriaSet = (props: InputProps) => {
 
 export const useInputValidation = (props: InputProps) => {
   const [response, setResponse] = useState(undefined)
-  const criteriaSet = getCriteriaSet(props)
+  let criteriaSet = getCriteriaSet(props)
 
-  const setValidationResponse = useCallback((value: string) => {
-    if (!props.multipleCriteriaInfo) {
-      for (const key in criteriaSet) {
-        const crit = criteriaSet[key]
-        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+  const setValidationResponse = useCallback(
+    (value: string, criterias?: InputValidation | InputValidation[]) => {
+      if (criterias) {
+        criteriaSet = getCriteriaSet({ ...props, criteria: criterias })
+      }
 
-        if (!isValid) {
-          setResponse(
-            handleResponse(
-              crit.invalidMessage,
-              crit.validMessage,
-              crit.invalidResponseType,
-              crit.nonBlocking,
-              isValid,
-              false
+      if (!props.multipleCriteriaInfo) {
+        for (const key in criteriaSet) {
+          const crit = criteriaSet[key]
+          let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+
+          if (!isValid) {
+            setResponse(
+              handleResponse(
+                crit.invalidMessage,
+                crit.validMessage,
+                crit.invalidResponseType,
+                crit.nonBlocking,
+                isValid,
+                false
+              )
             )
-          )
-          break
-        } else {
-          setResponse(
-            handleResponse(
-              crit.invalidMessage,
-              crit.validMessage,
-              crit.validResponseType,
-              crit.nonBlocking,
-              isValid,
-              false
+            break
+          } else {
+            setResponse(
+              handleResponse(
+                crit.invalidMessage,
+                crit.validMessage,
+                crit.validResponseType,
+                crit.nonBlocking,
+                isValid,
+                false
+              )
             )
-          )
+          }
         }
+      } else {
+        let validations: InputCriteriaResponse[] = []
+        for (const key in criteriaSet) {
+          const crit = criteriaSet[key]
+          let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
+
+          const respType = isValid ? crit.validResponseType : crit.invalidResponseType
+
+          validations = [
+            ...validations,
+            handleResponse(
+              crit.invalidMessage,
+              crit.validMessage,
+              respType,
+              crit.nonBlocking,
+              isValid,
+              true
+            )
+          ]
+        }
+
+        setResponse(validations)
       }
-    } else {
-      let validations: InputCriteriaResponse[] = []
-      for (const key in criteriaSet) {
-        const crit = criteriaSet[key]
-        let isValid = criteriaRule(crit.condition.type, value, crit.condition?.rule)
-
-        const respType = isValid ? crit.validResponseType : crit.invalidResponseType
-
-        validations = [
-          ...validations,
-          handleResponse(
-            crit.invalidMessage,
-            crit.validMessage,
-            respType,
-            crit.nonBlocking,
-            isValid,
-            true
-          )
-        ]
-      }
-
-      setResponse(validations)
-    }
-  }, [])
+    },
+    []
+  )
 
   return [response, setValidationResponse]
 }
