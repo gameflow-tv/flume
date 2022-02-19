@@ -63,9 +63,9 @@ export const criteriaRule = (
     case 'required':
       return !isEmpty(value as string)
     case 'min':
-      return (value as string).length >= (rule as number)
+      return (value as string)?.length >= (rule as number)
     case 'max':
-      return (value as string).length <= (rule as number)
+      return (value as string)?.length <= (rule as number)
     case 'email':
       return new RegExp(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
