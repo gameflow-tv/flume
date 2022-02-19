@@ -25,7 +25,7 @@ export type InputProps = {
   inputStyles?: SharedProps
   readOnly?: boolean
   autoComplete?: AutocompleteValues
-  forwardedRef: React.Ref<HTMLInputElement>
+  forwardedRef?: React.Ref<HTMLInputElement>
 } & React.HTMLProps<HTMLInputElement>
 
 export type InputResponseType = 'error' | 'warning' | 'success' | 'none'
