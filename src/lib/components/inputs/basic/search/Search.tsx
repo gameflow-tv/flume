@@ -33,6 +33,7 @@ export const Search = (props: InputProps) => {
     <React.Fragment>
       <InputGroup>
         <SearchInput
+          ref={props.forwardedRef}
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           onChange={handleChange}
           value={value}

@@ -36,6 +36,7 @@ export const Password = (props: InputProps) => {
     <React.Fragment>
       <InputGroup>
         <StyledInput
+          ref={props.forwardedRef}
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           type={initialType}
           onChange={handleChange}

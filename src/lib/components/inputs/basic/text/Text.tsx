@@ -29,6 +29,7 @@ export const Text = (props: InputProps) => {
       <InputGroup {...props.inputStyles}>
         <GlobalInput
           id={props.id}
+          ref={props.forwardedRef}
           className={`${validationResponse && 'validation'} ${validationResponse?.type}`}
           defaultValue={props.value}
           placeholder={props.placeholder}
