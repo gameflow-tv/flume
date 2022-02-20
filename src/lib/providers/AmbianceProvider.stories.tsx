@@ -42,7 +42,19 @@ export const Sample = () => {
               <AmbientBox>
                 <AmbientBox>
                   <AmbientBox>
-                    <AmbientBox></AmbientBox>
+                    <AmbientBox>
+                      <Ambiance elevation={0}>
+                        <AmbianceContext.Consumer>
+                          {(ambiance) => {
+                            return (
+                              <ColorBox color={ambiance.color}>
+                                <p>Elevation (forced): {ambiance.elevation}</p>
+                              </ColorBox>
+                            )
+                          }}
+                        </AmbianceContext.Consumer>
+                      </Ambiance>
+                    </AmbientBox>
                   </AmbientBox>
                 </AmbientBox>
               </AmbientBox>

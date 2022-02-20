@@ -27,9 +27,9 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
 
-  if (!parent && !elevation) {
+  if (!parent && typeof elevation === 'undefined') {
     elevation = 0
-  } else if (!elevation) {
+  } else if (typeof elevation === 'undefined') {
     elevation = parent.elevation + 1
   }
 
