@@ -20,6 +20,8 @@ const parseBreakpoints = (breakpoints: Breakpoints): NumberedBreakpoints => {
 export type BreakpointsProps = {
   breakpoints: NumberedBreakpoints
   current: keyof Breakpoints
+  isMobile: boolean
+  isDesktop: boolean
 }
 
 /** Retrieves a numbered version of the current Theme's breakpoints as well as the currently exceeded breakpoint */
@@ -29,10 +31,15 @@ export const useBreakpoints = () => {
   const current = useCurrentBreakpoint()
   const dimensions = useWindowDimensions()
 
+  const isMobile = dimensions.width.rem < breakpoints.lg
+  const isDesktop = dimensions.width.rem >= breakpoints.lg
+
   return {
     breakpoints,
     current,
-    dimensions
+    dimensions,
+    isMobile,
+    isDesktop
   }
 }
 
