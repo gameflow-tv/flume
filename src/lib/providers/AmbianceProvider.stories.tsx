@@ -16,7 +16,15 @@ const ColorBox = styled.div<{ color?: string; size?: string }>`
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 `
 
-const AmbientBox = ({ children, color, elevation }: { children?: ReactNode, color?: string, elevation?: number }) => {
+const AmbientBox = ({
+  children,
+  color,
+  elevation
+}: {
+  children?: ReactNode
+  color?: string
+  elevation?: number
+}) => {
   return (
     <Ambiance color={color} elevation={elevation}>
       <AmbianceContext.Consumer>
