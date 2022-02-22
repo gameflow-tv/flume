@@ -38,13 +38,13 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   if (!parent && !color) {
     color = theme.colors.card
   } else if (!color) {
-    color = parent.root.color
+    color = parent.source
   }
 
-  if (!parent) {
-    source = color
-  } else {
+  if (!color && parent) {
     source = parent.source
+  } else {
+    source = color
   }
 
   let tmp = {
