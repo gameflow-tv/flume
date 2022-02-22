@@ -9,6 +9,7 @@ export type AmbianceProps = {
   child?: AmbianceProps
   color: string
   elevation: number
+  source?: string
 }
 
 type AmbianceProviderProps = {
@@ -26,6 +27,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
 }: AmbianceProviderProps) => {
   const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
+  let source
 
   if (!parent && typeof elevation === 'undefined') {
     elevation = 0
@@ -39,12 +41,19 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
     color = parent.root.color
   }
 
+  if (!parent) {
+    source = color
+  } else {
+    source = parent.source
+  }
+
   let tmp = {
     bottom: null,
     root: null,
     parent,
     elevation,
-    color: getColorFromElevation(color, elevation)
+    color: getColorFromElevation(source, elevation),
+    source
   }
 
   let value: AmbianceProps = {
