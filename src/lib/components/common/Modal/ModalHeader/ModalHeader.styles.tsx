@@ -4,7 +4,7 @@ import theme from '../../../../theme/theme'
 import { ModalHeaderProps } from './ModalHeader'
 
 export const Header = styled.div<ModalHeaderProps>`
-  color: ${(props) => props.color ?? theme.colors.primaryText};
+  color: ${(props) => props.color ?? theme.colors.header};
   ${(props) => typographyToCss(theme.typography.header1)};
   text-align: ${(props) => props.textAlign ?? 'center'};
   margin-bottom: 32px;

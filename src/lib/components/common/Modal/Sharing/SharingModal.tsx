@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Icon } from '../../../icons'
 import { IconButton } from '../../../buttons'
-import { useTheme } from '../../../../hooks'
+import { useAmbiance, useTheme } from '../../../../hooks'
 import { Modal, ModalProps } from '../Modal'
 import {
   ButtonsWrapper,
@@ -14,6 +14,7 @@ import {
 } from './SharingModal.styles'
 import { getLuminance } from '../../../../helpers'
 import { Input } from '../../../inputs'
+import { Ambiance, AmbianceContext } from '../../../../providers/AmbianceProvider'
 
 export type FacebookSharingProps = {
   app_id: string | number
@@ -68,12 +69,7 @@ const getTwitterShareLink = (sharingData: TwitterSharingProps, link: string) => 
 export const SharingModal = (props: SharingModalProps) => {
   const [linkCopied, setLinkCopied] = useState(false)
   const theme = useTheme()
-
-  const styles = {
-    backgroundColor: props.backgroundColor || theme.colors.background
-  }
-
-  const { lum04 } = getLuminance(styles.backgroundColor)
+  const ambiance = useAmbiance()
 
   const sharingData = {
     link: props.story ? 'https://flume.gameflow.tv' : props.link || document?.location?.href || '',
@@ -111,53 +107,61 @@ export const SharingModal = (props: SharingModalProps) => {
   }
 
   return (
-    <Modal size="546px" {...props} {...styles}>
-      <SharingHeader>Share link</SharingHeader>
-      <SharingBody>
-        <Input
-          type="text"
-          value={sharingData.link}
-          inputStyles={{ input: { disabled: { backgroundColor: lum04 } } }}
-          disabled
-        />
-        <ButtonsWrapper>
-          <div>
-            <SharingButton variant="primary" size="medium" onClick={handleCopy}>
-              <React.Fragment>
-                {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
-                <Icon
-                  icon={linkCopied ? 'check_circle_filled' : 'link'}
-                  color={theme.colors.onPrimary}
+    <Modal size="546px" {...props} backgroundColor={ambiance.color}>
+      <Ambiance>
+        <AmbianceContext.Consumer>
+          {(ambiance) => (
+            <>
+              <SharingHeader>Share link</SharingHeader>
+              <SharingBody>
+                <Input
+                  type="text"
+                  value={sharingData.link}
+                  inputStyles={{ input: { disabled: { backgroundColor: ambiance.color } } }}
+                  disabled
                 />
-              </React.Fragment>
-            </SharingButton>
-          </div>
-          <SocialWrapper>
-            {navigator.share && (
-              <SocialButton
-                icon="share"
-                size="large"
-                onClick={() => handleShareAPI()}
-                backgroundColor={lum04}
-              />
-            )}
-            <SocialLink
-              href={getFBShareLink(props.facebook, sharingData.link)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconButton size="large" icon="facebook" backgroundColor={lum04} />
-            </SocialLink>
-            <SocialLink
-              href={getTwitterShareLink(twitterData, sharingData.link)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <IconButton size="large" icon="twitter" backgroundColor={lum04} />
-            </SocialLink>
-          </SocialWrapper>
-        </ButtonsWrapper>
-      </SharingBody>
+                <ButtonsWrapper>
+                  <div>
+                    <SharingButton variant="primary" size="medium" onClick={handleCopy}>
+                      <React.Fragment>
+                        {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
+                        <Icon
+                          icon={linkCopied ? 'check_circle_filled' : 'link'}
+                          color={theme.colors.onPrimary}
+                        />
+                      </React.Fragment>
+                    </SharingButton>
+                  </div>
+                  <SocialWrapper>
+                    {navigator.share && (
+                      <SocialButton
+                        icon="share"
+                        size="large"
+                        onClick={() => handleShareAPI()}
+                        background={ambiance.color}
+                      />
+                    )}
+                    <SocialLink
+                      href={getFBShareLink(props.facebook, sharingData.link)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <IconButton size="large" icon="facebook" background={ambiance.color} />
+                    </SocialLink>
+                    <SocialLink
+                      href={getTwitterShareLink(twitterData, sharingData.link)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <IconButton size="large" icon="twitter" background={ambiance.color} />
+                    </SocialLink>
+                  </SocialWrapper>
+                </ButtonsWrapper>
+              </SharingBody>
+            </>
+          )}
+        </AmbianceContext.Consumer>
+      </Ambiance>
     </Modal>
   )
 }

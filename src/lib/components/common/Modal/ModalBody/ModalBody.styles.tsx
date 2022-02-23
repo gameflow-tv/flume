@@ -9,7 +9,7 @@ export const Body = styled.div<ModalBodyProps>`
   justify-content: ${(props) => props.justifyContent ?? null};
   align-items: ${(props) => props.alignItems ?? null};
   position: relative;
-  color: ${(props) => props.color ?? theme.colors.secondaryText};
+  color: ${(props) => props.color ?? theme.colors.body};
   ${(props) => typographyToCss(theme.typography.body1)}
   text-align: ${(props) => props.textAlign ?? 'center'};
   overflow: auto;

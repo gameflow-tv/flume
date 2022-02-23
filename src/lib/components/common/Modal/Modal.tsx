@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React, { ReactNode } from 'react'
+import { useTheme } from '../../../hooks'
 import { Icon } from '../../icons'
 import { Body, CloseButton, Footer, Header, ModalContent, ModalOverlay } from './Modal.styles'
 import { ModalBodyProps } from './ModalBody/ModalBody'
@@ -43,11 +44,8 @@ export const Modal = ({
   size,
   position,
   modalHeader,
-  modalHeaderProps,
   modalBody,
-  modalBodyProps,
   modalFooter,
-  modalFooterProps,
   children,
   onClose,
   padding,
@@ -55,13 +53,7 @@ export const Modal = ({
   ariaLabel,
   backgroundColor
 }: Partial<ModalProps>) => {
-  const styles = {
-    show: show,
-    size: size ?? 'md',
-    position: position ?? 'middle',
-    animation: animation ?? 'appear',
-    backgroundColor: backgroundColor
-  }
+  const theme = useTheme()
 
   const handleClick = (e) => {
     if (['ModalCloseButton', 'ModalOverlay'].includes(e.target.id) && closeOnlyOnButton === false) {
@@ -78,20 +70,29 @@ export const Modal = ({
       id="ModalOverlay"
       className={show === true && 'show'}
       onClick={handleClick}
-      {...styles}
+      position={position ?? 'middle'}
+      animation={animation ?? 'appear'}
+      background={backgroundColor}
+      transition={theme.transitions.long}
     >
       <ModalContent
         id={id || `dialog${_.uniqueId()}`}
+        shadow={theme.shadows.small}
+        transition={theme.transitions.long}
+        borderRadius={theme.shapes.borders.medium}
+        size={size ?? 'md'}
+        color={theme.colors.header}
+        animation={animation ?? 'appear'}
+        background={backgroundColor}
         className={show === true && 'show'}
         padding={padding}
-        ariaLabelledby={ariaLabelledby}
-        ariaLabel={ariaLabel}
-        ariaHidden={show === false ? true : undefined}
-        ariaModal={show === true ? show : undefined}
-        {...styles}
+        aria-labeledby={ariaLabelledby}
+        aria-label={ariaLabel}
+        aria-hidden={show === false ? true : undefined}
+        aria-modal={show === true ? show : undefined}
       >
         {closeOnlyOnButton === true || showCloseButton ? (
-          <CloseButton id="ModalCloseButton" onClick={handleClick} {...styles}>
+          <CloseButton id="ModalCloseButton" onClick={handleClick} color={theme.colors.subtitle}>
             <Icon icon="close" />
           </CloseButton>
         ) : null}
@@ -99,9 +100,25 @@ export const Modal = ({
           children
         ) : (
           <React.Fragment>
-            {modalHeader && <Header {...modalHeaderProps}>{modalHeader}</Header>}
-            {modalBody && <Body {...modalBodyProps}>{modalBody}</Body>}
-            {modalFooter && <Footer {...modalFooterProps}>{modalFooter}</Footer>}
+            {modalHeader && (
+              <Header typography={theme.typography.header1} color={theme.colors.header}>
+                {modalHeader}
+              </Header>
+            )}
+            {modalBody && (
+              <Body
+                typography={theme.typography.body1}
+                color={theme.colors.body}
+                scrollbarColor={theme.colors.primary}
+              >
+                {modalBody}
+              </Body>
+            )}
+            {modalFooter && (
+              <Footer typography={theme.typography.body3} color={theme.colors.subtitle}>
+                {modalFooter}
+              </Footer>
+            )}
           </React.Fragment>
         )}
       </ModalContent>

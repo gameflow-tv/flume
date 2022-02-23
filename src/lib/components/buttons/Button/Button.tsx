@@ -51,7 +51,7 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
     variant: props.variant ? props.variant : 'primary',
     borderRadius: theme.shapes.borders.small,
     glow: theme.shadows.glow,
-    borderColor: theme.colors.buttonBorder,
+    borderColor: theme.colors.buttonFocus,
     typography: theme.typography.button,
     horizontalMargin: horizontalMargin,
     verticalMargin: verticalMargin,
@@ -70,8 +70,8 @@ export const getButtonStyles = (props: ButtonProps, theme: Theme): ButtonProps =
       }
     case 'secondary':
       return {
-        backgroundColor: ambiance?.color ? ambiance.color : theme.colors.secondaryButton,
-        foregroundColor: theme.colors.onSecondaryButton,
+        backgroundColor: ambiance?.color ? ambiance.color : theme.colors.secondary,
+        foregroundColor: theme.colors.onSecondary,
         ...common
       }
     case 'signal':

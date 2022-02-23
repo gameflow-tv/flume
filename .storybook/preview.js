@@ -1,4 +1,5 @@
 import React from 'react'
+import { Ambiance } from '../src/lib/providers/AmbianceProvider'
 import { ThemeProvider } from '../src'
 import '../src/lib/theme/fonts.css'
 import theme from './theme'
@@ -6,7 +7,9 @@ import theme from './theme'
 export const decorators = [
   (Story) => (
     <ThemeProvider>
-      <Story />
+      <Ambiance elevation={1}>
+        <Story />
+      </Ambiance>
     </ThemeProvider>
   )
 ]

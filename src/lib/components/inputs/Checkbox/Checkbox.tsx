@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import { TypographyStyle } from '../../../theme'
 import { CheckInput, SpanEl, SpanProps, Wrapper } from './Checkbox.styles'
-import { useTheme } from '../../../hooks'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { Icon } from '../../icons'
 
 export type CheckboxProps = {
@@ -39,15 +39,16 @@ export const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   const theme = useTheme()
+  const ambiance = useAmbiance()
 
   const styles: SpanProps = {
     typography: props.typography || theme.typography.body2,
     checkedBackground: props.checkedBackground || theme.colors.primary,
-    uncheckedBackground: props.uncheckedBackground || theme.colors.background,
-    uncheckedBorder: props.uncheckedBorder || theme.colors.uncheckedBorder,
+    uncheckedBackground: props.uncheckedBackground || ambiance.color,
+    uncheckedBorder: props.uncheckedBorder || ambiance.child.color,
     checkedBorder: props.checkedBorder || theme.colors.onPrimary,
     checkedTextColor: props.checkedTextColor || theme.colors.onPrimary,
-    uncheckedTextColor: props.uncheckedTextColor || theme.colors.primaryText,
+    uncheckedTextColor: props.uncheckedTextColor || theme.colors.header,
     width: props.width,
     height: props.height,
     spacing: theme.spacing.xxsmall,

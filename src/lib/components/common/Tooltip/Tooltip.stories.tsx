@@ -1,45 +1,57 @@
 import { Story } from '@storybook/react'
 import React from 'react'
 import { Tooltip, TooltipProps } from './Tooltip'
-import { TooltipTarget } from './Tooltip.styles'
 
 export default {
   title: 'components/Tooltip',
   component: Tooltip
 }
 
+const Target = () => {
+  return (
+    <div
+      style={{
+        width: '50px',
+        height: '50px',
+        backgroundColor: 'black',
+        color: 'white',
+        padding: '16px',
+        borderRadius: '8px'
+      }}
+    >
+      <p>Target</p>
+    </div>
+  )
+}
+
 const Template = (props: TooltipProps) => {
-  return (
-    <Tooltip label="This is a tooltip" position="top">
-      <div style={{ height: '50px', width: '50px', backgroundColor: 'black' }}>I am target</div>
-    </Tooltip>
-  )
+  return <Tooltip label={props.label} position={props.position} children={props.children} />
 }
-export const Default: Story = Template.bind({})
 
-const Bottom = (props: TooltipProps) => {
-  return (
-    <Tooltip label="This is a tooltip" position="bottom">
-      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
-    </Tooltip>
-  )
+export const Bottom = Template.bind({})
+Bottom.args = {
+  label: 'Tooltip',
+  position: 'bottom',
+  children: <Target />
 }
-export const BottomTooltip: Story = Bottom.bind({})
 
-const Left = (props: TooltipProps) => {
-  return (
-    <Tooltip label="This is a tooltip" position="left">
-      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
-    </Tooltip>
-  )
+export const Top = Template.bind({})
+Top.args = {
+  label: 'Tooltip',
+  position: 'top',
+  children: <Target />
 }
-export const LeftTooltip: Story = Left.bind({})
 
-const Right = (props: TooltipProps) => {
-  return (
-    <Tooltip label="This is a tooltip" position="right">
-      <div style={{ height: '100px', width: '100px', backgroundColor: 'black' }}>I am target</div>
-    </Tooltip>
-  )
+export const Left = Template.bind({})
+Left.args = {
+  label: 'Tooltip',
+  position: 'left',
+  children: <Target />
 }
-export const RightTooltip: Story = Right.bind({})
+
+export const Right = Template.bind({})
+Right.args = {
+  label: 'Tooltip',
+  position: 'right',
+  children: <Target />
+}

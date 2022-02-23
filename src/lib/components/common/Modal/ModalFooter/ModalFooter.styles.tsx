@@ -4,7 +4,7 @@ import theme from '../../../../theme/theme'
 import { ModalFooterProps } from './ModalFooter'
 
 export const Footer = styled.div<ModalFooterProps>`
-  color: ${(props) => props.color ?? theme.colors.tertiaryText};
+  color: ${(props) => props.color ?? theme.colors.subtitle};
   text-align: ${(props) => props.textAlign ?? 'center'};
   ${(props) => typographyToCss(theme.typography.body2)};
   margin-top: 32px;

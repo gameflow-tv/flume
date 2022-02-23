@@ -43,7 +43,7 @@ const AmbientBox = ({
 
 export const Sample = () => {
   return (
-    <Ambiance>
+    <Ambiance elevation={0}>
       <AmbianceContext.Consumer>
         {(ambiance) => {
           return (
@@ -80,15 +80,15 @@ export const Sample = () => {
 
 export const MixedSource = () => {
   return (
-    <Ambiance>
+    <Ambiance elevation={0}>
       <AmbianceContext.Consumer>
         {(ambiance) => {
           return (
             <ColorBox color={ambiance.color}>
               <p>Elevation: {ambiance.elevation}</p>
               <AmbientBox>
-                <AmbientBox color="#ff0000" elevation={0}>
-                  <AmbientBox>
+                <AmbientBox>
+                  <AmbientBox color="#ff0000" elevation={0}>
                     <AmbientBox>
                       <AmbientBox>
                         <Ambiance elevation={0}>

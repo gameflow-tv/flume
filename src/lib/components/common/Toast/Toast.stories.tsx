@@ -8,12 +8,12 @@ export default {
   component: Toast,
   argTypes: {
     horizontalAlign: {
-      options: ['left', 'middle', 'right'],
+      options: ['left', 'center', 'right'],
       control: { type: 'radio' },
-      defaultValue: 'middle'
+      defaultValue: 'center'
     },
     verticalAlign: {
-      options: ['top', 'middle', 'bottom'],
+      options: ['top', 'center', 'bottom'],
       control: { type: 'radio' },
       defaultValue: 'top'
     },
@@ -36,17 +36,20 @@ const lorem = (
 )
 
 const Template = (args: ToastProps) => {
-  const refToastRef = useRef(null)
+  const toastRef = useRef(null)
   return (
-    <div>
-      <Toast ref={refToastRef} {...args} />
+    <>
+      <Toast ref={toastRef} {...args} />
       <Button
         variant="primary"
         size="large"
         label="Show Toast"
-        onClick={() => refToastRef.current?.show()}
+        onClick={() => {
+          console.log(toastRef.current)
+          toastRef.current?.show()
+        }}
       />
-    </div>
+    </>
   )
 }
 
@@ -59,7 +62,7 @@ export const MidRight: Story<ToastProps> = Template.bind({})
 MidRight.args = {
   children: lorem,
   horizontalAlign: 'right',
-  verticalAlign: 'middle'
+  verticalAlign: 'center'
 }
 export const VerticalBottom: Story<ToastProps> = Template.bind({})
 VerticalBottom.args = {
@@ -77,30 +80,26 @@ TopLeft.args = {
 export const MidBottom: Story<ToastProps> = Template.bind({})
 MidBottom.args = {
   children: lorem,
-  horizontalAlign: 'middle',
+  horizontalAlign: 'center',
   verticalAlign: 'bottom'
 }
 
 export const Middle: Story<ToastProps> = Template.bind({})
 Middle.args = {
   children: lorem,
-  horizontalAlign: 'middle',
-  verticalAlign: 'middle',
+  horizontalAlign: 'center',
+  verticalAlign: 'center',
   zIndex: 2
 }
 
 export const LongEffect: Story<ToastProps> = Template.bind({})
 LongEffect.args = {
   children: lorem,
-  duration: 5000,
-  animation: {
-    slideInTime: 1500,
-    slideOutTime: 2000
-  }
+  duration: 5000
 }
 
 export const CustomColor: Story<ToastProps> = Template.bind({})
 CustomColor.args = {
   children: lorem,
-  backgroundColor: '#2e3a45'
+  background: '#2e3a45'
 }

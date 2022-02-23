@@ -36,7 +36,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   }
 
   if (!parent && !color) {
-    color = theme.colors.card
+    color = theme.colors.secondary
   } else if (!color) {
     color = parent.source
   }

@@ -61,7 +61,7 @@ export const Icon = ({
         viewBox="0 0 24 24"
         width="100%"
         height="100%"
-        fill={color ? color : theme.colors.primaryText}
+        fill={color ? color : theme.colors.header}
       >
         <path d={IconData[icon as IconName]} style={{ fillRule: 'evenodd' }} />
       </svg>

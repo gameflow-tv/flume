@@ -1,6 +1,5 @@
 import { Story } from '@storybook/react'
 import React from 'react'
-import { Ambiance } from '../../../providers'
 import { ScrollButton } from './ScrollButton'
 
 export default {
@@ -8,11 +7,7 @@ export default {
   component: ScrollButton
 }
 
-const Template = () => (
-  <Ambiance>
-    <ScrollButton />
-  </Ambiance>
-)
+const Template = () => <ScrollButton visible />
 
 export const Scroll: Story = Template.bind({})
 Scroll.args = {}

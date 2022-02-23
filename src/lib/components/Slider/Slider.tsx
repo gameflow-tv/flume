@@ -13,7 +13,7 @@ import {
   WrapperProps
 } from './Slider.styles'
 import { transitionToCss } from '../../theme'
-import { useTheme } from '../../hooks'
+import { useAmbiance, useTheme } from '../../hooks'
 import { LabelPosition } from '../inputs'
 
 export type SliderProps = {
@@ -42,14 +42,15 @@ export const Slider = ({
   step
 }: SliderProps) => {
   const theme = useTheme()
+  const ambiance = useAmbiance()
 
   const styles: RangeProps & WrapperProps & SliderLabelProps & RangeLabelProps & RangeWrapProps = {
-    trackColor: theme.colors.sliderBackground,
+    trackColor: ambiance.color,
     thumbColor: theme.colors.primary,
     transition: transitionToCss(theme.transitions.short),
     gap: theme.spacing.xsmall,
     labelTypography: theme.typography.header5,
-    labelColor: theme.colors.onTextField,
+    labelColor: theme.colors.body,
     labelPosition,
     labelMargin: theme.spacing.xxsmall
   }

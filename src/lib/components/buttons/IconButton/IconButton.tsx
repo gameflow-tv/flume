@@ -23,29 +23,29 @@ const getIconButtonStyles = (props: IconButtonProps, theme: Theme): IconButtonPr
     transition: theme.transitions.short,
     shadow: theme.shadows.xsmall,
     hoverShadow: theme.shadows.small,
-    borderColor: theme.colors.buttonBorder,
+    borderColor: theme.colors.buttonFocus,
     glow: theme.shadows.glow
   }
 
   switch (props.variant) {
     case 'signal':
       return {
-        backgroundColor: theme.colors.signal,
-        foregroundColor: theme.colors.onSignal,
+        background: theme.colors.signal,
+        foreground: theme.colors.onSignal,
         ...common
       }
 
     case 'primary':
       return {
-        backgroundColor: theme.colors.primary,
-        foregroundColor: theme.colors.onPrimary,
+        background: theme.colors.primary,
+        foreground: theme.colors.onPrimary,
         ...common
       }
     default:
       return {
-        backgroundColor: theme.colors.iconButton,
-        foregroundColor: theme.colors.onIconButton,
-        hoverForegroundColor: theme.colors.primaryText,
+        background: theme.colors.secondary,
+        foreground: theme.colors.onSecondary,
+        hoverForeground: theme.colors.header,
         ...common
       }
   }
@@ -57,14 +57,14 @@ export const IconButton = (props: IconButtonProps) => {
 
   const styles = getIconButtonStyles(props, theme)
 
-  if (!props.backgroundColor && props.variant === 'secondary' && ambiance) {
-    styles.backgroundColor = ambiance.color
-    styles.hoverBackgroundColor = ambiance.child.color
-  }
-
   return (
-    <StyledIconButton {...styles} onClick={props.onClick}>
-      <Icon icon={styles.icon} size={styles.size} color={styles.foregroundColor} />
+    <StyledIconButton
+      hoverBackground={ambiance.child.color}
+      background={ambiance.color}
+      onClick={props.onClick}
+      {...styles}
+    >
+      <Icon icon={styles.icon} size={styles.size} color={styles.foreground} />
     </StyledIconButton>
   )
 }

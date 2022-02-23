@@ -21,13 +21,12 @@ export const ScrollButton = ({ onClick, left, right, visible }: ScrollButtonProp
     <IconButton
       icon={icon}
       size="xlarge"
-      backgroundColor={ambiance?.color ?? theme.colors.secondaryButton}
-      hoverBackgroundColor={
-        ambiance?.bottom.color ?? chroma(theme.colors.secondaryButton).luminance(0.04).hex()
+      background={ambiance?.color ?? theme.colors.secondary}
+      foreground={theme.colors.icon}
+      hoverBackground={
+        ambiance?.bottom.color ?? chroma(theme.colors.secondary).luminance(0.4).hex()
       }
-      hoverForegroundColor={
-        ambiance?.root.color ?? chroma(theme.colors.secondaryButton).luminance(0.4).hex()
-      }
+      hoverForeground={ambiance?.root.color ?? chroma(theme.colors.secondary).luminance(0.2).hex()}
       onClick={onClick}
       hidden={!visible}
     />

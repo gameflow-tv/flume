@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import React from 'react'
 import { LabelPosition } from '../inputs'
-import { useTheme } from '../../hooks'
+import { useAmbiance, useTheme } from '../../hooks'
 import { transitionToCss } from '../../theme'
 import {
   SwitchKnob,
@@ -31,10 +31,11 @@ export const Switch = ({
   labelPosition
 }: SwitchProps) => {
   const theme = useTheme()
+  const ambiance = useAmbiance()
 
   const styles: SwitchKnobProps & SwitchTrackProps & WrapperProps & SwitchLabelProps = {
-    backgroundColor: theme.colors.toggle,
-    foregroundColor: theme.colors.onToggle,
+    backgroundColor: ambiance.color,
+    foregroundColor: theme.colors.header,
     checkedColor: theme.colors.primary,
     transition: transitionToCss(theme.transitions.short),
     knobRadius: theme.shapes.borders.full,
@@ -43,7 +44,7 @@ export const Switch = ({
     knobShadow: theme.shadows.xsmall,
     gap: theme.spacing.xsmall,
     labelTypography: theme.typography.header5,
-    labelColor: theme.colors.onTextField,
+    labelColor: theme.colors.body,
     labelPosition,
     checked
   }

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
-import { typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
+import { TooltipPosition } from '.'
+import { TypographyStyle, typographyToCss } from '../../../theme'
 import { TooltipProps } from './Tooltip'
 
 export const TooltipWrapper = styled.div`
@@ -55,15 +55,24 @@ export const CenterContainer = styled.div<TooltipProps>`
     }
   }}
 `
-export const TooltipBox = styled.span<TooltipProps>`
-  ${typographyToCss(theme.typography.body1)};
-  color: ${theme.colors.secondaryText};
+export const TooltipBox = styled.span<{
+  typography: TypographyStyle
+  color: string
+  background: string
+  borderRadius: string
+  padding: string
+  show: boolean
+  position: TooltipPosition
+  shadow: string
+}>`
+  ${(props) => typographyToCss(props.typography)};
+  color: ${(props) => props.color};
   position: relative;
-  background-color: ${theme.colors.onBackground};
+  background-color: ${(props) => props.background};
   text-align: center;
-  border-radius: ${theme.shapes.borders.small};
-  padding: ${theme.spacing.xsmall};
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: ${(props) => props.borderRadius};
+  padding: ${(props) => props.padding};
+  box-shadow: ${(props) => props.shadow};
   transform: ${(props) => (props.show ? 'translateY(-10px)' : 'translateY(-50%)')};
   visibility: ${(props) => (props.show ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.show ? '1' : '0')};
@@ -93,17 +102,17 @@ export const TooltipBox = styled.span<TooltipProps>`
     height: 1px;
     border-width: 5px;
     border-style: solid;
-    border-color: ${theme.colors.onBackground} transparent transparent transparent;
+    border-color: ${(props) => props.borderRadius} transparent transparent transparent;
     left: calc(50% - 4.5px);
     top: 100%;
   }
 
-  ${({ position }) => {
+  ${({ position, background }) => {
     switch (position) {
       case 'bottom':
         return css`
           &::after {
-            border-color: transparent transparent ${theme.colors.onBackground} transparent;
+            border-color: transparent transparent ${background} transparent;
             top: unset;
             width: 1px;
             bottom: 100%;
@@ -113,7 +122,7 @@ export const TooltipBox = styled.span<TooltipProps>`
       case 'left':
         return css`
           &::after {
-            border-color: transparent transparent transparent ${theme.colors.onBackground};
+            border-color: transparent transparent transparent ${background};
             left: 100%;
             top: calc(50% - 5px);
           }
@@ -121,14 +130,21 @@ export const TooltipBox = styled.span<TooltipProps>`
       case 'right':
         return css`
           &::after {
-            border-color: transparent ${theme.colors.onBackground} transparent transparent;
+            border-color: transparent ${background} transparent transparent;
             right: 100%;
             left: unset;
             top: calc(50% - 5px);
           }
         `
       default:
-        return css``
+        return css`
+          &::after {
+            border-color: ${background} transparent transparent transparent;
+            right: 100%;
+            left: calc(50% - 5px);
+            bottom: unset;
+          }
+        `
     }
   }}
 `
