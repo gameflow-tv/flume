@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { Icon } from '../../../icons'
-import { IconButton } from '../../../buttons'
+import { Button, IconButton } from '../../../buttons'
 import { useAmbiance, useTheme } from '../../../../hooks'
 import { Modal, ModalProps } from '../Modal'
 import {
   ButtonsWrapper,
   SharingBody,
-  SharingButton,
   SharingHeader,
   SocialButton,
   SocialLink,
@@ -112,7 +111,7 @@ export const SharingModal = (props: SharingModalProps) => {
         <AmbianceContext.Consumer>
           {(ambiance) => (
             <>
-              <SharingHeader>Share link</SharingHeader>
+              <SharingHeader typography={theme.typography.header2}>Share link</SharingHeader>
               <SharingBody>
                 <Input
                   type="text"
@@ -122,7 +121,7 @@ export const SharingModal = (props: SharingModalProps) => {
                 />
                 <ButtonsWrapper>
                   <div>
-                    <SharingButton variant="primary" size="medium" onClick={handleCopy}>
+                    <Button variant="primary" size="medium" onClick={handleCopy}>
                       <React.Fragment>
                         {linkCopied ? 'COPIED' : 'COPY LINK'}&nbsp;
                         <Icon
@@ -130,7 +129,7 @@ export const SharingModal = (props: SharingModalProps) => {
                           color={theme.colors.onPrimary}
                         />
                       </React.Fragment>
-                    </SharingButton>
+                    </Button>
                   </div>
                   <SocialWrapper>
                     {navigator.share && (

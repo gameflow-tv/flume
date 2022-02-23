@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { LabelPosition } from '../inputs'
-import { TypographyStyle, typographyToCss } from '../../theme'
-import theme from '../../theme/theme'
+import { Transition, transitionToCss, TypographyStyle, typographyToCss } from '../../theme'
 
 export type WrapperProps = {
   gap: string
@@ -31,7 +30,7 @@ const adjustVerticalPosition = (position: LabelPosition): string => {
   }
 }
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled.div<{ gap: string; labelPosition: LabelPosition }>`
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,11 +43,7 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 `
 
-export type RangeWrapProps = {
-  labelPosition: LabelPosition
-}
-
-export const RangeWrap = styled.div<RangeWrapProps>`
+export const RangeWrap = styled.div<{ labelPosition: LabelPosition }>`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -62,12 +57,8 @@ export const RangeWrap = styled.div<RangeWrapProps>`
   }
 `
 
-export type RangeLabelProps = {
-  labelColor: string
-}
-
-export const RangeLabel = styled.label<RangeLabelProps>`
-  color: ${(props) => props.labelColor};
+export const RangeLabel = styled.label<{ color: string }>`
+  color: ${(props) => props.color};
   padding: 0;
   margin: 0;
   margin-top: -3px;
@@ -75,12 +66,12 @@ export const RangeLabel = styled.label<RangeLabelProps>`
 export type RangeProps = {
   trackColor: string
   thumbColor: string
-  transition: string
+  transition: Transition
 }
 
 export const Range = styled.input.attrs({
   type: 'range'
-})<RangeProps>`
+})<RangeProps & { borderRadius: string }>`
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -88,14 +79,13 @@ export const Range = styled.input.attrs({
   height: 5px;
   border-radius: 15px;
   background: ${(props) => props.trackColor};
-  transition: ${(props) => props.transition};
-
+  transition: ${(props) => transitionToCss(props.transition)};
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 17px;
     width: 17px;
     background: ${(props) => props.thumbColor};
-    border-radius: ${theme.shapes.borders.full};
+    border-radius: ${(props) => props.borderRadius};
     border-color: ${(props) => props.thumbColor};
   }
 
@@ -104,7 +94,7 @@ export const Range = styled.input.attrs({
     height: 15px;
     width: 15px;
     background: ${(props) => props.thumbColor};
-    border-radius: ${theme.shapes.borders.full};
+    border-radius: ${(props) => props.borderRadius};
     border-color: ${(props) => props.thumbColor};
   }
 
@@ -113,14 +103,12 @@ export const Range = styled.input.attrs({
   }
 `
 
-export type SliderLabelProps = {
-  labelTypography?: TypographyStyle
-  labelColor?: string
-  labelMargin?: string
-}
-
-export const SliderLabel = styled.label<SliderLabelProps>`
-  color: ${(props) => props.labelColor};
-  margin: ${(props) => props.labelMargin || '4px'};
-  ${(props) => typographyToCss(props.labelTypography)}
+export const SliderLabel = styled.label<{
+  typography: TypographyStyle
+  color: string
+  margin: string
+}>`
+  color: ${(props) => props.color};
+  margin: ${(props) => props.margin};
+  ${(props) => typographyToCss(props.typography)}
 `

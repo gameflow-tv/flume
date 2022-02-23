@@ -1,11 +1,17 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../../theme'
-import theme from '../../../../theme/theme'
-import { ModalHeaderProps } from './ModalHeader'
+import { TypographyStyle, typographyToCss } from '../../../../theme'
 
-export const Header = styled.div<ModalHeaderProps>`
-  color: ${(props) => props.color ?? theme.colors.header};
-  ${(props) => typographyToCss(theme.typography.header1)};
+export const Header = styled.div<{
+  color: string
+  typography: TypographyStyle
+  textAlign?: string
+  display?: string
+  alignContent?: string
+  justifyContent?: string
+  alignItems?: string
+}>`
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.typography)};
   text-align: ${(props) => props.textAlign ?? 'center'};
   margin-bottom: 32px;
   padding: 0 10px;

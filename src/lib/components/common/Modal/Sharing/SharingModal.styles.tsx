@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../../theme'
-import theme from '../../../../theme/theme'
+import { TypographyStyle, typographyToCss } from '../../../../theme'
 import { Button, IconButton } from '../../../buttons'
 import { ModalBody } from '../ModalBody/ModalBody'
 import { ModalHeader } from '../ModalHeader/ModalHeader'
 
-export const SharingHeader = styled(ModalHeader)`
-  ${typographyToCss(theme.typography.header2)};
+export const SharingHeader = styled(ModalHeader)<{ typography: TypographyStyle }>`
+  ${(props) => typographyToCss(props.typography)};
   font-weight: 600;
   margin-top: 28px;
 `
@@ -48,11 +47,4 @@ export const SocialLink = styled.a`
   & > button {
     margin: 0;
   }
-`
-
-export const SharingButton = styled(Button)`
-  font-family: ${theme.typography.button.fontFamily};
-  font-size: ${theme.typography.button.fontSize};
-  font-weight: ${theme.typography.button.fontWeight};
-  line-height: ${theme.typography.button.lineHeight};
 `
