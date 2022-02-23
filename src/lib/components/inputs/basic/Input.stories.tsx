@@ -4,7 +4,7 @@ import { Input } from './Input'
 import { InputProps } from './shared'
 
 export default {
-  title: 'Components/Inputs/Basic',
+  title: 'components/inputs/Basic',
   component: Input
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { Tooltip, TooltipProps } from './Tooltip'
 
 export default {
-  title: 'components/Tooltip',
+  title: 'components/common/Tooltip',
   component: Tooltip
 }
 
@@ -24,7 +24,7 @@ const Target = () => {
   )
 }
 
-const Template = (props: TooltipProps) => {
+const Template: Story<TooltipProps> = (props: TooltipProps) => {
   return <Tooltip label={props.label} position={props.position} children={props.children} />
 }
 

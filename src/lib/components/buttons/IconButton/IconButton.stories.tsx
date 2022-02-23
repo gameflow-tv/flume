@@ -4,7 +4,7 @@ import { Ambiance } from '../../../providers'
 import { IconButton, IconButtonProps } from './IconButton'
 
 export default {
-  title: 'Components/Buttons/IconButton',
+  title: 'components/buttons/IconButton',
   component: IconButton
 }
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { LikeButton, LikeButtonProps } from './LikeButton'
 
 export default {
-  title: 'Components/Buttons/LikeButton',
+  title: 'components/buttons/LikeButton',
   component: LikeButton
 }
 

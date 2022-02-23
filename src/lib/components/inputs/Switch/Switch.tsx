@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
-import { LabelPosition } from '..'
+import { LabelPosition } from '../'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { transitionToCss } from '../../../theme'
 import {

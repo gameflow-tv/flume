@@ -1,19 +1,7 @@
 import _ from 'lodash'
 import React, { ChangeEventHandler, ReactNode } from 'react'
-import {
-  Range,
-  RangeLabel,
-  RangeLabelProps,
-  RangeProps,
-  RangeWrap,
-  RangeWrapProps,
-  SliderLabel,
-  SliderLabelProps,
-  Wrapper,
-  WrapperProps
-} from './Slider.styles'
-import { transitionToCss } from '../../../theme'
-import { useAmbiance, useTheme } from '../../../hooks'
+import { Range, RangeLabel, RangeWrap, SliderLabel, Wrapper } from './Slider.styles'
+import { useAmbiance, useTheme } from '../../../../hooks'
 import { LabelPosition } from '..'
 
 export type SliderProps = {
@@ -44,24 +32,18 @@ export const Slider = ({
   const theme = useTheme()
   const ambiance = useAmbiance()
 
-  const styles: RangeProps & WrapperProps & SliderLabelProps & RangeLabelProps & RangeWrapProps = {
-    trackColor: ambiance.color,
-    thumbColor: theme.colors.primary,
-    transition: transitionToCss(theme.transitions.short),
-    gap: theme.spacing.xsmall,
-    labelTypography: theme.typography.header5,
-    labelColor: theme.colors.body,
-    labelPosition,
-    labelMargin: theme.spacing.xxsmall
-  }
-
   return (
-    <Wrapper {...styles}>
-      <SliderLabel htmlFor={id} {...styles}>
+    <Wrapper gap={theme.spacing.xsmall} labelPosition={labelPosition}>
+      <SliderLabel
+        htmlFor={id}
+        margin={theme.spacing.xxsmall}
+        typography={theme.typography.header5}
+        color={theme.colors.header}
+      >
         {label}
       </SliderLabel>
-      <RangeWrap {...styles}>
-        <RangeLabel {...styles}>{minLabel}</RangeLabel>
+      <RangeWrap labelPosition={labelPosition}>
+        <RangeLabel color={theme.colors.body}>{minLabel}</RangeLabel>
         <Range
           id={id}
           value={value}
@@ -69,9 +51,12 @@ export const Slider = ({
           max={max}
           onChange={(e) => onChange && onChange(e)}
           step={step}
-          {...styles}
+          borderRadius={theme.shapes.borders.full}
+          trackColor={ambiance.color}
+          thumbColor={theme.colors.primary}
+          transition={theme.transitions.short}
         />
-        <RangeLabel {...styles}>{maxLabel}</RangeLabel>
+        <RangeLabel color={theme.colors.body}>{maxLabel}</RangeLabel>
       </RangeWrap>
     </Wrapper>
   )

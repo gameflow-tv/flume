@@ -4,7 +4,7 @@ import { Toast, ToastProps } from '.'
 import { Button } from '../../buttons/Button'
 
 export default {
-  title: 'Components/Notifications/Toast',
+  title: 'components/common/Toast',
   component: Toast,
   argTypes: {
     horizontalAlign: {

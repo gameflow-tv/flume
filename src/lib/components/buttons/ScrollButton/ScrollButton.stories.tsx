@@ -3,7 +3,7 @@ import React from 'react'
 import { ScrollButton } from './ScrollButton'
 
 export default {
-  title: 'Components/Buttons/ScrollButton',
+  title: 'components/buttons/ScrollButton',
   component: ScrollButton
 }
 

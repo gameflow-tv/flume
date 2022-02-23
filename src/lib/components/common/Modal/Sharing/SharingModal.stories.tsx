@@ -3,7 +3,7 @@ import { Story } from '@storybook/react'
 import { SharingModal, SharingModalProps } from './SharingModal'
 
 export default {
-  title: 'Components/Notifications/SharingModal',
+  title: 'components/common/SharingModal',
   component: SharingModal
 }
 
