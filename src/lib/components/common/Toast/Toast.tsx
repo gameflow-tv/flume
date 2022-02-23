@@ -17,7 +17,15 @@ export type ToastProps = {
 
 export const Toast = forwardRef(
   (
-    { children, horizontalAlign, verticalAlign, width, zIndex, background, duration }: ToastProps,
+    {
+      children,
+      horizontalAlign,
+      verticalAlign,
+      width,
+      zIndex,
+      background,
+      duration = 2000
+    }: ToastProps,
     ref
   ) => {
     const [show, setShow] = useState(false)
@@ -39,8 +47,7 @@ export const Toast = forwardRef(
         horizontalAlign={horizontalAlign ?? 'center'}
         verticalAlign={verticalAlign ?? 'top'}
         zIndex={zIndex ?? 9}
-        duration={duration ?? 2000}
-      >
+        duration={duration ?? 2000}>
         {children}
       </StyledToast>
     )
