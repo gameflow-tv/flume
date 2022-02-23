@@ -9,11 +9,13 @@ export const Header = styled.div<{
   alignContent?: string
   justifyContent?: string
   alignItems?: string
+  margin: string
 }>`
   color: ${(props) => props.color};
-  ${(props) => typographyToCss(props.typography)};
+  ${(props) => typographyToCss(props.typography, { fontWeight: 600 })};
   text-align: ${(props) => props.textAlign ?? 'center'};
-  margin-bottom: 32px;
+  margin-bottom: ${(props) => props.margin};
+  margin-top: ${(props) => props.margin};
   padding: 0 10px;
   display: ${(props) => props.display ?? null};
   align-content: ${(props) => props.alignContent ?? null};

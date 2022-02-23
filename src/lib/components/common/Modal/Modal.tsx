@@ -101,7 +101,7 @@ export const Modal = ({
         ) : (
           <React.Fragment>
             {modalHeader && (
-              <Header typography={theme.typography.header1} color={theme.colors.header}>
+              <Header typography={theme.typography.header5} color={theme.colors.header}>
                 {modalHeader}
               </Header>
             )}

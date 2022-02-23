@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { TypographyStyle, typographyToCss } from '../../../../theme'
-import { Button, IconButton } from '../../../buttons'
+import { IconButton } from '../../../buttons'
 import { ModalBody } from '../ModalBody/ModalBody'
 import { ModalHeader } from '../ModalHeader/ModalHeader'
 

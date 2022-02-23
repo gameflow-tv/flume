@@ -111,7 +111,7 @@ export const SharingModal = (props: SharingModalProps) => {
         <AmbianceContext.Consumer>
           {(ambiance) => (
             <>
-              <SharingHeader typography={theme.typography.header2}>Share link</SharingHeader>
+              <SharingHeader typography={theme.typography.header5}>Share link</SharingHeader>
               <SharingBody>
                 <Input
                   type="text"

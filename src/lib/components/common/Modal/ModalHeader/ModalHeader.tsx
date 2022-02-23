@@ -28,12 +28,13 @@ export const ModalHeader = ({
     <Header
       id={id}
       color={color ?? theme.colors.header}
-      typography={theme.typography.header1}
+      typography={theme.typography.header2}
       textAlign={textAlign}
       display={display}
       alignContent={alignContent}
       justifyContent={justifyContent}
       alignItems={alignItems}
+      margin={theme.spacing.xlarge}
     >
       {children}
     </Header>

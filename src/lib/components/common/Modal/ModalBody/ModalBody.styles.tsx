@@ -20,7 +20,7 @@ export const Body = styled.div<{
   ${(props) => typographyToCss(props.typography)}
   text-align: ${(props) => props.textAlign ?? 'center'};
   overflow: auto;
-  padding: 0 10px;
+  padding: 0 48px 28px 48px;
   scrollbar-width: thin;
   scrollbar-color: ${(props) => props.scrollbarColor} transparent;
 
