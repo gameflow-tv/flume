@@ -30,7 +30,7 @@ export const Tooltip = ({ children, label, position }) => {
           typography={theme.typography.body1}
           color={theme.colors.body}
           background={theme.colors.secondary}
-          borderRadius={theme.shapes.borders.xsmall}
+          borderRadius={theme.shapes.borders.small}
           padding={theme.spacing.xsmall}
           shadow={theme.shadows.small}
         >
