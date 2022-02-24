@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { getLuminance, saturate } from '../helpers'
 import { useTheme } from '../hooks/useTheme'
+import { getLuminance } from '../utils/getLuminance'
 
 export type AmbianceProps = {
   root: AmbianceProps
@@ -19,6 +19,8 @@ type AmbianceProviderProps = {
 }
 
 const AmbianceContext = React.createContext<AmbianceProps>(undefined)
+
+const AmbianceConsumer = AmbianceContext.Consumer
 
 const Ambiance: React.FC<AmbianceProviderProps> = ({
   color,
@@ -129,4 +131,4 @@ const getColorFromElevation = (color: string, elevation: number) => {
   }
 }
 
-export { Ambiance, AmbianceContext }
+export { Ambiance, AmbianceContext, AmbianceConsumer }

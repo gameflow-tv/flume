@@ -1,1 +1,1 @@
-export * from './AmbianceProvider'
+export * from './Ambiance'

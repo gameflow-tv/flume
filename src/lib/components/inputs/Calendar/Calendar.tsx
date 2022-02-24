@@ -1,7 +1,5 @@
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
 import { useAmbiance, useTheme } from '../../../hooks'
-import { isNullOrUndefined } from '../../../helpers/general'
-import { TypographyStyle } from '../../../theme'
 import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import {
   DateBox,
@@ -15,7 +13,7 @@ import {
   MonthDescription
 } from './Calendar.styles'
 import { Icon } from '../../icons'
-import { Ambiance, AmbianceContext } from '../../../providers/AmbianceProvider'
+import { Ambiance, AmbianceConsumer, AmbianceContext } from '../../../providers/Ambiance'
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
@@ -271,7 +269,7 @@ export const Calendar = forwardRef(
     return (
       <CalendarWrapper width={width} background={ambiance.color} position={position}>
         <Ambiance>
-          <AmbianceContext.Consumer>
+          <AmbianceConsumer>
             {(ambiance) => (
               <>
                 <ControlWrapper>
@@ -353,7 +351,7 @@ export const Calendar = forwardRef(
                 </MonthWapper>
               </>
             )}
-          </AmbianceContext.Consumer>
+          </AmbianceConsumer>
         </Ambiance>
       </CalendarWrapper>
     )

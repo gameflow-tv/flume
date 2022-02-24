@@ -11,10 +11,7 @@ describe('getWindowDimensions', () => {
     resizeWindow(1024, 1024)
     const { innerWidth, innerHeight } = window
 
-    const {
-      width,
-      height,
-    } = getWindowDimensions()
+    const { width, height } = getWindowDimensions()
 
     expect(width.px).toBe(innerWidth)
     expect(width.rem).toBe(innerWidth / 16)

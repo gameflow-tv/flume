@@ -11,9 +11,8 @@ import {
   SocialLink,
   SocialWrapper
 } from './SharingModal.styles'
-import { getLuminance } from '../../../../helpers'
 import { Input } from '../../../inputs'
-import { Ambiance, AmbianceContext } from '../../../../providers/AmbianceProvider'
+import { Ambiance, AmbianceConsumer } from '../../../../providers/Ambiance'
 
 export type FacebookSharingProps = {
   app_id: string | number
@@ -108,7 +107,7 @@ export const SharingModal = (props: SharingModalProps) => {
   return (
     <Modal size="546px" {...props} backgroundColor={ambiance.color}>
       <Ambiance>
-        <AmbianceContext.Consumer>
+        <AmbianceConsumer>
           {(ambiance) => (
             <>
               <SharingHeader typography={theme.typography.header5}>Share link</SharingHeader>
@@ -159,7 +158,7 @@ export const SharingModal = (props: SharingModalProps) => {
               </SharingBody>
             </>
           )}
-        </AmbianceContext.Consumer>
+        </AmbianceConsumer>
       </Ambiance>
     </Modal>
   )

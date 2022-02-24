@@ -47,7 +47,8 @@ export const Toast = forwardRef(
         horizontalAlign={horizontalAlign ?? 'center'}
         verticalAlign={verticalAlign ?? 'top'}
         zIndex={zIndex ?? 9}
-        duration={duration ?? 2000}>
+        duration={duration ?? 2000}
+      >
         {children}
       </StyledToast>
     )
