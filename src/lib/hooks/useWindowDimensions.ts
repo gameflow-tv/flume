@@ -11,10 +11,14 @@ export type WindowDimensions = {
   }
 }
 
-function getWindowDimensions(): WindowDimensions {
+/** Returns the current window dimensions in `px` and `rem` */
+export const getWindowDimensions = (): WindowDimensions => {
   const { innerWidth: width, innerHeight: height } = window
+  let rootFontSize = 16
 
-  const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize) ?? 16
+  if (parseInt(getComputedStyle(document.documentElement).fontSize)) {
+    rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize)
+  }
 
   return {
     width: {
@@ -28,6 +32,7 @@ function getWindowDimensions(): WindowDimensions {
   }
 }
 
+/** Returns the current window dimensions in `px` and `rem` */
 export const useWindowDimensions = (): WindowDimensions => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 

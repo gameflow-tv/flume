@@ -1,10 +1,15 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
+import ReactDOM from 'react-dom'
 
-// TODO: Add types to this hook
-export const useOutsideClick = (ref, callback) => {
+const refContainsTarget = (ref: React.RefObject<HTMLElement>, target: EventTarget) => {
+  return target instanceof HTMLElement && !ReactDOM.findDOMNode(ref.current).contains(target)
+}
+
+/** Calls the `callback` function when a click event occurs outside the given `ref`'s element */
+export const useOutsideClick = (ref: React.RefObject<HTMLElement>, callback: Function) => {
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (refContainsTarget(ref, event.target)) {
         callback()
       }
     }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { isEmpty } from '../../../helpers/general'
 import { InputProps } from './shared'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'
@@ -10,7 +9,7 @@ import { useAmbiance, useTheme } from '../../../hooks'
 import { transitionToCss, typographyToCss } from '../../../theme'
 
 const verifyRequiredProps = (props: InputProps) => {
-  if (isEmpty(props.type)) {
+  if (!props.type) {
     throw new Error('type is required')
   }
 }
@@ -85,7 +84,7 @@ export const Input = (props: InputProps) => {
 
   return (
     <FormGroup>
-      {!isEmpty(props.label) && (
+      {props.label && (
         <StyledLabel htmlFor={props.id} {...styles}>
           {props.label}
         </StyledLabel>

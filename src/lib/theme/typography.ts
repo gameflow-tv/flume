@@ -3,6 +3,7 @@ import * as breakpoints from './breakpoints'
 
 export type FontFamily = 'Montserrat' | 'Mulish'
 
+/** Converts a `TypographyStyle` object to a css-compatible string */
 export const typographyToCss = (style: TypographyStyle, overrides?: Partial<TypographyStyle>) => `
   font-family: ${overrides && overrides.fontFamily ? overrides.fontFamily : style.fontFamily};
   font-size: ${overrides && overrides.fontSize ? overrides.fontSize : style.fontSize};
