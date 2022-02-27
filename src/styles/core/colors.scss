@@ -1,4 +1,4 @@
-:root {
+@mixin getDefaultColors {
   --flume-primary: #ffbf00;
   --flume-on-primary: #242729;
   --flume-secondary: #36393b;
@@ -25,4 +25,17 @@
   --flume-winner: #ddcb40;
   --flume-runnerup: #c2d5e2;
   --flume-elimination: #ccc;
+}
+
+@mixin setColors() {
+  :root {
+    @content;
+  }
+}
+
+$hasCustomColors: false !default;
+@if $hasCustomColors == false {
+  :root {
+    @include getDefaultColors();
+  }
 }

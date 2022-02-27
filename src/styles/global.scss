@@ -1,0 +1,64 @@
+h1 {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-semi-bold);
+  font-size: var(--flume-font-size-header1);
+  line-height: var(--flume-line-height-default);
+
+  @media screen and (max-width: var(--flume-breakpoint-sm)) {
+    font-size: calc(var(--flume-font-size-header1) * 0.75);
+  }
+}
+
+h2 {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-medium);
+  font-size: var(--flume-font-size-header2);
+  line-height: var(--flume-line-height-default);
+
+  @media screen and (max-width: var(--flume-breakpoint-sm)) {
+    font-size: calc(var(--flume-font-size-header2) * 0.75);
+  }
+}
+
+h3 {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-semi-bold);
+  font-size: var(--flume-font-size-header3);
+  line-height: var(--flume-line-height-default);
+
+  @media screen and (max-width: var(--flume-breakpoint-sm)) {
+    font-size: calc(var(--flume-font-size-header3) * 0.75);
+  }
+}
+
+h4 {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-medium);
+  font-size: var(--flume-font-size-header4);
+  line-height: var(--flume-line-height-default);
+
+  @media screen and (max-width: var(--flume-breakpoint-sm)) {
+    font-size: calc(var(--flume-font-size-header4) * 0.75);
+  }
+}
+
+h5 {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-medium);
+  font-size: var(--flume-font-size-header5);
+  line-height: var(--flume-line-height-default);
+}
+
+p {
+  font-family: var(--flume-font-family-body);
+  font-weight: var(--flume-font-weight-regular);
+  font-size: var(--flume-font-size-body1);
+  line-height: var(--flume-line-height-default);
+}
+
+button {
+  font-family: var(--flume-font-family-header);
+  font-weight: var(--flume-font-weight-medium);
+  font-size: var(--flume-font-size-button);
+  line-height: var(--flume-line-height-default);
+}

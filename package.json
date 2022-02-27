@@ -4,7 +4,8 @@
   "description": "React implementation of the Flume design system",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src/styles"
   ],
   "types": "dist/index.d.ts",
   "repository": "git://github.com/gameflow-tv/flume.git",
@@ -33,6 +34,9 @@
       "pre-commit": "yarn format"
     }
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "resolutions": {
     "react-dev-utils": "^11.0.4",
     "remark-parse": "^9.0.0",
@@ -92,6 +96,8 @@
     "rollup": "^2.67.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-scss": "3",
+    "sass": "^1.49.9",
     "storybook": "^6.4.19",
     "styled-components": "^5.3.3",
     "ts-jest": "^27.1.3",
