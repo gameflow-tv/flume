@@ -2,7 +2,6 @@ import React from 'react'
 import { Ambiance } from '../src/lib/providers/Ambiance'
 import { ThemeProvider } from '../src'
 import '../src/lib/theme/fonts.css'
-import theme from './theme'
 
 export const decorators = [
   (Story) => (
@@ -16,9 +15,6 @@ export const decorators = [
 
 export const parameters = {
   layout: 'centered',
-  docs: {
-    theme
-  },
   a11y: {
     element: '#root',
     config: {},

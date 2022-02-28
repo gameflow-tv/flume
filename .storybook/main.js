@@ -6,8 +6,12 @@ module.exports = {
     '@storybook/addon-backgrounds',
     '@storybook/addon-storysource',
     '@storybook/addon-docs',
+    '@storybook/preset-scss'
   ],
   typescript: {
     reactDocgen: 'react-docgen'
+  },
+  core: {
+    builder: 'webpack5'
   }
 }
