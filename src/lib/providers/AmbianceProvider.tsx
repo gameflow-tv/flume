@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { getLuminance } from '../helpers'
+import { getLuminance, saturate } from '../helpers'
 import { useTheme } from '../hooks/useTheme'
 
 export type AmbianceProps = {
@@ -123,7 +123,7 @@ const getColorFromElevation = (color: string, elevation: number) => {
     case 4:
       return lum.lum10
     case 5:
-      return lum.lum40
+      return saturate(lum.lum40, 1)
     default:
       return color
   }

@@ -10,3 +10,7 @@ export const getLuminance = (baseColor: string) => {
     lum40: chroma(baseColor).luminance(0.4).hex()
   }
 }
+
+export const saturate = (baseColor: string, amount: number) => {
+  return chroma(baseColor).saturate(amount).brighten(1).hex()
+}
