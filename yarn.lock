@@ -2033,7 +2033,7 @@
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.5.0-alpha.44":
+"@storybook/addons@6.5.0-alpha.44", "@storybook/addons@^6.5.0-alpha.44":
   version "6.5.0-alpha.44"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.5.0-alpha.44.tgz#f836ec824b1e226ec7aa0d20c7e11e8d06bca43e"
   integrity sha512-oa5sSaYXdorXO2bkwGqa451M7wWZBDjqCACQIH+nlqgEdHsGp/Xq7iSyj74Z1t8PnTk9ENsu0GmCT12en4WX5g==
