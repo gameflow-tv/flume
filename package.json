@@ -25,7 +25,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "chromatic": "npx chromatic",
-    "build": "tsc && yarn build:stylesheet rollup -c",
+    "build": "tsc && yarn build:stylesheet && rollup -c",
     "watch": "concurrently \"tsc && rollup -cw\" \"yarn watch:stylesheet\"",
     "watch:stylesheet": "sass --watch src/styles/index.scss bundle.css",
     "build:stylesheet": "sass src/styles/index.scss bundle.css"
