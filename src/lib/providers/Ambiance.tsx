@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useTheme } from '../hooks/useTheme'
 import { getLuminance } from '../utils/getLuminance'
+import { saturate } from '../utils/saturate'
 
 export type AmbianceProps = {
   root: AmbianceProps
@@ -29,7 +30,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
 }: AmbianceProviderProps) => {
   const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
-  let source
+  let source: string
 
   if (!parent && typeof elevation === 'undefined') {
     elevation = 0
