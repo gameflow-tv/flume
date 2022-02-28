@@ -1,30 +1,30 @@
 @mixin getDefaultColors {
-  --flume-primary: #ffbf00;
-  --flume-on-primary: #242729;
-  --flume-secondary: #36393b;
-  --flume-on-secondary: #eee;
-  --flume-signal: #de3131;
-  --flume-on-signal: #fff;
-  --flume-icon: #eee;
-  --flume-header: #fff;
-  --flume-body: #eee;
-  --flume-subtitle: #ccc;
-  --flume-button-focus: #fff;
-  --flume-success: #34d058;
-  --flume-on-success: #144630;
-  --flume-warning: #f9c513;
-  --flume-on-warning: #735c0f;
-  --flume-error: #e24736;
-  --flume-on-error: #86181d;
-  --flume-shadow: #000;
-  --flume-highlight: rgba(255, 255, 255, 0.1);
-  --flume-inactive: rgba(255, 255, 255, 0.5);
-  --flume-overlay: rgba(0, 0, 0, 0.7);
-  --flume-win: #00a828;
-  --flume-loss: #e24736;
-  --flume-winner: #ddcb40;
-  --flume-runnerup: #c2d5e2;
-  --flume-elimination: #ccc;
+  --flume-color-primary: #ffbf00;
+  --flume-color-on-primary: #242729;
+  --flume-color-secondary: #36393b;
+  --flume-color-on-secondary: #eee;
+  --flume-color-signal: #de3131;
+  --flume-color-on-signal: #fff;
+  --flume-color-icon: #eee;
+  --flume-color-header: #fff;
+  --flume-color-body: #eee;
+  --flume-color-subtitle: #ccc;
+  --flume-color-button-focus: #fff;
+  --flume-color-success: #34d058;
+  --flume-color-on-success: #144630;
+  --flume-color-warning: #f9c513;
+  --flume-color-on-warning: #735c0f;
+  --flume-color-error: #e24736;
+  --flume-color-on-error: #86181d;
+  --flume-color-shadow: #000;
+  --flume-color-highlight: rgba(255, 255, 255, 0.1);
+  --flume-color-inactive: rgba(255, 255, 255, 0.5);
+  --flume-color-overlay: rgba(0, 0, 0, 0.7);
+  --flume-color-win: #00a828;
+  --flume-color-loss: #e24736;
+  --flume-color-winner: #ddcb40;
+  --flume-color-runnerup: #c2d5e2;
+  --flume-color-elimination: #ccc;
 }
 
 @mixin setColors() {
