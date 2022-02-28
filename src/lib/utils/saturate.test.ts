@@ -10,7 +10,7 @@ test('sature white returns white', () => {
   expect(sat).toBe('#ffffff')
 })
 
-test('saturate black returns black', () => {
+test('saturate black does not return black', () => {
   const sat = saturate('#000000', 1)
-  expect(sat).toBe('#000000')
+  expect(sat).not.toBe('#000000')
 })
