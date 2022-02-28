@@ -13,6 +13,16 @@ React implementation of the [Flume design system](https://figma.com/file/fYSxWUq
 
 ### Theming
 
+#### CSS/SCSS
+
+Flume comes bundled with a global style bundle that sets up some global styles and provides utility CSS classes for vanilla CSS usage;
+
+```jsx
+import styles from '@gameflow-tv/flume/bundle.css'
+```
+
+#### React/JSX
+
 Flume comes with its built-in theme which is used by all components. In order to use the theme, wrap your app in `ThemeProvider`:
 
 ```jsx
@@ -55,7 +65,7 @@ This package is made by developers and is consumed by developers. When adding ne
 
 Every component must be responsive and accessible, and should be repesented with as few DOM elements as possible. For testing, you can use e.g. `a11y` in Storybook or tools such as [Lighthouse](https://developers.google.com/web/tools/lighthouse). We also recommend using screen readers and keyboard navigation for further testing.
 
-This is a UI library. As such, we don't intend on writing more internal logic than what's required for UI purposes, leaving state management up to the consumer. This effectively lets consumers choose their own state management apporach, gain control over component behaviour and results in a more transparent library. Any internal behaviour determined by internally kept state *must* have a very good reasoning and such behaviour has to be explicitly documented.
+This is a UI library. As such, we don't intend on writing more internal logic than what's required for UI purposes, leaving state management up to the consumer. This effectively lets consumers choose their own state management apporach, gain control over component behaviour and results in a more transparent library. Any internal behaviour determined by internally kept state _must_ have a very good reasoning and such behaviour has to be explicitly documented.
 
 ### Semantic versioning
 
