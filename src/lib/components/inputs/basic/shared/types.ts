@@ -1,6 +1,5 @@
 import { HTMLInputTypeAttribute, ReactNode, ChangeEventHandler } from 'react'
 import { IconName } from '../../../icons'
-import { isEmpty } from '../../../../helpers/general'
 import { SharedProps } from './styles'
 import { AutocompleteValues } from './AutocompleteValues'
 
@@ -61,7 +60,7 @@ export const criteriaRule = (
 ) => {
   switch (type) {
     case 'required':
-      return !isEmpty(value as string)
+      return value && true
     case 'min':
       return (value as string)?.length >= (rule as number)
     case 'max':

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Slider, SliderProps } from './Slider'
 
 export default {
-  title: 'Components/Inputs/Slider',
+  title: 'components/Slider',
   component: Slider
 }
 

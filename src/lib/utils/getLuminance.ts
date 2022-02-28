@@ -1,5 +1,6 @@
 import chroma from 'chroma-js'
 
+/** Returns luminance values for the given `baseColor` */
 export const getLuminance = (baseColor: string) => {
   return {
     lum09: chroma(baseColor).luminance(0.09).hex(),

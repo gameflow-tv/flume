@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
-import { Ambiance, AmbianceContext } from './AmbianceProvider'
+import { Ambiance, AmbianceConsumer } from './Ambiance'
 
 export default {
   title: 'Ambiance/Sample',
@@ -27,7 +27,7 @@ const AmbientBox = ({
 }) => {
   return (
     <Ambiance color={color} elevation={elevation}>
-      <AmbianceContext.Consumer>
+      <AmbianceConsumer>
         {(ambiance) => {
           return (
             <ColorBox color={ambiance.color}>
@@ -36,15 +36,15 @@ const AmbientBox = ({
             </ColorBox>
           )
         }}
-      </AmbianceContext.Consumer>
+      </AmbianceConsumer>
     </Ambiance>
   )
 }
 
 export const Sample = () => {
   return (
-    <Ambiance>
-      <AmbianceContext.Consumer>
+    <Ambiance elevation={0}>
+      <AmbianceConsumer>
         {(ambiance) => {
           return (
             <ColorBox color={ambiance.color}>
@@ -55,7 +55,7 @@ export const Sample = () => {
                     <AmbientBox>
                       <AmbientBox>
                         <Ambiance elevation={0}>
-                          <AmbianceContext.Consumer>
+                          <AmbianceConsumer>
                             {(ambiance) => {
                               return (
                                 <ColorBox color={ambiance.color}>
@@ -63,7 +63,7 @@ export const Sample = () => {
                                 </ColorBox>
                               )
                             }}
-                          </AmbianceContext.Consumer>
+                          </AmbianceConsumer>
                         </Ambiance>
                       </AmbientBox>
                     </AmbientBox>
@@ -73,26 +73,26 @@ export const Sample = () => {
             </ColorBox>
           )
         }}
-      </AmbianceContext.Consumer>
+      </AmbianceConsumer>
     </Ambiance>
   )
 }
 
 export const MixedSource = () => {
   return (
-    <Ambiance>
-      <AmbianceContext.Consumer>
+    <Ambiance elevation={0}>
+      <AmbianceConsumer>
         {(ambiance) => {
           return (
             <ColorBox color={ambiance.color}>
               <p>Elevation: {ambiance.elevation}</p>
               <AmbientBox>
-                <AmbientBox color="#ff0000" elevation={0}>
-                  <AmbientBox>
+                <AmbientBox>
+                  <AmbientBox color="#ff0000" elevation={0}>
                     <AmbientBox>
                       <AmbientBox>
                         <Ambiance elevation={0}>
-                          <AmbianceContext.Consumer>
+                          <AmbianceConsumer>
                             {(ambiance) => {
                               return (
                                 <ColorBox color={ambiance.color}>
@@ -100,7 +100,7 @@ export const MixedSource = () => {
                                 </ColorBox>
                               )
                             }}
-                          </AmbianceContext.Consumer>
+                          </AmbianceConsumer>
                         </Ambiance>
                       </AmbientBox>
                     </AmbientBox>
@@ -110,7 +110,7 @@ export const MixedSource = () => {
             </ColorBox>
           )
         }}
-      </AmbianceContext.Consumer>
+      </AmbianceConsumer>
     </Ambiance>
   )
 }

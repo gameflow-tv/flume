@@ -1,5 +1,6 @@
 export * from './lib/theme'
 export * from './lib/components'
 export * from './lib/hooks'
-export * from './lib/helpers'
+export * from './lib/utils'
 export * from './lib/providers'
+export * from './styles'

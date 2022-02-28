@@ -42,7 +42,7 @@ export type SharedProps = {
   infoMessage?: {
     paddingTop?: string
     typography?: string
-    primaryTextColor?: string
+    headerColor?: string
   }
 }
 
@@ -161,7 +161,7 @@ export const InfoMessage = styled.div<SharedProps>`
   padding-top: ${(props) => props.infoMessage?.paddingTop};
   ${(props) => props.infoMessage?.typography};
   width: ${(props) => props.width};
-  color: ${(props) => props.infoMessage?.primaryTextColor};
+  color: ${(props) => props.infoMessage?.headerColor};
 
   &.error {
     color: ${(props) => props.input?.onFocus?.errorColor};
@@ -176,7 +176,7 @@ export const InfoMessage = styled.div<SharedProps>`
 
 export const ListItem = styled.li<SharedProps>`
   ${(props) => props.infoMessage?.typography};
-  color: ${(props) => props.infoMessage?.primaryTextColor};
+  color: ${(props) => props.infoMessage?.headerColor};
 
   &.error {
     color: ${(props) => props.input?.onFocus?.errorColor};

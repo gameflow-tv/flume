@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { Transition, transitionToCss, typographyToCss } from '../../../theme'
-import theme from '../../../theme/theme'
+import { Transition, transitionToCss, TypographyStyle, typographyToCss } from '../../../theme'
 import { ModalAnimation, ModalProps, ModalSide, ModalSize } from './Modal'
 
 const positionateModal = (position: ModalSide) => {
@@ -88,7 +87,12 @@ const makeTransition = (animation: ModalAnimation, transition: Transition, delay
   }
 }
 
-export const ModalOverlay = styled.div<ModalProps>`
+export const ModalOverlay = styled.div<{
+  position: ModalSide
+  animation: ModalAnimation
+  background: string
+  transition: Transition
+}>`
   display: flex;
   flex-direction: row;
   ${(props) => positionateModal(props.position)};
@@ -99,10 +103,10 @@ export const ModalOverlay = styled.div<ModalProps>`
   right: 0;
   bottom: 0;
   overflow: hidden;
-  background-color: ${theme.colors.modalOverlay};
+  background-color: ${(props) => props.background};
   z-index: -1;
   opacity: 0;
-  ${(props) => makeTransition(props.animation, theme.transitions.long)};
+  ${(props) => makeTransition(props.animation, props.transition)};
 
   &.show {
     z-index: 99;
@@ -111,12 +115,17 @@ export const ModalOverlay = styled.div<ModalProps>`
 `
 
 export const ModalContent = styled.div.attrs((props) => ({
-  role: 'dialog',
-  'aria-labelledby': props['ariaLabelledby'],
-  'aria-label': props['ariaLabel'],
-  'aria-hidden': props['ariaHidden'],
-  'aria-modal': props['ariaModal']
-}))<ModalProps>`
+  role: 'dialog'
+}))<{
+  background: string
+  size: string
+  padding: string
+  animation: ModalAnimation
+  color: string
+  shadow: string
+  borderRadius: string
+  transition: Transition
+}>`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -124,31 +133,31 @@ export const ModalContent = styled.div.attrs((props) => ({
   align-content: center;
   align-items: stretch;
   position: relative;
-  color: ${theme.colors.primaryText};
-  background-color: ${(props) => props.backgroundColor ?? theme.colors.background};
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.background};
   width: ${(props) => setModalSize(props.size)};
-  box-shadow: 0px 4px 8px ${theme.colors.shadow};
-  border-radius: ${theme.shapes.borders.medium};
+  box-shadow: ${(props) => props.shadow};
+  border-radius: ${(props) => props.borderRadius};
   max-height: 95%;
   padding: ${(props) => props.padding || '20px 0'};
   opacity: 0;
   top: 100vh;
 
   &.show {
-    ${(props) => makeTransition(props.animation, theme.transitions.long, true)};
+    ${(props) => makeTransition(props.animation, props.transition, true)};
     top: 0;
     opacity: 1;
   }
 `
 
-export const CloseButton = styled.button<ModalProps>`
+export const CloseButton = styled.button<{ color: string }>`
   background: none;
   position: absolute;
   top: 8px;
   right: 8px;
   border: none;
   outline: inherit;
-  color: ${theme.colors.tertiaryText};
+  color: ${(props) => props.color};
   font-size: 24px;
   cursor: pointer;
   z-index: 1;
@@ -159,13 +168,14 @@ export const CloseButton = styled.button<ModalProps>`
 `
 
 export type ModalHeaderProps = {
-  color?: string
+  color: string
+  typography: TypographyStyle
   textAlign?: string
 }
 
 export const Header = styled.div<ModalHeaderProps>`
-  color: ${(props) => props.color ?? theme.colors.primaryText};
-  ${typographyToCss(theme.typography.header1)};
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.typography)};
   text-align: ${(props) => props.textAlign ?? 'center'};
   letter-spacing: 0.3px;
   font-weight: 600;
@@ -174,19 +184,21 @@ export const Header = styled.div<ModalHeaderProps>`
 `
 
 export type ModalBodyProps = {
-  color?: string
+  color: string
   textAlign?: string
+  typography: TypographyStyle
+  scrollbarColor: string
 }
 
 export const Body = styled.div<ModalBodyProps>`
   position: relative;
-  color: ${(props) => props.color ?? theme.colors.tertiaryText};
-  ${typographyToCss(theme.typography.body1)}
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.typography)}
   text-align: ${(props) => props.textAlign ?? 'center'};
   overflow: auto;
   padding: 0 10px;
   scrollbar-width: thin;
-  scrollbar-color: ${theme.colors.primary} transparent;
+  scrollbar-color: ${(props) => props.scrollbarColor} transparent;
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -198,12 +210,12 @@ export const Body = styled.div<ModalBodyProps>`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: ${theme.colors.primary};
+    background: ${(props) => props.scrollbarColor};
   }
 
   &::-webkit-scrollbar-button {
     width: 5px;
-    background: ${theme.colors.primary};
+    background: ${(props) => props.scrollbarColor};
     height: 5px;
   }
 
@@ -213,14 +225,15 @@ export const Body = styled.div<ModalBodyProps>`
 `
 
 export type ModalFooterProps = {
-  color?: string
+  color: string
   textAlign?: string
+  typography: TypographyStyle
 }
 
 export const Footer = styled.div<ModalFooterProps>`
-  color: ${(props) => props.color ?? theme.colors.primaryText};
+  color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign ?? 'center'};
-  ${typographyToCss(theme.typography.body2)}
+  ${(props) => typographyToCss(props.typography)}
   margin-top: 32px;
   padding: 0 10px;
 `

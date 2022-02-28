@@ -1,0 +1,73 @@
+// min-width based visiblity
+.flume-only-under-xs {
+  @media (min-width: var(--flume-breakpoint-xs)) {
+    display: none;
+  }
+}
+
+.flume-only-under-sm {
+  @media (min-width: var(--flume-breakpoint-sm)) {
+    display: none;
+  }
+}
+
+.flume-only-under-md {
+  @media (min-width: var(--flume-breakpoint-md)) {
+    display: none;
+  }
+}
+
+.flume-only-under-lg {
+  @media (min-width: var(--flume-breakpoint-lg)) {
+    display: none;
+  }
+}
+
+.flume-only-under-xl {
+  @media (min-width: var(--flume-breakpoint-xl)) {
+    display: none;
+  }
+}
+
+.flume-only-under-xxl {
+  @media (min-width: var(--flume-breakpoint-xxl)) {
+    display: none;
+  }
+}
+
+// max-width based visibility
+.flume-only-over-xs {
+  @media (max-width: var(--flume-breakpoint-xs)) {
+    display: none;
+  }
+}
+
+.flume-only-over-sm {
+  @media (max-width: var(--flume-breakpoint-sm)) {
+    display: none;
+  }
+}
+
+.flume-only-over-md {
+  @media (max-width: var(--flume-breakpoint-md)) {
+    display: none;
+  }
+}
+
+.flume-only-over-lg {
+  @media (max-width: var(--flume-breakpoint-lg)) {
+    display: none;
+  }
+}
+
+.flume-only-over-xl {
+  @media (max-width: var(--flume-breakpoint-xl)) {
+    display: none;
+  }
+}
+
+.flume-only-over-xxl {
+  @media (max-width: var(--flume-breakpoint-xxl)) {
+    display: none;
+  }
+}

@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../theme'
-import { CalendarProps } from './Calendar'
+import { TypographyStyle, typographyToCss } from '../../../theme'
 
-export const CalendarWrapper = styled.div<CalendarProps>`
+export const CalendarWrapper = styled.div<{ position?: string; width: string; background: string }>`
   position: ${(props) => props.position || 'relative'};
   width: ${(props) => props.width};
   height: auto;
@@ -10,7 +9,7 @@ export const CalendarWrapper = styled.div<CalendarProps>`
   min-height: 290px;
   border-radius: 4px;
   padding: 12px;
-  background-color: ${(props) => props.calendarBgColor};
+  background-color: ${(props) => props.background};
 `
 
 export const ControlWrapper = styled.section`
@@ -43,36 +42,41 @@ export const ControlGrid = styled.div`
   }
 `
 
-export const NavBtn = styled.div<CalendarProps>`
+export const NavBtn = styled.div<{
+  background: string
+  color: string
+  hoverBackground: string
+  hoverColor: string
+}>`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.dateBoxBgColor};
+  background-color: ${(props) => props.background};
   border-radius: 4px;
   cursor: pointer;
 
   & > svg {
-    color: ${(props) => props.dateBoxTextColor};
+    color: ${(props) => props.color};
   }
 
   &:hover {
-    background-color: ${(props) => props.dateBoxHoverBgColor};
+    background-color: ${(props) => props.hoverBackground};
 
     & > svg {
-      color: ${(props) => props.dateBoxHoverTextColor};
+      color: ${(props) => props.hoverColor};
     }
   }
 `
 
-export const MonthDescription = styled.p<CalendarProps>`
+export const MonthDescription = styled.p<{ typography: TypographyStyle; color: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${(props) => typographyToCss(props.dateBoxTypo)};
+  ${(props) => typographyToCss(props.typography)};
   font-weight: 600;
-  color: ${(props) => props.dateBoxHoverTextColor};
+  color: ${(props) => props.color};
   text-transform: uppercase;
 `
 
@@ -83,7 +87,7 @@ export const MonthWapper = styled.div`
   min-height: 238px;
 `
 
-export const DateGrid = styled.div<CalendarProps>`
+export const DateGrid = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -96,42 +100,53 @@ export const DateGrid = styled.div<CalendarProps>`
 `
 
 // Cell to define the day of week name
-export const DayBox = styled.div<CalendarProps>`
-  background-color: ${(props) => props.dayBoxBgColor};
+export const DayBox = styled.div<{
+  color: string
+  tyopgraphy: TypographyStyle
+}>`
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-radius: 4px;
-  color: ${(props) => props.dayBoxTextColor};
-  ${(props) => typographyToCss(props.dayBoxTypo)};
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.tyopgraphy)};
   text-transform: uppercase;
 `
 
-export const DateBox = styled.div<CalendarProps>`
+export const DateBox = styled.div<{
+  background: string
+  color: string
+  typography: TypographyStyle
+  hoverBackground: string
+  hoverColor: string
+  activeBackground: string
+  activeColor: string
+  disabledColor: string
+}>`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.dateBoxBgColor};
+  background-color: ${(props) => props.background};
   border-radius: 4px;
-  color: ${(props) => props.dateBoxTextColor};
-  ${(props) => typographyToCss(props.dateBoxTypo)};
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.typography)};
   cursor: pointer;
 
   &:hover {
-    background-color: ${(props) => props.dateBoxHoverBgColor};
-    color: ${(props) => props.dateBoxHoverTextColor};
+    background-color: ${(props) => props.hoverBackground};
+    color: ${(props) => props.hoverColor};
   }
   &.today {
-    border: 1px solid ${(props) => props.dateBoxSelectedBgColor};
+    border: 1px solid ${(props) => props.activeBackground};
   }
   &.selected {
-    background-color: ${(props) => props.dateBoxSelectedBgColor};
-    color: ${(props) => props.dateBoxSelectedtxtColor};
+    background-color: ${(props) => props.activeBackground};
+    color: ${(props) => props.activeColor};
   }
 
   &.disabled {
-    color: ${(props) => props.dateBoxDisabledTextColor};
+    color: ${(props) => props.disabledColor};
   }
 `

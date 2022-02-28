@@ -8,7 +8,6 @@ export * from './theme'
 export * from './typography'
 export * from './transitions'
 export * from './ThemeProvider'
-export * from './units'
 
 // Types
 export type { Theme } from './theme'

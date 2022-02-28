@@ -1,19 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { Icon } from '../../icons'
-import { useTheme } from '../../../hooks'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { useOutsideClick } from '../../../hooks/useOutsideClick'
 import { TypographyStyle } from '../../../theme'
-import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import { Calendar } from '../Calendar'
-import { DateInput, DateSpan, Grid, NavBtn, Wrapper } from './DatePicker.styles'
+import { DateInput, DateSpan, Grid, Wrapper } from './DatePicker.styles'
+import { IconButton } from '../../buttons/IconButton'
 
 export type DatePickerProps = {
   width?: string
-  navBgColor?: string
-  navTextColor?: string
-  navHoverBgColor?: string
-  navHoverTextColor?: string
-  inputTypo?: TypographyStyle
+  inputTypography?: TypographyStyle
   shadow?: string
   value?: Date
   onDateChange?: (date: Date) => void
@@ -76,34 +72,15 @@ const formatFieldValue = (dt: Date) => {
     .padStart(2, '0')}-${dt.getDate().toString().padStart(2, '0')}`
 }
 
-export const DatePicker = ({
-  width,
-  navBgColor,
-  navTextColor,
-  navHoverBgColor,
-  navHoverTextColor,
-  value,
-  onDateChange,
-  zIndex
-}: DatePickerProps) => {
+export const DatePicker = ({ width, value, onDateChange, zIndex }: DatePickerProps) => {
   const theme = useTheme()
+  const ambiance = useAmbiance()
   const pickerRef = useRef(null)
   const [selectedDate, setSelectedDate] = useState<Date>(value || getToday())
   const [dateValue, setDateValue] = useState<string>(formatFieldValue(value || getToday()))
   const [dayLabel, setDayLabel] = useState(getFormatedDate(value || getToday()))
-  const [editionMode, setEditionMode] = useState<boolean>(false)
-  useOutsideClick(pickerRef, () => setEditionMode(false))
-
-  const styles = {
-    width: width || '328px',
-    navBgColor: navBgColor || theme.colors.card,
-    navTextColor: navTextColor || theme.colors.secondaryText,
-    navHoverBgColor: navHoverBgColor || theme.colors.calendarOnHover,
-    navHoverTextColor: navHoverTextColor || theme.colors.dateBoxHoverTextColor,
-    inputTypo: theme.typography.body1,
-    shadow: theme.shadows.xsmall,
-    zIndex
-  }
+  const [editable, setEditable] = useState<boolean>(false)
+  useOutsideClick(pickerRef, () => setEditable(false))
 
   const setNewDate = (date: Date) => {
     setSelectedDate(new Date(date))
@@ -112,11 +89,11 @@ export const DatePicker = ({
     }
   }
 
-  const handleEdition = (e) => {
+  const handleEdit = (e) => {
     if (e.target.tagName === 'INPUT') {
-      if (!editionMode) setEditionMode(true)
+      if (!editable) setEditable(true)
     } else {
-      setEditionMode(!editionMode)
+      setEditable(!editable)
     }
   }
 
@@ -156,29 +133,32 @@ export const DatePicker = ({
   }
 
   return (
-    <Wrapper ref={pickerRef} {...styles}>
+    <Wrapper ref={pickerRef}>
       <Grid>
-        <AspectRatio aspectRatio={100}>
-          <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>
-            <Icon icon="arrow_left" size="large" />
-          </NavBtn>
-        </AspectRatio>
-        <DateInput className="mthdescarea" onClick={handleEdition} {...styles}>
+        <IconButton onClick={() => handleDay(-1)} icon="arrow_left" size="large" />
+        <DateInput
+          className="mthdescarea"
+          onClick={handleEdit}
+          typography={theme.typography.body1}
+          background={ambiance.color}
+          hoverBackground={ambiance.child.color}
+          transition={theme.transitions.short}
+          color={theme.colors.header}
+          shadow={theme.shadows.xsmall}
+        >
           <Icon icon="calendar" />
-          {editionMode ? (
+          {editable ? (
             <input type="date" value={dateValue} onChange={handleDate} />
           ) : (
-            <DateSpan {...styles}>{dayLabel}</DateSpan>
+            <DateSpan typography={theme.typography.body1} color={theme.colors.header}>
+              {dayLabel}
+            </DateSpan>
           )}
         </DateInput>
-        <AspectRatio aspectRatio={100}>
-          <NavBtn className="nextmtharea" onClick={() => handleDay(1)} {...styles}>
-            <Icon icon="arrow_right" size="large" />
-          </NavBtn>
-        </AspectRatio>
+        <IconButton onClick={() => handleDay(1)} icon="arrow_right" size="large" />
       </Grid>
       <div style={{ position: 'relative' }}>
-        {editionMode && (
+        {editable && (
           <Calendar
             ref={calRef}
             position={'absolute'}

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { LabelPosition } from '..'
+import { LabelPosition } from '../'
 import { TypographyStyle, typographyToCss } from '../../../theme'
 
 export type WrapperProps = {

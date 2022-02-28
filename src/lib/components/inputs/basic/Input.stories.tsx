@@ -1,10 +1,10 @@
 import { Story } from '@storybook/react'
-import React, { FormEvent, FormEventHandler, SyntheticEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from './Input'
 import { InputProps } from './shared'
 
 export default {
-  title: 'Components/Inputs/Basic',
+  title: 'components/inputs/Basic',
   component: Input
 }
 
@@ -161,11 +161,6 @@ Password.args = {
   label: 'Password',
   placeholder: 'Insert password',
   autoComplete: 'new-password'
-}
-
-export const Checkbox: Story = Template.bind({})
-Checkbox.args = {
-  type: 'checkbox'
 }
 
 export const Search: Story = Template.bind({})

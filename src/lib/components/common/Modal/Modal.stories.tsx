@@ -4,7 +4,7 @@ import { Modal, ModalBody, ModalFooter, ModalHeader, ModalProps } from '.'
 import { Button } from '../../buttons'
 
 export default {
-  title: 'Components/Notifications/Modal',
+  title: 'components/common/Modal',
   component: Modal,
   argTypes: {
     position: {

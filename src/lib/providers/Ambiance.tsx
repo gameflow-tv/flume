@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { getLuminance, saturate } from '../helpers'
 import { useTheme } from '../hooks/useTheme'
+import { getLuminance } from '../utils/getLuminance'
+import { saturate } from '../utils/saturate'
 
 export type AmbianceProps = {
   root: AmbianceProps
@@ -20,6 +21,8 @@ type AmbianceProviderProps = {
 
 const AmbianceContext = React.createContext<AmbianceProps>(undefined)
 
+const AmbianceConsumer = AmbianceContext.Consumer
+
 const Ambiance: React.FC<AmbianceProviderProps> = ({
   color,
   children,
@@ -27,7 +30,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
 }: AmbianceProviderProps) => {
   const parent = React.useContext(AmbianceContext)
   const theme = useTheme()
-  let source
+  let source: string
 
   if (!parent && typeof elevation === 'undefined') {
     elevation = 0
@@ -36,7 +39,7 @@ const Ambiance: React.FC<AmbianceProviderProps> = ({
   }
 
   if (!parent && !color) {
-    color = theme.colors.card
+    color = theme.colors.secondary
   } else if (!color) {
     color = parent.source
   }
@@ -129,4 +132,4 @@ const getColorFromElevation = (color: string, elevation: number) => {
   }
 }
 
-export { Ambiance, AmbianceContext }
+export { Ambiance, AmbianceContext, AmbianceConsumer }

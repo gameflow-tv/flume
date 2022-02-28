@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Icon, IconData, IconName, IconProps } from '.'
 
 export default {
-  title: 'Components/Icon',
+  title: 'components/Icon',
   component: Icon
 }
 

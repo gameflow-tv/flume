@@ -10,6 +10,7 @@ export type Transitions = {
   long: Transition
 }
 
+/** Converts a `Transition` object to a css-compatible string */
 export const transitionToCss = (t: Transition, o?: Partial<Transition>): string =>
   `${o?.selection ?? t.selection} ${o?.duration ?? t.duration} ${o?.curve ?? t.curve}`
 

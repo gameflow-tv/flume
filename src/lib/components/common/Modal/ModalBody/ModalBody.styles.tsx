@@ -1,21 +1,28 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../../theme'
-import theme from '../../../../theme/theme'
-import { ModalBodyProps } from './ModalBody'
+import { TypographyStyle, typographyToCss } from '../../../../theme'
 
-export const Body = styled.div<ModalBodyProps>`
+export const Body = styled.div<{
+  display?: string
+  alignContent?: string
+  justifyContent?: string
+  alignItems?: string
+  color: string
+  typography: TypographyStyle
+  textAlign?: string
+  scrollbarColor: string
+}>`
   display: ${(props) => props.display ?? null};
   align-content: ${(props) => props.alignContent ?? null};
   justify-content: ${(props) => props.justifyContent ?? null};
   align-items: ${(props) => props.alignItems ?? null};
   position: relative;
-  color: ${(props) => props.color ?? theme.colors.secondaryText};
-  ${(props) => typographyToCss(theme.typography.body1)}
+  color: ${(props) => props.color};
+  ${(props) => typographyToCss(props.typography)}
   text-align: ${(props) => props.textAlign ?? 'center'};
   overflow: auto;
-  padding: 0 10px;
+  padding: 0 48px 28px 48px;
   scrollbar-width: thin;
-  scrollbar-color: ${(props) => theme.colors.primary} transparent;
+  scrollbar-color: ${(props) => props.scrollbarColor} transparent;
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -27,7 +34,7 @@ export const Body = styled.div<ModalBodyProps>`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background: ${(props) => theme.colors.primary};
+    background: ${(props) => props.scrollbarColor};
   }
 
   &::-webkit-scrollbar-button {

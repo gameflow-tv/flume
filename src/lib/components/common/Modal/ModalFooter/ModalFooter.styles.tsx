@@ -1,12 +1,19 @@
 import styled from 'styled-components'
-import { typographyToCss } from '../../../../theme'
-import theme from '../../../../theme/theme'
+import { TypographyStyle, typographyToCss } from '../../../../theme'
 import { ModalFooterProps } from './ModalFooter'
 
-export const Footer = styled.div<ModalFooterProps>`
-  color: ${(props) => props.color ?? theme.colors.tertiaryText};
+export const Footer = styled.div<{
+  color: string
+  typography: TypographyStyle
+  display?: string
+  textAlign?: string
+  alignContent?: string
+  justifyContent?: string
+  alignItems?: string
+}>`
+  color: ${(props) => props.color};
   text-align: ${(props) => props.textAlign ?? 'center'};
-  ${(props) => typographyToCss(theme.typography.body2)};
+  ${(props) => typographyToCss(props.typography)};
   margin-top: 32px;
   padding: 0 10px;
   display: ${(props) => props.display ?? null};

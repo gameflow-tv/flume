@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { DatePicker, DatePickerProps } from './DatePicker'
 
 export default {
-  title: 'Components/Inputs/DatePicker',
+  title: 'components/inputs/DatePicker',
   component: DatePicker
 }
 

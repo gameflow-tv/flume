@@ -4,11 +4,11 @@ import { Icon } from '../..'
 import { Checkbox, CheckboxProps } from './Checkbox'
 
 export default {
-  title: 'Components/Inputs/Checkbox',
+  title: 'components/inputs/Checkbox',
   component: Checkbox
 }
 
-const Template = (args: CheckboxProps) => <Checkbox {...args} />
+const Template: Story<CheckboxProps> = (args: CheckboxProps) => <Checkbox {...args} />
 
 export const Default: Story<CheckboxProps> = Template.bind({})
 Default.args = {}

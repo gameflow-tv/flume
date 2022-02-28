@@ -3,11 +3,11 @@ import React from 'react'
 import { Switch, SwitchProps } from './Switch'
 
 export default {
-  title: 'Components/Inputs/Switch',
+  title: 'components/Switch',
   component: Switch
 }
 
-const Template = (args: SwitchProps) => <Switch {...args} />
+const Template: Story<SwitchProps> = (args: SwitchProps) => <Switch {...args} />
 
 export const ToggledSwitch: Story<SwitchProps> = Template.bind({})
 ToggledSwitch.args = {

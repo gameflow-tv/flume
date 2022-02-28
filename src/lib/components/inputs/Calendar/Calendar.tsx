@@ -1,7 +1,5 @@
 import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
-import { useTheme } from '../../../hooks'
-import { isNullOrUndefined } from '../../../helpers/general'
-import { TypographyStyle } from '../../../theme'
+import { useAmbiance, useTheme } from '../../../hooks'
 import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import {
   DateBox,
@@ -15,6 +13,7 @@ import {
   MonthDescription
 } from './Calendar.styles'
 import { Icon } from '../../icons'
+import { Ambiance, AmbianceConsumer, AmbianceContext } from '../../../providers/Ambiance'
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
@@ -49,7 +48,13 @@ const getDayString = (dayIndex: number) => {
   return day.name
 }
 
-const getCalendarDOW = () => {
+interface DayOfWeek {
+  id: number
+  name: string
+  weekIndex: number
+}
+
+const getCalendarDOW = (): DayOfWeek[] => {
   let d = firstDay
   let weekIdx = 0
 
@@ -98,35 +103,56 @@ const monthList = [
 
 const today = new Date()
 
-const getNumberOfDays = (year, month) => {
+const getNumberOfDays = (year: number, month: number) => {
   return 40 - new Date(year, month, 40).getDate()
 }
 
-const getDayDetails = (args) => {
-  const date = args.index - args.firstDay
-  const day = args.index % 7
-  let prevMonth = args.month - 1
-  let prevYear = args.year
+interface Day {
+  date: number
+  day: number
+  month: number
+  timestamp: number
+  dayString: string
+  name?: string
+}
+
+const getDay = ({
+  index,
+  firstDay,
+  month,
+  year,
+  numberOfDays
+}: {
+  index: number
+  firstDay: number
+  month: number
+  year: number
+  numberOfDays: number
+}): Day => {
+  const date = index - firstDay
+  const day = index % 7
+  let prevMonth = month - 1
+  let prevYear = year
   if (prevMonth < 0) {
     prevMonth = 11
     prevYear--
   }
   const prevMonthNumberOfDays = getNumberOfDays(prevYear, prevMonth)
-  const _date = (date < 0 ? prevMonthNumberOfDays + date : date % args.numberOfDays) + 1
-  const month = date < 0 ? -1 : date >= args.numberOfDays ? 1 : 0
-  const timestamp = new Date(args.year, args.month, _date).valueOf()
+  const _date = (date < 0 ? prevMonthNumberOfDays + date : date % numberOfDays) + 1
+  const _month = date < 0 ? -1 : date >= numberOfDays ? 1 : 0
+  const timestamp = new Date(year, month, _date).valueOf()
 
   return {
     date: _date,
     day,
-    month,
+    month: _month,
     timestamp,
     // dayString: dayList[day]
     dayString: getDayString(day)
   }
 }
 
-const getMonthDetails = (year, month) => {
+const getMonthDetails = (year: number, month: number): Day[] => {
   const firstDay = getDayIndex(new Date(year, month).getDay())
   const numberOfDays = getNumberOfDays(year, month)
   const monthArray = []
@@ -137,7 +163,7 @@ const getMonthDetails = (year, month) => {
 
   for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
-      currentDay = getDayDetails({
+      currentDay = getDay({
         index,
         numberOfDays,
         firstDay,
@@ -152,14 +178,14 @@ const getMonthDetails = (year, month) => {
   return monthArray
 }
 
-const isCurrentDay = (day) => {
+const isCurrentDay = (day: Day): boolean => {
   const ref = today
   ref.setHours(0, 0, 0, 0)
 
   return day.timestamp === ref.valueOf() && day.month === 0
 }
 
-const isSelectedDay = (day, selectedTimestamp?: number) => {
+const isSelectedDay = (day: Day, selectedTimestamp?: number) => {
   if (!selectedTimestamp) {
     return false
   }
@@ -167,159 +193,167 @@ const isSelectedDay = (day, selectedTimestamp?: number) => {
   return day.timestamp === selectedTimestamp && day.month === 0
 }
 
-const getMonthStr = (month) => monthList[Math.max(Math.min(11, month), 0)] || 'Month'
+const getMonthStr = (month: number) => monthList[Math.max(Math.min(11, month), 0)] || 'Month'
 
 export type CalendarProps = {
   width?: string
-  calendarBgColor?: string
-  dayBoxBgColor?: string
-  dayBoxTextColor?: string
-  dayBoxTypo?: TypographyStyle
-  dateBoxBgColor?: string
-  dateBoxTextColor?: string
-  dateBoxTypo?: TypographyStyle
-  dateBoxDisabledText?: string
-  dateBoxDisabledTextColor?: string
-  dateBoxSelectedBgColor?: string
-  dateBoxSelectedtxtColor?: string
-  dateBoxHoverBgColor?: string
-  dateBoxHoverTextColor?: string
   defaultDate?: Date
   position?: string
   onDateSelect?: (timestamp: number) => void
 }
 
-export const Calendar = forwardRef((props: CalendarProps, ref) => {
-  const theme = useTheme()
-  const [selectedDate, setSelectedDate] = useState<number>(
-    props.defaultDate ? props.defaultDate.valueOf() : 0
-  )
-  const [month, setMonth] = useState(today.getMonth())
-  const [year, setYear] = useState(today.getFullYear())
-  const [monthDetails, setMonthDetails] = useState(
-    getMonthDetails(today.getFullYear(), today.getMonth())
-  )
+export const Calendar = forwardRef(
+  ({ width, defaultDate, position, onDateSelect }: CalendarProps, ref) => {
+    const theme = useTheme()
+    const ambiance = useAmbiance()
+    const [selectedDate, setSelectedDate] = useState<number>(
+      defaultDate ? defaultDate.valueOf() : 0
+    )
+    const [month, setMonth] = useState(today.getMonth())
+    const [year, setYear] = useState(today.getFullYear())
+    const [monthDetails, setMonthDetails] = useState(
+      getMonthDetails(today.getFullYear(), today.getMonth())
+    )
 
-  const styles = {
-    calendarBgColor: props.calendarBgColor || theme.colors.card,
-    dayBoxBgColor: props.dayBoxBgColor || 'transparent',
-    dayBoxTextColor: props.dayBoxTextColor || theme.colors.tertiaryText,
-    dayBoxTypo: theme.typography.body3,
-    dateBoxBgColor: props.dateBoxBgColor || theme.colors.sliderBackground,
-    dateBoxTextColor: props.dateBoxTextColor || theme.colors.secondaryText,
-    dateBoxTypo: theme.typography.body1,
-    dateBoxDisabledTextColor: props.dateBoxDisabledTextColor || theme.colors.calendarDisabledText,
-    dateBoxSelectedBgColor: props.dateBoxSelectedBgColor || theme.colors.primary,
-    dateBoxSelectedtxtColor: props.dateBoxSelectedtxtColor || theme.colors.onPrimary,
-    dateBoxHoverBgColor: props.dateBoxHoverBgColor || theme.colors.calendarOnHover,
-    dateBoxHoverTextColor: props.dateBoxHoverTextColor || theme.colors.dateBoxHoverTextColor,
-    monthRows: Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7),
-    position: props.position,
-    width: props.width
-  }
+    const monthRows = Math.ceil(getNumberOfDays(today.getFullYear(), today.getMonth()) / 7)
 
-  const onDateClick = (day) => {
-    if (day && day.month === 0) {
-      setSelectedDate(day.timestamp)
-      props.onDateSelect ? props.onDateSelect.call(null, day.timestamp) : null
-    }
-  }
-
-  const handleMonth = (offset: number) => {
-    let y = year
-    let m = month + offset
-    if (m === -1) {
-      m = 11
-      y--
-    } else if (m === 12) {
-      m = 0
-      y++
+    const onDateClick = (day: Day) => {
+      if (day && day.month === 0) {
+        setSelectedDate(day.timestamp)
+        onDateSelect ? onDateSelect.call(null, day.timestamp) : null
+      }
     }
 
-    setYear(y)
-    setMonth(m)
-    setMonthDetails(getMonthDetails(y, m))
-  }
+    const handleMonth = (offset: number) => {
+      let y = year
+      let m = month + offset
+      if (m === -1) {
+        m = 11
+        y--
+      } else if (m === 12) {
+        m = 0
+        y++
+      }
 
-  const handleDate = useCallback((date: number) => {
-    const dt = new Date(date)
-
-    const y = dt.getFullYear(),
-      m = dt.getMonth()
-    setYear(y)
-    setMonth(m)
-    setMonthDetails(getMonthDetails(y, m))
-  }, [])
-
-  useEffect(() => {
-    handleDate(selectedDate)
-  }, [selectedDate])
-
-  useImperativeHandle(ref, () => ({
-    handleDay(offset: number) {
-      const selected = new Date(selectedDate)
-      selected.setDate(selected.getDate() + offset)
-      setSelectedDate(selected.valueOf())
-    },
-    moveToDate(date: Date) {
-      setSelectedDate(date.valueOf())
-      handleDate(date.valueOf())
+      setYear(y)
+      setMonth(m)
+      setMonthDetails(getMonthDetails(y, m))
     }
-  }))
 
-  return (
-    <CalendarWrapper {...styles}>
-      <ControlWrapper>
-        <ControlGrid>
-          <AspectRatio aspectRatio={100}>
-            <NavBtn className="prevmtharea" onClick={() => handleMonth(-1)} {...styles}>
-              <Icon icon="arrow_left" />
-            </NavBtn>
-          </AspectRatio>
-          <MonthDescription className="mthdescarea" {...styles}>
-            {getMonthStr(month)} {year}
-          </MonthDescription>
-          <AspectRatio aspectRatio={100}>
-            <NavBtn className="nextmtharea" onClick={() => handleMonth(1)} {...styles}>
-              <Icon icon="arrow_right" />
-            </NavBtn>
-          </AspectRatio>
-        </ControlGrid>
-      </ControlWrapper>
-      <MonthWapper>
-        <DateGrid {...styles}>
-          {daysList
-            .sort((a, b) => a.weekIndex - b.weekIndex)
-            .map((day, idx) => (
-              <DayBox key={idx} {...styles}>
-                {day.name}
-              </DayBox>
-            ))}
+    const handleDate = useCallback((date: number) => {
+      const dt = new Date(date)
 
-          {monthDetails.map((day, idx) => {
-            return (
-              <AspectRatio key={`ar_${idx}`} aspectRatio={100}>
-                <DateBox
-                  key={idx}
-                  className={
-                    (day.month !== 0 ? ' disabled' : '') +
-                    (isCurrentDay(day) ? ' today' : '') +
-                    (isSelectedDay(day, selectedDate) ? ' selected' : '')
-                  }
-                  onClick={() => onDateClick(day)}
-                  {...styles}
-                >
-                  {day.month !== 0
-                    ? !isNullOrUndefined(props.dateBoxDisabledText)
-                      ? props.dateBoxDisabledText
-                      : day.date
-                    : day.date}
-                </DateBox>
-              </AspectRatio>
-            )
-          })}
-        </DateGrid>
-      </MonthWapper>
-    </CalendarWrapper>
-  )
-})
+      const y = dt.getFullYear(),
+        m = dt.getMonth()
+      setYear(y)
+      setMonth(m)
+      setMonthDetails(getMonthDetails(y, m))
+    }, [])
+
+    useEffect(() => {
+      handleDate(selectedDate)
+    }, [selectedDate])
+
+    useImperativeHandle(ref, () => ({
+      handleDay(offset: number) {
+        const selected = new Date(selectedDate)
+        selected.setDate(selected.getDate() + offset)
+        setSelectedDate(selected.valueOf())
+      },
+      moveToDate(date: Date) {
+        setSelectedDate(date.valueOf())
+        handleDate(date.valueOf())
+      }
+    }))
+
+    return (
+      <CalendarWrapper width={width} background={ambiance.color} position={position}>
+        <Ambiance>
+          <AmbianceConsumer>
+            {(ambiance) => (
+              <>
+                <ControlWrapper>
+                  <ControlGrid>
+                    <AspectRatio aspectRatio={100}>
+                      <NavBtn
+                        className="prevmtharea"
+                        onClick={() => handleMonth(-1)}
+                        color={theme.colors.icon}
+                        background={ambiance.color}
+                        hoverBackground={ambiance.child.color}
+                        hoverColor={theme.colors.header}
+                      >
+                        <Icon icon="arrow_left" size="large" />
+                      </NavBtn>
+                    </AspectRatio>
+                    <MonthDescription
+                      className="mthdescarea"
+                      typography={theme.typography.body1}
+                      color={theme.colors.header}
+                    >
+                      {getMonthStr(month)} {year}
+                    </MonthDescription>
+                    <AspectRatio aspectRatio={100}>
+                      <NavBtn
+                        className="nextmtharea"
+                        onClick={() => handleMonth(1)}
+                        color={theme.colors.icon}
+                        background={ambiance.color}
+                        hoverBackground={ambiance.child.color}
+                        hoverColor={theme.colors.header}
+                      >
+                        <Icon icon="arrow_right" size="large" />
+                      </NavBtn>
+                    </AspectRatio>
+                  </ControlGrid>
+                </ControlWrapper>
+                <MonthWapper>
+                  <DateGrid>
+                    {daysList
+                      .sort((a, b) => a.weekIndex - b.weekIndex)
+                      .map((day, idx) => (
+                        <DayBox
+                          key={idx}
+                          color={theme.colors.subtitle}
+                          tyopgraphy={theme.typography.body3}
+                        >
+                          {day.name}
+                        </DayBox>
+                      ))}
+
+                    {monthDetails.map((day, index) => {
+                      return (
+                        <AspectRatio key={`ar_${index}`} aspectRatio={100}>
+                          <DateBox
+                            key={index}
+                            color={theme.colors.header}
+                            typography={theme.typography.body1}
+                            background={ambiance.color}
+                            hoverBackground={ambiance.child.color}
+                            hoverColor={theme.colors.header}
+                            activeBackground={theme.colors.primary}
+                            activeColor={theme.colors.onPrimary}
+                            disabledColor={theme.colors.inactive}
+                            className={
+                              (day.month !== 0 ? ' disabled' : '') +
+                              (isCurrentDay(day) ? ' today' : '') +
+                              (isSelectedDay(day, selectedDate) ? ' selected' : '')
+                            }
+                            onClick={() => onDateClick(day)}
+                          >
+                            {day.date}
+                            {day.name}
+                          </DateBox>
+                        </AspectRatio>
+                      )
+                    })}
+                  </DateGrid>
+                </MonthWapper>
+              </>
+            )}
+          </AmbianceConsumer>
+        </Ambiance>
+      </CalendarWrapper>
+    )
+  }
+)

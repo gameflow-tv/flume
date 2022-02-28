@@ -22,13 +22,13 @@ export const LikeButton = (props: LikeButtonProps) => {
   const theme = useTheme()
 
   const styles: LikeIconProps = {
-    background: theme.colors.background,
+    background: theme.colors.secondary,
     transition: theme.transitions.long,
     shadow: theme.shadows.medium,
     shadowXs: theme.shadows.xsmall,
     shadowS: theme.shadows.small,
     glow: theme.shadows.glow,
-    border: theme.colors.buttonBorder,
+    border: theme.colors.buttonFocus,
     ...props
   }
 
@@ -41,8 +41,8 @@ export const LikeButton = (props: LikeButtonProps) => {
       borderRadius={props.borderRadius || theme.spacing.xxsmall}
       fontSize={props.fontSize || theme.typography.header3.fontSize}
       color={props.color || theme.colors.primary}
-      neutralColor={theme.colors.primaryText}
-      background={props.background || theme.colors.onBackground}
+      neutralColor={theme.colors.header}
+      background={props.background || theme.colors.onSecondary}
       transition={props.transition || theme.transitions.long}
       {...styles}
     >
