@@ -13,6 +13,10 @@ export type WindowDimensions = {
 
 /** Returns the current window dimensions in `px` and `rem` */
 export const getWindowDimensions = (): WindowDimensions => {
+  if (typeof document === 'undefined') {
+    return null
+  }
+
   const { innerWidth: width, innerHeight: height } = window
   let rootFontSize = 16
 
@@ -34,7 +38,7 @@ export const getWindowDimensions = (): WindowDimensions => {
 
 /** Returns the current window dimensions in `px` and `rem` */
 export const useWindowDimensions = (): WindowDimensions => {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
+  const [windowDimensions, setWindowDimensions] = useState(null)
 
   useEffect(() => {
     function handleResize() {

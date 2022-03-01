@@ -13,11 +13,11 @@ import {
   MonthDescription
 } from './Calendar.styles'
 import { Icon } from '../../icons'
-import { Ambiance, AmbianceConsumer, AmbianceContext } from '../../../providers/Ambiance'
+import { Ambiance, AmbianceConsumer } from '../../../providers/Ambiance'
 
 const getFirstDayOfWeek = () => {
   let lang = 'en-gb'
-  if (typeof window !== 'undefined') {
+  if (typeof document !== 'undefined') {
     lang = navigator.language.toString().toLowerCase()
   }
 
