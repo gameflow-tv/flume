@@ -4,7 +4,8 @@
   "description": "React implementation of the Flume design system",
   "module": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "bundle.css"
   ],
   "types": "dist/index.d.ts",
   "repository": "git://github.com/gameflow-tv/flume.git",
