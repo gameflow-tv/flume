@@ -7,7 +7,6 @@ import {
   InputValidation
 } from '../components/inputs/basic/shared'
 
-import { isEmpty } from 'lodash'
 import { IconName } from '../components'
 
 const getValidationIcon = (errorType: InputResponseType): IconName => {
@@ -34,7 +33,7 @@ const handleResponse = (
   let message = invalidMessage
 
   if (isValid && !fromMultiple) {
-    message = !isEmpty(validMessage) ? validMessage : ''
+    message = validMessage ?? ''
   }
 
   const icon = getValidationIcon(type)

@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React from 'react'
 import { LabelPosition } from '../'
 import { useAmbiance, useTheme } from '../../../hooks'
@@ -23,13 +22,7 @@ export type SwitchProps = {
   labelPosition?: LabelPosition
 }
 
-export const Switch = ({
-  id = _.uniqueId(),
-  checked,
-  onChange,
-  label,
-  labelPosition
-}: SwitchProps) => {
+export const Switch = ({ id, checked, onChange, label, labelPosition }: SwitchProps) => {
   const theme = useTheme()
   const ambiance = useAmbiance()
 

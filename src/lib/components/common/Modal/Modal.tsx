@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React, { ReactNode } from 'react'
 import { useTheme } from '../../../hooks'
 import { Icon } from '../../icons'
@@ -76,7 +75,7 @@ export const Modal = ({
       transition={theme.transitions.long}
     >
       <ModalContent
-        id={id || `dialog${_.uniqueId()}`}
+        id={id}
         shadow={theme.shadows.small}
         transition={theme.transitions.long}
         borderRadius={theme.shapes.borders.medium}

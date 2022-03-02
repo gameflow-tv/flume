@@ -1,12 +1,4 @@
-import _ from 'lodash'
-import React, {
-  ChangeEventHandler,
-  forwardRef,
-  ReactNode,
-  useEffect,
-  useImperativeHandle,
-  useState
-} from 'react'
+import React, { ChangeEventHandler, ReactNode } from 'react'
 import { TypographyStyle } from '../../../theme'
 import { CheckInput, SpanEl, SpanProps, Wrapper } from './Checkbox.styles'
 import { useAmbiance, useTheme } from '../../../hooks'
@@ -32,7 +24,7 @@ export type CheckboxProps = {
 }
 
 export const Checkbox = ({
-  id = _.uniqueId(),
+  id,
   checked,
   checkedContent,
   uncheckedContent,

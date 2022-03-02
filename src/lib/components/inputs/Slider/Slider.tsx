@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React, { ChangeEventHandler, ReactNode } from 'react'
 import { Range, RangeLabel, RangeWrap, SliderLabel, Wrapper } from './Slider.styles'
 import { useAmbiance, useTheme } from '../../../../hooks'
@@ -18,7 +17,7 @@ export type SliderProps = {
 }
 
 export const Slider = ({
-  id = _.uniqueId(),
+  id,
   label,
   labelPosition,
   value,
