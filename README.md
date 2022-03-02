@@ -9,7 +9,13 @@ React implementation of the [Flume design system](https://figma.com/file/fYSxWUq
 
 ### Install
 
-`yarn add @gameflow-tv/flume`
+```bash
+# yarn
+yarn add @gameflow-tv/flume
+
+# npm
+npm i @gameflow-tv/flume
+```
 
 ### Theming
 
