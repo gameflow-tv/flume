@@ -8,7 +8,7 @@ export type Breakpoints = {
   xxl: string
 }
 
-const fallback: Breakpoints = {
+export const fallbackBreakpoints: Breakpoints = {
   default: '0rem',
   xs: '29rem',
   sm: '36rem',
@@ -17,5 +17,3 @@ const fallback: Breakpoints = {
   xl: '75rem',
   xxl: '90rem'
 }
-
-export default fallback

@@ -13,7 +13,7 @@ export type Shapes = {
   borders: Borders
 }
 
-const fallback: Shapes = {
+export const fallbackShapes: Shapes = {
   borders: {
     none: '0px',
     xxsmall: '1px',
@@ -25,5 +25,3 @@ const fallback: Shapes = {
     handle: '0px 4px 0px 4px'
   }
 }
-
-export default fallback

@@ -29,7 +29,7 @@ export type Colors = {
   elimination: string
 }
 
-const fallback: Colors = {
+export const fallbackColors: Colors = {
   primary: palette.amberOrange,
   onPrimary: palette.abbeyBlue,
   secondary: palette.emperorGray,
@@ -57,5 +57,3 @@ const fallback: Colors = {
   runnerup: palette.mistyGray,
   elimination: palette.lightGray
 }
-
-export default fallback

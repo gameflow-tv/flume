@@ -1,10 +1,10 @@
-import fallbackBreakpoints, { Breakpoints } from './breakpoints'
-import fallbackColors, { Colors } from './colors'
-import fallbackShadows, { Shadows } from './shadows'
-import fallbackShapes, { Shapes } from './shapes'
-import fallbackSpacing, { Spacing } from './spacing'
-import fallbackTransitions, { Transitions } from './transitions'
-import fallbackTypography, { Typography } from './typography'
+import { Breakpoints, fallbackBreakpoints } from './breakpoints'
+import { fallbackColors, Colors } from './colors'
+import { fallbackShadows, Shadows } from './shadows'
+import { fallbackShapes, Shapes } from './shapes'
+import { fallbackSpacing, Spacing } from './spacing'
+import { fallbackTransitions, Transitions } from './transitions'
+import { fallbackTypography, Typography } from './typography'
 
 export type Theme = {
   breakpoints: Breakpoints
@@ -16,7 +16,7 @@ export type Theme = {
   transitions: Transitions
 }
 
-const fallback: Theme = {
+export const fallbackTheme: Theme = {
   breakpoints: fallbackBreakpoints,
   colors: fallbackColors,
   shadows: fallbackShadows,
@@ -25,5 +25,3 @@ const fallback: Theme = {
   typography: fallbackTypography,
   transitions: fallbackTransitions
 }
-
-export default fallback

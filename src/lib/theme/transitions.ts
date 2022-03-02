@@ -16,10 +16,8 @@ export const transitionToCss = (t: Transition, o?: Partial<Transition>): string 
 
 export const curve = 'cubic-bezier(0.215, 0.61, 0.355, 1)'
 
-const fallback: Transitions = {
+export const fallbackTransitions: Transitions = {
   short: { selection: 'all', duration: '100ms', curve },
   medium: { selection: 'all', duration: '200ms', curve },
   long: { selection: 'all', duration: '300ms', curve }
 }
-
-export default fallback

@@ -1,5 +1,5 @@
 // TODO: Get breakpoints from theme context
-import * as breakpoints from './breakpoints'
+import { fallbackBreakpoints } from './breakpoints'
 
 export type FontFamily = 'Montserrat' | 'Mulish'
 
@@ -11,7 +11,7 @@ export const typographyToCss = (style: TypographyStyle, overrides?: Partial<Typo
   line-height: ${overrides && overrides.lineHeight ? overrides.lineHeight : style.lineHeight};
   margin-block: 0;
 
-  @media (max-width: ${breakpoints.default.sm}) {
+  @media (max-width: ${fallbackBreakpoints.sm}) {
     font-size: ${
       overrides && overrides.fontSize
         ? overrides.fontSize
@@ -42,7 +42,7 @@ export type Typography = {
   button: TypographyStyle
 }
 
-const fallback: Typography = {
+export const fallbackTypography: Typography = {
   header1: {
     fontSize: '2.25rem', // '36px'
     lineHeight: 1.2,
@@ -102,5 +102,3 @@ const fallback: Typography = {
     fontFamily: 'Montserrat'
   }
 }
-
-export default fallback

@@ -9,7 +9,7 @@ export type Spacing = {
   xxlarge: string
 }
 
-const fallback: Spacing = {
+export const fallbackSpacing: Spacing = {
   xxxsmall: '2px',
   xxsmall: '4px',
   xsmall: '8px',
@@ -19,5 +19,3 @@ const fallback: Spacing = {
   xlarge: '32px',
   xxlarge: '48px'
 }
-
-export default fallback
