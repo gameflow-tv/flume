@@ -5,25 +5,31 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
+
       - uses: actions/checkout@v2
+
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
+
       - name: Build library
-        run: yarn build
+        run: npm run build
   test:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
+
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
+
       - name: Run tests
-        run: yarn test
+        run: npm run test

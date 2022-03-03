@@ -5,16 +5,20 @@ on:
 
 jobs:
   storybook:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
+
       - name: Install dependencies
-        run: yarn
+        run: npm ci
+
       - name: Build Storybook
-        run: yarn build:storybook
+        run: npm run build:storybook
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
@@ -23,16 +27,19 @@ jobs:
 
   chromatic:
     needs: storybook
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v2
         with:
           node-version: "16"
+
       - name: Install dependencies
-        run: yarn
+        run: npm ci
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
