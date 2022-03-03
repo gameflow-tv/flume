@@ -1,4 +1,4 @@
-@mixin getDefaultBorders {
+@mixin getDefaultShapes {
   --flume-shape-none: 0px;
   --flume-shape-xxs: 1px;
   --flume-shape-xs: 2px;
@@ -9,15 +9,15 @@
   --flume-shape-handle: 0px 4px 0px 4px;
 }
 
-@mixin setBorders() {
+@mixin setShapes() {
   :root {
     @content;
   }
 }
 
-$hasCustomBorders: false !default;
-@if $hasCustomBorders == false {
+$hasCustomShapes: false !default;
+@if $hasCustomShapes == false {
   :root {
-    @include getDefaultBorders();
+    @include getDefaultShapes();
   }
 }
