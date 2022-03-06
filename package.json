@@ -5,6 +5,7 @@
   "module": "dist/index.js",
   "files": [
     "dist",
+    "sass",
     "bundle.css"
   ],
   "types": "dist/index.d.ts",
@@ -26,7 +27,7 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "chromatic": "npx chromatic",
-    "build": "tsc && sass src/styles/index.scss bundle.css && rollup -c",
+    "build": "tsc && sass src/styles/index.scss bundle.css && cp -r src/styles/**/*.scss sass && rollup -c",
     "watch": "concurrently \"tsc && rollup -cw\" \"sass --watch src/styles/index.scss bundle.css\"",
     "watch:stylesheet": "sass --watch src/styles/index.scss bundle.css",
     "build:stylesheet": "sass src/styles/index.scss bundle.css"
