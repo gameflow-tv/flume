@@ -53,7 +53,7 @@
     winner: var(--flume-color-winner),
     runnerup: var(--flume-color-runnerup),
     elimination: var(--flume-color-elimination)
-  );
+  ) !default;
 }
 
 @mixin setColors() {

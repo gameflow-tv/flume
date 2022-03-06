@@ -17,7 +17,7 @@
     pill: var(--flume-shape-pill),
     full: var(--flume-shape-full),
     handle: var(--flume-shape-handle)
-  );
+  ) !default;
 }
 
 @mixin setShapes() {

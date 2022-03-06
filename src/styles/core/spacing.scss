@@ -17,7 +17,7 @@
     lg: var(--flume-spacing-lg),
     xl: var(--flume-spacing-xl),
     xxl: var(--flume-spacing-xxl)
-  );
+  ) !default;
 }
 
 @mixin setSpacing() {

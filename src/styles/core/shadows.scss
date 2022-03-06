@@ -11,7 +11,7 @@
     md: var(--flume-shadow-md),
     lg: var(--flume-shadow-lg),
     glow: var(--flume-shadow-glow)
-  );
+  ) !default;
 }
 
 @mixin setShadows() {

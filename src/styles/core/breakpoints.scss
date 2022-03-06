@@ -15,7 +15,7 @@
     lg: var(--flume-breakpoint-lg),
     xl: var(--flume-breakpoint-xl),
     xxl: var(--flume-breakpoint-xxl)
-  );
+  ) !default;
 }
 
 @mixin setBreakpoints() {

@@ -9,7 +9,7 @@ $bezier-curve: cubic-bezier(0.215, 0.61, 0.355, 1);
     short: var(--flume-transition-short),
     medium: var(--flume-transition-medium),
     long: var(--flume-transition-long)
-  );
+  ) !default;
 }
 
 @mixin setTransitions() {

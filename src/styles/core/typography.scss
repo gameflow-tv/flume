@@ -36,7 +36,7 @@ $bezier-curve: cubic-bezier(0.215, 0.61, 0.355, 1);
     font-size-body2: var(--flume-font-size-body2),
     font-size-body3: var(--flume-font-size-body3),
     font-size-button: var(--flume-font-size-button)
-  );
+  ) !default;
 }
 
 @mixin setTypography() {
