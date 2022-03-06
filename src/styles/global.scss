@@ -1,4 +1,4 @@
-$breakpoint-sm: var(--flume-breakpoint-sm);
+@use 'sass:map';
 
 h1 {
   font-family: var(--flume-font-family-header);
@@ -6,7 +6,7 @@ h1 {
   font-size: var(--flume-font-size-header1);
   line-height: var(--flume-line-height-default);
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
     font-size: calc(var(--flume-font-size-header1) * 0.75);
   }
 }
@@ -17,7 +17,7 @@ h2 {
   font-size: var(--flume-font-size-header2);
   line-height: var(--flume-line-height-default);
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
     font-size: calc(var(--flume-font-size-header2) * 0.75);
   }
 }
@@ -28,7 +28,7 @@ h3 {
   font-size: var(--flume-font-size-header3);
   line-height: var(--flume-line-height-default);
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
     font-size: calc(var(--flume-font-size-header3) * 0.75);
   }
 }
@@ -39,7 +39,7 @@ h4 {
   font-size: var(--flume-font-size-header4);
   line-height: var(--flume-line-height-default);
 
-  @media screen and (max-width: $breakpoint-sm) {
+  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
     font-size: calc(var(--flume-font-size-header4) * 0.75);
   }
 }

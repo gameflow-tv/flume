@@ -25,6 +25,35 @@
   --flume-color-winner: #ddcb40;
   --flume-color-runnerup: #c2d5e2;
   --flume-color-elimination: #ccc;
+
+  $flume-colors: (
+    on-primary: var(--flume-color-on-primary),
+    primary: var(--flume-color-primary),
+    secondary: var(--flume-color-secondary),
+    on-secondary: var(--flume-color-on-secondary),
+    signal: var(--flume-color-signal),
+    on-signal: var(--flume-color-on-signal),
+    icon: var(--flume-color-icon),
+    header: var(--flume-color-header),
+    body: var(--flume-color-body),
+    subtitle: var(--flume-color-subtitle),
+    button-focus: var(--flume-color-button-focus),
+    success: var(--flume-color-success),
+    on-success: var(--flume-color-on-success),
+    warning: var(--flume-color-warning),
+    on-warning: var(--flume-color-on-warning),
+    error: var(--flume-color-error),
+    on-error: var(--flume-color-on-error),
+    shadow: var(--flume-color-shadow),
+    highlight: var(--flume-color-highlight),
+    inactive: var(--flume-color-inactive),
+    overlay: var(--flume-color-overlay),
+    win: var(--flume-color-win),
+    loss: var(--flume-color-loss),
+    winner: var(--flume-color-winner),
+    runnerup: var(--flume-color-runnerup),
+    elimination: var(--flume-color-elimination)
+  );
 }
 
 @mixin setColors() {

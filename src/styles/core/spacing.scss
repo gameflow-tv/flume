@@ -1,24 +1,34 @@
 @mixin getDefaultSpacing {
-    --flume-spacing-xxxs: 2px;
-    --flume-spacing-xxs: 4px;
-    --flume-spacing-xs: 8px;
-    --flume-spacing-sm: 12px;
-    --flume-spacing-md: 16px;
-    --flume-spacing-lg: 24px;
-    --flume-spacing-xl: 32px;
-    --flume-spacing-xxl: 48px;
+  --flume-spacing-xxxs: 2px;
+  --flume-spacing-xxs: 4px;
+  --flume-spacing-xs: 8px;
+  --flume-spacing-sm: 12px;
+  --flume-spacing-md: 16px;
+  --flume-spacing-lg: 24px;
+  --flume-spacing-xl: 32px;
+  --flume-spacing-xxl: 48px;
+
+  $flume-spacing: (
+    xxxs: var(--flume-spacing-xxxs),
+    xxs: var(--flume-spacing-xxs),
+    xs: var(--flume-spacing-xs),
+    sm: var(--flume-spacing-sm),
+    md: var(--flume-spacing-md),
+    lg: var(--flume-spacing-lg),
+    xl: var(--flume-spacing-xl),
+    xxl: var(--flume-spacing-xxl)
+  );
+}
+
+@mixin setSpacing() {
+  :root {
+    @content;
   }
-  
-  @mixin setSpacing() {
-    :root {
-      @content;
-    }
+}
+
+$hasCustomSpacing: false !default;
+@if $hasCustomSpacing == false {
+  :root {
+    @include getDefaultSpacing();
   }
-  
-  $hasCustomSpacing: false !default;
-  @if $hasCustomSpacing == false {
-    :root {
-      @include getDefaultSpacing();
-    }
-  }
-  
+}

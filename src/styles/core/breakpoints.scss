@@ -6,6 +6,16 @@
   --flume-breakpoint-lg: 62rem;
   --flume-breakpoint-xl: 75rem;
   --flume-breakpoint-xxl: 90rem;
+
+  $flume-breakpoints: (
+    default: var(--flume-breakpoint-default),
+    xs: var(--flume-breakpoint-xs),
+    sm: var(--flume-breakpoint-sm),
+    md: var(--flume-breakpoint-md),
+    lg: var(--flume-breakpoint-lg),
+    xl: var(--flume-breakpoint-xl),
+    xxl: var(--flume-breakpoint-xxl)
+  );
 }
 
 @mixin setBreakpoints() {

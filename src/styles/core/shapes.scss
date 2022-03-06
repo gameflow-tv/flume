@@ -7,6 +7,17 @@
   --flume-shape-pill: 100px;
   --flume-shape-full: 50%;
   --flume-shape-handle: 0px 4px 0px 4px;
+
+  $flume-shapes: (
+    none: var(--flume-shape-none),
+    xxs: var(--flume-shape-xxs),
+    xs: var(--flume-shape-xs),
+    sm: var(--flume-shape-sm),
+    md: var(--flume-shape-md),
+    pill: var(--flume-shape-pill),
+    full: var(--flume-shape-full),
+    handle: var(--flume-shape-handle)
+  );
 }
 
 @mixin setShapes() {
