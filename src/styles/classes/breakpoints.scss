@@ -2,74 +2,74 @@
 
 // min-width based visiblity
 .flume-only-under-xs {
-  @media (min-width: map.get($flume-breakpoints, 'xs')) {
+  @media (min-width: $flume-breakpoint-xs) {
     display: none;
   }
 }
 
 .flume-only-under-sm {
-  @media (min-width: map.get($flume-breakpoints, 'sm')) {
+  @media (min-width: $flume-breakpoint-sm) {
     display: none;
   }
 }
 
 .flume-only-under-md {
-  @media (min-width: map.get($flume-breakpoints, 'md')) {
+  @media (min-width: $flume-breakpoint-md) {
     display: none;
   }
 }
 
 .flume-only-under-lg {
-  @media (min-width: map.get($flume-breakpoints, 'lg')) {
+  @media (min-width: $flume-breakpoint-lg) {
     display: none;
   }
 }
 
 .flume-only-under-xl {
-  @media (min-width: map.get($flume-breakpoints, 'xl')) {
+  @media (min-width: $flume-breakpoint-xl) {
     display: none;
   }
 }
 
 .flume-only-under-xxl {
-  @media (min-width: map.get($flume-breakpoints, 'xxl')) {
+  @media (min-width: $flume-breakpoint-xxl) {
     display: none;
   }
 }
 
 // max-width based visibility
 .flume-only-over-xs {
-  @media (max-width: map.get($flume-breakpoints, 'xs')) {
+  @media (max-width: $flume-breakpoint-xs) {
     display: none;
   }
 }
 
 .flume-only-over-sm {
-  @media (max-width: map.get($flume-breakpoints, 'sm')) {
+  @media (max-width: $flume-breakpoint-sm) {
     display: none;
   }
 }
 
 .flume-only-over-md {
-  @media (max-width: map.get($flume-breakpoints, 'md')) {
+  @media (max-width: $flume-breakpoint-md) {
     display: none;
   }
 }
 
 .flume-only-over-lg {
-  @media (max-width: map.get($flume-breakpoints, 'lg')) {
+  @media (max-width: $flume-breakpoint-lg) {
     display: none;
   }
 }
 
 .flume-only-over-xl {
-  @media (max-width: map.get($flume-breakpoints, 'xl')) {
+  @media (max-width: $flume-breakpoint-xl) {
     display: none;
   }
 }
 
 .flume-only-over-xxl {
-  @media (max-width: map.get($flume-breakpoints, 'xxl')) {
+  @media (max-width: $flume-breakpoint-xxl) {
     display: none;
   }
 }

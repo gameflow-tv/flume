@@ -1,11 +1,13 @@
+@import '../variables/transitions.scss';
+
 .flume-transition-short {
-  transition: all var(--flume-transition-short);
+  transition: all $flume-transition-short;
 }
 
 .flume-transition-medium {
-  transition: all var(--flume-transition-medium);
+  transition: all $flume-transition-medium;
 }
 
 .flume-transition-long {
-  transition: all var(--flume-transition-long);
+  transition: all $flume-transition-long;
 }

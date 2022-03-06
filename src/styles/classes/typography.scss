@@ -1,80 +1,81 @@
-@use 'sass:map';
+@import '../variables/typography.scss';
+@import '../variables/breakpoints.scss';
 
 .flume-typography-header1 {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-semi-bold);
-  font-size: var(--flume-font-size-header1);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-semi-bold;
+  font-size: $flume-font-size-header1;
+  line-height: $flume-line-height-default;
 
-  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
-    font-size: calc(var(--flume-font-size-header1) * 0.75);
+  @media screen and (max-width: $flume-breakpoint-sm) {
+    font-size: calc($flume-font-size-header1 * 0.75);
   }
 }
 
 .flume-typography-header2 {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-medium);
-  font-size: var(--flume-font-size-header2);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-medium;
+  font-size: $flume-font-size-header2;
+  line-height: $flume-line-height-default;
 
-  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
-    font-size: calc(var(--flume-font-size-header2) * 0.75);
+  @media screen and (max-width: $flume-breakpoint-sm) {
+    font-size: calc($flume-font-size-header2 * 0.75);
   }
 }
 
 .flume-typography-header3 {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-semi-bold);
-  font-size: var(--flume-font-size-header3);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-semi-bold;
+  font-size: $flume-font-size-header3;
+  line-height: $flume-line-height-default;
 
-  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
-    font-size: calc(var(--flume-font-size-header3) * 0.75);
+  @media screen and (max-width: $flume-breakpoint-sm) {
+    font-size: calc($flume-font-size-header3 * 0.75);
   }
 }
 
 .flume-typography-header4 {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-medium);
-  font-size: var(--flume-font-size-header4);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-medium;
+  font-size: $flume-font-size-header4;
+  line-height: $flume-line-height-default;
 
-  @media screen and (max-width: map.get($flume-breakpoints, 'sm')) {
-    font-size: calc(var(--flume-font-size-header4) * 0.75);
+  @media screen and (max-width: $flume-breakpoint-sm) {
+    font-size: calc($flume-font-size-header4 * 0.75);
   }
 }
 
 .flume-typography-header5 {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-medium);
-  font-size: var(--flume-font-size-header5);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-medium;
+  font-size: $flume-font-size-header5;
+  line-height: $flume-line-height-default;
 }
 
 .flume-typography-body1 {
-  font-family: var(--flume-font-family-body);
-  font-weight: var(--flume-font-weight-regular);
-  font-size: var(--flume-font-size-body1);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-body;
+  font-weight: $flume-font-weight-regular;
+  font-size: $flume-font-size-body1;
+  line-height: $flume-line-height-default;
 }
 
 .flume-typography-body2 {
-  font-family: var(--flume-font-family-body);
-  font-weight: var(--flume-font-weight-regular);
-  font-size: var(--flume-font-size-body2);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-body;
+  font-weight: $flume-font-weight-regular;
+  font-size: $flume-font-size-body2;
+  line-height: $flume-line-height-default;
 }
 
 .flume-typography-body3 {
-  font-family: var(--flume-font-family-body);
-  font-weight: var(--flume-font-weight-medium);
-  font-size: var(--flume-font-size-body3);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-body;
+  font-weight: $flume-font-weight-medium;
+  font-size: $flume-font-size-body3;
+  line-height: $flume-line-height-default;
 }
 
 .flume-typography-button {
-  font-family: var(--flume-font-family-header);
-  font-weight: var(--flume-font-weight-medium);
-  font-size: var(--flume-font-size-button);
-  line-height: var(--flume-line-height-default);
+  font-family: $flume-font-family-header;
+  font-weight: $flume-font-weight-medium;
+  font-size: $flume-font-size-button;
+  line-height: $flume-line-height-default;
 }

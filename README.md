@@ -19,13 +19,9 @@ npm i @gameflow-tv/flume
 
 ### Theming
 
-#### CSS/SCSS
+#### Stylesheets
 
-Flume comes bundled with a global style bundle that sets up some global styles and provides utility CSS classes for vanilla CSS usage;
-
-```jsx
-import styles from '@gameflow-tv/flume/bundle.css'
-```
+Flume operates with our _BYOCSS_ (Bring Your Own CSS) principle; we distribute Sass source files that can be compiled to CSS as wanted/needed.
 
 #### React/JSX
 

@@ -1,19 +1,21 @@
+@import '../variables/shadows.scss';
+
 .flume-shadows-xs {
-  box-shadow: var(--flume-shadow-xs);
+  box-shadow: $flume-shadow-xs;
 }
 
 .flume-shadows-sm {
-  box-shadow: var(--flume-shadow-sm);
+  box-shadow: $flume-shadow-sm;
 }
 
 .flume-shadow-md {
-  box-shadow: var(--flume-shadow-md);
+  box-shadow: $flume-shadow-md;
 }
 
 .flume-shadow-lg {
-  box-shadow: var(--flume-shadow-lg);
+  box-shadow: $flume-shadow-lg;
 }
 
 .flume-shadow-glow {
-  box-shadow: var(--flume-shadow-glow);
+  box-shadow: $flume-shadow-glow;
 }

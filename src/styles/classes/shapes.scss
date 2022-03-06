@@ -1,27 +1,29 @@
+@import '../variables/shapes.scss';
+
 .flume-shape-none {
-  border-radius: var(--flume-border-none);
+  border-radius: $flume-shape-none;
 }
 
 .flume-shape-xxs {
-  border-radius: var(--flume-border-xxs);
+  border-radius: $flume-shape-xxs;
 }
 
 .flume-shape-xs {
-  border-radius: var(--flume-border-xs);
+  border-radius: $flume-shape-xs;
 }
 
 .flume-shape-md {
-  border-radius: var(--flume-border-md);
+  border-radius: $flume-shape-md;
 }
 
 .flume-shape-pill {
-  border-radius: var(--flume-border-pill);
+  border-radius: $flume-shape-pill;
 }
 
 .flume-shape-full {
-  border-radius: var(--flume-border-full);
+  border-radius: $flume-shape-full;
 }
 
 .flume-shape-handle {
-  border-radius: var(--flume-border-handle);
+  border-radius: $flume-shape-handle;
 }
