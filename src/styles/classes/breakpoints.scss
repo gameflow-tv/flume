@@ -1,5 +1,3 @@
-@use 'sass:map';
-
 // min-width based visiblity
 .flume-only-under-xs {
   @media (min-width: $flume-breakpoint-xs) {

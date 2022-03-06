@@ -27,5 +27,4 @@ chrome-user-data
 storybook-static
 .envrc
 dist/
-bundle.css*
-sass/
+bundle.*css*

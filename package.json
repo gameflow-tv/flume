@@ -5,8 +5,7 @@
   "module": "dist/index.js",
   "files": [
     "dist",
-    "sass",
-    "bundle.css"
+    "bundle.scss"
   ],
   "types": "dist/index.d.ts",
   "repository": "git://github.com/gameflow-tv/flume.git",
@@ -27,10 +26,10 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "chromatic": "npx chromatic",
-    "build": "tsc && sass src/styles/index.scss bundle.css && cp -r src/styles/**/*.scss sass && rollup -c",
-    "watch": "concurrently \"tsc && rollup -cw\" \"sass --watch src/styles/index.scss bundle.css\"",
-    "watch:stylesheet": "sass --watch src/styles/index.scss bundle.css",
-    "build:stylesheet": "sass src/styles/index.scss bundle.css"
+    "build": "tsc && rollup -c",
+    "postbuild": "npm run bundle-styles",
+    "bundle-styles": "scss-bundle -e src/styles/index.scss -o bundle.scss --rootDir src/styles",
+    "watch": "tsc && rollup -cw"
   },
   "husky": {
     "hooks": {
@@ -40,12 +39,6 @@
   "sideEffects": [
     "**/*.css"
   ],
-  "resolutions": {
-    "react-dev-utils": "^11.0.4",
-    "remark-parse": "^9.0.0",
-    "browserslist": "^4.19.1",
-    "glob-parent": "^5.1.2"
-  },
   "dependencies": {
     "chroma-js": "^2.4.2",
     "react": "^17.0.2",
@@ -87,7 +80,6 @@
     "babel-loader": "^8.2.3",
     "chroma-js": "^2.4.2",
     "chromatic": "^6.5.1",
-    "concurrently": "^7.0.0",
     "css-loader": "^6.6.0",
     "eslint-plugin-mdx": "^1.16.0",
     "eslint-plugin-react": "^7.29.2",
@@ -103,6 +95,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
+    "scss-bundle": "^3.1.2",
     "storybook": "^6.5.0-alpha.45",
     "styled-components": "^5.3.3",
     "ts-jest": "^27.1.3",
