@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { getResultantValidationResponse, InputProps } from '../shared'
@@ -25,7 +25,7 @@ export const Text = (props: InputProps) => {
   }, [props])
 
   return (
-    <React.Fragment>
+    <>
       <InputGroup {...props.inputStyles}>
         <GlobalInput
           id={props.id}
@@ -44,6 +44,6 @@ export const Text = (props: InputProps) => {
         </VerificationIcon>
       </InputGroup>
       {<ValidationInfo props={props} validationResponse={validationResponse} />}
-    </React.Fragment>
+    </>
   )
 }

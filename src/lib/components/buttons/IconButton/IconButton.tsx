@@ -1,4 +1,3 @@
-import React from 'react'
 import { ButtonVariant } from '..'
 import { IconName } from '../../icons'
 import { useAmbiance, useTheme } from '../../../hooks'

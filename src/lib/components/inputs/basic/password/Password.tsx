@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { getResultantValidationResponse, InputProps, InputType } from '../shared'
 import { ValidationInfo } from '../shared/ValidationInfo'
@@ -33,7 +33,7 @@ export const Password = (props: InputProps) => {
   }, [props])
 
   return (
-    <React.Fragment>
+    <>
       <InputGroup>
         <StyledInput
           ref={props.forwardedRef}
@@ -58,6 +58,6 @@ export const Password = (props: InputProps) => {
         </ActionArea>
       </InputGroup>
       <ValidationInfo props={props} validationResponse={validationResponse} />
-    </React.Fragment>
+    </>
   )
 }

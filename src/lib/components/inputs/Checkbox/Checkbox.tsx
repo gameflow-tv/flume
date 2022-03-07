@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, ReactNode } from 'react'
+import { ChangeEventHandler, ReactNode } from 'react'
 import { TypographyStyle } from '../../../theme'
 import { CheckInput, SpanEl, SpanProps, Wrapper } from './Checkbox.styles'
 import { useAmbiance, useTheme } from '../../../hooks'

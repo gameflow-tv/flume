@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { useTheme } from '../../../hooks'
 import { CenterContainer, TooltipBox, TooltipTarget, TooltipWrapper } from './Tooltip.styles'
 

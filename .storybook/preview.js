@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Ambiance } from '../src/lib/providers/Ambiance'
 import { ThemeProvider } from '../src'
 import '../src/lib/theme/fonts.css'

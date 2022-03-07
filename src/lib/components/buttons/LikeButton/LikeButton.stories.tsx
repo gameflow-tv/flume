@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+
 import { LikeButton, LikeButtonProps } from './LikeButton'
 
 export default {

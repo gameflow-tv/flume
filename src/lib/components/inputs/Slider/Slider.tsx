@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, ReactNode } from 'react'
+import { ChangeEventHandler, ReactNode } from 'react'
 import { Range, RangeLabel, RangeWrap, SliderLabel, Wrapper } from './Slider.styles'
 import { useAmbiance, useTheme } from '../../../../hooks'
 import { LabelPosition } from '..'

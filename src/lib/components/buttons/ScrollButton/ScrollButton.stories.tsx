@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+
 import { ScrollButton } from './ScrollButton'
 
 export default {

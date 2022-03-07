@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '../../hooks'
 import { IconData, IconName } from './data'

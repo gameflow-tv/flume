@@ -1,5 +1,5 @@
 import { Theme } from '../../../theme'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { ButtonContent, ButtonContentProps, StyledButton, StyledButtonProps } from './Button.styles'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { ButtonVariant } from '..'
@@ -95,10 +95,10 @@ export const Button = (props: ButtonProps): JSX.Element => {
         {props.children ? (
           props.children
         ) : (
-          <React.Fragment>
+          <>
             <p>{props.label}</p>
             {props.icon && <Icon icon={props.icon} color={props.foregroundColor} />}
-          </React.Fragment>
+          </>
         )}
       </ButtonContent>
     </StyledButton>

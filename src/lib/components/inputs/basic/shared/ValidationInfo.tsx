@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputCriteriaResponse, InputProps } from './types'
 import { InfoMessage, ListItem } from './styles'
 
@@ -10,7 +9,7 @@ export const ValidationInfo = ({
   validationResponse: InputCriteriaResponse | InputCriteriaResponse[]
 }) => {
   return (
-    <React.Fragment>
+    <>
       {!props.multipleCriteriaInfo && (
         <InfoMessage
           className={(validationResponse as InputCriteriaResponse)?.type}
@@ -28,6 +27,6 @@ export const ValidationInfo = ({
           ))}
         </ul>
       ) : null}
-    </React.Fragment>
+    </>
   )
 }

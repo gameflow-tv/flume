@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../../hooks'
 import { Footer } from './ModalFooter.styles'
 

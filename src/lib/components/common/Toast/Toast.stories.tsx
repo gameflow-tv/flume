@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { Toast, ToastProps } from '.'
 import { Button } from '../../buttons/Button'
 

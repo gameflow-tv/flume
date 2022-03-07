@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Icon } from '../../icons'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { useOutsideClick } from '../../../hooks/useOutsideClick'

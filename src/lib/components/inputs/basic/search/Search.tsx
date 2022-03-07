@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Icon } from '../../../icons'
 import { useInputValidation } from '../../../../hooks/useInputValidation'
 import { getResultantValidationResponse, InputProps } from '../shared'
@@ -30,7 +30,7 @@ export const Search = (props: InputProps) => {
   }, [props])
 
   return (
-    <React.Fragment>
+    <>
       <InputGroup>
         <SearchInput
           ref={props.forwardedRef}
@@ -51,6 +51,6 @@ export const Search = (props: InputProps) => {
         </ActionArea>
       </InputGroup>
       <ValidationInfo props={props} validationResponse={validationResponse} />
-    </React.Fragment>
+    </>
   )
 }

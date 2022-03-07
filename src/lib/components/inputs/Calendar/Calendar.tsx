@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { AspectRatio } from '../../common/AspectRatio/AspectRatio'
 import {

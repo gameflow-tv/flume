@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconName } from '../../icons'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { IconButton } from '../../buttons/IconButton'

@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, useImperativeHandle, useState } from 'react'
+import { forwardRef, ReactNode, useImperativeHandle, useState } from 'react'
 import { useAmbiance, useTheme } from '../../../hooks'
 import { StyledToast } from './Toast.styles'
 

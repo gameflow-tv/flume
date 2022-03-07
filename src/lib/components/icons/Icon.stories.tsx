@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+
 import styled from 'styled-components'
 import { Icon, IconData, IconName, IconProps } from '.'
 

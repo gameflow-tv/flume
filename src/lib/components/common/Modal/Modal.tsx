@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../hooks'
 import { Icon } from '../../icons'
 import { Body, CloseButton, Footer, Header, ModalContent, ModalOverlay } from './Modal.styles'
@@ -98,7 +98,7 @@ export const Modal = ({
         {children ? (
           children
         ) : (
-          <React.Fragment>
+          <>
             {modalHeader && (
               <Header typography={theme.typography.header5} color={theme.colors.header}>
                 {modalHeader}
@@ -118,7 +118,7 @@ export const Modal = ({
                 {modalFooter}
               </Footer>
             )}
-          </React.Fragment>
+          </>
         )}
       </ModalContent>
     </ModalOverlay>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputProps } from './shared'
 import { Checkbox } from '../Checkbox'
 import { Password } from './password/Password'

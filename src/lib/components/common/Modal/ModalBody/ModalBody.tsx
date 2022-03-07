@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { useTheme } from '../../../../hooks/useTheme'
 import { Body } from './ModalBody.styles'
 

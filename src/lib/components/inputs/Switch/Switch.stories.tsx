@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+
 import { Switch, SwitchProps } from './Switch'
 
 export default {
