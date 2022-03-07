@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { createContext, FC, ReactNode, useContext } from 'react'
 import { useTheme } from '../hooks/useTheme'
 import { getLuminance } from '../utils/getLuminance'
 import { saturate } from '../utils/saturate'
@@ -16,19 +16,19 @@ export type AmbianceProps = {
 type AmbianceProviderProps = {
   elevation?: number
   color?: string
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
-const AmbianceContext = React.createContext<AmbianceProps>(undefined)
+const AmbianceContext = createContext<AmbianceProps>(undefined)
 
 const AmbianceConsumer = AmbianceContext.Consumer
 
-const Ambiance: React.FC<AmbianceProviderProps> = ({
+const Ambiance: FC<AmbianceProviderProps> = ({
   color,
   children,
   elevation
 }: AmbianceProviderProps) => {
-  const parent = React.useContext(AmbianceContext)
+  const parent = useContext(AmbianceContext)
   const theme = useTheme()
   let source: string
 

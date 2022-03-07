@@ -1,5 +1,0 @@
-export * from './ModalHeader/ModalHeader'
-export * from './ModalBody/ModalBody'
-export * from './ModalFooter/ModalFooter'
-export * from './Modal'
-export * from './Sharing'
