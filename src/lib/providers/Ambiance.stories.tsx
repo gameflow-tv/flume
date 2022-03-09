@@ -1,5 +1,4 @@
-import { ReactNode } from 'react'
-import styled from 'styled-components'
+import { CSSProperties, ReactNode } from 'react'
 import { Ambiance, AmbianceConsumer } from './Ambiance'
 
 export default {
@@ -7,14 +6,26 @@ export default {
   component: Ambiance
 }
 
-const ColorBox = styled.div<{ color?: string; size?: string }>`
-  background-color: ${(props) => props.color};
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
-  padding: 8px 16px;
-  border-radius: 6px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-`
+const ColorBox = ({
+  color,
+  size,
+  children
+}: {
+  color?: string
+  size?: string
+  children?: ReactNode
+}) => {
+  const style: CSSProperties = {
+    backgroundColor: color,
+    width: size,
+    height: size,
+    padding: '8px 16px',
+    borderRadius: '6px',
+    boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)'
+  }
+
+  return <div style={style}>{children}</div>
+}
 
 const AmbientBox = ({
   children,
