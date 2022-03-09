@@ -1,9 +1,20 @@
-import { createContext, FC, ReactNode, useContext } from 'react'
+import { createContext, CSSProperties, FC, ReactNode, useContext } from 'react'
 import { useTheme } from '../hooks/useTheme'
 import { getLuminance } from '../utils/getLuminance'
 import { saturate } from '../utils/saturate'
 
-export type AmbianceProps = {
+interface AmbianceStyles extends CSSProperties {
+  '--ambiance-color': string
+  '--ambiance-root-color': string
+  '--ambiance-bottom-color': string
+  '--ambiance-elevation-0': string
+  '--ambiance-elevation-1': string
+  '--ambiance-elevation-2': string
+  '--ambiance-elevation-3': string
+  '--ambiance-elevation-4': string
+  '--ambiance-elevation-5': string
+}
+export interface AmbianceProps {
   root: AmbianceProps
   bottom: AmbianceProps
   parent?: AmbianceProps
@@ -13,7 +24,8 @@ export type AmbianceProps = {
   source?: string
 }
 
-type AmbianceProviderProps = {
+interface AmbianceProviderProps {
+  id?: string
   elevation?: number
   color?: string
   children?: ReactNode
@@ -24,6 +36,7 @@ const AmbianceContext = createContext<AmbianceProps>(undefined)
 const AmbianceConsumer = AmbianceContext.Consumer
 
 const Ambiance: FC<AmbianceProviderProps> = ({
+  id,
   color,
   children,
   elevation
@@ -66,7 +79,25 @@ const Ambiance: FC<AmbianceProviderProps> = ({
     bottom: getBottomAmbiance(tmp)
   }
 
-  return <AmbianceContext.Provider value={value}>{children}</AmbianceContext.Provider>
+  const styles: AmbianceStyles = {
+    '--ambiance-color': value.color,
+    '--ambiance-root-color': value.root.color,
+    '--ambiance-bottom-color': value.bottom.color,
+    '--ambiance-elevation-0': getColorFromElevation(source, 0),
+    '--ambiance-elevation-1': getColorFromElevation(source, 1),
+    '--ambiance-elevation-2': getColorFromElevation(source, 2),
+    '--ambiance-elevation-3': getColorFromElevation(source, 3),
+    '--ambiance-elevation-4': getColorFromElevation(source, 4),
+    '--ambiance-elevation-5': getColorFromElevation(source, 5)
+  }
+
+  return (
+    <AmbianceContext.Provider value={value}>
+      <div id={id} style={styles}>
+        {children}
+      </div>
+    </AmbianceContext.Provider>
+  )
 }
 
 const getChildAmbiance = (a: AmbianceProps): AmbianceProps => {
