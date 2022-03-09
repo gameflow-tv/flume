@@ -3,10 +3,11 @@ import { typographyToCss } from '../../../theme'
 import { DatePickerProps } from './DatePicker'
 
 export const Wrapper = styled.div<DatePickerProps>`
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
   width: ${(props) => props.width};
-  height: 45px;
+  height: ${(props) => props.height};
   z-index: ${(props) => (props.zIndex ? props.zIndex : 'inherit')};
 `
 
