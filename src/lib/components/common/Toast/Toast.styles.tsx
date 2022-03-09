@@ -219,8 +219,12 @@ export const StyledToast = styled.div((props: ToastProps) => {
     bottom: ${toastConfig.position.initial.bottom};
     left: ${toastConfig.position.initial.left};
     transform: ${`translateX(${toastConfig.position.initial.transformX}) translateY(${toastConfig.position.initial.transformY})`};
+    display: none;
+    opacity: 0;
 
     &.show {
+      display: unset;
+      opacity: 1;
       ${animation}
     }
   `
