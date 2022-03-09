@@ -24,7 +24,7 @@ export interface AmbianceProps {
   source?: string
 }
 
-interface AmbianceProviderProps {
+export interface AmbianceProviderProps {
   id?: string
   elevation?: number
   color?: string
