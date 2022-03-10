@@ -162,9 +162,9 @@ export const DatePicker = ({
     <Wrapper ref={pickerRef} {...styles}>
       <Grid>
         {/* <AspectRatio aspectRatio={100}> */}
-          <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>
-            <Icon icon="arrow_left" size="large" />
-          </NavBtn>
+        <NavBtn className="prevmtharea" onClick={() => handleDay(-1)} {...styles}>
+          <Icon icon="arrow_left" size="large" />
+        </NavBtn>
         {/* </AspectRatio> */}
         <DateInput className="mthdescarea" onClick={handleEdition} {...styles}>
           <Icon icon="calendar" />
@@ -175,9 +175,9 @@ export const DatePicker = ({
           )}
         </DateInput>
         {/* <AspectRatio aspectRatio={100}> */}
-          <NavBtn className="nextmtharea" onClick={() => handleDay(1)} {...styles}>
-            <Icon icon="arrow_right" size="large" />
-          </NavBtn>
+        <NavBtn className="nextmtharea" onClick={() => handleDay(1)} {...styles}>
+          <Icon icon="arrow_right" size="large" />
+        </NavBtn>
         {/* </AspectRatio> */}
       </Grid>
       <div style={{ position: 'relative' }}>
