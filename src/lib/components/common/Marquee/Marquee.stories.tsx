@@ -28,7 +28,9 @@ const longLorem = (
 )
 
 const shortLorem = (
-  <p style={{ color: '#f1c3c3', whiteSpace: 'nowrap' }}>Lorem ipsum dolor sit amet.</p>
+  <p style={{ color: '#f1c3c3', whiteSpace: 'nowrap' }}>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </p>
 )
 
 const DefaultTemplate = (args: MarqueeProps) => {
