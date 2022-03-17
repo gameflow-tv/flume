@@ -1,5 +1,12 @@
 import React, { Fragment, ReactNode } from 'react'
-import { MarqueeGlobalStyle, MarqueeStyles, Wrapper } from './Marquee.styles'
+import {
+  FakeContent,
+  MainContent,
+  MarqueeGlobalStyle,
+  MarqueeStyles,
+  Roller,
+  Track
+} from './Marquee.styles'
 
 export type MarqueeProps = MarqueeStyles & {
   children: ReactNode
@@ -9,7 +16,12 @@ export const Marquee = (props: MarqueeProps) => {
   return (
     <Fragment>
       <MarqueeGlobalStyle {...props} />
-      <Wrapper>{props.children}</Wrapper>
+      <Track {...props}>
+        <Roller>
+          <MainContent>{props.children}</MainContent>
+          <FakeContent>{props.children}</FakeContent>
+        </Roller>
+      </Track>
     </Fragment>
   )
 }

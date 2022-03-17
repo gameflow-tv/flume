@@ -2,44 +2,94 @@ import styled, { createGlobalStyle, keyframes } from 'styled-components'
 
 export type MarqueeStyles = {
   duration: number
+  width?: string
+  contentGap?: string
   offset?: string
 }
 
 export const MarqueeGlobalStyle = createGlobalStyle<MarqueeStyles>`
-:root{
-  --offset: 20vw;
-  --move-initial: calc(-25% + var(--offset));
-  --move-final: calc(-50% + var(--offset));
-  --duration: ${(props) => props.duration}s;
-}
+  :root{
+    --duration: ${(props) => props.duration}s;
+  }
 `
 
-const slide = (props) => {
+const slideMainWhenStart = (props) => {
   return keyframes`
     0% {
-      transform: translateX(var(--move-initial));
+      transform: 0px;
     }
 
     100% {
-      transform: translateX(var(--move-final));
+      transform: translateX(-100%);
     }
   `
 }
 
-export const Wrapper = styled.div`
-  box-sizing: border-box;
-  user-select: none;
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  transform: translateX(var(--move-initial));
+const slideMainForever = (props) => {
+  return keyframes`
+    0% {
+      transform:  translateX(100%);
+    }
 
-  & > * {
+    100% {
+      transform: translateX(-100%);
+    }
+  `
+}
+
+const slideFakeForever = (props) => {
+  return keyframes`
+    0% {
+      transform:  translateX(0);
+    }
+
+    100% {
+      transform: translateX(-200%);
+    }
+  `
+}
+
+export const Track = styled.div<MarqueeStyles>`
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+
+  * {
     margin: 0;
     padding: 0;
-    width: max-content;
-    animation: ${slide} var(--duration) linear infinite;
   }
+`
+
+export const Roller = styled.div`
+  display: block;
+  width: max-content;
+  min-width: 200%;
+`
+
+export const MainContent = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  width: fit-content;
+  min-width: 50%;
+  animation-name: ${slideMainWhenStart}, ${slideMainForever};
+  animation-duration: var(--duration), calc(var(--duration) * 2);
+  animation-delay: 0s, var(--duration);
+  animation-timing-function: linear, linear;
+  animation-iteration-count: 1, infinite;
+`
+
+export const FakeContent = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  width: fit-content;
+  min-width: 50%;
+  animation-name: ${slideFakeForever};
+  animation-duration: calc(var(--duration) * 2);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 0;
 `
