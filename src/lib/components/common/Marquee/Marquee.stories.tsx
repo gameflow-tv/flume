@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { Marquee, MarqueeProps } from '.'
 import { Icon, IconData, IconName } from '../../icons'
 
@@ -12,11 +12,11 @@ export default {
 }
 
 const icons = Object.keys(IconData).map((key) => (
-  <p>
+  <div style={{ display: 'flex' }}>
     <Icon key={key} icon={key as IconName} size="large" color="white" />
     &nbsp;
-    {key}
-  </p>
+    <p>{key}</p>
+  </div>
 ))
 
 const longLorem = (
@@ -38,6 +38,7 @@ const DefaultTemplate = (args: MarqueeProps) => {
 }
 
 const BoxTemplate = (args: MarqueeProps) => {
+  const [slide, setSlide] = useState(false)
   return (
     <div
       style={{
@@ -48,8 +49,10 @@ const BoxTemplate = (args: MarqueeProps) => {
         display: 'flex',
         alignItems: 'center'
       }}
+      onMouseEnter={() => setSlide(true)}
+      onMouseLeave={() => setSlide(false)}
     >
-      <Marquee {...args} />
+      <Marquee {...args} slide={slide} />
     </div>
   )
 }
@@ -82,4 +85,11 @@ export const LongTextInBox: Story<MarqueeProps> = BoxTemplate.bind({})
 LongTextInBox.args = {
   children: longLorem,
   duration: 25
+}
+
+export const DispatchOnMouseover: Story<MarqueeProps> = BoxTemplate.bind({})
+DispatchOnMouseover.args = {
+  children: shortLorem,
+  duration: 15,
+  autoSlide: false
 }
