@@ -10,21 +10,19 @@ import {
 
 export type MarqueeProps = MarqueeStyles & {
   children: ReactNode
-  autoSlide?: boolean
   slide?: boolean
 }
 
 export const Marquee = (props: MarqueeProps) => {
-  const { autoSlide = true, slide = false } = props
-  const dispatchSlide = (autoSlide || slide) ?? true
+  const { slide = true } = props
 
   return (
     <Fragment>
       <MarqueeGlobalStyle {...props} />
       <Track {...props}>
         <Roller>
-          <MainContent className={dispatchSlide && 'slide'}>{props.children}</MainContent>
-          <FakeContent className={dispatchSlide && 'slide'}>{props.children}</FakeContent>
+          <MainContent className={slide && 'slide'}>{props.children}</MainContent>
+          <FakeContent className={slide && 'slide'}>{props.children}</FakeContent>
         </Roller>
       </Track>
     </Fragment>

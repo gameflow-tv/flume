@@ -38,7 +38,7 @@ const DefaultTemplate = (args: MarqueeProps) => {
 }
 
 const BoxTemplate = (args: MarqueeProps) => {
-  const [slide, setSlide] = useState(false)
+  const [slide, setSlide] = useState<boolean>(args.slide && false)
   return (
     <div
       style={{
@@ -87,9 +87,9 @@ LongTextInBox.args = {
   duration: 25
 }
 
-export const DispatchOnMouseover: Story<MarqueeProps> = BoxTemplate.bind({})
-DispatchOnMouseover.args = {
+export const SlideWhenMouseover: Story<MarqueeProps> = BoxTemplate.bind({})
+SlideWhenMouseover.args = {
   children: shortLorem,
   duration: 15,
-  autoSlide: false
+  slide: true
 }
