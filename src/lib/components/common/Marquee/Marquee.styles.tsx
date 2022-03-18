@@ -1,15 +1,9 @@
-import styled, { createGlobalStyle, keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export type MarqueeStyles = {
   duration: number
   width?: string
 }
-
-export const MarqueeGlobalStyle = createGlobalStyle<MarqueeStyles>`
-  :root{
-    --duration: ${(props) => props.duration}s;
-  }
-`
 
 const slideMainWhenStart = (props) => {
   return keyframes`
@@ -48,6 +42,7 @@ const slideFakeForever = (props) => {
 }
 
 export const Track = styled.div<MarqueeStyles>`
+  --duration: ${(props) => props.duration}s;
   box-sizing: border-box;
   width: ${(props) => props.width || '100%'};
   overflow: hidden;
