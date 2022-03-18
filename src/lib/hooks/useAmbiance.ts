@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AmbianceContext, AmbianceProps } from '../providers/Ambiance'
+import { AmbianceContext, AmbianceProps } from '../contexts/Ambiance'
 
 /** Retrieves a Ambiance instance from the current context. Assumes a `AmbianceProvider` is in the context.*/
 export const useAmbiance = (): AmbianceProps => {
