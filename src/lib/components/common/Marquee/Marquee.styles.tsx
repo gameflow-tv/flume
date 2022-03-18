@@ -70,7 +70,7 @@ export const MainContent = styled.div`
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 20px 0 0;
   width: fit-content;
   min-width: 50%;
   &.slide {
@@ -86,7 +86,7 @@ export const FakeContent = styled.div`
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 20px 0 0;
   width: fit-content;
   min-width: 50%;
   &.slide {
