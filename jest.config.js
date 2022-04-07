@@ -4,7 +4,5 @@ module.exports = {
   transform: {
     'node_modules/variables/.+\\.(j|t)sx?$': 'ts-jest'
   },
-  testPathIgnorePatterns: [
-    "dist"
-  ]
+  testPathIgnorePatterns: ['dist']
 }

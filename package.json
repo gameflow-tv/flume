@@ -2,9 +2,7 @@
   "name": "@gameflow-tv/flume",
   "version": "0.0.0-dev",
   "description": "React implementation of the Flume design system",
-  "module": "dist/index.js",
-  "main": "dist/index.xjs",
-  "type": "module",
+  "main": "dist/index.js",
   "files": [
     "dist",
     "bundle.scss"
@@ -32,7 +30,7 @@
     "postbuild": "npm run bundle-styles",
     "bundle-styles": "scss-bundle -e src/styles/index.scss -o bundle.scss --rootDir src/styles",
     "watch": "tsc && npm run build:bundle -- --watch",
-    "build:bundle": "tsup src/index.ts --format cjs,esm --dts --clean"
+    "build:bundle": "tsup src/index.ts --dts --clean"
   },
   "husky": {
     "hooks": {
@@ -75,10 +73,10 @@
     "@types/jest": "^27.4.1",
     "@types/jsdom": "^16.2.14",
     "@types/node": "17.0.23",
-    "@types/react": "^17.0.43",
-    "@types/react-dom": "^17.0.14",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
     "@types/rollup-plugin-peer-deps-external": "^2.2.1",
-    "@types/styled-components": "^5.1.24",
+    "@types/styled-components": "^5.1.25",
     "acorn-jsx": "^5.3.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.2.4",
