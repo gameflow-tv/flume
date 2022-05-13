@@ -45,6 +45,9 @@ export const useWindowDimensions = (): WindowDimensions | null => {
       setWindowDimensions(getWindowDimensions())
     }
 
+    // Resize as soon as component mounts
+    handleResize()
+
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
