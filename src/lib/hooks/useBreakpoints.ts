@@ -31,8 +31,8 @@ export const useBreakpoints = () => {
   const current = useCurrentBreakpoint()
   const dimensions = useWindowDimensions()
 
-  const isMobile = dimensions.width.rem < breakpoints.lg
-  const isDesktop = dimensions.width.rem >= breakpoints.lg
+  const isMobile = dimensions?.width?.rem < breakpoints.lg
+  const isDesktop = dimensions?.width?.rem >= breakpoints.lg
 
   return {
     breakpoints,

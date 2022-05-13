@@ -13,7 +13,7 @@ export type WindowDimensions = {
 
 /** Returns the current window dimensions in `px` and `rem` */
 export const getWindowDimensions = (): WindowDimensions => {
-  if (typeof document === 'undefined') {
+  if (typeof global?.document === 'undefined' || typeof global?.window === 'undefined') {
     return null
   }
 
@@ -37,8 +37,8 @@ export const getWindowDimensions = (): WindowDimensions => {
 }
 
 /** Returns the current window dimensions in `px` and `rem` */
-export const useWindowDimensions = (): WindowDimensions => {
-  const [windowDimensions, setWindowDimensions] = useState(null)
+export const useWindowDimensions = (): WindowDimensions | null => {
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>(null)
 
   useEffect(() => {
     function handleResize() {
