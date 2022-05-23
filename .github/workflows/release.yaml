@@ -6,9 +6,11 @@ jobs:
   publish:
     runs-on: self-hosted
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "16"
+          registry-url: "https://npm.pkg.github.com"
+          always-auth: "true"
 
       - uses: actions/checkout@v2
 
@@ -26,4 +28,4 @@ jobs:
       - name: Release to GHPR
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GHPR_TOKEN }}
