@@ -1,14 +1,8 @@
 {
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.spec.ts"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"],
   "compilerOptions": {
-    "target": "es2015",
+    "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -29,11 +23,16 @@
     "noEmit": false,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "typeRoots": ["./typings", "./node_modules/@types"],
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   }
 }

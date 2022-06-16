@@ -1,20 +1,7 @@
 .DS_STORE
 node_modules
-scripts/flow/*/.flowconfig
-.flowconfig
-*~
-*.pyc
-.grunt
-_SpecRunner.html
-__benchmarks__
-build/
-build2/
-remote-repo/
 coverage/
 .module-cache
-fixtures/dom/public/react-dom.js
-fixtures/dom/public/react.js
-test/the-files-to-test.generated.js
 *.log*
 chrome-user-data
 *.sublime-project
@@ -28,3 +15,4 @@ storybook-static
 .envrc
 dist/
 bundle.*css*
+.eslintcache
