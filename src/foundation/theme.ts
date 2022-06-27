@@ -1,3 +1,4 @@
+import { Animations } from './animations.js'
 import { Colors } from './colors.js'
 import { Motion } from './motion.js'
 import { Shadows } from './shadows.js'
@@ -12,4 +13,5 @@ export interface Theme {
   motion: Motion
   shadows: Shadows
   spacing: Spacing
+  animations: Animations
 }

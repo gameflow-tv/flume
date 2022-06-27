@@ -3,19 +3,24 @@
  */
 export interface Shapes {
   /**
-   * The smallest shape radii in px.
+   * String index signature for type compat.
    */
-  xsmall: number
+  [key: string]: string
+
   /**
-   * The next smallest shape radii in px.
+   * The smallest shape radius.
    */
-  small: number
+  xsmall: string
   /**
-   * The next larges shape radii in px.
+   * The next smallest shape radius.
    */
-  medium: number
+  small: string
   /**
-   * The largest shape radii in px.
+   * The next larges shape radius.
    */
-  large: number
+  medium: string
+  /**
+   * The largest shape radius.
+   */
+  large: string
 }

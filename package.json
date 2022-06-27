@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "Web implementation of the Flume design system",
   "type": "module",
-  "main": "index.js",
+  "main": "foundation.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gameflow-tv/flume.git"
@@ -16,16 +19,19 @@
   "homepage": "https://github.com/gameflow-tv/flume#readme",
   "scripts": {
     "test": "echo \"Error: no test specified. Exiting silently.\" && exit 0",
-    "build": "echo \"Error: no build specified. Exiting silently.\" && exit 0",
+    "build": "tsc && tsup",
     "format": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\"",
-    "lint": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx,.mdx ./src"
+    "lint": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx,.mdx ./src",
+    "watch": "npm run build -- --watch"
   },
   "devDependencies": {
     "@gameflow-tv/eslint-config": "^0.0.6",
     "@gameflow-tv/prettier-config": "^0.2.1",
-    "eslint": "^8.17.0",
-    "prettier": "2.6.2",
-    "typescript": "^4.7.3"
+    "eslint": "^8.18.0",
+    "prettier": "2.7.1",
+    "tailwindcss": "^3.1.3",
+    "tsup": "^6.1.2",
+    "typescript": "^4.7.4"
   },
   "prettier": "@gameflow-tv/prettier-config"
 }

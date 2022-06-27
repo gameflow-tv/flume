@@ -3,42 +3,47 @@
  */
 export interface Spacing {
   /**
-   * The smallest spacing, used for incremental and very minor gaps (in px).
+   * String index signature for type compat.
    */
-  xxxsmall: number
+  [key: string]: string
 
   /**
-   * A very small spacing, used for incremental and very minor gaps (in px).
+   * The smallest spacing, used for incremental and very minor gaps.
    */
-  xxsmall: number
+  xxxsmall: string
 
   /**
-   * A small spacing, used for incremental and minor gaps (in px).
+   * A very small spacing, used for incremental and very minor gaps.
    */
-  xsmall: number
+  xxsmall: string
 
   /**
-   * Spacing often used to add air between elements and in lists (in px).
+   * A small spacing, used for incremental and minor gaps.
    */
-  small: number
+  xsmall: string
 
   /**
-   * Spacing used for medium sized gaps and paddings (in px).
+   * Spacing often used to add air between elements and in lists.
    */
-  medium: number
+  small: string
 
   /**
-   * Spacing used for large gaps and paddings (in px).
+   * Spacing used for medium sized gaps and paddings.
    */
-  large: number
+  medium: string
 
   /**
-   * Spacing used for very large gaps and paddings (in px).
+   * Spacing used for large gaps and paddings.
    */
-  xlarge: number
+  large: string
 
   /**
-   * Spacing used for huge gaps and paddings (in px).
+   * Spacing used for very large gaps and paddings.
    */
-  xxlarge: number
+  xlarge: string
+
+  /**
+   * Spacing used for huge gaps and paddings.
+   */
+  xxlarge: string
 }

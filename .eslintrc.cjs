@@ -6,4 +6,8 @@ module.exports = {
   rules: {
     'sort-keys': 'off',
   },
+  env: {
+    browser: true,
+    node: true,
+  },
 }

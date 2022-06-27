@@ -5,17 +5,17 @@ interface TypographyData {
   /**
    * Size of the font in rem, determining size, surprisingly.
    */
-  fontSize: number
+  fontSize: string
 
   /**
    * Weighting of the font, determining thickness.
    */
-  fontWeight: number
+  fontWeight: string
 
   /**
    * Line height, determining how tall the text line is, regardless of `fontSize`.
    */
-  lineHeight: number
+  lineHeight: string
 
   /**
    * Typeface family, determining the typeface.

@@ -6,11 +6,12 @@ import { Spacing } from './spacing.js'
 import { Typography } from './typography.js'
 import { palette } from './palette.js'
 import { Theme } from './theme.js'
+import { Animations } from './animations.js'
 
 export const motion: Motion = {
-  short: 100,
-  medium: 200,
-  long: 300,
+  short: '100ms',
+  medium: '200ms',
+  long: '300ms',
   curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
 }
 
@@ -52,96 +53,102 @@ export const colors: Colors = {
 }
 
 export const shapes: Shapes = {
-  xsmall: 2,
-  small: 4,
-  medium: 6,
-  large: 12,
+  xsmall: '2px',
+  small: '4px',
+  medium: '6px',
+  large: '12px',
 }
 
 export const spacing: Spacing = {
-  xxxsmall: 2,
-  xxsmall: 4,
-  xsmall: 8,
-  small: 12,
-  medium: 16,
-  large: 24,
-  xlarge: 32,
-  xxlarge: 48,
+  xxxsmall: '2px',
+  xxsmall: '4px',
+  xsmall: '8px',
+  small: '12px',
+  medium: '16px',
+  large: '24px',
+  xlarge: '32px',
+  xxlarge: '48px',
 }
 
 export const typography: Typography = {
   header1: {
-    fontSize: 2.25,
-    fontWeight: 600,
-    lineHeight: 1.2,
+    fontSize: '2.25rem',
+    fontWeight: '600',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   header2: {
-    fontSize: 1.5,
-    fontWeight: 600,
-    lineHeight: 1.2,
+    fontSize: '1.5rem',
+    fontWeight: '600',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   header3: {
-    fontSize: 1.125,
-    fontWeight: 600,
-    lineHeight: 1.2,
+    fontSize: '1.125rem',
+    fontWeight: '600',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   header4: {
-    fontSize: 1,
-    fontWeight: 600,
-    lineHeight: 1.2,
+    fontSize: '1rem',
+    fontWeight: '600',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   header5: {
-    fontSize: 0.875,
-    fontWeight: 600,
-    lineHeight: 1.2,
+    fontSize: '0.875rem',
+    fontWeight: '600',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   body1: {
-    fontSize: 0.875,
-    fontWeight: 500,
-    lineHeight: 1.3,
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    lineHeight: '1.3px',
     fontFamily: 'Mulish',
   },
   body2: {
-    fontSize: 0.75,
-    fontWeight: 500,
-    lineHeight: 1.3,
+    fontSize: '0.75rem',
+    fontWeight: '500',
+    lineHeight: '1.3px',
     fontFamily: 'Mulish',
   },
   body3: {
-    fontSize: 0.625,
-    fontWeight: 500,
-    lineHeight: 1.3,
+    fontSize: '0.625rem',
+    fontWeight: '500',
+    lineHeight: '1.3px',
     fontFamily: 'Mulish',
   },
   button: {
-    fontSize: 0.875,
-    fontWeight: 500,
-    lineHeight: 1.2,
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   link: {
-    fontSize: 0.875,
-    fontWeight: 500,
-    lineHeight: 1.2,
+    fontSize: '0.875rem',
+    fontWeight: '500',
+    lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
   label1: {
-    fontSize: 0.75,
-    fontWeight: 500,
-    lineHeight: 1.0,
+    fontSize: '0.75rem',
+    fontWeight: '500',
+    lineHeight: '1.0px',
     fontFamily: 'Montserrat',
   },
   label2: {
-    fontSize: 0.625,
-    fontWeight: 500,
-    lineHeight: 1.0,
+    fontSize: '0.625rem',
+    fontWeight: '500',
+    lineHeight: '1.0px',
     fontFamily: 'Montserrat',
   },
+}
+
+export const animations: Animations = {
+  short: `${motion.curve} ${motion.short}`,
+  medium: `${motion.curve} ${motion.medium}`,
+  long: `${motion.curve} ${motion.long}`,
 }
 
 export const theme: Theme = {
@@ -151,4 +158,5 @@ export const theme: Theme = {
   motion,
   shadows,
   spacing,
+  animations,
 }

@@ -3,6 +3,11 @@
  */
 export interface Colors {
   /**
+   * String index signature for type compat.
+   */
+  [key: string]: string
+
+  /**
    * The primary/brand color.
    */
   primary: string
