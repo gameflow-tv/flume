@@ -16,7 +16,7 @@ const parseBreakpoints = (breakpoints: Screens): NumberedBreakpoints => {
   return parsed as NumberedBreakpoints
 }
 
-export type BreakpointsProps = {
+export interface BreakpointsProps {
   breakpoints: NumberedBreakpoints
   current: keyof Screens
   isMobile: boolean

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export type WindowDimensions = {
+export interface WindowDimensions {
   width: {
     px: number
     rem: number
@@ -11,9 +11,14 @@ export type WindowDimensions = {
   }
 }
 
-function getWindowDimensions(): WindowDimensions {
-  const width = window?.innerWidth || 0
-  const height = window?.innerHeight || 0
+const getWindowDimensions = (): WindowDimensions => {
+  let width = 0
+  let height = 0
+
+  if (typeof window !== 'undefined') {
+    width = window?.innerWidth
+    height = window?.innerHeight
+  }
 
   const rootFontSize = parseInt(getComputedStyle(document?.documentElement)?.fontSize) ?? 16
 
