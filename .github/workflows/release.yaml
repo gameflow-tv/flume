@@ -25,6 +25,9 @@ jobs:
       - name: Build library
         run: npm run build
 
+      - name: Ignore .npmrc for publish step
+        run: mv .npmrc .npmrc.temp
+
       - name: Release to GHPR
         run: npm publish
         env:
