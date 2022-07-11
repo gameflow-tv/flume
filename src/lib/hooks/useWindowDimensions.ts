@@ -12,19 +12,20 @@ export type WindowDimensions = {
 }
 
 function getWindowDimensions(): WindowDimensions {
-  const { innerWidth: width, innerHeight: height } = window
+  const width = window?.innerWidth || 0
+  const height = window?.innerHeight || 0
 
-  const rootFontSize = parseInt(getComputedStyle(document.documentElement).fontSize) ?? 16
+  const rootFontSize = parseInt(getComputedStyle(document?.documentElement)?.fontSize) ?? 16
 
   return {
     width: {
       px: width,
-      rem: width / rootFontSize
+      rem: width / rootFontSize,
     },
     height: {
       px: height,
-      rem: height / rootFontSize
-    }
+      rem: height / rootFontSize,
+    },
   }
 }
 
@@ -32,7 +33,7 @@ export const useWindowDimensions = (): WindowDimensions => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowDimensions(getWindowDimensions())
     }
 
