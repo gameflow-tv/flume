@@ -14,13 +14,13 @@ export interface WindowDimensions {
 const getWindowDimensions = (): WindowDimensions => {
   let width = 0
   let height = 0
+  let rootFontSize = 16
 
   if (typeof window !== 'undefined') {
     width = window?.innerWidth
     height = window?.innerHeight
+    rootFontSize = parseInt(getComputedStyle(document?.documentElement)?.fontSize) ?? 16
   }
-
-  const rootFontSize = parseInt(getComputedStyle(document?.documentElement)?.fontSize) ?? 16
 
   return {
     width: {
