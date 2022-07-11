@@ -1,7 +1,7 @@
 /**
  * Basic typography data.
  */
-interface TypographyData {
+export interface TypographyData {
   /**
    * Size of the font in rem, determining size, surprisingly.
    */
@@ -28,44 +28,48 @@ interface TypographyData {
  */
 export interface Typography {
   /**
+   * String index signature for type compat.
+   */
+  [key: string]: TypographyData
+  /**
    * The largest header typography, used for the largest text and h1 tags.
    */
-  header1: TypographyData
+  'header-xl': TypographyData
 
   /**
    * The next largest header typography, used for h2 tags.
    */
-  header2: TypographyData
+  'header-lg': TypographyData
 
   /**
    * Medium sized header typography, used for h3 tags.
    */
-  header3: TypographyData
+  'header-md': TypographyData
 
   /**
    * Smaller header typography, used for h4 tags.
    */
-  header4: TypographyData
+  'header-sm': TypographyData
 
   /**
    * Smallest header typography, used for h5 tags.
    */
-  header5: TypographyData
+  'header-xs': TypographyData
 
   /**
    * The largest body typography, used for the largest breadtext and p tags.
    */
-  body1: TypographyData
+  'body-lg': TypographyData
 
   /**
    * The next largest body typography, used for p tags.
    */
-  body2: TypographyData
+  'body-md': TypographyData
 
   /**
    * The smallest body typography, used for small text, tags and labels.
    */
-  body3: TypographyData
+  'body-sm': TypographyData
 
   /**
    * Typography used for buttons.
@@ -80,10 +84,10 @@ export interface Typography {
   /**
    * Typography used for small text.
    */
-  label1: TypographyData
+  'label-md': TypographyData
 
   /**
    * Typography used for very small text.
    */
-  label2: TypographyData
+  'label-sm': TypographyData
 }

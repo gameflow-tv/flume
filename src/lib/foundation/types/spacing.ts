@@ -10,40 +10,40 @@ export interface Spacing {
   /**
    * The smallest spacing, used for incremental and very minor gaps.
    */
-  xxxsmall: string
+  '3xs': string
 
   /**
    * A very small spacing, used for incremental and very minor gaps.
    */
-  xxsmall: string
+  '2xs': string
 
   /**
    * A small spacing, used for incremental and minor gaps.
    */
-  xsmall: string
+  xs: string
 
   /**
    * Spacing often used to add air between elements and in lists.
    */
-  small: string
+  sm: string
 
   /**
    * Spacing used for medium sized gaps and paddings.
    */
-  medium: string
+  md: string
 
   /**
    * Spacing used for large gaps and paddings.
    */
-  large: string
+  lg: string
 
   /**
    * Spacing used for very large gaps and paddings.
    */
-  xlarge: string
+  xl: string
 
   /**
    * Spacing used for huge gaps and paddings.
    */
-  xxlarge: string
+  '2xl': string
 }

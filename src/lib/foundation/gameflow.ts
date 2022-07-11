@@ -1,12 +1,13 @@
-import { Colors } from './colors.js'
-import { Motion } from './motion.js'
-import { Shadows } from './shadows.js'
-import { Shapes } from './shapes.js'
-import { Spacing } from './spacing.js'
-import { Typography } from './typography.js'
-import { palette } from './palette.js'
-import { Theme } from './theme.js'
-import { Animations } from './animations.js'
+import { Screens } from './types/screens'
+import { Colors } from './types/colors'
+import { Motion } from './types/motion'
+import { Shadows } from './types/shadows'
+import { BorderRadius } from './types/borderRadius'
+import { Spacing } from './types/spacing'
+import { Typography } from './types/typography'
+import { palette } from './palette'
+import { Theme } from './types/theme'
+import { Animations } from './animations'
 
 export const motion: Motion = {
   short: '100ms',
@@ -16,104 +17,114 @@ export const motion: Motion = {
 }
 
 export const shadows: Shadows = {
-  xsmall: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  small: '0 4px 8px rgba(0, 0, 0, 0.1)',
-  medium: '0 4px 16px rgba(0, 0, 0, 0.2)',
-  large: '0 8px 20px rgba(0, 0, 0, 0.3)',
+  xs: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  sm: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  md: '0 4px 16px rgba(0, 0, 0, 0.2)',
+  lg: '0 8px 20px rgba(0, 0, 0, 0.3)',
   focus: '0 0 4px 2px rgba(255, 255, 255, 1)',
 }
 
 export const colors: Colors = {
   primary: palette.amberOrange,
-  onPrimary: palette.abbeyBlue,
+  'on-primary': palette.abbeyBlue,
   secondary: palette.abbeyBlue,
   tertiary: palette.emperorGray,
-  quarternary: palette.white,
+  quaternary: palette.white,
   header: palette.white,
   body: palette.white85,
   subtitle: palette.white75,
   icon: palette.white85,
-  buttonFocus: palette.white,
+  'button-focus': palette.white,
   signal: palette.punchRed,
-  onSignal: palette.white,
+  'on-signal': palette.white,
   success: palette.ufoGreen,
-  onSuccess: palette.parsleyGreen,
+  'on-success': palette.parsleyGreen,
   warning: palette.lightningYellow,
-  onWarning: palette.mustardYellow,
+  'on-warning': palette.mustardYellow,
   error: palette.cinnabarRed,
-  onError: palette.faluRed,
+  'on-error': palette.faluRed,
   draw: palette.dustyGray,
-  highlight10: palette.white10,
-  highlight30: palette.white30,
+  'highlight-10': palette.white10,
+  'highlight-30': palette.white30,
   inactive: palette.white50,
-  overlay30: palette.black30,
-  overlay50: palette.black50,
-  overlay70: palette.black70,
+  'overlay-30': palette.black30,
+  'overlay-50': palette.black50,
+  'overlay-70': palette.black70,
   shadow: palette.black,
 }
 
-export const shapes: Shapes = {
-  xsmall: '2px',
-  small: '4px',
-  medium: '6px',
-  large: '12px',
+export const borderRadius: BorderRadius = {
+  xs: '2px',
+  sm: '4px',
+  md: '6px',
+  lg: '12px',
 }
 
 export const spacing: Spacing = {
-  xxxsmall: '2px',
-  xxsmall: '4px',
-  xsmall: '8px',
-  small: '12px',
-  medium: '16px',
-  large: '24px',
-  xlarge: '32px',
-  xxlarge: '48px',
+  '3xs': '2px',
+  '2xs': '4px',
+  xs: '8px',
+  sm: '12px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+  '2xl': '48px',
+}
+
+const screens: Screens = {
+  default: '0rem',
+  xs: '29rem',
+  sm: '36rem',
+  md: '48rem',
+  lg: '62rem',
+  xl: '75rem',
+  '2xl': '90rem',
 }
 
 export const typography: Typography = {
-  header1: {
+  'header-xl': {
     fontSize: '2.25rem',
     fontWeight: '600',
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  header2: {
+  'header-lg': {
     fontSize: '1.5rem',
     fontWeight: '600',
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  header3: {
+  'header-md': {
     fontSize: '1.125rem',
     fontWeight: '600',
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  header4: {
+  'header-sm': {
     fontSize: '1rem',
     fontWeight: '600',
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  header5: {
+  'header-xs': {
     fontSize: '0.875rem',
     fontWeight: '600',
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  body1: {
+  'body-lg': {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.3px',
     fontFamily: 'Mulish',
   },
-  body2: {
+  'body-md': {
     fontSize: '0.75rem',
     fontWeight: '500',
     lineHeight: '1.3px',
     fontFamily: 'Mulish',
   },
-  body3: {
+  'body-sm': {
     fontSize: '0.625rem',
     fontWeight: '500',
     lineHeight: '1.3px',
@@ -131,13 +142,13 @@ export const typography: Typography = {
     lineHeight: '1.2px',
     fontFamily: 'Montserrat',
   },
-  label1: {
+  'label-md': {
     fontSize: '0.75rem',
     fontWeight: '500',
     lineHeight: '1.0px',
     fontFamily: 'Montserrat',
   },
-  label2: {
+  'label-sm': {
     fontSize: '0.625rem',
     fontWeight: '500',
     lineHeight: '1.0px',
@@ -151,12 +162,13 @@ export const animations: Animations = {
   long: `${motion.curve} ${motion.long}`,
 }
 
-export const theme: Theme = {
+export const gameflowTheme: Theme = {
   colors,
-  typography,
-  shapes,
+  screens,
+  borderRadius,
   motion,
   shadows,
   spacing,
+  typography,
   animations,
 }

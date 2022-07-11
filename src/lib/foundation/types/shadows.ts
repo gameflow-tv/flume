@@ -3,24 +3,28 @@
  */
 export interface Shadows {
   /**
+   * String index signature for type compat.
+   */
+  [key: string]: string
+  /**
    * Very small, very subtle shadow.
    */
-  xsmall: string
+  xs: string
 
   /**
    * Small, subtle shadow.
    */
-  small: string
+  sm: string
 
   /**
    * Medium-sized shadow.
    */
-  medium: string
+  md: string
 
   /**
    * Large shadow used for depth.
    */
-  large: string
+  lg: string
 
   /**
    * Shadow for focused elements.

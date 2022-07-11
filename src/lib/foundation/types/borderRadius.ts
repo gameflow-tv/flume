@@ -1,7 +1,7 @@
 /**
- * Flume shape tokens as radii.
+ * Flume shape tokens as radius.
  */
-export interface Shapes {
+export interface BorderRadius {
   /**
    * String index signature for type compat.
    */
@@ -10,17 +10,17 @@ export interface Shapes {
   /**
    * The smallest shape radius.
    */
-  xsmall: string
+  xs: string
   /**
    * The next smallest shape radius.
    */
-  small: string
+  sm: string
   /**
    * The next larges shape radius.
    */
-  medium: string
+  md: string
   /**
    * The largest shape radius.
    */
-  large: string
+  lg: string
 }

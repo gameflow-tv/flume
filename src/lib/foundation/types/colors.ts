@@ -15,7 +15,7 @@ export interface Colors {
   /**
    * Contrast color to the primary color.
    */
-  onPrimary: string
+  'on-primary': string
 
   /**
    * Complementary color to the primary color.
@@ -30,7 +30,7 @@ export interface Colors {
   /**
    * Contrast color to the secondary color.
    */
-  quarternary: string
+  quaternary: string
 
   /**
    * Text color for headings.
@@ -55,7 +55,7 @@ export interface Colors {
   /**
    * Color for button borders when focused.
    */
-  buttonFocus: string
+  'button-focus': string
 
   /**
    * Sharp, bright signaling color that contrasts most of the other colors.
@@ -64,16 +64,16 @@ export interface Colors {
   /**
    * Contrast color to the signal color.
    */
-  onSignal: string
+  'on-signal': string
 
   /**
-   * Color signaling success or positive outcume.
+   * Color signaling success or positive outcome.
    */
   success: string
   /**
    * Contrast color to the success color.
    */
-  onSuccess: string
+  'on-success': string
 
   /**
    * Color signaling warning or caution.
@@ -83,7 +83,7 @@ export interface Colors {
   /**
    * Contrast color to the warning color.
    */
-  onWarning: string
+  'on-warning': string
 
   /**
    * Color signaling error or negative outcome.
@@ -93,7 +93,7 @@ export interface Colors {
   /**
    * Contrast color to the error color.
    */
-  onError: string
+  'on-error': string
 
   /**
    * Neutral, dull color for neutral outcomes.
@@ -103,12 +103,12 @@ export interface Colors {
   /**
    * Subtle highlight color (overlay).
    */
-  highlight10: string
+  'highlight-10': string
 
   /**
    * Stronger highlight color (overlay).
    */
-  highlight30: string
+  'highlight-30': string
 
   /**
    * Color signaling inactive/disabled states.
@@ -118,17 +118,17 @@ export interface Colors {
   /**
    * Subtle dim overlay (overlay).
    */
-  overlay30: string
+  'overlay-30': string
 
   /**
    * Stronger dim overlay (overlay).
    */
-  overlay50: string
+  'overlay-50': string
 
   /**
    * Strongest dim overlay (overlay).
    */
-  overlay70: string
+  'overlay-70': string
 
   /**
    * Base color for shadows.
