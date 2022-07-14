@@ -20,14 +20,16 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
   return {
     presets: [],
     theme: {
+      extend: {
+        fontWeight,
+        borderRadius,
+      },
       screens,
       colors,
       spacing,
       animation,
-      borderRadius,
       boxShadow: shadows,
       fontSize,
-      fontWeight,
       fontFamily: {
         header: ['Montserrat', 'Helvetica'],
         body: ['Mulish', 'sans-serif'],
