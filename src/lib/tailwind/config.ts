@@ -12,6 +12,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
     animations: animation,
     screens,
     typography,
+    motion,
   } = theme
 
   const { fontSize, fontWeight, typographyComponents } = getTypographyConfig(typography)
@@ -30,6 +31,9 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
       fontFamily: {
         header: ['Montserrat', 'Helvetica'],
         body: ['Mulish', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        default: motion.curve,
       },
     },
     plugins: [
