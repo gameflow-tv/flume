@@ -10,7 +10,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
     shadows,
     borderRadius,
     animations: animation,
-    screens,
+    breakpoints,
     typography,
     motion,
   } = theme
@@ -24,7 +24,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
         fontWeight,
         borderRadius,
       },
-      screens,
+      screens: breakpoints,
       colors,
       spacing,
       animation,

@@ -1,7 +1,7 @@
 /**
  * Flume breakpoints.
  */
-export interface Screens {
+export interface Breakpoints {
   /**
    * String index signature for type compat.
    */
