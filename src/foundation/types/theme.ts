@@ -5,7 +5,7 @@ import { Motion } from './motion.js'
 import { Shadows } from './shadows.js'
 import { Spacing } from './spacing.js'
 import { Typography } from './typography.js'
-import { Screens } from './screens.js'
+import { Breakpoints } from './breakpoints.js'
 
 export interface Theme {
   colors: Colors
@@ -15,5 +15,5 @@ export interface Theme {
   animations: Animations
   borderRadius: BorderRadius
   typography: Typography
-  screens: Screens
+  breakpoints: Breakpoints
 }

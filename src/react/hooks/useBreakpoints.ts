@@ -1,12 +1,12 @@
 import { useTheme, useWindowDimensions } from './index.js'
-import { Screens } from '~/foundation/index.js'
+import { Breakpoints } from '~/foundation/index.js'
 
 type NumberedBreakpoints = {
   // eslint-disable-next-line no-unused-vars
-  [key in keyof Screens]: number
+  [key in keyof Breakpoints]: number
 }
 
-const parseBreakpoints = (breakpoints: Screens): NumberedBreakpoints => {
+const parseBreakpoints = (breakpoints: Breakpoints): NumberedBreakpoints => {
   const parsed: any = {}
 
   for (const key in breakpoints) {
@@ -19,7 +19,7 @@ const parseBreakpoints = (breakpoints: Screens): NumberedBreakpoints => {
 
 export interface BreakpointsProps {
   breakpoints: NumberedBreakpoints
-  current: keyof Screens
+  current: keyof Breakpoints
   isMobile: boolean
   isDesktop: boolean
 }
@@ -27,7 +27,7 @@ export interface BreakpointsProps {
 /** Retrieves a numbered version of the current Theme's breakpoints as well as the currently exceeded breakpoint */
 export const useBreakpoints = () => {
   const theme = useTheme()
-  const breakpoints = parseBreakpoints(theme.screens)
+  const breakpoints = parseBreakpoints(theme.breakpoints)
   const current = useCurrentBreakpoint()
   const dimensions = useWindowDimensions()
 
@@ -45,17 +45,17 @@ export const useBreakpoints = () => {
 
 /** Retrieves the current Theme's breakpoints and returns them as numbers.*/
 export const useNumberedBreakpoints = (): NumberedBreakpoints => {
-  const { screens } = useTheme()
-  return parseBreakpoints(screens)
+  const { breakpoints } = useTheme()
+  return parseBreakpoints(breakpoints)
 }
 
 /** Retrieves the currently exceeded breakpoint */
-export const useCurrentBreakpoint = (): keyof Screens => {
+export const useCurrentBreakpoint = (): keyof Breakpoints => {
   const dimensions = useWindowDimensions()
   const width = dimensions?.width
 
-  const { screens } = useTheme()
-  const parsed = parseBreakpoints(screens)
+  const { breakpoints } = useTheme()
+  const parsed = parseBreakpoints(breakpoints)
 
   if (!width) {
     return 'default'

@@ -2,9 +2,9 @@
 import {
   Animations,
   BorderRadius,
+  Breakpoints,
   Colors,
   Motion,
-  Screens,
   Shadows,
   Spacing,
   Theme,
@@ -75,7 +75,7 @@ export const spacing: Spacing = {
   xxl: '48px',
 }
 
-const screens: Screens = {
+const breakpoints: Breakpoints = {
   default: '0rem',
   xs: '29rem',
   sm: '36rem',
@@ -174,7 +174,7 @@ export const animations: Animations = {
 
 export const gameflowTheme: Theme = {
   colors,
-  screens,
+  breakpoints,
   borderRadius,
   motion,
   shadows,
