@@ -52,6 +52,6 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@gameflow-tv/ambiance": "^0.1.1"
+    "@gameflow-tv/ambiance": "^1.0.0"
   }
 }
