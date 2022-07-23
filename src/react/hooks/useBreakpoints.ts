@@ -1,12 +1,13 @@
-import { useTheme, useWindowDimensions } from './'
-import { Screens } from '../foundation'
+import { useTheme, useWindowDimensions } from './index.js'
+import { Screens } from '~/foundation/index.js'
 
 type NumberedBreakpoints = {
+  // eslint-disable-next-line no-unused-vars
   [key in keyof Screens]: number
 }
 
 const parseBreakpoints = (breakpoints: Screens): NumberedBreakpoints => {
-  let parsed: any = {}
+  const parsed: any = {}
 
   for (const key in breakpoints) {
     const value = breakpoints[key] as string
@@ -60,8 +61,8 @@ export const useCurrentBreakpoint = (): keyof Screens => {
     return 'default'
   }
 
-  if (width.rem > parsed['2xl']) {
-    return '2xl'
+  if (width.rem > parsed.xxl) {
+    return 'xxl'
   } else if (width.rem > parsed.xl) {
     return 'xl'
   } else if (width.rem > parsed.lg) {

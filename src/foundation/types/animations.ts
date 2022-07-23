@@ -1,3 +1,3 @@
-import { Motion } from './types/motion'
+import { Motion } from './motion.js'
 
 export type Animations = Omit<Motion, 'curve'>

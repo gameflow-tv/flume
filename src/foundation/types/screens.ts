@@ -35,7 +35,7 @@ export interface Screens {
    */
   xl: string
   /**
-   * Extra LArge screen size.
+   * Extra Large screen size.
    */
-  '2xl': string
+  xxl: string
 }
