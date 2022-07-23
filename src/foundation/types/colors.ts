@@ -15,7 +15,7 @@ export interface Colors {
   /**
    * Contrast color to the primary color.
    */
-  'on-primary': string
+  onPrimary: string
 
   /**
    * Complementary color to the primary color.
@@ -55,7 +55,7 @@ export interface Colors {
   /**
    * Color for button borders when focused.
    */
-  'button-focus': string
+  buttonFocus: string
 
   /**
    * Sharp, bright signaling color that contrasts most of the other colors.
@@ -64,7 +64,7 @@ export interface Colors {
   /**
    * Contrast color to the signal color.
    */
-  'on-signal': string
+  onSignal: string
 
   /**
    * Color signaling success or positive outcome.
@@ -73,7 +73,7 @@ export interface Colors {
   /**
    * Contrast color to the success color.
    */
-  'on-success': string
+  onSuccess: string
 
   /**
    * Color signaling warning or caution.
@@ -83,7 +83,7 @@ export interface Colors {
   /**
    * Contrast color to the warning color.
    */
-  'on-warning': string
+  onWarning: string
 
   /**
    * Color signaling error or negative outcome.
@@ -93,7 +93,7 @@ export interface Colors {
   /**
    * Contrast color to the error color.
    */
-  'on-error': string
+  onError: string
 
   /**
    * Neutral, dull color for neutral outcomes.
@@ -103,12 +103,12 @@ export interface Colors {
   /**
    * Subtle highlight color (overlay).
    */
-  'highlight-10': string
+  highlight10: string
 
   /**
    * Stronger highlight color (overlay).
    */
-  'highlight-30': string
+  highlight30: string
 
   /**
    * Color signaling inactive/disabled states.
@@ -118,17 +118,17 @@ export interface Colors {
   /**
    * Subtle dim overlay (overlay).
    */
-  'overlay-30': string
+  overlay30: string
 
   /**
    * Stronger dim overlay (overlay).
    */
-  'overlay-50': string
+  overlay50: string
 
   /**
    * Strongest dim overlay (overlay).
    */
-  'overlay-70': string
+  overlay70: string
 
   /**
    * Base color for shadows.

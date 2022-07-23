@@ -1,13 +1,17 @@
-import { Screens } from './types/screens'
-import { Colors } from './types/colors'
-import { Motion } from './types/motion'
-import { Shadows } from './types/shadows'
-import { BorderRadius } from './types/borderRadius'
-import { Spacing } from './types/spacing'
-import { Typography } from './types/typography'
-import { palette } from './palette'
-import { Theme } from './types/theme'
-import { Animations } from './animations'
+/* eslint-disable quote-props */
+import {
+  Animations,
+  BorderRadius,
+  Colors,
+  Motion,
+  Screens,
+  Shadows,
+  Spacing,
+  Theme,
+  Typography,
+} from './types/index.js'
+
+import { palette } from './palette.js'
 
 export const motion: Motion = {
   short: '100ms',
@@ -26,7 +30,7 @@ export const shadows: Shadows = {
 
 export const colors: Colors = {
   primary: palette.amberOrange,
-  'on-primary': palette.abbeyBlue,
+  onPrimary: palette.abbeyBlue,
   secondary: palette.abbeyBlue,
   tertiary: palette.emperorGray,
   quaternary: palette.white,
@@ -34,22 +38,22 @@ export const colors: Colors = {
   body: palette.white85,
   subtitle: palette.white75,
   icon: palette.white85,
-  'button-focus': palette.white,
+  buttonFocus: palette.white,
   signal: palette.punchRed,
-  'on-signal': palette.white,
+  onSignal: palette.white,
   success: palette.ufoGreen,
-  'on-success': palette.parsleyGreen,
+  onSuccess: palette.parsleyGreen,
   warning: palette.lightningYellow,
-  'on-warning': palette.mustardYellow,
+  onWarning: palette.mustardYellow,
   error: palette.cinnabarRed,
-  'on-error': palette.faluRed,
+  onError: palette.faluRed,
   draw: palette.dustyGray,
-  'highlight-10': palette.white10,
-  'highlight-30': palette.white30,
+  highlight10: palette.white10,
+  highlight30: palette.white30,
   inactive: palette.white50,
-  'overlay-30': palette.black30,
-  'overlay-50': palette.black50,
-  'overlay-70': palette.black70,
+  overlay30: palette.black30,
+  overlay50: palette.black50,
+  overlay70: palette.black70,
   shadow: palette.black,
 }
 
@@ -61,14 +65,14 @@ export const borderRadius: BorderRadius = {
 }
 
 export const spacing: Spacing = {
-  '3xs': '2px',
-  '2xs': '4px',
+  xxxs: '2px',
+  xxs: '4px',
   xs: '8px',
   sm: '12px',
   md: '16px',
   lg: '24px',
   xl: '32px',
-  '2xl': '48px',
+  xxl: '48px',
 }
 
 const screens: Screens = {
@@ -78,53 +82,53 @@ const screens: Screens = {
   md: '48rem',
   lg: '62rem',
   xl: '75rem',
-  '2xl': '90rem',
+  xxl: '90rem',
 }
 
 export const typography: Typography = {
-  'header-xl': {
+  header1: {
     fontSize: '2.25rem',
     fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'header-lg': {
+  header2: {
     fontSize: '1.5rem',
     fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'header-md': {
+  header3: {
     fontSize: '1.125rem',
     fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'header-sm': {
+  header4: {
     fontSize: '1rem',
     fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'header-xs': {
+  header5: {
     fontSize: '0.875rem',
     fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'body-lg': {
+  body1: {
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: '1.3',
     fontFamily: 'Mulish, sans-serif, Helvetica',
   },
-  'body-md': {
+  body2: {
     fontSize: '0.75rem',
     fontWeight: '500',
     lineHeight: '1.3',
     fontFamily: 'Mulish, sans-serif, Helvetica',
   },
-  'body-sm': {
+  body3: {
     fontSize: '0.625rem',
     fontWeight: '500',
     lineHeight: '1.3',
@@ -142,16 +146,22 @@ export const typography: Typography = {
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'label-md': {
+  label1: {
     fontSize: '0.75rem',
     fontWeight: '500',
-    lineHeight: '1.0',
+    lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
-  'label-sm': {
+  label2: {
+    fontSize: '0.6875rem',
+    fontWeight: '500',
+    lineHeight: '1.2',
+    fontFamily: 'Montserrat',
+  },
+  label3: {
     fontSize: '0.625rem',
     fontWeight: '500',
-    lineHeight: '1.0',
+    lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
 }

@@ -1,7 +1,7 @@
-import { Theme, gameflowTheme } from '../foundation'
-import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config'
-import plugin from 'tailwindcss/plugin'
-import { getTypographyConfig } from './helpers'
+import { gameflowTheme, Theme } from '~/foundation/index.js'
+import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config.js'
+import { getTypographyConfig } from './helpers.js'
+import plugin from 'tailwindcss/plugin.js'
 
 export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig> => {
   const {

@@ -10,12 +10,12 @@ export interface Spacing {
   /**
    * The smallest spacing, used for incremental and very minor gaps.
    */
-  '3xs': string
+  xxxs: string
 
   /**
    * A very small spacing, used for incremental and very minor gaps.
    */
-  '2xs': string
+  xxs: string
 
   /**
    * A small spacing, used for incremental and minor gaps.
@@ -45,5 +45,5 @@ export interface Spacing {
   /**
    * Spacing used for huge gaps and paddings.
    */
-  '2xl': string
+  xxl: string
 }
