@@ -6,6 +6,7 @@ export {
   AmbianceConsumer,
   useAmbiance,
   AmbianceContext,
+  colorFromElevation,
 } from '@gameflow-tv/ambiance/react'
 
 export type { AmbianceProps, AmbianceProviderProps } from '@gameflow-tv/ambiance/react'
