@@ -1,6 +1,6 @@
 import { gameflowTheme, Theme } from '~/foundation/index.js'
 import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config.js'
-import { getTypographyConfig } from './helpers.js'
+import { getTypographyConfig, shortenKeys } from './helpers.js'
 import plugin from 'tailwindcss/plugin.js'
 
 export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig> => {
@@ -16,6 +16,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
   } = theme
 
   const { fontSize, fontWeight, typographyComponents } = getTypographyConfig(typography)
+  const shortenedSpacing = shortenKeys(spacing)
 
   return {
     presets: [],
@@ -26,7 +27,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
       },
       screens: breakpoints,
       colors,
-      spacing,
+      spacing: shortenedSpacing,
       animation,
       boxShadow: shadows,
       fontSize,
