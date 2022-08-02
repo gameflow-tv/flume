@@ -8,5 +8,5 @@ export default defineConfig({
   external: ['react', 'react-dom'],
   dts: true,
   target: 'node18',
-  format: 'esm',
+  format: ['esm', 'cjs'],
 })
