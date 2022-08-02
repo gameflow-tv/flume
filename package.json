@@ -8,7 +8,11 @@
     ".": "./dist/index.js",
     "./foundation": "./dist/foundation.js",
     "./react": "./dist/react.js",
-    "./tailwind": "./dist/tailwind.js"
+    "./tailwind": "./dist/tailwind.js",
+    "./dist": "./dist/index.js",
+    "./dist/foundation": "./dist/foundation.js",
+    "./dist/react": "./dist/react.js",
+    "./dist/tailwind": "./dist/tailwind.js"
   },
   "files": [
     "dist",
