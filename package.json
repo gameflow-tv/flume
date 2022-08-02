@@ -1,97 +1,62 @@
 {
   "name": "@gameflow-tv/flume",
-  "version": "0.0.0-dev",
-  "description": "React implementation of the Flume design system",
-  "module": "dist/index.js",
+  "version": "2.0.0",
+  "description": "Web implementation of the Flume design system",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./foundation": "./dist/foundation.js",
+    "./react": "./dist/react.js",
+    "./tailwind": "./dist/tailwind.js"
+  },
   "files": [
-    "dist"
+    "dist",
+    "**.d.ts"
   ],
-  "types": "dist/index.d.ts",
-  "repository": "git://github.com/gameflow-tv/flume.git",
-  "author": "arne@gameflow.tv",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gameflow-tv/flume.git"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
+  "author": "Gameflow",
+  "license": "UNLICENSED",
+  "prettier": "@gameflow-tv/prettier-config",
+  "bugs": {
+    "url": "https://github.com/gameflow-tv/flume/issues"
   },
+  "homepage": "https://github.com/gameflow-tv/flume#readme",
   "scripts": {
-    "format": "prettier --write \"./src/**/*.{ts,tsx,js,jsx,mdx,json}\" --config .prettierrc",
-    "build:storybook": "build-storybook -o storybook-static",
-    "serve:storybook": "start-storybook -p 9009 -s ./public",
-    "prepare": "husky install",
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "chromatic": "npx chromatic",
-    "build": "tsc && rollup -c",
-    "watch": "tsc && rollup -cw"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format"
-    }
-  },
-  "resolutions": {
-    "react-dev-utils": "^11.0.4",
-    "remark-parse": "^9.0.0",
-    "browserslist": "^4.19.1",
-    "glob-parent": "^5.1.2"
-  },
-  "peerDependencies": {
-    "chroma-js": "^2.4.2",
-    "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3"
+    "build": "tsc --build --clean && tsup",
+    "format": "prettier --write \"./**/*.{ts,tsx,js,jsx,json}\"",
+    "format:ci": "prettier \"./**/*.{ts,tsx,js,jsx,json}\" --check",
+    "lint": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx,.mdx ./src",
+    "lint:ci": "eslint --ext .js,.jsx,.ts,.tsx,.mdx ./src",
+    "watch": "npm run build -- --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:ci": "npm test -- --ci"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^2.0.0",
-    "@mdx-js/mdx": "^2.0.0",
-    "@mdx-js/react": "^2.0.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@storybook/addon-a11y": "^6.4.19",
-    "@storybook/addon-backgrounds": "^6.4.19",
-    "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-controls": "^6.4.19",
-    "@storybook/addon-docs": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-knobs": "^6.4.0",
-    "@storybook/addon-storysource": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "@storybook/theming": "^6.4.19",
-    "@types/chroma-js": "^2.1.3",
-    "@types/jest": "^27.4.0",
-    "@types/lodash": "^4.14.178",
-    "@types/node": "17.0.14",
-    "@types/react": "^17.0.38",
-    "@types/react-dom": "^17.0.11",
-    "@types/rollup-plugin-peer-deps-external": "^2.2.1",
-    "@types/styled-components": "^5.1.21",
-    "acorn-jsx": "^5.3.2",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "^8.2.3",
-    "chroma-js": "^2.4.2",
-    "chromatic": "^6.4.3",
-    "eslint-plugin-mdx": "^1.16.0",
-    "husky": "^7.0.4",
-    "jest": "^27.4.7",
-    "lodash": "^4.17.21",
-    "mocha": "^9.2.0",
-    "postcss": "^8.4.6",
-    "prettier": "^2.5.1",
-    "react": "^17.0.2",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "react-dom": "^17.0.2",
-    "rollup": "^2.67.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "storybook": "^6.4.19",
-    "styled-components": "^5.3.3",
-    "ts-jest": "^27.1.3",
-    "typescript": "^4.5.5"
+    "@gameflow-tv/eslint-config": "^0.0.8",
+    "@gameflow-tv/prettier-config": "^0.2.1",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
+    "@types/react": "^18.0.15",
+    "eslint": "^8.20.0",
+    "jest": "^28.1.3",
+    "prettier": "2.7.1",
+    "tailwindcss": "^3.1.6",
+    "ts-jest": "^28.0.7",
+    "tsup": "^6.1.3",
+    "typescript": "^4.7.4"
+  },
+  "optionalDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "dependencies": {
+    "@gameflow-tv/ambiance": "^1.0.0"
   }
 }

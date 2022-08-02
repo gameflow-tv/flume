@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+/.cache
+.eslintcache
+/build
+/dist
+.env
+*.log
+/.github
+/storybook-static
+/.devcontainer

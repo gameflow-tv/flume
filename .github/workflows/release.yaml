@@ -6,9 +6,11 @@ jobs:
   publish:
     runs-on: self-hosted
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
+          registry-url: "https://npm.pkg.github.com"
+          always-auth: "true"
 
       - uses: actions/checkout@v2
 
@@ -18,12 +20,15 @@ jobs:
         run: npm version --new-version $(echo ${{ env.GITHUB_REF_SLUG }}|cut -c2-) --no-git-tag-version
 
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       - name: Build library
-        run: yarn build
+        run: npm run build
+
+      - name: Ignore .npmrc for publish step
+        run: mv .npmrc .npmrc.temp
 
       - name: Release to GHPR
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GHPR_TOKEN }}
