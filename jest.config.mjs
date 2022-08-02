@@ -1,4 +1,4 @@
-const config = {
+export default {
   preset: 'ts-jest',
   moduleDirectories: ['<rootDir>/node_modules', '<rootDir>/src', 'node_modules'],
   testMatch: ['**/?(*.)+(spec|test).(js|ts)?(x)'],
@@ -12,5 +12,3 @@ const config = {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
 }
-
-export default config
