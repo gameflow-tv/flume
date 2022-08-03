@@ -57,6 +57,10 @@ export const shortenKeys = <T>(obj: Record<string, T>, key = 'x'): { [key: strin
   return values.reduce((acc, curr) => ({ ...acc, ...curr }), {})
 }
 
+/**
+ * @param str The string to convert into kebab case.
+ * @returns The string in kebab case.
+ */
 const toKebabCase = (str: string) => {
   const k = str
     .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
@@ -70,9 +74,16 @@ const toKebabCase = (str: string) => {
   return k
 }
 
-const isObject = (args) =>
+/**
+ * @param args The value to check whether is an object or not.
+ */
+const isObject = (args: unknown) =>
   args === Object(args) && !Array.isArray(args) && typeof args !== 'function'
 
+/**
+ * @param args The object which keys are to be converted to kebab case.
+ * @returns The object with keys converted to kebab case.
+ */
 export const keysToKebab = <T>(args: T): { [key: string]: any } => {
   const n = {}
 
@@ -86,3 +97,16 @@ export const keysToKebab = <T>(args: T): { [key: string]: any } => {
 
   return n
 }
+
+/**
+ * @param obj The object to omit a key from.
+ * @param omitKey The key to omit from the object.
+ * @returns The object without the omitted key.
+ */
+export const omit = <T>(obj: T, omitKey: keyof T): Partial<T> =>
+  Object.keys(obj).reduce((result, key) => {
+    if (key !== omitKey) {
+      result[key] = obj[key]
+    }
+    return result
+  }, {})

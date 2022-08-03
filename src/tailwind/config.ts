@@ -1,6 +1,6 @@
 import { gameflowTheme, Theme } from '~/foundation/index.js'
 import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config.js'
-import { getTypographyConfig, keysToKebab, shortenKeys } from './helpers.js'
+import { getTypographyConfig, keysToKebab, omit, shortenKeys } from './helpers.js'
 import plugin from 'tailwindcss/plugin.js'
 
 export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig> => {
@@ -31,6 +31,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
       animation,
       boxShadow: shadows,
       fontSize,
+      transitionDuration: omit(motion, 'curve'),
       fontFamily: {
         header: ['Montserrat', 'Helvetica'],
         body: ['Mulish', 'sans-serif'],

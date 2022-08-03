@@ -1,5 +1,5 @@
 import { gameflowTheme } from '../foundation'
-import { keysToKebab, shortenKeys } from './helpers'
+import { keysToKebab, omit, shortenKeys } from './helpers'
 
 describe('shortenKeys', () => {
   const { spacing } = gameflowTheme
@@ -22,5 +22,13 @@ describe('keysToKebab', () => {
     const mapped = keysToKebab({ fooBarBaz: 'foo' })
 
     expect(Object.keys(mapped)[0]).toEqual('foo-bar-baz')
+  })
+})
+
+describe('omit', () => {
+  it('should return an object with keys that are omitted', () => {
+    const mapped = omit({ foo: 'bar' }, 'foo')
+
+    expect(Object.keys(mapped).length).toEqual(0)
   })
 })
