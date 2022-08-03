@@ -22,8 +22,8 @@ export const getTypographyConfig = (
   fontWeight: { [key: string]: string }
   typographyComponents: { [key: string]: TypographyData }[]
 } => {
-  const fontSize = getPropsFromTypography(typography, 'fontSize')
-  const fontWeight = getPropsFromTypography(typography, 'fontWeight')
+  const fontSize = getPropsFromTypography(typography, 'font-size')
+  const fontWeight = getPropsFromTypography(typography, 'font-weight')
 
   // Convert the typography object into an object with `.className` CSS classname keys.
   const typographyComponents = Object.keys(typography).map((key) => ({
@@ -55,4 +55,34 @@ export const shortenKeys = <T>(obj: Record<string, T>, key = 'x'): { [key: strin
   })
 
   return values.reduce((acc, curr) => ({ ...acc, ...curr }), {})
+}
+
+const toKebabCase = (str: string) => {
+  const k = str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .join('-')
+    .toLowerCase()
+
+  if (k.match(/\d+/g)?.length > 0) {
+    return k.replace(/\d+/g, (match) => `-${match}`)
+  }
+
+  return k
+}
+
+const isObject = (args) =>
+  args === Object(args) && !Array.isArray(args) && typeof args !== 'function'
+
+export const keysToKebab = <T>(args: T): { [key: string]: any } => {
+  const n = {}
+
+  Object.keys(args).forEach((k) => {
+    if (isObject(args[k])) {
+      n[toKebabCase(k)] = keysToKebab(args[k])
+    } else {
+      n[toKebabCase(k)] = args[k]
+    }
+  })
+
+  return n
 }

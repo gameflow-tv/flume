@@ -1,5 +1,5 @@
 import { gameflowTheme } from '../foundation'
-import { shortenKeys } from './helpers'
+import { keysToKebab, shortenKeys } from './helpers'
 
 describe('shortenKeys', () => {
   const { spacing } = gameflowTheme
@@ -14,5 +14,13 @@ describe('shortenKeys', () => {
     const mapped = shortenKeys(spacing, 'y')
 
     expect(mapped).toEqual(spacing)
+  })
+})
+
+describe('keysToKebab', () => {
+  it('should return an object with keys that are kebab-cased', () => {
+    const mapped = keysToKebab({ fooBarBaz: 'foo' })
+
+    expect(Object.keys(mapped)[0]).toEqual('foo-bar-baz')
   })
 })
