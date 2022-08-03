@@ -8,7 +8,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
     colors,
     spacing,
     shadows,
-    borderRadius,
+    'border-radius': borderRadius,
     animations: animation,
     breakpoints,
     typography,
