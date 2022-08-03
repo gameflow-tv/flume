@@ -17,6 +17,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
 
   const { fontSize, fontWeight, typographyComponents } = getTypographyConfig(typography)
   const shortenedSpacing = shortenKeys<string>(spacing)
+  const screens = shortenKeys<string>(breakpoints)
 
   return {
     presets: [],
@@ -25,7 +26,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
         fontWeight,
         borderRadius,
       },
-      screens: breakpoints,
+      screens,
       colors,
       spacing: shortenedSpacing,
       animation,
