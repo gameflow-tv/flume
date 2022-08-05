@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "*.js"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.js"],
   "compilerOptions": {
     "target": "ESNext",
     "lib": [
@@ -32,6 +32,7 @@
     "typeRoots": ["./typings", "./node_modules/@types"],
     "paths": {
       "~/*": ["./src/*"]
-    }
+    },
+    "allowJs": true
   }
 }

@@ -9,4 +9,7 @@ export default defineConfig({
   dts: true,
   target: 'node18',
   format: ['esm', 'cjs'],
+  outExtension: ({ format }) => ({
+    js: format === 'esm' ? '.mjs' : '.js',
+  }),
 })
