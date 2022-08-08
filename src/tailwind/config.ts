@@ -29,6 +29,7 @@ export const getConfig = (theme: Theme = gameflowTheme): Partial<TailwindConfig>
       screens,
       colors,
       spacing: shortenedSpacing,
+      gap: shortenedSpacing,
       animation,
       boxShadow: shadows,
       fontSize,
