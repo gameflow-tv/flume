@@ -148,19 +148,19 @@ export const typography: Typography = {
   },
   label1: {
     fontSize: '0.75rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
   label2: {
     fontSize: '0.6875rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
   label3: {
     fontSize: '0.625rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
