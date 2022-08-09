@@ -136,7 +136,7 @@ export const typography: Typography = {
   },
   button: {
     fontSize: '0.875rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat',
   },
