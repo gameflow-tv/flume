@@ -7,7 +7,7 @@ type NumberedBreakpoints = {
 }
 
 const parseBreakpoints = (breakpoints: Breakpoints): NumberedBreakpoints => {
-  const parsed: any = {}
+  const parsed = {}
 
   for (const key in breakpoints) {
     const value = breakpoints[key] as string
