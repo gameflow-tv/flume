@@ -9,6 +9,7 @@ export default defineConfig({
   dts: true,
   target: 'node18',
   format: ['esm', 'cjs'],
+  inject: ['src/react/umd-shim.js'],
   outExtension: ({ format }) => ({
     js: format === 'esm' ? '.mjs' : '.js',
   }),
