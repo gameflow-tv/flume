@@ -16,3 +16,6 @@ storybook-static
 dist/
 bundle.*css*
 .eslintcache
+
+# React
+src/react/tailwind.css
