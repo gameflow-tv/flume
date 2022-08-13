@@ -23,6 +23,10 @@ export const getTypographyConfig = (
   typographyComponents: { [key: string]: TypographyData }[]
 } => {
   const fontSize = getPropsFromTypography(typography, 'font-size')
+
+  // Workaround to get inherit sizes
+  fontSize.inherit = 'inherit'
+
   const fontWeight = getPropsFromTypography(typography, 'font-weight')
 
   // Convert the typography object into an object with `.className` CSS classname keys.
@@ -84,6 +88,7 @@ const isObject = (args: unknown) =>
  * @param args The object which keys are to be converted to kebab case.
  * @returns The object with keys converted to kebab case.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const keysToKebab = <T>(args: T): { [key: string]: any } => {
   const n = {}
 
