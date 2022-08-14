@@ -26,6 +26,7 @@ export const shadows: Shadows = {
   md: '0 4px 16px rgba(0, 0, 0, 0.2)',
   lg: '0 8px 20px rgba(0, 0, 0, 0.3)',
   focus: '0 0 4px 2px rgba(255, 255, 255, 1)',
+  text: '0 2px 4px rgba(0, 0, 0, 0.6)',
 }
 
 export const colors: Colors = {
@@ -172,7 +173,7 @@ export const animations: Animations = {
   long: `${motion.curve} ${motion.long}`,
 }
 
-export const gameflowTheme: Theme = {
+export const fallback: Theme = {
   colors,
   breakpoints,
   borderRadius,

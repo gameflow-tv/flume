@@ -1,15 +1,15 @@
 import React, { createContext, ReactNode } from 'react'
-import { gameflowTheme, Theme } from '~/foundation/index.js'
+import { fallback, Theme } from '~/foundation/index.js'
 
 export interface ThemeContextProps {
   theme?: Theme
   children?: ReactNode
 }
 
-export const ThemeContext: React.Context<Theme> = createContext(gameflowTheme)
+export const ThemeContext: React.Context<Theme> = createContext(fallback)
 
 export const ThemeProvider = ({
-  theme = gameflowTheme,
+  theme = fallback,
   children,
 }: // eslint-disable-next-line no-undef
 ThemeContextProps): JSX.Element => (
