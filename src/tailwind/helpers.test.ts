@@ -1,8 +1,8 @@
-import { gameflowTheme } from '../foundation'
+import { fallback } from '../foundation'
 import { keysToKebab, omit, shortenKeys } from './helpers'
 
 describe('shortenKeys', () => {
-  const { spacing } = gameflowTheme
+  const { spacing } = fallback
 
   it('should return an object with keys that are shorter than the original', () => {
     const mapped = shortenKeys(spacing, 'x')
