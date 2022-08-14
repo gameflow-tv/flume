@@ -30,4 +30,9 @@ export interface Shadows {
    * Shadow for focused elements.
    */
   focus: string
+
+  /**
+   * Shadow for text elements.
+   */
+  text: string
 }
