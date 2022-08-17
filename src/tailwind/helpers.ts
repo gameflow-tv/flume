@@ -1,4 +1,4 @@
-import { Typography, TypographyData } from '~/foundation/index.js'
+import { Colors, Typography, TypographyData } from '~/foundation/index.js'
 
 /**
  * @param typography The typography to be converted to a CSS string.
@@ -115,3 +115,22 @@ export const omit = <T>(obj: T, omitKey: keyof T): Partial<T> =>
     }
     return result
   }, {})
+
+/**
+ *
+ * @param colors The colors to append ambiance colors to.
+ * @returns The colors with ambiance colors appended.
+ */
+export const appendAmbianceColors = (colors: Colors): { [key: string]: string } => ({
+  ...colors,
+  'ambiance-current': '--var(ambiance-current-color)',
+  'ambiance-root': '--var(ambiance-root-color)',
+  'ambiance-bottom': '--var(ambiance-bottom-color)',
+  'ambiance-parent': '--var(ambiance-parent-color)',
+  'ambiance-child': '--var(ambiance-child-color)',
+  'ambiance-dark': '--var(ambiance-dark)',
+  'ambiance-medium-dark': '--var(ambiance-medium-dark)',
+  'ambiance-medium': '--var(ambiance-medium)',
+  'ambiance-medium-light': '--var(ambiance-medium-light)',
+  'ambiance-light': '--var(ambiance-light)',
+})
