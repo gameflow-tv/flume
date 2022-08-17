@@ -1,6 +1,12 @@
 import { fallback, Theme } from '~/foundation/index.js'
 import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config.js'
-import { appendAmbianceColors, getTypographyConfig, keysToKebab, omit, shortenKeys } from './helpers.js'
+import {
+  appendAmbianceColors,
+  getTypographyConfig,
+  keysToKebab,
+  omit,
+  shortenKeys,
+} from './helpers.js'
 import plugin from 'tailwindcss/plugin.js'
 
 export const getConfig = (theme: Theme = fallback): Partial<TailwindConfig> => {
