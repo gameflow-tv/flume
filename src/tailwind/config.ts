@@ -1,11 +1,11 @@
 import { fallback, Theme } from '~/foundation/index.js'
 import type { OptionalConfig as TailwindConfig } from 'tailwindcss/types/config.js'
-import { getTypographyConfig, keysToKebab, omit, shortenKeys } from './helpers.js'
+import { appendAmbianceColors, getTypographyConfig, keysToKebab, omit, shortenKeys } from './helpers.js'
 import plugin from 'tailwindcss/plugin.js'
 
 export const getConfig = (theme: Theme = fallback): Partial<TailwindConfig> => {
   const {
-    colors,
+    colors: baseColors,
     spacing,
     shadows,
     'border-radius': borderRadius,
@@ -18,6 +18,7 @@ export const getConfig = (theme: Theme = fallback): Partial<TailwindConfig> => {
   const { fontSize, fontWeight, typographyComponents } = getTypographyConfig(typography)
   const shortenedSpacing = shortenKeys<string>(spacing)
   const screens = shortenKeys<string>(breakpoints)
+  const colors = appendAmbianceColors(baseColors)
 
   return {
     presets: [],
