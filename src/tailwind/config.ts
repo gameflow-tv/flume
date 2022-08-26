@@ -41,6 +41,7 @@ export const getConfig = (theme: Theme = fallback): Partial<TailwindConfig> => {
       gap: shortenedSpacing,
       animation,
       boxShadow: shadows,
+      dropShadow: shadows,
       fontSize,
       transitionDuration: omit(motion, 'curve'),
       fontFamily: {
