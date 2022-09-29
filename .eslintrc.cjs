@@ -1,11 +1,11 @@
-/* eslint-disable no-undef */
 module.exports = {
   extends: [
-    '@gameflow-tv/eslint-config',
     'plugin:jest/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:jsx-a11y/recommended',
+    '@gameflow-tv/eslint-config',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'import', 'jsx-a11y'],
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,

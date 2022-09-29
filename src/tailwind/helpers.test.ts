@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { fallback } from '../foundation'
 import { keysToKebab, omit, shortenKeys } from './helpers'
 
