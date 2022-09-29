@@ -9,10 +9,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-          registry-url: "https://npm.pkg.github.com"
+          registry-url: "https://registry.npmjs.org"
           always-auth: "true"
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: rlespinasse/github-slug-action@v3.x
 
@@ -24,9 +24,6 @@ jobs:
 
       - name: Build library
         run: npm run build
-
-      - name: Ignore .npmrc for publish step
-        run: mv .npmrc .npmrc.temp
 
       - name: Release to NPM
         run: npm publish --access public
