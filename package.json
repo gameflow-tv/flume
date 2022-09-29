@@ -74,8 +74,8 @@
     "build:styles": "postcss ./src/react/tailwind.source.css -o ./src/react/tailwind.css"
   },
   "devDependencies": {
-    "@gameflow-tv/eslint-config": "^0.0.8",
-    "@gameflow-tv/prettier-config": "^0.2.1",
+    "@gameflow-tv/eslint-config": "^0.1.4",
+    "@gameflow-tv/prettier-config": "^0.2.4",
     "@types/jest": "^28.1.6",
     "@types/node": "^18.6.3",
     "@types/react": "^18.0.15",
