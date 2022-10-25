@@ -18,7 +18,7 @@ export const IconData = {
   calendar_filled:
     'M18 3V1h-2v2H8V1H6v2H2v19h20V3ZM8 15H6v-2h2Zm0-4H6V9h2Zm4 4h-2v-2h2Zm0-4h-2V9h2Zm4 0h-2V9h2Zm4-5H4V5h16Z',
   caret_left: 'M9.5,12l5,5V7Z',
-  caret_up: '  M12,9.5l-5,5H17Z  ',
+  caret_up: 'M12,9.5l-5,5H17Z',
   caret_down: 'M12,14.5l5-5H7Z',
   caret_right: 'M14.5,12l-5-5V17Z',
   chat: 'M1 3h22v17h-7.71l1.53 3h-2.24l-1.53-3H1Zm20 15V5H3v13ZM5 7h6v2H5Z',
