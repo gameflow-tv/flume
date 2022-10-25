@@ -89,31 +89,31 @@ const breakpoints: Breakpoints = {
 export const typography: Typography = {
   header1: {
     fontSize: '2.25rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
   header2: {
     fontSize: '1.5rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
   header3: {
     fontSize: '1.125rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
   header4: {
     fontSize: '1rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
   header5: {
     fontSize: '0.875rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
@@ -137,13 +137,13 @@ export const typography: Typography = {
   },
   button: {
     fontSize: '0.875rem',
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
   link: {
     fontSize: '0.875rem',
-    fontWeight: '500',
+    fontWeight: '600',
     lineHeight: '1.2',
     fontFamily: 'Montserrat, Verdana, sans-serif',
   },
