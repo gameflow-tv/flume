@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { IconData, IconName } from './data'
 
-export type IconSize = 'small' | 'medium' | 'large' | 'xlarge'
+export type IconSize = 'sm' | 'md' | 'lg' | 'xl'
 
 export interface IconProps {
   /**
@@ -34,14 +34,6 @@ export interface IconProps {
   className?: string
 }
 
-// Tailwind classes for the icon sizes
-const sizeMap = {
-  small: 'w-[0.75rem] h-[0.75rem]',
-  medium: 'w-[1rem] h-[1rem]',
-  large: 'w-[1.5rem] h-[1.5rem]',
-  xlarge: 'w-[2rem] h-[2rem]',
-}
-
 /**
  * Component for displaying a Flume icon
  *
@@ -50,7 +42,7 @@ const sizeMap = {
  * return <Icon icon="eye" size="large" />
  */
 export const Icon: FC<IconProps> = (props) => {
-  const { icon, color, size = 'medium', inline = false, filled = false, className } = props
+  const { icon, color, size, inline = false, filled = false, className } = props
   let iconName = icon
 
   if (filled && !icon.includes('filled') && `${icon}_filled` in IconData) {
@@ -60,8 +52,10 @@ export const Icon: FC<IconProps> = (props) => {
   return (
     <span
       className={`inline-flex self-center align-middle ${!color && 'text-body'} ${
-        sizeMap[size]
-      } ${className}`}>
+        size === 'sm' ? 'w-[0.75rem] h-[0.75rem]' : ''
+      } ${size === 'md' ? 'w-[1rem] h-[1rem]' : ''} ${
+        size === 'lg' ? 'w-[1.5rem] h-[1.5rem]' : ''
+      } ${size === 'xl' ? 'w-[2rem] h-[2rem]' : ''} ${className}`}>
       <svg
         className={`relative ${inline && 'text-inherit'}`}
         xmlns="http://www.w3.org/2000/svg"
