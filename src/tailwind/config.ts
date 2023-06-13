@@ -53,8 +53,17 @@ export const getConfig = (theme: Theme = fallback): Partial<TailwindConfig> => {
       },
     },
     plugins: [
-      plugin(({ addComponents }) => {
+      plugin(({ addComponents, addBase }) => {
         addComponents(typographyComponents)
+        addBase({
+          h1: typographyComponents['header-1'],
+          h2: typographyComponents['header-2'],
+          h3: typographyComponents['header-3'],
+          h4: typographyComponents['header-4'],
+          h5: typographyComponents['header-5'],
+          p: typographyComponents['body-1'],
+          span: typographyComponents['body-1'],
+        })
       }),
     ],
   }
